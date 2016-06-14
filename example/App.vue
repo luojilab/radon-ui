@@ -1,32 +1,31 @@
 <style lang="scss">
 
 html,body{
-        height: 100%;
-        margin: 0;
-    }
-    .container{
-        height: 100%;
-        position: relative;
-        overflow: hidden;
-    }
-    .sidebar{
-        width: 20%;
-        background: black;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-    .content{
-        width: 100%;
-        padding-left: 20%;
-        height: 100%;
-    }
+    height: 100%;
+    margin: 0;
+}
+.container{
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.sidebar{
+    width: 20%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-right: 1px solid #f7f7f7;
+}
+.content{
+    width: 100%;
+    padding-left: 20%;
+    height: 100%;
+}
 .ex-container {
     display: flex;
 }
 .ex-menu-container {
-    width: 20%;
     min-height: 40rem;
 }
 .ex-menu-item {
@@ -81,32 +80,40 @@ export default {
     data () {
         return {
             menu: [{
-                title: 'radon',
+                title: 'Radon UI for Vue',
                 subTitle: 'ui',
+                link: 'index'
+            }, {
+                title: '快速上手',
                 link: 'index',
                 subMenu: [{
-                    title: 'radon',
-                    subTitle: 'com',
+                    title: '安装',
+                    link: 'index'
+                }, {
+                    title: '升级指南',
+                    link: 'index'
+                }, {
+                    title: '更新日志',
                     link: 'index'
                 }]
             }, {
-                title: 'radon',
+                title: 'components',
                 link: 'index',
                 subMenu: [{
-                    title: 'radon',
+                    title: 'Button',
+                    subTitle: '按钮',
                     link: 'index'
                 }, {
-                    title: 'radon',
+                    title: 'Icon',
+                    subTitle: '图标',
                     link: 'index'
                 }, {
-                    title: 'radon',
+                    title: 'Checkbox',
+                    subTitle: '多选框',
                     link: 'index'
-                }]
-            }, {
-                title: 'radon',
-                link: 'index',
-                subMenu: [{
-                    title: 'radon',
+                }, {
+                    title: 'Button',
+                    subTitle: '按钮',
                     link: 'index'
                 }]
             }]

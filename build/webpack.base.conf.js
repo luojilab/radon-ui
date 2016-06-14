@@ -5,7 +5,8 @@ var projectRoot = path.resolve(__dirname, '../')
 
 module.exports = {
   entry: {
-    example: './example/main.js'
+    dev: './dev/main.js',
+    app: './example/main.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -81,5 +82,8 @@ module.exports = {
   },
   vue: {
     loaders: utils.cssLoaders()
+  },
+  sassLoader: {
+    includePaths: [path.resolve(__dirname, '../src/sass')]
   }
 }

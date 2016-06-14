@@ -55,8 +55,8 @@ var webpackConfig = merge(baseWebpackConfig, {
             chunksSortMode: 'dependency'
         }),
         new HtmlWebpackPlugin({
-            filename: process.env.NODE_ENV === 'testing' ? 'example.html' : config.build.example,
-            template: 'example.html',
+            filename: process.env.NODE_ENV === 'testing' ? 'dev.html' : config.build.dev,
+            template: 'dev.html',
             inject: true,
             minify: {
                 removeComments: true,

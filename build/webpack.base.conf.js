@@ -5,7 +5,6 @@ var projectRoot = path.resolve(__dirname, '../')
 
 module.exports = {
   entry: {
-    app: './src/main.js',
     example: './example/main.js'
   },
   output: {

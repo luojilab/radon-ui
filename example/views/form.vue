@@ -7,6 +7,8 @@
         <randon-button type="ghost" size="large">button</randon-button>
         <randon-button type="ghost">button</randon-button>
         <randon-button type="ghost" size="small">button</randon-button>
+        <randon-button type="ghost" :loading="true">button</randon-button>
+
     </div>
 </template>
 <script>

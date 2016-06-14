@@ -49,6 +49,37 @@
     padding: .5rem 1.5rem;
     font-size: 1.4rem;
 }
+@-webkit-keyframes loading {
+  from {
+    transform-origin: 50% 50%;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform-origin: 50% 50%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes loading {
+  from {
+    transform-origin: 50% 50%;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform-origin: 50% 50%;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.radon-btn-loading {
+    display: inline-block;
+    animation: loading 1s infinite linear;
+}
 </style>
 <template>
     <button 
@@ -61,6 +92,7 @@
             'radon-btn-large'   : size === 'large'
         }"
     >
+        <span class="radon-btn-loading ion-load-a" v-if="loading"></span>
         <span>
             <slot></slot>
         </span>
@@ -80,10 +112,10 @@ export default {
             default: () => {
                 return 'default'
             }
+        },
+        loading: {
+            type: Boolean
         }
-    },
-    created () {
-        console.log(this.type)
     }
 }
 </script>

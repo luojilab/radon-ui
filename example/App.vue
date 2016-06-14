@@ -1,4 +1,27 @@
-<style>
+<style lang="scss">
+
+html,body{
+        height: 100%;
+        margin: 0;
+    }
+    .container{
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+    .sidebar{
+        width: 20%;
+        background: black;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .content{
+        width: 100%;
+        padding-left: 20%;
+        height: 100%;
+    }
 .ex-container {
     display: flex;
 }
@@ -41,12 +64,16 @@
 }
 </style>
 <template>
-    <div class="ex-container">
-        <div class="ex-menu-container">
-            <menu :menu="menu"></menu>
+	<div class="container">
+		<div class="sidebar">
+            <div class="ex-menu-container">
+                <menu :menu="menu"></menu>
+            </div>      
         </div>
-        <router-view></router-view>
-    </div>
+		<div class="content">
+			<router-view></router-view>
+		</div>
+	</div>
 </template>
 <script>
 import Menu from './views/menu.vue'

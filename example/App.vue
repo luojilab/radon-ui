@@ -58,7 +58,7 @@ html,body{
 .ex-menu-item.open .ex-menu-title-arrow {
     transform: rotate(180deg);
 }
-.ex-menu-item.active {
+.ex-sub-menu-item.active {
     color: #2db7f5;
 }
 </style>
@@ -82,39 +82,39 @@ export default {
             menu: [{
                 title: 'Radon UI for Vue',
                 subTitle: 'ui',
-                link: 'index'
+                link: ''
             }, {
                 title: '快速上手',
-                link: 'index',
+                link: 'form',
                 subMenu: [{
                     title: '安装',
-                    link: 'index'
+                    link: 'install'
                 }, {
                     title: '升级指南',
-                    link: 'index'
+                    link: 'update'
                 }, {
                     title: '更新日志',
-                    link: 'index'
+                    link: 'log'
                 }]
             }, {
                 title: 'components',
-                link: 'index',
+                link: 'form',
                 subMenu: [{
                     title: 'Button',
                     subTitle: '按钮',
-                    link: 'index'
+                    link: 'form'
                 }, {
                     title: 'Icon',
                     subTitle: '图标',
-                    link: 'index'
+                    link: 'icon'
                 }, {
                     title: 'Checkbox',
                     subTitle: '多选框',
-                    link: 'index'
+                    link: 'checkbox'
                 }, {
                     title: 'Button',
                     subTitle: '按钮',
-                    link: 'index'
+                    link: 'button'
                 }]
             }]
         }

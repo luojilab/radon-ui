@@ -8,12 +8,12 @@
             <span class="ex-menu-sub-title" v-if="menuItem.subTitle">{{menuItem.subTitle}}</span>
             <span class="ex-menu-title-arrow ion-chevron-down" v-if="menuItem.subMenu"></span>
         </div>
-        <ul v-if="menuItem.subMenu && showSub">
+        <ul v-if="menuItem.subMenu" v-show="showSub">
             <li 
+                v-link="{ path: '/' + subMenuItem.link, activeClass: 'active'}"
                 class="ex-sub-menu-item"
                 :class="{ 'active': subMenuItem.active }"
                 v-for="subMenuItem in menuItem.subMenu"
-                @click="touchSub(subMenuItem)"
             >
                 <span class="ex-sub-menu-title">{{subMenuItem.title}}</span>
                 <span class="ex-sub-menu-sub-title" v-if="subMenuItem.subTitle">{{subMenuItem.subTitle}}</span>
@@ -38,10 +38,6 @@ export default {
     methods: {
         toggleSub () {
             this.showSub = !this.showSub
-        },
-        touchSub (item) {
-            this.$emit('resetActive')
-            item.active = true
         }
     }
 }

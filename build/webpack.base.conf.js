@@ -82,5 +82,8 @@ module.exports = {
   },
   vue: {
     loaders: utils.cssLoaders()
+  },
+  sassLoader: {
+    includePaths: [path.resolve(__dirname, '../src/sass')]
   }
 }

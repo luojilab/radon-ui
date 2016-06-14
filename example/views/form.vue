@@ -3,6 +3,10 @@
         <div>form</div>
         <randon-select :value.sync="select.value" :options="select.options"></randon-select>
         <randon-button>button</randon-button>
+        <randon-button type="primary">button</randon-button>
+        <randon-button type="ghost" size="large">button</randon-button>
+        <randon-button type="ghost">button</randon-button>
+        <randon-button type="ghost" size="small">button</randon-button>
     </div>
 </template>
 <script>

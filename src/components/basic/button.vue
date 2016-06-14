@@ -15,6 +15,7 @@
     min-width: 5rem;
     color: #fff;
     border-radius: 4px;
+    transition: background 0.2s;
 }
 .radon-btn-default {
     color: #666;
@@ -25,11 +26,40 @@
     color: #fff;
     background-color: #57c5f7;
 }
+.radon-btn-ghost {
+    color: #666;
+    background-color: transparent;
+    border-color: #d9d9d9;
+}
+.radon-btn:focus, .radon-btn:hover {
+    color: #57c5f7;
+    background-color: #fff;
+    border-color: #57c5f7;
+}
+.radon-btn.radon-btn-primary:hover,
+.radon-btn.radon-btn-primary:focus {
+    background-color: #81d8ff;
+    color: #fff;
+}
+.radon-btn.radon-btn-small {
+    padding: .2em .4rem;
+    min-width: initial;
+}
+.radon-btn.radon-btn-large {
+    padding: .5rem 1.5rem;
+    font-size: 1.4rem;
+}
 </style>
 <template>
     <button 
         class="radon-btn"
-        :class="{ 'radon-btn-default': type == 'default' }"
+        :class="{
+            'radon-btn-primary' : type === 'primary',
+            'radon-btn-default' : type === 'default',
+            'radon-btn-ghost'   : type === 'ghost',
+            'radon-btn-small'   : size === 'small',
+            'radon-btn-large'   : size === 'large'
+        }"
     >
         <span>
             <slot></slot>
@@ -40,6 +70,12 @@
 export default {
     props: {
         type: {
+            type: String,
+            default: () => {
+                return 'default'
+            }
+        },
+        size: {
             type: String,
             default: () => {
                 return 'default'

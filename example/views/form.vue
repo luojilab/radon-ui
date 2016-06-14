@@ -2,10 +2,12 @@
     <div>
         <div>form</div>
         <randon-select :value.sync="select.value" :options="select.options"></randon-select>
+        <randon-button>button</randon-button>
     </div>
 </template>
 <script>
 import randonSelect from '../../src/components/form/select.vue'
+import randonButton from '../../src/components/basic/button.vue'
 export default {
     data () {
         return {
@@ -31,7 +33,8 @@ export default {
         }
     },
     components: {
-        randonSelect
+        randonSelect,
+        randonButton
     }
 }
 </script>

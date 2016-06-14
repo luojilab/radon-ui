@@ -9,9 +9,14 @@
 .ex-menu-item {
     position: relative;
 }
-.ex-menu-title {
+.ex-menu-title-container {
     font-size: 1rem;
     padding: 1rem 1.5rem;
+}
+.ex-menu-sub-title,
+.ex-sub-menu-sub-title{
+    color: #666;
+    opacity: .67;
 }
 .ex-menu-title:hover,
 .ex-sub-menu-item:hover {
@@ -28,8 +33,11 @@
     transform: rotate(0);
     transition: transform 0.2s ease;
 }
-.ex-menu-item.active .ex-menu-title-arrow {
+.ex-menu-item.open .ex-menu-title-arrow {
     transform: rotate(180deg);
+}
+.ex-menu-item.active {
+    color: #2db7f5;
 }
 </style>
 <template>
@@ -47,9 +55,11 @@ export default {
         return {
             menu: [{
                 title: 'radon',
+                subTitle: 'ui',
                 link: 'index',
                 subMenu: [{
                     title: 'radon',
+                    subTitle: 'com',
                     link: 'index'
                 }]
             }, {

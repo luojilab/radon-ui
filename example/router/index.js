@@ -17,6 +17,12 @@ router.map({
         component: (resolve) => {
             require(['../views/form.vue'], resolve)
         }
+    },
+    '/pagination': {
+        name: 'from',
+        component: (resolve) => {
+            require(['../views/pagination.vue'], resolve)
+        }
     }
 })
 

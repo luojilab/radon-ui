@@ -1,12 +1,22 @@
 <template>
-    <li class="ex-menu-item" :class="{'active': showSub}">
-        <div class="ex-menu-title" @click="toggleSub">
-            <span>{{menuItem.title}}</span>
+    <li 
+        class="ex-menu-item" 
+        :class="{'open': showSub, 'active': menuItem.active}"
+    >
+        <div class="ex-menu-title-container" @click="toggleSub">
+            <span class="ex-menu-title">{{menuItem.title}}</span>
+            <span class="ex-menu-sub-title" v-if="menuItem.subTitle">{{menuItem.subTitle}}</span>
             <span class="ex-menu-title-arrow ion-chevron-down" v-if="menuItem.subMenu"></span>
         </div>
         <ul v-if="menuItem.subMenu && showSub">
-            <li class="ex-sub-menu-item" v-for="subMenuItem in menuItem.subMenu">
-                {{subMenuItem.title}}
+            <li 
+                class="ex-sub-menu-item"
+                :class="{ 'active': subMenuItem.active }"
+                v-for="subMenuItem in menuItem.subMenu"
+                @click="touchSub(subMenuItem)"
+            >
+                <span class="ex-sub-menu-title">{{subMenuItem.title}}</span>
+                <span class="ex-sub-menu-sub-title" v-if="subMenuItem.subTitle">{{subMenuItem.subTitle}}</span>
             </li>
         </ul>
     </li>
@@ -17,7 +27,8 @@ export default {
         menuItem: {
             type: Object,
             required: true
-        }
+        },
+        reset: Function
     },
     data () {
         return {
@@ -27,6 +38,10 @@ export default {
     methods: {
         toggleSub () {
             this.showSub = !this.showSub
+        },
+        touchSub (item) {
+            this.$emit('resetActive')
+            item.active = true
         }
     }
 }

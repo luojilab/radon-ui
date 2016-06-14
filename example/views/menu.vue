@@ -1,6 +1,10 @@
 <template>
     <ul class="ex-menu">
-        <menu-item class="ex-menu-item" v-for="menuItem in menu" :menu-item="menuItem">
+        <menu-item 
+            class="ex-menu-item" 
+            v-for="menuItem in menu" 
+            :menu-item="menuItem"
+        >
         </menu-item>
     </ul>
 </template>
@@ -12,6 +16,11 @@ export default {
             type: Array,
             required: true
         }
+    },
+    ready () {
+        this.$on('resetActive', () => {
+            console.log('got it')
+        })
     },
     components: {
         menuItem

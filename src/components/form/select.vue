@@ -1,6 +1,6 @@
 <template>
     <div class="radon-select-container" @click="showOption" :class="{ 'active': show }">
-        <input class="radon-select-selected-value" :value="selected.value" doc/>
+        <div class="radon-select-selected-value">{{selected.value}}</div>
         <span class="radon-select-arrow ion-chevron-down"></span>
         <div class="radon-select-options-container">
             <div class="radon-select-option" @click="setValue(option)" v-for="option in options" :class="{
@@ -14,30 +14,18 @@
 import '../../sass/index.scss'
 export default {
     props: {
-        type: {
-            type: String,
-            default: ''
+        value: {
+            type: Object,
+            required: true
+        },
+        options: {
+            type: Array,
+            required: true
         }
     },
     data () {
         return {
-            show: false,
-            options: [{
-                selected: false,
-                disabled: true,
-                value: '2333',
-                id: 1
-            }, {
-                selected: true,
-                disabled: false,
-                value: '13333333',
-                id: 1
-            }, {
-                selected: false,
-                disabled: false,
-                value: 'ab33333aba',
-                id: 1
-            }]
+            show: false
         }
     },
     computed: {
@@ -53,7 +41,7 @@ export default {
                     value = option
                 }
             })
-
+            this.value = value
             return value
         }
     },

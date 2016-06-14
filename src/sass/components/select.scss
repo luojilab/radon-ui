@@ -1,12 +1,16 @@
 .radon-select-container {
     position: relative;
-    border: 1px solid #ccc;
+    border: 1px solid $border-color-base;
     display: inline-block;
     min-width: 6rem;
-    border-radius: 4px;
+    border-radius: $border-radius-base;
     height: 2rem;
     line-height: 2rem;
     padding: 0 2rem 0 .5rem;
+}
+
+.radon-select-container:hover {
+    border: 1px solid $primary-color;
 }
 
 .radon-select-arrow {
@@ -31,7 +35,7 @@
     position: absolute;
     background: #fff;
     min-width: 6rem;
-    border-radius: 4px;
+    border-radius: $border-radius-base;
     padding: 0;
     border: 1px solid #ccc;
     top: 2.2rem;

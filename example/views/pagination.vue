@@ -5,7 +5,7 @@
     <pagination></pagination>
 </template>
 <script>
-import pagination from '../../src/components/navigation/pagination.vue'
+import pagination from 'src/components/navigation/pagination.vue'
 export default {
     data () {
         return {

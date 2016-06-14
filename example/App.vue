@@ -1,5 +1,5 @@
 <style lang="scss">
-
+@import '../src/sass/index';
 html,body{
     height: 100%;
     margin: 0;

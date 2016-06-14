@@ -11,6 +11,7 @@ module.exports = {
   output: {
     path: config.build.assetsRoot,
     publicPath: config.build.assetsPublicPath,
+    pathinfo: true,
     filename: '[name].js'
   },
   resolve: {
@@ -25,6 +26,10 @@ module.exports = {
   resolveLoader: {
     fallback: [path.join(__dirname, '../node_modules')]
   },
+  resolveUrlLoader: {
+    root: './'
+  },
+  debug: true,
   module: {
     preLoaders: [
       {
@@ -70,6 +75,7 @@ module.exports = {
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url',
+        include: projectRoot,
         query: {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
@@ -81,9 +87,8 @@ module.exports = {
     formatter: require('eslint-friendly-formatter')
   },
   vue: {
-    loaders: utils.cssLoaders()
-  },
-  sassLoader: {
-    includePaths: [path.resolve(__dirname, '../src/sass')]
+    loaders: utils.cssLoaders({
+      sourceMap: true
+    })
   }
 }

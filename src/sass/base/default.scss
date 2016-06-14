@@ -23,6 +23,7 @@ $link-hover-color       : tint($link-color, 20%);
 $link-active-color      : shade($link-color, 5%);
 $link-hover-decoration  : none;
 
+
 // Disabled cursor for form controls and buttons.
 $cursor-disabled        : not-allowed;
 
@@ -46,7 +47,7 @@ $border-color-split     : #e9e9e9;        // split border inside a component
 
 // Shadow
 $shadow-color           : rgba(100, 100, 100, .2);
-$box-shadow-base        : $shadow-1-down;
+//$box-shadow-base        : $shadow-1-down;
 $shadow-1-up            : 0 -1px 6px $shadow-color;
 $shadow-1-down          : 0 1px 6px $shadow-color;
 $shadow-1-left          : -1px 0 6px $shadow-color;

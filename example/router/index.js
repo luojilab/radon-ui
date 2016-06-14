@@ -13,7 +13,7 @@ router.map({
         }
     },
     '/form': {
-        name: 'themes',
+        name: 'from',
         component: (resolve) => {
             require(['../views/form.vue'], resolve)
         }

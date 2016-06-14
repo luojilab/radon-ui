@@ -11,6 +11,7 @@ module.exports = {
     // allow paren-less arrow functions
     'arrow-parens': 0,
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+    "indent": ["error", 4]
   }
 }

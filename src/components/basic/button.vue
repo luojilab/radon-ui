@@ -49,6 +49,14 @@
     padding: .5rem 1.5rem;
     font-size: 1.4rem;
 }
+.radon-btn.radon-btn-icon {
+    width: 2rem;
+    min-width: initial;
+    border-radius: 50%;
+    height: 2rem;
+    line-height: 2rem;
+    padding: 0;
+}
 @-webkit-keyframes loading {
   from {
     transform-origin: 50% 50%;
@@ -88,6 +96,7 @@
             'radon-btn-primary' : type === 'primary',
             'radon-btn-default' : type === 'default',
             'radon-btn-ghost'   : type === 'ghost',
+            'radon-btn-icon'    : type === 'icon',
             'radon-btn-small'   : size === 'small',
             'radon-btn-large'   : size === 'large'
         }"
@@ -114,7 +123,10 @@ export default {
             }
         },
         loading: {
-            type: Boolean
+            type: Boolean,
+            default () {
+                return false
+            }
         }
     }
 }

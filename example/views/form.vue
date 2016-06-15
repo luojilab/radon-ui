@@ -14,14 +14,15 @@
             <radon-button type="ghost">common</radon-button>
             <radon-button type="ghost">common</radon-button>
         </radon-button-group>
-
+        <radon-checkbox :checkbox="checkbox"></radon-checkbox>
     </div>
 </template>
 <script>
 import radonSelect from '../../src/components/form/select.vue'
 import {
     radonButton,
-    radonButtonGroup
+    radonButtonGroup,
+    radonCheckbox
 } from '../../src/components/index'
 
 export default {
@@ -45,13 +46,18 @@ export default {
                     value: 'ab33333aba',
                     id: 1
                 }]
+            },
+            checkbox: {
+                checked: false,
+                text: 'check?box'
             }
         }
     },
     components: {
         radonSelect,
         radonButton,
-        radonButtonGroup
+        radonButtonGroup,
+        radonCheckbox
     }
 }
 </script>

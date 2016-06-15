@@ -16,6 +16,10 @@
 .form-item-contrl {
     line-height: 2rem;
 }
+.radon-form-item { 
+    margin-bottom: 1.5rem;
+    color: #666;
+}
 </style>
 <template>
     <div class="radon-form-item">

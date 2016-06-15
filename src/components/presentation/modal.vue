@@ -84,16 +84,8 @@
 <script>
 import radonButton from '../basic/button.vue'
 export default {
-    data () {
-        return {
-            modal: {
-                show: true,
-                title: 'here is title',
-                content: 'zhelasnkasnfsdksjd',
-                cancel: () => {},
-                confirm: () => {}
-            }
-        }
+    props: {
+        modal: Object
     },
     components: {
         radonButton

@@ -70,9 +70,9 @@ html,body{
             </div>      
         </div>
 		<div class="content">
-			<router-view></router-view>
+			<router-view :create-modal="createModal"></router-view>
 		</div>
-        <radon-modal></radon-modal>
+        <radon-modal :modal="modal"></radon-modal>
 	</div>
 </template>
 <script>
@@ -119,12 +119,30 @@ export default {
                     subTitle: '按钮',
                     link: 'button'
                 }]
-            }]
+            }],
+            modal: {
+                show: true,
+                title: 'here is title',
+                content: 'zhelasnkasnfsdksjd',
+                cancel: () => {},
+                confirm: () => {}
+            }
         }
     },
     components: {
         Menu,
         radonModal
+    },
+    methods: {
+        createModal (title, text, confirm, cancel) {
+            this.modal = {
+                show: true,
+                title: title,
+                content: text,
+                cancel: cancel,
+                confirm: confirm
+            }
+        }
     }
 }
 </script>

@@ -33,7 +33,7 @@
                 <radon-text :textfield="form.pass"></radon-text>
             </form-item>
             <form-item title="verify:">
-                <radon-text :textfield="form.bio"></radon-text>
+                <radon-text @click="failed(form.bio)" :textfield="form.bio"></radon-text>
             </form-item>
             <form-item title="agree:">
                 <radon-checkbox :checkbox="checkbox"></radon-checkbox>
@@ -56,6 +56,9 @@ import {
 } from '../../src/components/index'
 
 export default {
+    props: {
+        createModal: Function
+    },
     data () {
         return {
             select: {
@@ -112,6 +115,15 @@ export default {
         radonCheckbox,
         radonText,
         radonRadio
+    },
+    methods: {
+        failed (input) {
+            this.createModal('网络错误', '无法连接到服务器', () => {
+                input.state = 'default'
+            }, () => {
+                console.log('canceled')
+            })
+        }
     }
 }
 </script>

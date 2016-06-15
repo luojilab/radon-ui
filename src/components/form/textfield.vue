@@ -13,16 +13,9 @@
 .radon-textfield-input:focus, .radon-textfield-input:hover {
     border-color: #57c5f7;
 }
-.radon-textfield-label {
-    color: #666;
-    text-align: right;
-    vertical-align: middle;
-    line-height: 2;
-    min-width: 6rem;
-    padding-right: .5rem;
-}
 .radon-textfield-wrapper {
     position: relative;
+    width: 100%;
 }
 @-webkit-keyframes loading {
   from {
@@ -80,35 +73,26 @@
     bottom: -1rem;
     font-size: .8rem;
 }
-.radon-textfield-container {
-    display: flex;
-}
-.radon-textfield-wrapper {
-    width: 100%;
-}
 </style>
 <template>
-    <div 
-        class="radon-textfield-container"
+    <span 
+        class="radon-textfield-wrapper"
         :class="{ 
-            'radon-textfield-warning': textState === 'warning',
-            'radon-textfield-failed': textState === 'failed'
-         }"
+        'radon-textfield-warning': textState === 'warning',
+        'radon-textfield-failed': textState === 'failed'
+     }"
     >
-        <label class="radon-textfield-label">{{textfield.title}}</label>
-        <span class="radon-textfield-wrapper">
-            <input 
-                type="text" 
-                class="radon-textfield-input" 
-                v-model="textfield.value" 
-                :placeholder="textfield.placeHolder"
-            >
-            <span class="radon-textfield-tip" v-if="textfield.tip">{{textfield.tip}}</span>
-            <i class="radon-textfield-loading-icon ion-load-a" v-if="textState === 'loading'"></i>
-            <i class="radon-textfield-warning-icon ion-information-circled" v-if="textState === 'warning'"></i>
-            <i class="radon-textfield-failed-icon ion-close-circled" v-if="textState === 'failed'"></i>
-        </span>
-    </div>
+        <input 
+            type="text" 
+            class="radon-textfield-input" 
+            v-model="textfield.value" 
+            :placeholder="textfield.placeHolder"
+        >
+        <span class="radon-textfield-tip" v-if="textfield.tip">{{textfield.tip}}</span>
+        <i class="radon-textfield-loading-icon ion-load-a" v-if="textState === 'loading'"></i>
+        <i class="radon-textfield-warning-icon ion-information-circled" v-if="textState === 'warning'"></i>
+        <i class="radon-textfield-failed-icon ion-close-circled" v-if="textState === 'failed'"></i>
+    </span>
 </template>
 <script>
 export default {

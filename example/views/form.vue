@@ -23,6 +23,9 @@
             <radon-button type="ghost">common</radon-button>
         </radon-button-group>
         <form class="form">
+            <form-item title="2333">
+                <radon-text :textfield="form.user"></radon-text>
+            </form-item>
             <div class="radon-form-item">
                 <radon-text :textfield="form.user"></radon-text>
             </div>
@@ -44,6 +47,7 @@
 <script>
 import radonSelect from '../../src/components/form/select.vue'
 import {
+    formItem,
     radonButton,
     radonButtonGroup,
     radonCheckbox,
@@ -101,6 +105,7 @@ export default {
         }
     },
     components: {
+        formItem,
         radonSelect,
         radonButton,
         radonButtonGroup,

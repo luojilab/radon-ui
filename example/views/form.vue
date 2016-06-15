@@ -9,13 +9,18 @@
         <randon-button type="ghost" size="small">small</randon-button>
         <randon-button type="ghost" :loading="true">save</randon-button>
         <randon-button type="icon"><i class="ion-upload"></i></randon-button>
-
+        <randon-button-group>
+            <randon-button type="ghost">common</randon-button>
+            <randon-button type="ghost">common</randon-button>
+            <randon-button type="ghost">common</randon-button>
+        </randon-button-group>
 
     </div>
 </template>
 <script>
 import randonSelect from '../../src/components/form/select.vue'
 import randonButton from '../../src/components/basic/button.vue'
+import randonButtonGroup from '../../src/components/basic/buttonGroup.vue'
 export default {
     data () {
         return {
@@ -42,7 +47,8 @@ export default {
     },
     components: {
         randonSelect,
-        randonButton
+        randonButton,
+        randonButtonGroup
     }
 }
 </script>

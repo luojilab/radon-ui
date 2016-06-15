@@ -1,6 +1,15 @@
+<style>
+    .form {
+        max-width: 540px;
+    }
+    .radon-form-item {
+        font-size: 12px;
+        margin-bottom: 24px;
+        color: #666;
+    }
+</style>
 <template>
     <div>
-        <div>form</div>
         <radon-select :value.sync="select.value" :options="select.options"></radon-select>
         <radon-button>default</radon-button>
         <radon-button type="primary">primary</radon-button>
@@ -15,6 +24,17 @@
             <radon-button type="ghost">common</radon-button>
         </radon-button-group>
         <radon-checkbox :checkbox="checkbox"></radon-checkbox>
+        <form class="form">
+            <div class="radon-form-item">
+                <radon-text :textfield="form.user"></radon-text>
+            </div>
+            <div class="radon-form-item">
+                <radon-text :textfield="form.pass"></radon-text>
+            </div>
+            <div class="radon-form-item">
+                <radon-text :textfield="form.bio"></radon-text>
+            </div>
+        </form>
     </div>
 </template>
 <script>
@@ -22,7 +42,8 @@ import radonSelect from '../../src/components/form/select.vue'
 import {
     radonButton,
     radonButtonGroup,
-    radonCheckbox
+    radonCheckbox,
+    radonText
 } from '../../src/components/index'
 
 export default {
@@ -50,6 +71,27 @@ export default {
             checkbox: {
                 checked: false,
                 text: 'check?box'
+            },
+            form: {
+                user: {
+                    value: '',
+                    placeHolder: 'input here',
+                    title: 'user:',
+                    state: 'loading'
+                },
+                pass: {
+                    value: '',
+                    placeHolder: 'input here',
+                    title: 'user:',
+                    state: 'warning',
+                    tip: '请输入数字和字母'
+                },
+                bio: {
+                    value: '',
+                    placeHolder: 'input here',
+                    title: 'user:',
+                    state: 'failed'
+                }
             }
         }
     },
@@ -57,7 +99,8 @@ export default {
         radonSelect,
         radonButton,
         radonButtonGroup,
-        radonCheckbox
+        radonCheckbox,
+        radonText
     }
 }
 </script>

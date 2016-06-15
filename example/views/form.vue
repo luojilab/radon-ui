@@ -1,26 +1,29 @@
 <template>
     <div>
         <div>form</div>
-        <randon-select :value.sync="select.value" :options="select.options"></randon-select>
-        <randon-button>default</randon-button>
-        <randon-button type="primary">primary</randon-button>
-        <randon-button type="ghost" size="large">large</randon-button>
-        <randon-button type="ghost">common</randon-button>
-        <randon-button type="ghost" size="small">small</randon-button>
-        <randon-button type="ghost" :loading="true">save</randon-button>
-        <randon-button type="icon"><i class="ion-upload"></i></randon-button>
-        <randon-button-group>
-            <randon-button type="ghost">common</randon-button>
-            <randon-button type="ghost">common</randon-button>
-            <randon-button type="ghost">common</randon-button>
-        </randon-button-group>
+        <radon-select :value.sync="select.value" :options="select.options"></radon-select>
+        <radon-button>default</radon-button>
+        <radon-button type="primary">primary</radon-button>
+        <radon-button type="ghost" size="large">large</radon-button>
+        <radon-button type="ghost">common</radon-button>
+        <radon-button type="ghost" size="small">small</radon-button>
+        <radon-button type="ghost" :loading="true">save</radon-button>
+        <radon-button type="icon"><i class="ion-upload"></i></radon-button>
+        <radon-button-group>
+            <radon-button type="ghost">common</radon-button>
+            <radon-button type="ghost">common</radon-button>
+            <radon-button type="ghost">common</radon-button>
+        </radon-button-group>
 
     </div>
 </template>
 <script>
-import randonSelect from '../../src/components/form/select.vue'
-import randonButton from '../../src/components/basic/button.vue'
-import randonButtonGroup from '../../src/components/basic/buttonGroup.vue'
+import radonSelect from '../../src/components/form/select.vue'
+import {
+    radonButton,
+    radonButtonGroup
+} from '../../src/components/index'
+
 export default {
     data () {
         return {
@@ -46,9 +49,9 @@ export default {
         }
     },
     components: {
-        randonSelect,
-        randonButton,
-        randonButtonGroup
+        radonSelect,
+        radonButton,
+        radonButtonGroup
     }
 }
 </script>

@@ -35,6 +35,9 @@
             <div class="radon-form-item">
                 <radon-checkbox :checkbox="checkbox"></radon-checkbox>
             </div>
+            <div class="radon-from-item">
+                <radon-radio></radon-radio>
+            </div>
         </form>
     </div>
 </template>
@@ -44,7 +47,8 @@ import {
     radonButton,
     radonButtonGroup,
     radonCheckbox,
-    radonText
+    radonText,
+    radonRadio
 } from '../../src/components/index'
 
 export default {
@@ -101,7 +105,8 @@ export default {
         radonButton,
         radonButtonGroup,
         radonCheckbox,
-        radonText
+        radonText,
+        radonRadio
     }
 }
 </script>

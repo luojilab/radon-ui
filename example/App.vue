@@ -72,10 +72,13 @@ html,body{
 		<div class="content">
 			<router-view></router-view>
 		</div>
+        <radon-modal></radon-modal>
 	</div>
 </template>
 <script>
 import Menu from './views/menu.vue'
+import { radonModal } from '../src/components/index'
+
 export default {
     data () {
         return {
@@ -120,7 +123,8 @@ export default {
         }
     },
     components: {
-        Menu
+        Menu,
+        radonModal
     }
 }
 </script>

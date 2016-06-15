@@ -5,11 +5,17 @@ import radonCheckbox from './basic/checkbox.vue'
 import radonText from './form/textfield.vue'
 import radonRadio from './form/radio.vue'
 
+// global
+import radonModal from './presentation/modal.vue'
+
 export {
     formItem,
     radonButton,
     radonButtonGroup,
     radonCheckbox,
     radonText,
-    radonRadio
+    radonRadio,
+
+    // global
+    radonModal
 }

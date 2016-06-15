@@ -1,7 +1,6 @@
 <style>
 .radon-btn {
     display: inline-block;
-    font-weight: 500;
     text-align: center;
     vertical-align: middle;
     -ms-touch-action: manipulation;

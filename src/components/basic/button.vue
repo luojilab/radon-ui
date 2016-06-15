@@ -15,6 +15,7 @@
     color: #fff;
     border-radius: 4px;
     transition: background 0.2s;
+    outline: none;
 }
 .radon-btn-default {
     color: #666;

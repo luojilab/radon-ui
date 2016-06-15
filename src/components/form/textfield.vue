@@ -9,6 +9,7 @@
     border-radius: 4px;
     padding: .1rem .5rem;
     width: 100%;
+    outline: none;
 }
 .radon-textfield-input:focus, .radon-textfield-input:hover {
     border-color: #57c5f7;

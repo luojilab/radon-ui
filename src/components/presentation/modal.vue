@@ -59,7 +59,7 @@
 <template>
     <div class="radon-modal-container" v-show="modal.show">
         <div class="radon-modal-mask"></div>
-        <div class="radon-modal-wrapper">
+        <div class="radon-modal-wrapper"  @click="touchClose">
             <div class="radon-modal">
                 <div class="radon-modal-header">
                     <i 
@@ -91,13 +91,18 @@ export default {
         radonButton
     },
     methods: {
-        cancel () {
-            if (this.modal.candel) {
+        touchClose (e) {
+            if (e.target.classList[0] === 'radon-modal-wrapper') {
+                this.cancel()
+            }
+        },
+        cancel (e) {
+            if (this.modal.cancel) {
                 this.modal.cancel()
             }
             this.modal.show = false
         },
-        confirm () {
+        confirm (e) {
             if (this.modal.confirm) {
                 this.modal.confirm()
             }

@@ -23,22 +23,22 @@
             <radon-button type="ghost">common</radon-button>
         </radon-button-group>
         <form class="form">
-            <form-item title="2333">
+            <form-item title="2333:">
                 <radon-text :textfield="form.user"></radon-text>
             </form-item>
-            <form-item title="user">
+            <form-item title="username:">
                 <radon-text :textfield="form.user"></radon-text>
             </form-item>
-            <form-item title="user">
+            <form-item title="password:">
                 <radon-text :textfield="form.pass"></radon-text>
             </form-item>
-            <form-item title="user">
+            <form-item title="verify:">
                 <radon-text :textfield="form.bio"></radon-text>
             </form-item>
-            <form-item title="user">
+            <form-item title="agree:">
                 <radon-checkbox :checkbox="checkbox"></radon-checkbox>
             </form-item>
-            <form-item title="user">
+            <form-item title="sex:">
                 <radon-radio></radon-radio>
             </form-item>
         </form>
@@ -79,7 +79,7 @@ export default {
             },
             checkbox: {
                 checked: false,
-                text: 'check?box'
+                text: '我已阅读用户协议'
             },
             form: {
                 user: {

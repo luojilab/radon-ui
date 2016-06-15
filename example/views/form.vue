@@ -23,7 +23,7 @@
                 <radon-text :textfield="form.user"></radon-text>
             </form-item>
             <form-item title="username:">
-                <radon-text :textfield="form.user"></radon-text>
+                <radon-text :textfield="form.user" :input="userInputing"></radon-text>
             </form-item>
             <form-item title="password:">
                 <radon-text :textfield="form.pass" :input="passInputing"></radon-text>
@@ -85,7 +85,8 @@ export default {
                     value: '',
                     placeHolder: 'input here',
                     title: '用户名:',
-                    state: 'loading'
+                    state: 'loading',
+                    tip: ''
                 },
                 pass: {
                     value: '',
@@ -113,6 +114,19 @@ export default {
         radonRadio
     },
     methods: {
+        userInputing () {
+            this.form.user.state = 'loading'
+
+            setTimeout(() => {
+                if (this.form.user.value.length < 6) {
+                    this.form.user.state = 'failed'
+                    this.form.user.tip = '该用户名已被使用'
+                } else {
+                    this.form.user.state = 'default'
+                    this.form.user.tip = ''
+                }
+            }, 2000)
+        },
         passInputing () {
             if (this.form.pass.value.length < 6) {
                 this.form.pass.state = 'warning'

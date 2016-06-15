@@ -2,8 +2,7 @@
     .form {
         max-width: 540px;
     }
-    .radon-form-item {
-        font-size: 12px;
+    .radon-form-item { 
         margin-bottom: 24px;
         color: #666;
     }

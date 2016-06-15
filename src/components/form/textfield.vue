@@ -71,6 +71,12 @@
 .radon-textfield-failed-icon {
     color: #f50;
 }
+.radon-textfield-tip {
+    position: absolute;
+    left: 0;
+    bottom: -1.5rem;
+    font-size: .8rem;
+}
 </style>
 <template>
     <div 
@@ -88,6 +94,7 @@
                 v-model="textfield.value" 
                 :placeholder="textfield.placeHolder"
             >
+            <span class="radon-textfield-tip" v-if="textfield.tip">{{textfield.tip}}</span>
             <i class="radon-textfield-loading-icon ion-load-a" v-if="textState === 'loading'"></i>
             <i class="radon-textfield-warning-icon ion-information-circled" v-if="textState === 'warning'"></i>
             <i class="radon-textfield-failed-icon ion-close-circled" v-if="textState === 'failed'"></i>

@@ -2,10 +2,6 @@
     .form {
         max-width: 540px;
     }
-    .radon-form-item { 
-        margin-bottom: 24px;
-        color: #666;
-    }
 </style>
 <template>
     <div>
@@ -30,7 +26,7 @@
                 <radon-text :textfield="form.user"></radon-text>
             </form-item>
             <form-item title="password:">
-                <radon-text :textfield="form.pass"></radon-text>
+                <radon-text :textfield="form.pass" :input="passInputing"></radon-text>
             </form-item>
             <form-item title="verify:">
                 <radon-text @click="failed(form.bio)" :textfield="form.bio"></radon-text>
@@ -95,8 +91,8 @@ export default {
                     value: '',
                     placeHolder: 'input here',
                     title: '密码:',
-                    state: 'warning',
-                    tip: '请输入数字和字母'
+                    state: 'default',
+                    tip: ''
                 },
                 bio: {
                     value: '',
@@ -117,6 +113,15 @@ export default {
         radonRadio
     },
     methods: {
+        passInputing () {
+            if (this.form.pass.value.length < 6) {
+                this.form.pass.state = 'warning'
+                this.form.pass.tip = '请输入数字和字母'
+            } else {
+                this.form.pass.state = 'default'
+                this.form.pass.tip = ''
+            }
+        },
         failed (input) {
             this.createModal('网络错误', '无法连接到服务器', () => {
                 input.state = 'default'

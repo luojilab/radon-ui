@@ -88,6 +88,7 @@
             class="radon-textfield-input" 
             v-model="textfield.value" 
             :placeholder="textfield.placeHolder"
+            @input="inputing"
         >
         <span class="radon-textfield-tip" v-if="textfield.tip">{{textfield.tip}}</span>
         <i class="radon-textfield-loading-icon ion-load-a" v-if="textState === 'loading'"></i>
@@ -101,7 +102,8 @@ export default {
         textfield: {
             type: Object,
             required: true
-        }
+        },
+        input: Function
     },
     computed: {
         textState () {
@@ -109,6 +111,13 @@ export default {
                 return this.textfield.state
             }
             return 'default'
+        }
+    },
+    methods: {
+        inputing () {
+            if (this.input) {
+                this.input()
+            }
         }
     }
 }

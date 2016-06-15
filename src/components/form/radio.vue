@@ -15,11 +15,11 @@
     display: inline-block;
     background: #57c5f7;
     border-radius: 50%;
-    height: 8px;
-    width: 8px;
+    height: .5rem;
+    width: 0.5rem;
     position: absolute;
-    top: .2rem;
-    left: .2rem;
+    top: .25rem;
+    left: .25rem;
     opacity: 0;
     transition: opacity .2s;
 }

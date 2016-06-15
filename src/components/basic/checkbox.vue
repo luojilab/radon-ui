@@ -3,6 +3,7 @@
         display: inline-block;
         cursor: pointer;
         font-size: 1rem;
+        line-height: 2rem;
     }
     .radon-checkbox-input {
         opacity: 0;
@@ -14,25 +15,28 @@
         width: 1rem;
         background: #d4d4d4;
         border-radius: 4px;
+        top: .5rem;
     }
     .radon-checkbox-inner-icon {
-        display: none;
         color: #fff;
         position: absolute;
         font-size: .5rem;
-        top: .2rem;
         left: .2rem;
+        top: 0;
+        line-height: 1rem;
+        opacity: 0;
+        transition: opacity .2s;
     }
     .radon-checkbox-inner.selected {
         background: #2db7f5;
     }
     .radon-checkbox-inner.selected .radon-checkbox-inner-icon{
-        display: initial;
+        opacity: 1;
     }
 </style>
 <template>
     <label class="radon-checkbox-wrapper">
-        <span class="radon-checkbox">
+        <div class="radon-checkbox">
             <span 
                 class="radon-checkbox-inner"
                 :class="{ 'selected': checkbox.checked }"
@@ -46,7 +50,7 @@
                 >
             </span>
             <span>{{checkbox.text}}</span>
-        </span>
+        </div>
     </label>
 </template>
 <script>

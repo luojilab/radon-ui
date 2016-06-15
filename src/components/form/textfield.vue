@@ -75,7 +75,7 @@
 }
 </style>
 <template>
-    <span 
+    <div 
         class="radon-textfield-wrapper"
         :class="{ 
         'radon-textfield-warning': textState === 'warning',
@@ -92,7 +92,7 @@
         <i class="radon-textfield-loading-icon ion-load-a" v-if="textState === 'loading'"></i>
         <i class="radon-textfield-warning-icon ion-information-circled" v-if="textState === 'warning'"></i>
         <i class="radon-textfield-failed-icon ion-close-circled" v-if="textState === 'failed'"></i>
-    </span>
+    </div>
 </template>
 <script>
 export default {

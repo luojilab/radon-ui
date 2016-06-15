@@ -13,6 +13,9 @@
 .radon-form-item-wrapper {
     width: 100%;
 }
+.form-item-contrl {
+    line-height: 2rem;
+}
 </style>
 <template>
     <div class="radon-form-item">

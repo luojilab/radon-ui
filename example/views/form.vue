@@ -26,21 +26,21 @@
             <form-item title="2333">
                 <radon-text :textfield="form.user"></radon-text>
             </form-item>
-            <div class="radon-form-item">
+            <form-item title="user">
                 <radon-text :textfield="form.user"></radon-text>
-            </div>
-            <div class="radon-form-item">
+            </form-item>
+            <form-item title="user">
                 <radon-text :textfield="form.pass"></radon-text>
-            </div>
-            <div class="radon-form-item">
+            </form-item>
+            <form-item title="user">
                 <radon-text :textfield="form.bio"></radon-text>
-            </div>
-            <div class="radon-form-item">
+            </form-item>
+            <form-item title="user">
                 <radon-checkbox :checkbox="checkbox"></radon-checkbox>
-            </div>
-            <div class="radon-from-item">
+            </form-item>
+            <form-item title="user">
                 <radon-radio></radon-radio>
-            </div>
+            </form-item>
         </form>
     </div>
 </template>

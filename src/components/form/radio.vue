@@ -1,4 +1,7 @@
 <style>
+.radon-radio-group {
+    line-height: 2rem;
+}
 .radon-radio-inner {
     position: relative;
     display: inline-block;

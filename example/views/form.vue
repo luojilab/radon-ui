@@ -22,7 +22,6 @@
             <radon-button type="ghost">common</radon-button>
             <radon-button type="ghost">common</radon-button>
         </radon-button-group>
-        <radon-checkbox :checkbox="checkbox"></radon-checkbox>
         <form class="form">
             <div class="radon-form-item">
                 <radon-text :textfield="form.user"></radon-text>
@@ -32,6 +31,9 @@
             </div>
             <div class="radon-form-item">
                 <radon-text :textfield="form.bio"></radon-text>
+            </div>
+            <div class="radon-form-item">
+                <radon-checkbox :checkbox="checkbox"></radon-checkbox>
             </div>
         </form>
     </div>
@@ -75,20 +77,20 @@ export default {
                 user: {
                     value: '',
                     placeHolder: 'input here',
-                    title: 'user:',
+                    title: '用户名:',
                     state: 'loading'
                 },
                 pass: {
                     value: '',
                     placeHolder: 'input here',
-                    title: 'user:',
+                    title: '密码:',
                     state: 'warning',
                     tip: '请输入数字和字母'
                 },
                 bio: {
                     value: '',
                     placeHolder: 'input here',
-                    title: 'user:',
+                    title: '验证码:',
                     state: 'failed'
                 }
             }

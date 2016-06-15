@@ -7,7 +7,8 @@
     background-image: none;
     border: 1px solid #d9d9d9;
     border-radius: 4px;
-    padding: 0 .5rem;
+    padding: .1rem .5rem;
+    width: 100%;
 }
 .radon-textfield-input:focus, .radon-textfield-input:hover {
     border-color: #57c5f7;
@@ -16,7 +17,9 @@
     color: #666;
     text-align: right;
     vertical-align: middle;
-    padding: 7px 0;
+    line-height: 2;
+    min-width: 6rem;
+    padding-right: .5rem;
 }
 .radon-textfield-wrapper {
     position: relative;
@@ -53,7 +56,7 @@
     display: inline-block;
     position: absolute;
     right: .5rem;
-    top: .03rem;
+    top: .45rem;
 }
 .radon-textfield-loading-icon {
     animation: loading 1s infinite linear;
@@ -74,8 +77,14 @@
 .radon-textfield-tip {
     position: absolute;
     left: 0;
-    bottom: -1.5rem;
+    bottom: -1rem;
     font-size: .8rem;
+}
+.radon-textfield-container {
+    display: flex;
+}
+.radon-textfield-wrapper {
+    width: 100%;
 }
 </style>
 <template>

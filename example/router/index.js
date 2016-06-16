@@ -12,6 +12,12 @@ router.map({
             require(['../views/index.vue'], resolve)
         }
     },
+    '/button': {
+        name: 'button',
+        component: (resolve) => {
+            require(['../views/button.vue'], resolve)
+        }
+    },
     '/form': {
         name: 'from',
         component: (resolve) => {

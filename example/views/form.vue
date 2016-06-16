@@ -33,6 +33,7 @@
             </form-item>
             <form-item title="agree:">
                 <radon-checkbox :checkbox="checkbox"></radon-checkbox>
+                <radon-checkbox :checkbox="checkbox"></radon-checkbox>
             </form-item>
             <form-item title="sex:">
                 <radon-radio :radios="radios"></radon-radio>

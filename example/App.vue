@@ -7,20 +7,16 @@ html,body{
 .container{
     height: 100%;
     position: relative;
-    overflow: hidden;
+    display: flex;
 }
 .sidebar{
     width: 20%;
     height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
     border-right: 1px solid #f7f7f7;
 }
 .content{
-    width: 100%;
-    padding-left: 20%;
     height: 100%;
+    padding: 1rem;
 }
 .ex-container {
     display: flex;
@@ -60,6 +56,14 @@ html,body{
 }
 .ex-sub-menu-item.active {
     color: #2db7f5;
+}
+.ex-card {
+    margin: 2rem 1rem;
+}
+.ex-code {
+    background: #4a4a4a;
+    padding: 1rem;
+    color: #ffffff;
 }
 </style>
 <template>
@@ -105,7 +109,7 @@ export default {
                 subMenu: [{
                     title: 'Button',
                     subTitle: '按钮',
-                    link: 'form'
+                    link: 'button'
                 }, {
                     title: 'Icon',
                     subTitle: '图标',
@@ -121,9 +125,9 @@ export default {
                 }]
             }],
             modal: {
-                show: true,
-                title: 'here is title',
-                content: 'zhelasnkasnfsdksjd',
+                show: false,
+                title: '',
+                content: '',
                 cancel: () => {},
                 confirm: () => {}
             }

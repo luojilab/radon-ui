@@ -6,6 +6,7 @@ import radonText from './form/textfield.vue'
 import radonRadio from './form/radio.vue'
 import radonProgress from './basic/progress.vue'
 import randonProgressCircle from './basic/progressCircle.vue'
+import radonCascader from './form/cascader.vue'
 
 // global
 import radonModal from './presentation/modal.vue'
@@ -19,6 +20,7 @@ export {
     radonRadio,
     radonProgress,
     randonProgressCircle,
+    radonCascader,
 
     // global
     radonModal

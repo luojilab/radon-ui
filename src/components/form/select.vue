@@ -26,7 +26,7 @@
             'rd-select-top': position === 'top'
     }">
         <div class="radon-select-selected-value">
-            <span v-show="valueShow">{{selected.value}}</span>
+            <span v-show="valueShow">{{value.value}}</span>
             <div class="rd-select-search-wrapper" v-show="show">
                 <input @focus="focusInput" @click="touchInput" @blur="leaveInput" type="text" v-model="search" class="rd-select-search-input">
             </div>
@@ -63,7 +63,8 @@ export default {
             position: 'bottom',
             show: false,
             valueShow: true,
-            search: ''
+            search: '',
+            display: ''
         }
     },
     computed: {
@@ -78,27 +79,12 @@ export default {
                         selected: false,
                         disabled: true,
                         value: '无法找到',
-                        id: -999
+                        id: null
                     }]
                 }
                 return list
             }
             return this.options
-        },
-        selected () {
-            let value = {
-                selected: false,
-                value: '',
-                id: null
-            }
-
-            this.options.forEach(option => {
-                if (option.selected) {
-                    value = option
-                }
-            })
-            this.value = value
-            return value
         }
     },
     ready () {
@@ -131,6 +117,7 @@ export default {
                 op.selected = false
             })
             option.selected = true
+            this.value = option
         },
         showOption (e) {
             e.stopPropagation()

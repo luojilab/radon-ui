@@ -47,9 +47,14 @@
                 <randon-progress-circle @click="startProgress(progressCircle)" :progress="progressCircle"></randon-progress-circle>
             </div>
             <div>
-                <radon-select :value.sync="select.value" :options="select.options"></radon-select>
+                <radon-select :value.sync="selectProvince.value" :options.sync="selectProvince.options"></radon-select>
+                <radon-select :value.sync="selectCity.value" :options.sync="selectCityOptions"></radon-select>
+                
             </div>
         </form>
+        <div>
+            <radon-cascader></radon-cascader>
+        </div>
     </div>
 </template>
 <script>
@@ -62,7 +67,8 @@ import {
     radonText,
     radonRadio,
     radonProgress,
-    randonProgressCircle
+    randonProgressCircle,
+    radonCascader
 } from '../../src/components/index'
 
 export default {
@@ -111,68 +117,26 @@ export default {
                 checked: false,
                 value: 'aa'
             }],
-            select: {
+            selectCity: {
+                value: {}
+            },
+            selectProvince: {
                 value: {},
                 options: [{
                     selected: false,
-                    disabled: true,
-                    value: 'a',
-                    id: 1
-                }, {
-                    selected: true,
                     disabled: false,
-                    value: 'b',
+                    value: '四川',
                     id: 1
                 }, {
                     selected: false,
                     disabled: false,
-                    value: '2',
-                    id: 1
-                }, {
-                    selected: false,
-                    disabled: true,
-                    value: '1',
-                    id: 1
-                }, {
-                    selected: true,
-                    disabled: false,
-                    value: 's',
-                    id: 1
+                    value: '北京',
+                    id: 2
                 }, {
                     selected: false,
                     disabled: false,
-                    value: '4',
-                    id: 1
-                }, {
-                    selected: false,
-                    disabled: true,
-                    value: 'as',
-                    id: 1
-                }, {
-                    selected: true,
-                    disabled: false,
-                    value: '3w',
-                    id: 1
-                }, {
-                    selected: false,
-                    disabled: false,
-                    value: '12',
-                    id: 1
-                }, {
-                    selected: false,
-                    disabled: true,
-                    value: '32',
-                    id: 1
-                }, {
-                    selected: true,
-                    disabled: false,
-                    value: 'cc',
-                    id: 1
-                }, {
-                    selected: false,
-                    disabled: false,
-                    value: 'ff',
-                    id: 1
+                    value: '广东',
+                    id: 3
                 }]
             },
             checkbox: {
@@ -203,6 +167,49 @@ export default {
             }
         }
     },
+    computed: {
+        selectCityOptions () {
+            let CITY_DATA = {
+                1: [{
+                    selected: false,
+                    disabled: false,
+                    value: '成都',
+                    id: 1
+                }, {
+                    selected: false,
+                    disabled: false,
+                    value: '德阳',
+                    id: 2
+                }],
+                2: [{
+                    selected: false,
+                    disabled: false,
+                    value: '海淀',
+                    id: 2
+                }, {
+                    selected: false,
+                    disabled: false,
+                    value: '朝阳',
+                    id: 1
+                }],
+                3: [{
+                    selected: false,
+                    disabled: false,
+                    value: '广州',
+                    id: 2
+                }, {
+                    selected: false,
+                    disabled: false,
+                    value: '深圳',
+                    id: 1
+                }]
+            }
+            if (this.selectProvince.value.id) {
+                return CITY_DATA[this.selectProvince.value.id].slice()
+            }
+            return []
+        }
+    },
     components: {
         formItem,
         radonSelect,
@@ -212,7 +219,8 @@ export default {
         radonText,
         radonRadio,
         radonProgress,
-        randonProgressCircle
+        randonProgressCircle,
+        radonCascader
     },
     methods: {
         userInputing () {

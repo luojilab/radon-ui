@@ -38,6 +38,9 @@
             <form-item title="sex:">
                 <radon-radio :radios="radios"></radon-radio>
             </form-item>
+            <form-item title="sex:">
+                <radon-progress></radon-progress>
+            </form-item>
         </form>
     </div>
 </template>
@@ -49,7 +52,8 @@ import {
     radonButtonGroup,
     radonCheckbox,
     radonText,
-    radonRadio
+    radonRadio,
+    radonProgress
 } from '../../src/components/index'
 
 export default {
@@ -125,7 +129,8 @@ export default {
         radonButtonGroup,
         radonCheckbox,
         radonText,
-        radonRadio
+        radonRadio,
+        radonProgress
     },
     methods: {
         userInputing () {

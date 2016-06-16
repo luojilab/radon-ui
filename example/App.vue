@@ -118,6 +118,10 @@ export default {
                     title: 'Radio',
                     subTitle: '单选框',
                     link: 'radio'
+                }, {
+                    title: 'Form',
+                    subTitle: '单选框',
+                    link: 'form'
                 }]
             }],
             modal: {

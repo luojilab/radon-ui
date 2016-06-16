@@ -1,13 +1,39 @@
 <style>
-.rd-cascader-menu {}
+.rd-cascader-container {
+    display: inline-block;
+}
+.rd-cascader-content {
+    display: flex;
+    border: 1px solid #e8e8e8;
+    border-radius: .25rem;
+    min-height: 10rem;
+}
+.rd-cascader-menu {
+    min-width: 6rem;
+    border-right: 1px solid #e8e8e8;
+}
+.rd-cascader-item {
+    padding: .5rem .5rem;
+}
+.rd-cascader-item:hover,
+.rd-cascader-item.active {
+    background: #efefef;
+}
 </style>
 <template>
     <div class="rd-cascader-container">
-        <ul class="rd-cascader-menu" v-for="(index, one) in list">
-            <li class="rd-cascader-item" v-for="item in one" @click="touch(index, item)">
-                {{item.label}}
-            </li>
-        </ul>
+        <div class="rd-cascader-content">
+            <ul class="rd-cascader-menu" v-for="(index, one) in list">
+                <li 
+                    class="rd-cascader-item" 
+                    v-for="item in one" 
+                    @click="touch(index, item)"
+                    :class="{ 'active': item.selected }"
+                >
+                    {{item.label}}
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 <script>
@@ -43,13 +69,19 @@ const options = [{
 export default {
     data () {
         return {
-            length: 1,
             list: [options]
         }
     },
     methods: {
         touch (index, group) {
-            console.log(this.list.length, 1 + index)
+            if (!group.children) return console.log('done')
+            this.list[index].map(g => {
+                // console.log(g.label)
+                g['selected'] = false
+            })
+            console.log(group.label)
+            group['selected'] = true
+
             if (this.list.length === 1 + index) {
                 this.list.push(group.children)
             } else {

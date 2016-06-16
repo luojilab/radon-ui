@@ -5,6 +5,7 @@ import radonCheckbox from './form/checkbox.vue'
 import radonText from './form/textfield.vue'
 import radonRadio from './form/radio.vue'
 import radonProgress from './basic/progress.vue'
+import randonProgressCircle from './basic/progressCircle.vue'
 
 // global
 import radonModal from './presentation/modal.vue'
@@ -17,6 +18,7 @@ export {
     radonText,
     radonRadio,
     radonProgress,
+    randonProgressCircle,
 
     // global
     radonModal

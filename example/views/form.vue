@@ -38,9 +38,15 @@
             <form-item title="sex:">
                 <radon-radio :radios="radios"></radon-radio>
             </form-item>
-            <form-item title="sex:">
-                <radon-progress @click="startProgress" :progress="progressCommon"></radon-progress>
+            <form-item title="load:">
+                <radon-progress @click="startProgress(progressCommon)" :progress="progressCommon"></radon-progress>
             </form-item>
+            <form-item title="sex:">
+                <radon-progress @click="startProgress(progressSmall)" :progress="progressSmall"></radon-progress>
+            </form-item>
+            <div>
+                <randon-progress-circle></randon-progress-circle>
+            </div>
         </form>
     </div>
 </template>
@@ -53,7 +59,8 @@ import {
     radonCheckbox,
     radonText,
     radonRadio,
-    radonProgress
+    radonProgress,
+    randonProgressCircle
 } from '../../src/components/index'
 
 export default {
@@ -63,6 +70,14 @@ export default {
     data () {
         return {
             progressCommon: {
+                percent: 50,
+                options: {
+                    color: '#2db7f5',
+                    size: 'common',
+                    state: 'loading'
+                }
+            },
+            progressSmall: {
                 percent: 50,
                 options: {
                     color: '#2db7f5',
@@ -138,7 +153,8 @@ export default {
         radonCheckbox,
         radonText,
         radonRadio,
-        radonProgress
+        radonProgress,
+        randonProgressCircle
     },
     methods: {
         userInputing () {
@@ -170,14 +186,18 @@ export default {
                 console.log('canceled')
             })
         },
-        startProgress () {
-            this.progressCommon.percent = 0
-            this.progressCommon.options.state = ''
+        startProgress (progress) {
+            progress.percent = 0
+            progress.options.state = ''
             let timer = setInterval(() => {
-                if (this.progressCommon.percent < 100) {
-                    this.progressCommon.percent++
+                if (progress.percent < 100) {
+                    progress.percent++
                 } else {
-                    this.progressCommon.options.state = 'failed'
+                    if (Math.random() * 2 < 1) {
+                        progress.options.state = 'failed'
+                    } else {
+                        progress.options.state = 'success'
+                    }
                     clearInterval(timer)
                 }
             }, 50)

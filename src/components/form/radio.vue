@@ -5,8 +5,8 @@
 .radon-radio-inner {
     position: relative;
     display: inline-block;
-    height: 1rem;
-    width: 1rem;
+    height: 16px;
+    width: 16px;
     border: 1px solid #ccc;
     border-radius: 50%;
 }
@@ -15,11 +15,12 @@
     display: inline-block;
     background: #57c5f7;
     border-radius: 50%;
-    height: .5rem;
-    width: 0.5rem;
+    height: 8px;
+    width: 8px;
     position: absolute;
-    top: .25rem;
-    left: .25rem;
+    top: 3px;
+    left: 3px;
+    border: none;
     opacity: 0;
     transition: opacity .2s;
 }

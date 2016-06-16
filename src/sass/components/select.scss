@@ -24,6 +24,9 @@
 
 .radon-select-container.active .radon-select-options-container {
     display: initial;
+    max-height: 20rem;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .radon-select-container.active .radon-select-arrow {

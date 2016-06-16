@@ -5,7 +5,6 @@
 </style>
 <template>
     <div>
-        <radon-select :value.sync="select.value" :options="select.options"></radon-select>
         <radon-button>default</radon-button>
         <radon-button type="primary">primary</radon-button>
         <radon-button type="ghost" size="large">large</radon-button>
@@ -45,7 +44,10 @@
                 <radon-progress @click="startProgress(progressSmall)" :progress="progressSmall"></radon-progress>
             </form-item>
             <div>
-                <randon-progress-circle></randon-progress-circle>
+                <randon-progress-circle @click="startProgress(progressCircle)" :progress="progressCircle"></randon-progress-circle>
+            </div>
+            <div>
+                <radon-select :value.sync="select.value" :options="select.options"></radon-select>
             </div>
         </form>
     </div>
@@ -85,6 +87,17 @@ export default {
                     state: 'loading'
                 }
             },
+            progressCircle: {
+                percent: 50,
+                options: {
+                    color: '#2db7f5',
+                    size: 'small',
+                    state: '',
+                    format: function (percent) {
+                        return percent + '% off'
+                    }
+                }
+            },
             radios: [{
                 checked: false,
                 value: 'A'
@@ -103,17 +116,62 @@ export default {
                 options: [{
                     selected: false,
                     disabled: true,
-                    value: '2333',
+                    value: 'a',
                     id: 1
                 }, {
                     selected: true,
                     disabled: false,
-                    value: '13333333',
+                    value: 'b',
                     id: 1
                 }, {
                     selected: false,
                     disabled: false,
-                    value: 'ab33333aba',
+                    value: '2',
+                    id: 1
+                }, {
+                    selected: false,
+                    disabled: true,
+                    value: '1',
+                    id: 1
+                }, {
+                    selected: true,
+                    disabled: false,
+                    value: 's',
+                    id: 1
+                }, {
+                    selected: false,
+                    disabled: false,
+                    value: '4',
+                    id: 1
+                }, {
+                    selected: false,
+                    disabled: true,
+                    value: 'as',
+                    id: 1
+                }, {
+                    selected: true,
+                    disabled: false,
+                    value: '3w',
+                    id: 1
+                }, {
+                    selected: false,
+                    disabled: false,
+                    value: '12',
+                    id: 1
+                }, {
+                    selected: false,
+                    disabled: true,
+                    value: '32',
+                    id: 1
+                }, {
+                    selected: true,
+                    disabled: false,
+                    value: 'cc',
+                    id: 1
+                }, {
+                    selected: false,
+                    disabled: false,
+                    value: 'ff',
                     id: 1
                 }]
             },

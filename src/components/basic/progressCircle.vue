@@ -31,8 +31,7 @@
     }
 </style>
 <template>
-    <div 
-        @click="add(progress)"
+    <div
         class="rd-progress-circle-inner"
         :class="{ 
             'rd-progress-circle-success': progress.options.state === 'success',
@@ -49,7 +48,7 @@
         </svg>
         <span class="rd-progress-circle-info">
             <span class="rd-progress-circle-text">
-                {{display()}}
+                {{display}}
             </span>
             <i class="rd-progress-circle-state ion-checkmark-round" v-show="progress.options.state === 'success'"></i>
             <i class="rd-progress-circle-state ion-close-round" v-show="progress.options.state === 'failed'"></i>
@@ -62,20 +61,8 @@ const STATE_COLOR = {
     'failed': '#f50'
 }
 export default {
-    data () {
-        return {
-            progress: {
-                percent: 50,
-                options: {
-                    color: '#2db7f5',
-                    size: 'small',
-                    state: '',
-                    format: function (percent) {
-                        return percent + '% off'
-                    }
-                }
-            }
-        }
+    props: {
+        progress: Object
     },
     computed: {
         color () {
@@ -91,30 +78,12 @@ export default {
         },
         circle () {
             return 2.95 * (100 - this.progress.percent)
-        }
-    },
-    methods: {
+        },
         display () {
             if (this.progress.options.format) {
                 return this.progress.options.format(this.progress.percent)
             }
             return this.progress.percent + '%'
-        },
-        add (progress) {
-            progress.percent = 0
-            progress.options.state = ''
-            let timer = setInterval(() => {
-                if (progress.percent < 100) {
-                    progress.percent++
-                } else {
-                    if (Math.random() * 2 < 1) {
-                        progress.options.state = 'failed'
-                    } else {
-                        progress.options.state = 'success'
-                    }
-                    clearInterval(timer)
-                }
-            }, 50)
         }
     }
 }

@@ -111,6 +111,7 @@ export default {
         hide (e) {
             if (e.path.indexOf(this.$el) === -1) {
                 this.show = false
+                this.search = ''
             }
         },
         touchInput (e) {
@@ -133,7 +134,6 @@ export default {
         },
         showOption (e) {
             e.stopPropagation()
-            const x = e.clientX
             if (e.clientY + document.body.scrollTop + 320 > document.body.offsetHeight) {
                 this.position = 'top'
             } else {

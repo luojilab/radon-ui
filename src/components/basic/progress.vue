@@ -1,7 +1,7 @@
 <style>
     .rd-progress-bar {
+        position: relative;
         display: flex;
-        padding: .5rem 0;
     }
     .rd-progress-outer {
         display: inline-block;
@@ -47,50 +47,53 @@
     .rd-progress-bar-failed .rd-progress-inner {
         background-color: #f50;
     }
+    .rd-progress-bar-small .rd-progress-outer,
+    .rd-progress-bar-small .rd-progress-inner {
+        height: .5rem;
+    }
+    .rd-progress-bar.rd-progress-bar-small {
+    }
+    .rd-progress-bar-small .rd-progress-state{
+        font-size: .8rem;
+        top: -0.15rem;
+    }
+    .rd-progress-bar-small .rd-progress-info {
+        line-height: .5rem;
+    }
+    .rd-progress-bar-small .rd-progress-text {
+        font-size: .8rem;
+    }
 </style>
 <template>
     <div 
         class="rd-progress-bar"
         :class="{
-            'rd-progress-bar-success': options.state === 'success',
-            'rd-progress-bar-failed': options.state === 'failed'
+            'rd-progress-bar-success': progress.options.state === 'success',
+            'rd-progress-bar-failed': progress.options.state === 'failed',
+            'rd-progress-bar-small': progress.options.size === 'small'
         }"
     >
-        <div class="rd-progress-outer">
+       <div class="rd-progress-outer">
             <div 
                 class="rd-progress-inner"
-                :style="{ 'width': percent + '%' }"
+                :style="{ 'width': progress.percent + '%' }"
             ></div>
         </div>
         <span class="rd-progress-info">
-        <span class="rd-progress-text">{{percent}}%</span>
-        <i class="rd-progress-state ion-checkmark-circled" v-show="options.state === 'success'"></i>
-        <i class="rd-progress-state ion-close-circled" v-show="options.state === 'failed'"></i>
+        <span class="rd-progress-text">{{progress.percent}}%</span>
+        <i class="rd-progress-state ion-checkmark-circled" v-show="progress.options.state === 'success'"></i>
+        <i class="rd-progress-state ion-close-circled" v-show="progress.options.state === 'failed'"></i>
         </span>
         
     </div>
 </template>
 <script>
 export default {
-    data () {
-        return {
-            percent: 50,
-            options: {
-                color: '#2db7f5',
-                size: 'common',
-                state: 'loading'
-            }
+    props: {
+        progress: {
+            type: Object,
+            required: true
         }
-    },
-    ready () {
-        var timer = setInterval(() => {
-            if (this.percent < 100) {
-                this.percent++
-            } else {
-                this.options.state = 'success'
-                clearInterval(timer)
-            }
-        }, 50)
     }
 }
 </script>

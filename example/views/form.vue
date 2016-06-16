@@ -39,7 +39,7 @@
                 <radon-radio :radios="radios"></radon-radio>
             </form-item>
             <form-item title="sex:">
-                <radon-progress></radon-progress>
+                <radon-progress @click="startProgress" :progress="progressCommon"></radon-progress>
             </form-item>
         </form>
     </div>
@@ -62,6 +62,14 @@ export default {
     },
     data () {
         return {
+            progressCommon: {
+                percent: 50,
+                options: {
+                    color: '#2db7f5',
+                    size: 'small',
+                    state: 'loading'
+                }
+            },
             radios: [{
                 checked: false,
                 value: 'A'
@@ -161,6 +169,18 @@ export default {
             }, () => {
                 console.log('canceled')
             })
+        },
+        startProgress () {
+            this.progressCommon.percent = 0
+            this.progressCommon.options.state = ''
+            let timer = setInterval(() => {
+                if (this.progressCommon.percent < 100) {
+                    this.progressCommon.percent++
+                } else {
+                    this.progressCommon.options.state = 'failed'
+                    clearInterval(timer)
+                }
+            }, 50)
         }
     }
 }

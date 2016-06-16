@@ -5,29 +5,18 @@
         <h3>按钮类型</h3>
         <p>简单的checkbox</p>
         <p class="ex-code">
-        export default { <br>
-        &nbsp;&nbsp;template: '&lt;radon-checkbox :checkbox=&quot;checkbox&quot;&gt;&lt;/radon-checkbox&gt;'<br>
-        &nbsp;&nbsp;data () {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;return {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;checkbox: {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;checked: false,<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text: '我已阅读用户协议'<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-        &nbsp;&nbsp;},<br>
-        &nbsp;&nbsp;components: {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;radonCheckbox<br>
-        &nbsp;&nbsp;}<br>
-        }<br>
+            <mark :mark="code.a"></mark>
         </p>
         <p>
             <radon-checkbox :checkbox="checkbox"></radon-checkbox>
             <radon-checkbox :checkbox="checkA"></radon-checkbox>
 
         </p>
+    </div>
 </div>
 </template>
 <script>
+import mark from './mark.vue'
 import {
     radonCheckbox
 } from '../../src/components/index'
@@ -45,11 +34,30 @@ export default {
             checkA: {
                 checked: false,
                 text: '同意服务条款'
+            },
+            code: {
+                a: '```\n' +
+                'export default {\n' +
+                '       template: "<radon-checkbox :checkbox="checkbox"></radon-checkbox>"\n' +
+                '        data () {\n' +
+                '            return {\n' +
+                '                checkbox: {\n' +
+                '                    checked: false,\n' +
+                '                    text: "我已阅读用户协议"\n' +
+                '                }\n' +
+                '            }\n' +
+                '        },\n' +
+                '        components: {\n' +
+                '           radonCheckbox\n' +
+                '        }\n' +
+                '    }\n' +
+                '```'
             }
         }
     },
     components: {
-        radonCheckbox
+        radonCheckbox,
+        mark
     }
 }
 </script>

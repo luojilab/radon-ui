@@ -24,6 +24,12 @@ router.map({
             require(['../views/checkbox.vue'], resolve)
         }
     },
+    '/radio': {
+        name: 'radio',
+        component: (resolve) => {
+            require(['../views/radio.vue'], resolve)
+        }
+    },
     '/form': {
         name: 'from',
         component: (resolve) => {

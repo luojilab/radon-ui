@@ -115,9 +115,9 @@ export default {
                     subTitle: '多选框',
                     link: 'checkbox'
                 }, {
-                    title: 'Button',
-                    subTitle: '按钮',
-                    link: 'button'
+                    title: 'Radio',
+                    subTitle: '单选框',
+                    link: 'radio'
                 }]
             }],
             modal: {

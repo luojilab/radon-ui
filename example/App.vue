@@ -111,10 +111,6 @@ export default {
                     subTitle: '按钮',
                     link: 'button'
                 }, {
-                    title: 'Icon',
-                    subTitle: '图标',
-                    link: 'icon'
-                }, {
                     title: 'Checkbox',
                     subTitle: '多选框',
                     link: 'checkbox'

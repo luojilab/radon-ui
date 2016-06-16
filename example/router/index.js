@@ -18,6 +18,12 @@ router.map({
             require(['../views/button.vue'], resolve)
         }
     },
+    '/checkbox': {
+        name: 'checkbox',
+        component: (resolve) => {
+            require(['../views/checkbox.vue'], resolve)
+        }
+    },
     '/form': {
         name: 'from',
         component: (resolve) => {

@@ -38,31 +38,38 @@
 </template>
 <script>
 const options = [{
-    value: 'zhejiang',
-    label: '浙江',
+    value: 'china',
+    label: '中国',
     children: [{
-        value: 'hangzhou',
-        label: '杭州',
+        value: 'sichuan',
+        label: '四川',
         children: [{
-            value: 'hangzhou',
-            label: '2333'
+            value: 'chegndu',
+            label: '成都'
         }, {
-            value: 'hangzhou',
-            label: '322'
+            value: 'deyang',
+            label: '德阳'
         }]
     }]
 }, {
-    value: 'jiangsu',
-    label: '江苏',
+    value: 'America',
+    label: '美国',
     children: [{
-        value: 'nanjing',
-        label: '南京',
+        value: 'California',
+        label: '加利福尼亚',
         children: [{
-            value: 'hangzhou',
-            label: '2333'
+            value: 'lake',
+            label: '湖'
         }, {
-            value: 'hangzhou',
-            label: '322'
+            value: 'Los Angeles',
+            label: '洛杉矶'
+        }]
+    }, {
+        value: 'Delaware',
+        label: '特拉华',
+        children: [{
+            value: 'Dover',
+            label: '多佛'
         }]
     }]
 }]
@@ -79,7 +86,6 @@ export default {
                 // console.log(g.label)
                 g['selected'] = false
             })
-            console.log(group.label)
             group['selected'] = true
 
             if (this.list.length === 1 + index) {
@@ -88,6 +94,7 @@ export default {
                 this.list = this.list.slice(0, 1 + index)
                 this.list.push(group.children)
             }
+            console.log(group.selected)
         }
     }
 }

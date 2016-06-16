@@ -49,7 +49,7 @@
         </svg>
         <span class="rd-progress-circle-info">
             <span class="rd-progress-circle-text">
-                {{progress.percent}}%
+                {{display()}}
             </span>
             <i class="rd-progress-circle-state ion-checkmark-round" v-show="progress.options.state === 'success'"></i>
             <i class="rd-progress-circle-state ion-close-round" v-show="progress.options.state === 'failed'"></i>
@@ -69,7 +69,10 @@ export default {
                 options: {
                     color: '#2db7f5',
                     size: 'small',
-                    state: 'success'
+                    state: '',
+                    format: function (percent) {
+                        return percent + '% off'
+                    }
                 }
             }
         }
@@ -91,6 +94,12 @@ export default {
         }
     },
     methods: {
+        display () {
+            if (this.progress.options.format) {
+                return this.progress.options.format(this.progress.percent)
+            }
+            return this.progress.percent + '%'
+        },
         add (progress) {
             progress.percent = 0
             progress.options.state = ''

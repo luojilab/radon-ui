@@ -35,7 +35,7 @@
                 <radon-checkbox :checkbox="checkbox"></radon-checkbox>
             </form-item>
             <form-item title="sex:">
-                <radon-radio></radon-radio>
+                <radon-radio :radios="radios"></radon-radio>
             </form-item>
         </form>
     </div>
@@ -57,6 +57,19 @@ export default {
     },
     data () {
         return {
+            radios: [{
+                checked: false,
+                value: 'A'
+            }, {
+                checked: false,
+                value: 'B'
+            }, {
+                checked: false,
+                value: 'C'
+            }, {
+                checked: false,
+                value: 'aa'
+            }],
             select: {
                 value: {},
                 options: [{

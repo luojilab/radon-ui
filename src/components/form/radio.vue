@@ -46,22 +46,8 @@
 </template>
 <script>
 export default {
-    data () {
-        return {
-            radios: [{
-                checked: false,
-                value: 'A'
-            }, {
-                checked: false,
-                value: 'B'
-            }, {
-                checked: false,
-                value: 'C'
-            }, {
-                checked: false,
-                value: 'aa'
-            }]
-        }
+    props: {
+        radios: Array
     },
     methods: {
         reset () {

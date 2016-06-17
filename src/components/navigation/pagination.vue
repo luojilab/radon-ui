@@ -3,12 +3,12 @@
 
 </style>
 <template>
-    <div class="radon-pagination">
-        <div class="radon-info" v-if="showInfo"></div>
-        <div class="radon-jump" v-if="showJump">
+    <div class="rd-pagination">
+        <div class="rd-info" v-if="showInfo"></div>
+        <div class="rd-jump" v-if="showJump">
             <input type="text" v-model="pageJump" /><span>search</span>
         </div>
-        <ul class="radon-page" v-if="showList">
+        <ul class="rd-page" v-if="showList">
             <li @click="first" v-show="pageStart != 1">
                 <span>first</span>
             </li>

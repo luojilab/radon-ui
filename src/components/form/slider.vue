@@ -9,6 +9,7 @@
     border-radius: .2rem;
 }
 .rd-slider-handle {
+    position: relative;
     background: rgba(255, 255, 255, 0.92);
     height: 0.9rem;
     width: .9rem;
@@ -20,19 +21,41 @@
     border: .15rem solid #2db7f5;
     transition: left .1s;
 }
+.rd-slider-handle-tip {
+    display: none;
+    opcity: 0;
+    height: 0;
+    position: absolute;
+    bottom: 1rem;
+    left: -.6rem;
+    width: 2rem;
+    background-color: #5e6061;
+    color: #fff;
+    text-align: center;
+    padding: .5rem;
+    border-radius: .5rem;
+    transition: all .2s;
+}
+.rd-slider-handle.move .rd-slider-handle-tip {
+    display: block;
+    opacity: 1;
+    height: initial;
+}
 </style>
 <template>
     <div class="rd-slider" @mousedown="init">
         <div 
             :style="{ 'left': handle.percent + '%' }"
             class="rd-slider-handle"
+            :class="{ 'move': handle.move }"
             @mousedown="touchAction" 
             @mouseup="mouseupAction" 
             @mousemove="moveAction"
-        ></div>
+        >
+            <div class="rd-slider-handle-tip">{{handle.percent}}</div>
+        </div>
         <div class="rd-slider-track"></div>
         <div class="rd-slider-mark"></div>
-        <div class="display">{{handle.percent}}</div>
     </div>
 </template>
 <script>
@@ -51,7 +74,7 @@ const calcPercent = function (x, start, width) {
 export default {
     data () {
         return {
-            step: 2,
+            step: 10,
             min: 10,
             max: 90,
             startX: 0,
@@ -94,9 +117,14 @@ export default {
             if (x > this.startX && x < this.startX + this.width) {
                 this.handle.currentX = getMousePosition(e) - 7
                 if (this.checkSize(calcPercent(this.handle.currentX, this.startX, this.width))) {
-                    this.handle.percent = calcPercent(this.handle.currentX, this.startX, this.width)
+                    let percent = calcPercent(this.handle.currentX, this.startX, this.width)
+                    percent = this.setStep(percent)
+                    this.handle.percent = percent
                 }
             }
+        },
+        setStep (percent) {
+            return Math.ceil(percent / this.step) * this.step
         },
         checkSize (percent) {
             return percent <= this.max && percent >= this.min

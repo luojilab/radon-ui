@@ -29,13 +29,14 @@
     display: flex;
     border: 1px solid #e8e8e8;
     border-radius: .25rem;
-    min-height: 10rem;
+    height: 10rem;
     background: #fff;
     box-shadow: 0 1px 6px hsla(0,0%,39%,.2);
 }
 .rd-cascader-menu {
     min-width: 6rem;
     border-right: 1px solid #e8e8e8;
+    overflow-y: auto;
 }
 .rd-cascader-item {
     font-size: .8rem;
@@ -95,6 +96,76 @@
 </template>
 <script>
 const options = [{
+    value: 'china',
+    label: '中国',
+    children: [{
+        value: 'sichuan',
+        label: '四川',
+        children: [{
+            value: 'chegndu',
+            label: '成都'
+        }, {
+            value: 'deyang',
+            label: '德阳'
+        }]
+    }]
+}, {
+    value: 'America',
+    label: '美国',
+    children: [{
+        value: 'California',
+        label: '加利福尼亚',
+        children: [{
+            value: 'lake',
+            label: '湖'
+        }, {
+            value: 'Los Angeles',
+            label: '洛杉矶'
+        }]
+    }, {
+        value: 'Delaware',
+        label: '特拉华',
+        children: [{
+            value: 'Dover',
+            label: '多佛'
+        }]
+    }]
+}, {
+    value: 'china',
+    label: '中国',
+    children: [{
+        value: 'sichuan',
+        label: '四川',
+        children: [{
+            value: 'chegndu',
+            label: '成都'
+        }, {
+            value: 'deyang',
+            label: '德阳'
+        }]
+    }]
+}, {
+    value: 'America',
+    label: '美国',
+    children: [{
+        value: 'California',
+        label: '加利福尼亚',
+        children: [{
+            value: 'lake',
+            label: '湖'
+        }, {
+            value: 'Los Angeles',
+            label: '洛杉矶'
+        }]
+    }, {
+        value: 'Delaware',
+        label: '特拉华',
+        children: [{
+            value: 'Dover',
+            label: '多佛'
+        }]
+    }]
+}, {
     value: 'china',
     label: '中国',
     children: [{

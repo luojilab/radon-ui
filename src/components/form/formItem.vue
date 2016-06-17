@@ -1,4 +1,5 @@
-<style>
+<style lang="scss">
+@import '../../sass/index';
 .radon-form-item {
     display: flex;
 }

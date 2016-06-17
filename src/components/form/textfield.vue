@@ -1,4 +1,5 @@
-<style>
+<style lang="scss">
+@import '../../sass/index';
 .radon-textfield-input {
     font-size: 1rem;
     line-height: 1.7;

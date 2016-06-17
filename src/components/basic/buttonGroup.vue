@@ -3,7 +3,7 @@
 		<slot></slot>
 	</div>
 </template>
-<style>
+<style lang="scss">
 .radon-btn-group {
 	display: inline-block;
 }

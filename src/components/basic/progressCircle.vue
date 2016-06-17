@@ -1,34 +1,35 @@
-<style>
-    .rd-progress-circle-inner {
-        position: relative;
-        width: 132px;
-        height: 132px;
-        font-size: 27.12px;
-    }
-    .rd-progress-circle-info {
-        display: block;
-        position: absolute;
-        width: 100%;
-        text-align: center;
-        line-height: 1;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
-        left: 0;
-        margin: 0;
-    }
-    .rd-progress-circle-success .rd-progress-circle-text,
-    .rd-progress-circle-failed .rd-progress-circle-text {
-        display: none;
-    }
-    .rd-progress-circle-state.ion-checkmark-round{
-        color: #87d068;
-        font-size: 3rem;
-    }
-    .rd-progress-circle-state.ion-close-round{
-        color: #f50;
-        font-size: 3rem;
-    }
+<style lang="scss">
+@import '../../sass/index';
+.rd-progress-circle-inner {
+    position: relative;
+    width: 132px;
+    height: 132px;
+    font-size: 27.12px;
+}
+.rd-progress-circle-info {
+    display: block;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    line-height: 1;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 0;
+    margin: 0;
+}
+.rd-progress-circle-success .rd-progress-circle-text,
+.rd-progress-circle-failed .rd-progress-circle-text {
+    display: none;
+}
+.rd-progress-circle-state.ion-checkmark-round{
+    color: #87d068;
+    font-size: 3rem;
+}
+.rd-progress-circle-state.ion-close-round{
+    color: #f50;
+    font-size: 3rem;
+}
 </style>
 <template>
     <div

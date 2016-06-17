@@ -58,6 +58,9 @@
                 <radon-switch :checked.sync="switchA" size="small"></radon-switch>
                 <radon-switch :checked.sync="switchA"></radon-switch>
             </form-item>
+            <form-item title="price:">
+                <rd-slider></rd-slider>
+            </form-item>
         </form>
     </div>
 </template>
@@ -73,7 +76,8 @@ import {
     radonProgress,
     randonProgressCircle,
     radonCascader,
-    radonSwitch
+    radonSwitch,
+    rdSlider
 } from '../../src/components/index'
 
 export default {
@@ -227,7 +231,8 @@ export default {
         radonProgress,
         randonProgressCircle,
         radonCascader,
-        radonSwitch
+        radonSwitch,
+        rdSlider
     },
     methods: {
         userInputing () {

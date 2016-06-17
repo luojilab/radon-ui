@@ -59,7 +59,7 @@
                 <radon-switch :checked.sync="switchA"></radon-switch>
             </form-item>
             <form-item title="price:">
-                <rd-slider></rd-slider>
+                <rd-slider :value.sync="slider"></rd-slider>
             </form-item>
         </form>
     </div>
@@ -86,6 +86,7 @@ export default {
     },
     data () {
         return {
+            slider: 43,
             switchA: false,
             progressCommon: {
                 percent: 50,

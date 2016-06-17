@@ -52,7 +52,7 @@
             @mouseup="mouseupAction" 
             @mousemove="moveAction"
         >
-            <div class="rd-slider-handle-tip">{{handle.percent}}</div>
+            <div class="rd-slider-handle-tip" v-if="showTip">{{handle.percent}}</div>
         </div>
         <div class="rd-slider-track"></div>
         <div class="rd-slider-mark"></div>
@@ -72,11 +72,27 @@ const calcPercent = function (x, start, width) {
     return Math.floor((x - start) / width * 100)
 }
 export default {
+    props: {
+        value: Number,
+        step: {
+            type: Number,
+            default: 1
+        },
+        min: {
+            type: Number,
+            default: 0
+        },
+        max: {
+            type: Number,
+            default: 100
+        },
+        showTip: {
+            type: Boolean,
+            default: false
+        }
+    },
     data () {
         return {
-            step: 10,
-            min: 10,
-            max: 90,
             startX: 0,
             width: 0,
             handle: {
@@ -88,6 +104,7 @@ export default {
     },
     ready () {
         this.init()
+        this.handle.percent = this.value
         document.body.addEventListener('mousemove', this.moveAction, false)
         document.body.addEventListener('mouseup', this.mouseupAction, false)
     },
@@ -112,7 +129,6 @@ export default {
             pauseEvent(e)
             getMousePosition(true, e)
             if (!this.handle.move) return
-            console.log(e)
             const x = getMousePosition(e) - 7
             if (x > this.startX && x < this.startX + this.width) {
                 this.handle.currentX = getMousePosition(e) - 7
@@ -120,6 +136,7 @@ export default {
                     let percent = calcPercent(this.handle.currentX, this.startX, this.width)
                     percent = this.setStep(percent)
                     this.handle.percent = percent
+                    this.value = percent
                 }
             }
         },

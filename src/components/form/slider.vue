@@ -18,12 +18,13 @@
     border-radius: 50%;
     cursor: pointer;
     border: .15rem solid #2db7f5;
+    transition: left .1s;
 }
 </style>
 <template>
     <div class="rd-slider" @mousedown="init">
         <div 
-            :style="{ 'left': percent + '%' }"
+            :style="{ 'left': handle.percent + '%' }"
             class="rd-slider-handle"
             @mousedown="touchAction" 
             @mouseup="mouseupAction" 
@@ -31,6 +32,7 @@
         ></div>
         <div class="rd-slider-track"></div>
         <div class="rd-slider-mark"></div>
+        <div class="display">{{handle.percent}}</div>
     </div>
 </template>
 <script>
@@ -43,21 +45,22 @@ const getMousePosition = function (e) {
     return e.pageX
 }
 
+const calcPercent = function (x, start, width) {
+    return Math.floor((x - start) / width * 100)
+}
 export default {
     data () {
         return {
-            startX: 400,
-            width: 400,
+            step: 2,
+            min: 10,
+            max: 90,
+            startX: 0,
+            width: 0,
             handle: {
                 move: false,
                 currentX: 600,
                 percent: 20
             }
-        }
-    },
-    computed: {
-        percent () {
-            return (this.handle.currentX - this.startX) / this.width * 100
         }
     },
     ready () {
@@ -77,12 +80,10 @@ export default {
         touchAction (e) {
             pauseEvent(e)
             this.handle.move = true
-            // console.log(e)
         },
         mouseupAction (e) {
             pauseEvent(e)
             this.handle.move = false
-            // console.log(e)
         },
         moveAction (e) {
             pauseEvent(e)
@@ -92,7 +93,13 @@ export default {
             const x = getMousePosition(e) - 7
             if (x > this.startX && x < this.startX + this.width) {
                 this.handle.currentX = getMousePosition(e) - 7
+                if (this.checkSize(calcPercent(this.handle.currentX, this.startX, this.width))) {
+                    this.handle.percent = calcPercent(this.handle.currentX, this.startX, this.width)
+                }
             }
+        },
+        checkSize (percent) {
+            return percent <= this.max && percent >= this.min
         }
     }
 }

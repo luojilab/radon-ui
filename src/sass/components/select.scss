@@ -48,6 +48,13 @@
 
 .radon-select-option {
     padding: 0 .5rem;
+    font-size: .8rem;
+    padding: .1rem .5rem;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all .3s ease;
 }
 
 .radon-select-option.selected {

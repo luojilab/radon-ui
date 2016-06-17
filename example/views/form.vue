@@ -55,7 +55,8 @@
                 <radon-cascader></radon-cascader>
             </form-item>
             <form-item title="address:">
-                <radon-switch></radon-switch>
+                <radon-switch :checked.sync="switchA" size="small"></radon-switch>
+                <radon-switch :checked.sync="switchA"></radon-switch>
             </form-item>
         </form>
     </div>
@@ -81,6 +82,7 @@ export default {
     },
     data () {
         return {
+            switchA: false,
             progressCommon: {
                 percent: 50,
                 options: {

@@ -54,7 +54,7 @@
 <script>
 export default {
     props: {
-        switch: Boolean,
+        checked: Boolean,
         size: {
             type: String,
             default: 'common'

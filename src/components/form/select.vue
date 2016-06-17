@@ -1,21 +1,99 @@
-<style>
-    .rd-select-top .radon-select-options-container{
-        bottom: 2rem;
-        top: initial;
-    }
-    .radon-select-selected-value {
-        position: relative;
-    }
-    .rd-select-search-wrapper {
-        position: absolute;
-        top: 0;
-        width: 100%;
-    }
-    .rd-select-search-input {
-        width: 100%;
-        border: 0;
-        opacity: .5;
-    }
+<style lang="scss">
+@import '../../sass/index';
+.radon-select-container {
+    position: relative;
+    border: 1px solid $border-color-base;
+    display: inline-block;
+    min-width: 6rem;
+    border-radius: $border-radius-base;
+    height: 2rem;
+    line-height: 2rem;
+    padding: 0 2rem 0 .5rem;
+    vertical-align: bottom;
+}
+
+.radon-select-container:hover {
+    border: 1px solid $primary-color;
+}
+
+.radon-select-arrow {
+    position: absolute;
+    top: 0;
+    right: .5rem;
+    font-size: .4rem;
+    transform: rotate(0);
+    transition: transform 0.2s ease;
+}
+
+.radon-select-container.active .radon-select-options-container {
+    display: initial;
+    max-height: 20rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.radon-select-container.active .radon-select-arrow {
+    transform: rotate(180deg);
+}
+
+.radon-select-options-container {
+    display: none;
+    position: absolute;
+    background: #fff;
+    min-width: 6rem;
+    border-radius: $border-radius-base;
+    padding: 0;
+    border: 1px solid #ccc;
+    top: 2.2rem;
+    left: -1px;
+}
+
+.radon-select-option {
+    padding: 0 .5rem;
+    font-size: .8rem;
+    padding: .1rem .5rem;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all .3s ease;
+}
+
+.radon-select-option.selected {
+    background: #e6e6e6;
+}
+
+.radon-select-option.disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.radon-select-option:hover {
+    background: #f7f7f7;
+}
+
+.rd-select-top .radon-select-options-container{
+    bottom: 2rem;
+    top: initial;
+}
+
+.radon-select-selected-value {
+    position: relative;
+    font-size: .8rem;
+    line-height: 2rem;
+}
+
+.rd-select-search-wrapper {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.rd-select-search-input {
+    width: 100%;
+    border: 0;
+    opacity: .5;
+}
 </style>
 <template>
     <div 

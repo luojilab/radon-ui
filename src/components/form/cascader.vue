@@ -1,4 +1,5 @@
-<style>
+<style lang="scss">
+@import '../../sass/index';
 .rd-cascader-container {
     position: relative;
     border: 1px solid #d9d9d9;
@@ -10,6 +11,10 @@
     padding: 0 2rem 0 .5rem;
     vertical-align: bottom;
 }
+.rd-cascader-container:hover {
+    border: 1px solid $primary-color;
+}
+
 .rd-cascader-input {
     display: inline-block;
 }
@@ -26,6 +31,7 @@
     border-radius: .25rem;
     min-height: 10rem;
     background: #fff;
+    box-shadow: 0 1px 6px hsla(0,0%,39%,.2);
 }
 .rd-cascader-menu {
     min-width: 6rem;

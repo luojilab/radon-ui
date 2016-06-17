@@ -1,6 +1,6 @@
 <style lang="scss">
 @import '../../sass/index';
-.radon-textfield-input {
+.rd-textfield-input {
     font-size: 1rem;
     line-height: 1.7;
     color: #666;
@@ -12,10 +12,10 @@
     width: 100%;
     outline: none;
 }
-.radon-textfield-input:focus, .radon-textfield-input:hover {
+.rd-textfield-input:focus, .rd-textfield-input:hover {
     border-color: #57c5f7;
 }
-.radon-textfield-wrapper {
+.rd-textfield-wrapper {
     position: relative;
     width: 100%;
 }
@@ -45,31 +45,31 @@
     transform: rotate(360deg);
   }
 }
-.radon-textfield-loading-icon,
-.radon-textfield-warning-icon,
-.radon-textfield-failed-icon {
+.rd-textfield-loading-icon,
+.rd-textfield-warning-icon,
+.rd-textfield-failed-icon {
     display: inline-block;
     position: absolute;
     right: .5rem;
     top: .45rem;
 }
-.radon-textfield-loading-icon {
+.rd-textfield-loading-icon {
     animation: loading 1s infinite linear;
     color: #797979;
 }
-.radon-textfield-warning .radon-textfield-input {
+.rd-textfield-warning .rd-textfield-input {
     border-color: #fa0;
 }
-.radon-textfield-warning-icon {
+.rd-textfield-warning-icon {
     color: #fa0;
 }
-.radon-textfield-failed .radon-textfield-input {
+.rd-textfield-failed .rd-textfield-input {
     border-color: #f50;
 }
-.radon-textfield-failed-icon {
+.rd-textfield-failed-icon {
     color: #f50;
 }
-.radon-textfield-tip {
+.rd-textfield-tip {
     position: absolute;
     left: 0;
     bottom: -1rem;
@@ -78,23 +78,23 @@
 </style>
 <template>
     <div 
-        class="radon-textfield-wrapper"
+        class="rd-textfield-wrapper"
         :class="{ 
-        'radon-textfield-warning': textState === 'warning',
-        'radon-textfield-failed': textState === 'failed'
+        'rd-textfield-warning': textState === 'warning',
+        'rd-textfield-failed': textState === 'failed'
      }"
     >
         <input 
             type="text" 
-            class="radon-textfield-input" 
+            class="rd-textfield-input" 
             v-model="textfield.value" 
             :placeholder="textfield.placeHolder"
             @input="inputing"
         >
-        <span class="radon-textfield-tip" v-if="textfield.tip">{{textfield.tip}}</span>
-        <i class="radon-textfield-loading-icon ion-load-a" v-if="textState === 'loading'"></i>
-        <i class="radon-textfield-warning-icon ion-information-circled" v-if="textState === 'warning'"></i>
-        <i class="radon-textfield-failed-icon ion-close-circled" v-if="textState === 'failed'"></i>
+        <span class="rd-textfield-tip" v-if="textfield.tip">{{textfield.tip}}</span>
+        <i class="rd-textfield-loading-icon ion-load-a" v-if="textState === 'loading'"></i>
+        <i class="rd-textfield-warning-icon ion-information-circled" v-if="textState === 'warning'"></i>
+        <i class="rd-textfield-failed-icon ion-close-circled" v-if="textState === 'failed'"></i>
     </div>
 </template>
 <script>

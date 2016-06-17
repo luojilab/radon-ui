@@ -1,9 +1,9 @@
 <style lang="scss">
 @import '../../sass/index';
-.radon-form-item {
+.rd-form-item {
     display: flex;
 }
-.radon-form-item-title {
+.rd-form-item-title {
     color: #666;
     text-align: right;
     vertical-align: middle;
@@ -11,23 +11,23 @@
     min-width: 6rem;
     padding-right: .5rem;
 }
-.radon-form-item-wrapper {
+.rd-form-item-wrapper {
     width: 100%;
 }
 .form-item-contrl {
     line-height: 2rem;
 }
-.radon-form-item { 
+.rd-form-item { 
     margin-bottom: 1.5rem;
     color: #666;
 }
 </style>
 <template>
-    <div class="radon-form-item">
-        <div class="radon-form-item-title">
+    <div class="rd-form-item">
+        <div class="rd-form-item-title">
             {{title}}
         </div>
-        <div class="radon-form-item-wrapper">
+        <div class="rd-form-item-wrapper">
             <slot></slot>
         </div>
     </div>

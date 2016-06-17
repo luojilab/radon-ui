@@ -1,9 +1,9 @@
 <style lang="scss">
 @import '../../sass/index';
-.radon-radio-group {
+.rd-radio-group {
     line-height: 2rem;
 }
-.radon-radio-inner {
+.rd-radio-inner {
     position: relative;
     display: inline-block;
     height: 16px;
@@ -11,7 +11,7 @@
     border: 1px solid #ccc;
     border-radius: 50%;
 }
-.radon-radio-inner::after {
+.rd-radio-inner::after {
     content: ' ';
     display: inline-block;
     background: #57c5f7;
@@ -25,23 +25,26 @@
     opacity: 0;
     transition: opacity .2s;
 }
-.radon-radio.checked .radon-radio-inner::after{
+.rd-radio.checked .rd-radio-inner::after{
     opacity: 1;
 }
-.radon-radio {
+.rd-radio {
     margin-right: 1rem;
+}
+.rd-radio-value {
+    margin-left: .25rem;
 }
 </style>
 <template>
-    <div class="radon-radio-group">
+    <div class="rd-radio-group">
         <label 
-            class="radon-radio" 
+            class="rd-radio" 
             v-for="radio in radios" 
             :class="{ 'checked': radio.checked }"
             @click="checkAction(radio)"
         >
-            <span class="radon-radio-inner"></span>
-            <span class="radon-radio-value">{{radio.value}}</span>
+            <span class="rd-radio-inner"></span>
+            <span class="rd-radio-value">{{radio.value}}</span>
         </label>
     </div>
 </template>

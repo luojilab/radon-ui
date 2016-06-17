@@ -1,6 +1,6 @@
 <style lang="scss">
 @import '../../sass/index';
-.radon-btn {
+.rd-btn {
     display: inline-block;
     text-align: center;
     vertical-align: middle;
@@ -18,39 +18,39 @@
     transition: background 0.2s;
     outline: none;
 }
-.radon-btn-default {
+.rd-btn-default {
     color: #666;
     background-color: #f7f7f7;
     border-color: #d9d9d9;
 }
-.radon-btn-primary {
+.rd-btn-primary {
     color: #fff;
     background-color: #57c5f7;
 }
-.radon-btn-ghost {
+.rd-btn-ghost {
     color: #666;
     background-color: transparent;
     border-color: #d9d9d9;
 }
-.radon-btn:focus, .radon-btn:hover {
+.rd-btn:focus, .rd-btn:hover {
     color: #57c5f7;
     background-color: #fff;
     border-color: #57c5f7;
 }
-.radon-btn.radon-btn-primary:hover,
-.radon-btn.radon-btn-primary:focus {
+.rd-btn.rd-btn-primary:hover,
+.rd-btn.rd-btn-primary:focus {
     background-color: #81d8ff;
     color: #fff;
 }
-.radon-btn.radon-btn-small {
+.rd-btn.rd-btn-small {
     padding: .2em .4rem;
     min-width: initial;
 }
-.radon-btn.radon-btn-large {
+.rd-btn.rd-btn-large {
     padding: .5rem 1.5rem;
     font-size: 1.4rem;
 }
-.radon-btn.radon-btn-icon {
+.rd-btn.rd-btn-icon {
     width: 2rem;
     min-width: initial;
     border-radius: 50%;
@@ -85,24 +85,24 @@
   }
 }
 
-.radon-btn-loading {
+.rd-btn-loading {
     display: inline-block;
     animation: loading 1s infinite linear;
 }
 </style>
 <template>
     <button 
-        class="radon-btn"
+        class="rd-btn"
         :class="{
-            'radon-btn-primary' : type === 'primary',
-            'radon-btn-default' : type === 'default',
-            'radon-btn-ghost'   : type === 'ghost',
-            'radon-btn-icon'    : type === 'icon',
-            'radon-btn-small'   : size === 'small',
-            'radon-btn-large'   : size === 'large'
+            'rd-btn-primary' : type === 'primary',
+            'rd-btn-default' : type === 'default',
+            'rd-btn-ghost'   : type === 'ghost',
+            'rd-btn-icon'    : type === 'icon',
+            'rd-btn-small'   : size === 'small',
+            'rd-btn-large'   : size === 'large'
         }"
     >
-        <span class="radon-btn-loading ion-load-a" v-if="loading"></span>
+        <span class="rd-btn-loading ion-load-a" v-if="loading"></span>
         <span>
             <slot></slot>
         </span>

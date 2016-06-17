@@ -1,15 +1,15 @@
 <style lang="scss">
 @import '../../sass/index';
-.radon-checkbox-wrapper {
+.rd-checkbox-wrapper {
     display: inline-block;
     cursor: pointer;
     font-size: 1rem;
     line-height: 2rem;
 }
-.radon-checkbox-input {
+.rd-checkbox-input {
     opacity: 0;
 }
-.radon-checkbox-inner {
+.rd-checkbox-inner {
     position: relative;
     display: inline-block;
     height: 1rem;
@@ -18,7 +18,7 @@
     border-radius: 4px;
     top: .5rem;
 }
-.radon-checkbox-inner-icon {
+.rd-checkbox-inner-icon {
     color: #fff;
     position: absolute;
     font-size: .5rem;
@@ -28,25 +28,25 @@
     opacity: 0;
     transition: opacity .2s;
 }
-.radon-checkbox-inner.selected {
+.rd-checkbox-inner.selected {
     background: #2db7f5;
 }
-.radon-checkbox-inner.selected .radon-checkbox-inner-icon{
+.rd-checkbox-inner.selected .rd-checkbox-inner-icon{
     opacity: 1;
 }
 </style>
 <template>
-    <label class="radon-checkbox-wrapper">
-        <div class="radon-checkbox">
+    <label class="rd-checkbox-wrapper">
+        <div class="rd-checkbox">
             <span 
-                class="radon-checkbox-inner"
+                class="rd-checkbox-inner"
                 :class="{ 'selected': checkbox.checked }"
             >
-                <i class="radon-checkbox-inner-icon ion-checkmark-round"></i>
+                <i class="rd-checkbox-inner-icon ion-checkmark-round"></i>
                 <input 
                     type="checkbox" 
                     v-model="checkbox.checked" 
-                    class="radon-checkbox-input"
+                    class="rd-checkbox-input"
                     @change="changeAction"
                 >
             </span>

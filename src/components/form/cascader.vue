@@ -22,6 +22,9 @@
 </style>
 <template>
     <div class="rd-cascader-container">
+        <div class="rd-cascader-input">
+            {{value}}
+        </div>
         <div class="rd-cascader-content">
             <ul class="rd-cascader-menu" v-for="(index, one) in list">
                 <li 
@@ -76,25 +79,47 @@ const options = [{
 export default {
     data () {
         return {
+            valueArr: [],
+            value: '',
             list: [options]
         }
     },
     methods: {
+        format (selectedGroup) {
+            let valueArr = []
+            selectedGroup.map(item => {
+                valueArr.push(item.label)
+            })
+            return valueArr.join('/')
+        },
+        selectAll () {
+            this.valueArr = []
+            this.list.forEach(group => {
+                group.forEach(item => {
+                    if (item.selected) {
+                        console.log(item.label)
+                        this.valueArr.push(item)
+                    }
+                })
+            })
+            console.log(this.valueArr)
+            this.value = this.format(this.valueArr)
+        },
         touch (index, group) {
-            if (!group.children) return console.log('done')
+            if (this.list.length !== 1 + index) {
+                this.list = this.list.slice(0, 1 + index)
+            }
+            if (group.children) {
+                this.list.push(group.children)
+            }
+
             this.list[index].map(g => {
                 // console.log(g.label)
                 g['selected'] = false
             })
             group['selected'] = true
-
-            if (this.list.length === 1 + index) {
-                this.list.push(group.children)
-            } else {
-                this.list = this.list.slice(0, 1 + index)
-                this.list.push(group.children)
-            }
-            console.log(group.selected)
+            console.log(group.label)
+            this.selectAll()
         }
     }
 }

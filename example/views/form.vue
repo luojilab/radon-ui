@@ -51,10 +51,13 @@
                 <radon-select :value.sync="selectCity.value" :options.sync="selectCityOptions"></radon-select>
                 
             </div>
+            <form-item title="address:">
+                <radon-cascader></radon-cascader>
+            </form-item>
+            <form-item title="address:">
+                <radon-switch></radon-switch>
+            </form-item>
         </form>
-        <div>
-            <radon-cascader></radon-cascader>
-        </div>
     </div>
 </template>
 <script>
@@ -68,7 +71,8 @@ import {
     radonRadio,
     radonProgress,
     randonProgressCircle,
-    radonCascader
+    radonCascader,
+    radonSwitch
 } from '../../src/components/index'
 
 export default {
@@ -220,7 +224,8 @@ export default {
         radonRadio,
         radonProgress,
         randonProgressCircle,
-        radonCascader
+        radonCascader,
+        radonSwitch
     },
     methods: {
         userInputing () {

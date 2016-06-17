@@ -38,6 +38,7 @@
     "html-webpack-plugin": "^2.8.1",
     "http-proxy-middleware": "^0.12.0",
     "json-loader": "^0.5.4",
+    "moment": "^2.13.0",
     "node-bourbon": "^4.2.8",
     "node-sass": "^3.7.0",
     "ora": "^0.2.0",

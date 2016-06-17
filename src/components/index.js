@@ -9,6 +9,7 @@ import randonProgressCircle from './basic/progressCircle.vue'
 import radonCascader from './form/cascader.vue'
 import radonSwitch from './form/switch.vue'
 import rdSlider from './form/slider.vue'
+import rdDatePicker from './form/datePicker.vue'
 
 // global
 import radonModal from './presentation/modal.vue'
@@ -25,6 +26,7 @@ export {
     radonCascader,
     radonSwitch,
     rdSlider,
+    rdDatePicker,
 
     // global
     radonModal

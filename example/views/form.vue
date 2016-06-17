@@ -61,6 +61,9 @@
             <form-item title="price:">
                 <rd-slider :value.sync="slider"></rd-slider>
             </form-item>
+            <form-item title="出发时间:">
+                <rd-date-picker></rd-date-picker>
+            </form-item>
         </form>
     </div>
 </template>
@@ -77,7 +80,8 @@ import {
     randonProgressCircle,
     radonCascader,
     radonSwitch,
-    rdSlider
+    rdSlider,
+    rdDatePicker
 } from '../../src/components/index'
 
 export default {
@@ -233,7 +237,8 @@ export default {
         randonProgressCircle,
         radonCascader,
         radonSwitch,
-        rdSlider
+        rdSlider,
+        rdDatePicker
     },
     methods: {
         userInputing () {

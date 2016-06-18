@@ -62,7 +62,7 @@
                 <rd-slider :value.sync="slider"></rd-slider>
             </form-item>
             <form-item title="出发时间:">
-                <rd-date-picker value.sync="date.value" :options="date.options"></rd-date-picker>
+                <rd-date-picker :value.sync="datePicker.value" :options="datePicker.options"></rd-date-picker>
             </form-item>
         </form>
     </div>
@@ -90,7 +90,7 @@ export default {
     },
     data () {
         return {
-            date: {
+            datePicker: {
                 value: '',
                 options: {
                     format: 'YYYY-MM-DD',

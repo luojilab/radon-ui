@@ -181,7 +181,7 @@ const generateDayList = (time, currentMonth = false) => {
     return dayList
 }
 
-const generateShowList = (time) => {
+const generateShowList = (time, selectValue) => {
     const nearMonth = getNearMonth(time)
     const currentDayList = generateDayList(time, true)
     const nextList = generateDayList(nearMonth.next)
@@ -196,7 +196,9 @@ const generateShowList = (time) => {
     for (let i = 0; i < listCount; i++) {
         currentDayList.push(nextList[i])
     }
-
+    if (selectValue) {
+        selectByValue(currentDayList, selectValue)
+    }
     return currentDayList
 }
 
@@ -210,6 +212,14 @@ const generateYearList = (year) => {
         years.push(Math.floor(year) + i)
     }
     return years
+}
+
+const selectByValue = (list, value) => {
+    list.forEach(day => {
+        if (day.inMonth && day.value === value) {
+            day.selected = true
+        }
+    })
 }
 
 export default {
@@ -248,22 +258,20 @@ export default {
         }
     },
     ready () {
-        this.parse(this.value, this.options.format)
+        this.init()
     },
     methods: {
         init (current) {
             this.weekList = this.options.weekList || ['一', '二', '三', '四', '五', '六', '日']
             this.monthList = this.options.monthList || ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-            this.dayList = generateShowList(current)
-            this.timeTmp.current = current
-            this.updateData()
         },
         parse (value, format = 'YYYY-MM-DD') {
             let current = moment(value)
             if (moment(value).format(format) === 'Invalid date') {
                 current = moment()
             }
-            this.init(current)
+            this.timeTmp.current = current
+            this.updateData(current.get('date'))
         },
         yearDisplay () {
             this.timeTmp.year = moment(this.timeTmp.current).get('year')
@@ -337,8 +345,8 @@ export default {
                 $el.scrollTop = $el.scrollHeight - 2 * childHeight
             }
         },
-        updateData () {
-            this.dayList = generateShowList(this.timeTmp.current)
+        updateData (selectValue) {
+            this.dayList = generateShowList(this.timeTmp.current, selectValue)
             this.yearDisplay()
             this.monthDisplay()
         },
@@ -348,6 +356,7 @@ export default {
             } else {
                 this.state.position = 'bottom'
             }
+            this.parse(this.value, this.options.format)
             this.state.pickerShow = !this.state.pickerShow
         },
         clearDay () {

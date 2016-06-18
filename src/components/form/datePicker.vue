@@ -15,43 +15,145 @@
     display: flex;
     flex-wrap: wrap;
     background-color: #fff;
-    width: 12rem;
+    width: 13rem;
+    height: 14rem;
     font-size: .8rem;
+    padding: 0 .5rem;
 }
-.rd-day-item {
+.rd-datepicker-months {
+    background-color: #fff;
+    width: 13rem;
+    font-size: .8rem;
+    text-align: center;
+    height: 14rem;
+    overflow-y: auto;
+}
+.rd-datepicker-month-item:hover {
+    background: #f3f2f2;
+}
+.rd-day-item,
+.rd-day-week {
     width: 14%;
     text-align: center;
 }
+.rd-day-text {
+    display: inline-block;
+    line-height: 1.5rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    box-sizing: border-box;
+    cursor: pointer;
+}
 .rd-day-text:hover {
-    background-color: #2db7f5;
-    color: #fff;
+    background-color: #c4edff;
+}
+.rd-day-text.selected {
+    border: 1px solid #2db7f5;
+    color: #2db7f5;
+}
+.rd-day-text.out-month {
+    color: #ccc;
+}
+.rd-datepicker-value-input {
+    border: 0;
+}
+.rd-datepicker-contrl {
+    display: flex;
+}
+.rd-datepicker-info-month,
+.rd-datepicker-info-year {
+    position: relative;
+    width: 50%;
+    text-align: center;
+    .rd-datepicker-arrow {
+        display: none;
+        position: absolute;
+        cursor: pointer;
+    }
+    &:hover {
+        .rd-datepicker-arrow {
+            display: initial;
+        }
+    }
+}
+.rd-datepicker-year-text,
+.rd-datepicker-month-text {
+    cursor: pointer;
+}
+.rd-datepicker-arrow.ion-ios-arrow-left {
+    left: .5rem;
+}
+.rd-datepicker-arrow.ion-ios-arrow-right {
+    right: .5rem;
+}
+.rd-datepicker-content {
+    border: 1px solid #f3f3f3;
+}
+.rd-datepicker-contrl {
+    background-color: #e6e6e6;
+    padding: 0 .5rem;
 }
 </style>
 <template>
     <div class="rd-datepicker-container">
-        <div class="rd-datepicker-days">
-            <div class="rd-day-item" v-for="day in dayList">
-                <span class="rd-day-text">{{day.value}}</span>
+        <div class="rd-datepicker-value" @click="togglePicker">
+            <input class="rd-datepicker-value-input" type="text" v-model="value">
+        </div>
+        <div class="rd-datepicker-content" v-show="state.pickerShow">
+            <div class="rd-datepicker-contrl">
+                <div class="rd-datepicker-info-year">
+                    <span class="rd-datepicker-arrow ion-ios-arrow-left" @click="moveYear(false)"></span>
+                    <span class="rd-datepicker-year-text" @click="toggleView('year')">{{timeTmp.year}}</span>
+                     <span class="rd-datepicker-arrow ion-ios-arrow-right" @click="moveYear(true)"></span>
+                </div>
+                <div class="rd-datepicker-info-month">
+                    <span class="rd-datepicker-arrow ion-ios-arrow-left" @click="moveMonth(false)"></span>
+                    <span class="rd-datepicker-month-text" @click="toggleView('month')">{{timeTmp.month}}</span>
+                    <span class="rd-datepicker-arrow ion-ios-arrow-right" @click="moveMonth(true)"></span>
+                </div>
+            </div>
+            <div class="rd-datepicker-days" v-show="state.dayListShow">
+                <div class="rd-day-week" v-for="item in weekList">{{item}}</div>
+                <div class="rd-day-item" v-for="day in dayList">
+                    <span 
+                        class="rd-day-text"
+                        :class="{ 
+                            'selected': day.selected,
+                            'out-month': !day.inMonth
+                        }"
+                        @click="touchDay($event, day)"
+                    >{{day.value}}</span>
+                </div>
+            </div>
+            <div class="rd-datepicker-months" v-if="state.monthListShow">
+                <div 
+                    class="rd-datepicker-month-item" 
+                    v-for="item in monthList" 
+                    @click="setMonth(item)"
+                >
+                    <span class="rd-datepicker-month-item-text">{{item}}</span>
+                </div>
+            </div>
+            <div class="rd-datepicker-months" v-if="state.yearListShow" @scroll="scrollingYear">
+                <div 
+                    class="rd-datepicker-month-item" 
+                    v-for="item in yearList" 
+                    @click="setYear(item)"
+                >
+                    <span class="rd-datepicker-month-item-text">{{item}}</span>
+                </div>
             </div>
         </div>
     </div>
 </template>
 <script>
 import moment from 'moment'
-
-const pad = (val) => {
-    val = Math.floor(val)
-    if (val < 10) {
-        return '0' + val
-    }
-    return val
-}
+import { pad } from '../utils.js'
 
 const getNearMonth = (time) => {
-    let month = moment(time).get('month')
     return {
-        pre: moment(month - 1),
-        next: moment(month + 1)
+        pre: moment(moment(time).add(-1, 'months')),
+        next: moment(moment(time).add(1, 'months'))
     }
 }
 
@@ -60,6 +162,7 @@ const generateDayList = (time, currentMonth = false) => {
     const dayCount = moment(time).daysInMonth()
     for (let i = 1; i < dayCount + 1; i++) {
         dayList.push({
+            time: moment(moment(time).get('year') + '-' + pad(moment(time).get('month') + 1) + '-' + pad(i)),
             value: i,
             selected: false,
             inMonth: currentMonth
@@ -69,14 +172,14 @@ const generateDayList = (time, currentMonth = false) => {
 }
 
 const generateShowList = (time) => {
-    const firstDayAtWeek = moment(time).day()
     const nearMonth = getNearMonth(time)
-
     const currentDayList = generateDayList(time, true)
     const nextList = generateDayList(nearMonth.next)
     const preList = generateDayList(nearMonth.pre)
+    let firstDayAtWeek = moment(time).date(1).day()
+    if (firstDayAtWeek === 0) firstDayAtWeek = 7
 
-    for (let i = preList.length - 1; i > preList.length - firstDayAtWeek + 1; i--) {
+    for (let i = preList.length - 1; i > preList.length - firstDayAtWeek; i--) {
         currentDayList.unshift(preList[i])
     }
     const listCount = 42 - currentDayList.length
@@ -87,19 +190,151 @@ const generateShowList = (time) => {
     return currentDayList
 }
 
+const generateWeekList = () => {
+    // let week = []
+    // for (let i = 1; i < 8; i++) {
+    //     week.push(i)
+    // }
+    return ['一', '二', '三', '四', '五', '六', '日']
+}
+
+const generateYearList = (year) => {
+    let years = []
+    for (let i = 10; i > 0; i--) {
+        years.push(year - i)
+    }
+    years.push(year)
+    for (let i = 1; i < 10; i++) {
+        years.push(Math.floor(year) + i)
+    }
+    return years
+}
+
 export default {
     data () {
         return {
+            value: '',
             state: {
-                dayListShow: false
+                dayListShow: true,
+                pickerShow: false,
+                monthListShow: false,
+                yearListShow: false
             },
-            dayList: []
+            timeTmp: {
+                current: null,
+                year: '1971',
+                month: '01'
+            },
+            weekList: generateWeekList(),
+            dayList: [],
+            monthList: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            yearList: []
         }
     },
     ready () {
-        pad(8)
-        let current = moment()
-        this.dayList = generateShowList(current)
+        this.init()
+    },
+    methods: {
+        init () {
+            let current = moment()
+            this.dayList = generateShowList(current)
+            this.timeTmp.current = current
+        },
+        yearDisplay () {
+            this.timeTmp.year = moment(this.timeTmp.current).get('year')
+        },
+        monthDisplay () {
+            this.timeTmp.month = moment(this.timeTmp.current).get('month') + 1
+        },
+        toggleView (view) {
+            this.state.dayListShow = false
+            this.state.monthListShow = false
+            this.state.yearListShow = false
+
+            switch (view) {
+            case 'day':
+                this.state.dayListShow = true
+                break
+            case 'month':
+                this.state.monthListShow = true
+                break
+            case 'year':
+                this.state.yearListShow = true
+                this.yearList = generateYearList(this.timeTmp.year)
+                break
+            default:
+                this.state.dayListShow = true
+                break
+            }
+        },
+        setMonth (month) {
+            const index = this.monthList.indexOf(month)
+            this.timeTmp.current = moment(this.timeTmp.current).set('month', index)
+            this.updateData()
+            this.toggleView('day')
+        },
+        setYear (year) {
+            this.timeTmp.current = moment(this.timeTmp.current).set('year', year)
+            this.updateData()
+            this.toggleView('day')
+        },
+        moveYear (next) {
+            if (next) {
+                this.timeTmp.current = moment(this.timeTmp.current).add(1, 'year')
+            } else {
+                this.timeTmp.current = moment(this.timeTmp.current).add(-1, 'year')
+            }
+            this.updateData()
+        },
+        moveMonth (next) {
+            if (next) {
+                this.timeTmp.current = moment(this.timeTmp.current).add(1, 'months')
+            } else {
+                this.timeTmp.current = moment(this.timeTmp.current).add(-1, 'months')
+            }
+            this.updateData()
+        },
+        scrollingYear (e) {
+            const $el = e.target
+            const childHeight = $el.getElementsByClassName('rd-datepicker-month-item')[0].offsetHeight
+            if ($el.scrollTop < childHeight) {
+                let topYear = this.yearList[0]
+                for (let i = -1; i > -3; i--) {
+                    this.yearList.unshift(topYear + i)
+                }
+                $el.scrollTop = 2 * childHeight
+            }
+            if ($el.scrollHeight - $el.scrollTop < $el.offsetHeight + childHeight) {
+                let topYear = this.yearList[this.yearList.length - 1]
+                for (let i = 1; i < 3; i++) {
+                    this.yearList.push(topYear + i)
+                }
+                $el.scrollTop = $el.scrollHeight - 2 * childHeight
+            }
+        },
+        updateData () {
+            this.dayList = generateShowList(this.timeTmp.current)
+            this.yearDisplay()
+            this.monthDisplay()
+        },
+        togglePicker (e) {
+            this.state.pickerShow = !this.state.pickerShow
+        },
+        clearDay () {
+            this.dayList.map(day => {
+                day.selected = false
+                return day
+            })
+        },
+        touchDay (e, day) {
+            this.clearDay()
+            day.selected = true
+            this.togglePicker(e)
+            this.output(day)
+        },
+        output (day) {
+            this.value = moment(day.time).format('YYYY-MM-DD')
+        }
     }
 }
 </script>

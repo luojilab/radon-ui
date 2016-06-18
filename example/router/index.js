@@ -30,6 +30,66 @@ router.map({
             require(['../views/radio.vue'], resolve)
         }
     },
+    '/datepicker': {
+        name: 'datepicker',
+        component: (resolve) => {
+            require(['../views/datepicker.vue'], resolve)
+        }
+    },
+    '/slider': {
+        name: 'slider',
+        component: (resolve) => {
+            require(['../views/slider.vue'], resolve)
+        }
+    },
+    '/switch': {
+        name: 'switch',
+        component: (resolve) => {
+            require(['../views/switch.vue'], resolve)
+        }
+    },
+    '/textfield': {
+        name: 'textfield',
+        component: (resolve) => {
+            require(['../views/textfield.vue'], resolve)
+        }
+    },
+    '/timeline': {
+        name: 'timeline',
+        component: (resolve) => {
+            require(['../views/timeline.vue'], resolve)
+        }
+    },
+    '/cascader': {
+        name: 'cascader',
+        component: (resolve) => {
+            require(['../views/cascader.vue'], resolve)
+        }
+    },
+    '/select': {
+        name: 'select',
+        component: (resolve) => {
+            require(['../views/select.vue'], resolve)
+        }
+    },
+    '/modal': {
+        name: 'modal',
+        component: (resolve) => {
+            require(['../views/modal.vue'], resolve)
+        }
+    },
+    '/alert': {
+        name: 'alert',
+        component: (resolve) => {
+            require(['../views/alert.vue'], resolve)
+        }
+    },
+    '/progress': {
+        name: 'progress',
+        component: (resolve) => {
+            require(['../views/progress.vue'], resolve)
+        }
+    },
     '/form': {
         name: 'from',
         component: (resolve) => {

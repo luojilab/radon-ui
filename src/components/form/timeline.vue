@@ -7,7 +7,7 @@
 }
 .rd-timeline-item {
     position: relative;
-    padding: 0 0 2rem 1rem;
+    padding: 0 0 2rem 1.5rem;
     &:last-child {
        .rd-timeline-item-tail {
             display: none;
@@ -34,6 +34,10 @@
     height: 100%;
     border-left: 2px solid #e9e9e9;
 }
+.rd-timeline-text {
+    font-size: .8rem;
+    color: #5d5c5c;
+}
 </style>
 <template>
     <ul class="rd-timeline-container">
@@ -46,7 +50,7 @@
                     'color': item.color
                 }"
             ></span>
-            <span>{{item.text}}</span>
+            <span class="rd-timeline-text">{{item.text}}</span>
             <div class="rd-timeline-item-tail"></div>
         </li>
     </ul>

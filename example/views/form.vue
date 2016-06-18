@@ -47,12 +47,12 @@
                 <randon-progress-circle @click="startProgress(progressCircle)" :progress="progressCircle"></randon-progress-circle>
             </div>
             <div>
-                <radon-select :value.sync="selectProvince.value" :options.sync="selectProvince.options"></radon-select>
-                <radon-select :value.sync="selectCity.value" :options.sync="selectCityOptions"></radon-select>
+                <rd-select :value.sync="selectProvince.value" :options.sync="selectProvince.options"></rd-select>
+                <rd-select :value.sync="selectCity.value" :options.sync="selectCityOptions"></rd-select>
                 
             </div>
             <form-item title="address:">
-                <radon-cascader></radon-cascader>
+                <radon-cascader :cascader="cascader"></radon-cascader>
             </form-item>
             <form-item title="address:">
                 <radon-switch :checked.sync="switchA" size="small"></radon-switch>
@@ -72,7 +72,7 @@
 </template>
 <script>
 import {
-    radonSelect,
+    rdSelect,
     formItem,
     radonButton,
     radonButtonGroup,
@@ -90,12 +90,123 @@ import {
     rdAlert
 } from '../../src/components/index'
 
+const options = [{
+    value: 'china',
+    label: '中国',
+    children: [{
+        value: 'sichuan',
+        label: '四川',
+        children: [{
+            value: 'chegndu',
+            label: '成都'
+        }, {
+            value: 'deyang',
+            label: '德阳'
+        }]
+    }]
+}, {
+    value: 'America',
+    label: '美国',
+    children: [{
+        value: 'California',
+        label: '加利福尼亚',
+        children: [{
+            value: 'lake',
+            label: '湖'
+        }, {
+            value: 'Los Angeles',
+            label: '洛杉矶'
+        }]
+    }, {
+        value: 'Delaware',
+        label: '特拉华',
+        children: [{
+            value: 'Dover',
+            label: '多佛'
+        }]
+    }]
+}, {
+    value: 'china',
+    label: '中国',
+    children: [{
+        value: 'sichuan',
+        label: '四川',
+        children: [{
+            value: 'chegndu',
+            label: '成都'
+        }, {
+            value: 'deyang',
+            label: '德阳'
+        }]
+    }]
+}, {
+    value: 'America',
+    label: '美国',
+    children: [{
+        value: 'California',
+        label: '加利福尼亚',
+        children: [{
+            value: 'lake',
+            label: '湖'
+        }, {
+            value: 'Los Angeles',
+            label: '洛杉矶'
+        }]
+    }, {
+        value: 'Delaware',
+        label: '特拉华',
+        children: [{
+            value: 'Dover',
+            label: '多佛'
+        }]
+    }]
+}, {
+    value: 'china',
+    label: '中国',
+    children: [{
+        value: 'sichuan',
+        label: '四川',
+        children: [{
+            value: 'chegndu',
+            label: '成都'
+        }, {
+            value: 'deyang',
+            label: '德阳'
+        }]
+    }]
+}, {
+    value: 'America',
+    label: '美国',
+    children: [{
+        value: 'California',
+        label: '加利福尼亚',
+        children: [{
+            value: 'lake',
+            label: '湖'
+        }, {
+            value: 'Los Angeles',
+            label: '洛杉矶'
+        }]
+    }, {
+        value: 'Delaware',
+        label: '特拉华',
+        children: [{
+            value: 'Dover',
+            label: '多佛'
+        }]
+    }]
+}]
+
 export default {
     props: {
         createModal: Function
     },
     data () {
         return {
+            cascader: {
+                options: options,
+                valueArr: []
+            },
             timeline: [{
                 icon: 'ion-alert-circled',
                 color: '#2db7f5',
@@ -262,7 +373,7 @@ export default {
     },
     components: {
         formItem,
-        radonSelect,
+        rdSelect,
         radonButton,
         radonButtonGroup,
         radonCheckbox,

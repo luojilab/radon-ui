@@ -1,40 +1,37 @@
-function now () {
-    return new Date().getTime()
-}
-
-function debounce (func, wait, immediate) {
-    console.log('run')
-    var timeout, args, context, timestamp, result
-    if (!wait) wait = 100
-
-    function later () {
-        var last = now() - timestamp
-
-        if (last < wait && last > 0) {
-            timeout = setTimeout(later, wait - last)
-        } else {
-            timeout = null
-            if (!immediate) {
-                result = func.apply(context, args)
-                if (!timeout) context = args = null
-            }
+function throttle (callback, limit) {
+    var wait = false
+    return function () {
+        if (!wait) {
+            callback.call()
+            wait = true
+            setTimeout(function () {
+                wait = false
+            }, limit)
         }
     }
-
-    return function debounced () {
-        context = this
-        args = arguments
-        timestamp = now()
-        var callNow = immediate && !timeout
-        if (!timeout) timeout = setTimeout(later, wait)
-        if (callNow) {
-            result = func.apply(context, args)
-            context = args = null
-        }
-
-        return result
-    }
 }
+
+// var throttle = function (fn, delay, mustRunDelay = 100) {
+//     var timer = null
+//     var tStart
+//     return function () {
+//         let context = this
+//         let args = arguments
+//         let tCurr = +new Date()
+//         clearTimeout(timer)
+//         if (!tStart) {
+//             tStart = tCurr
+//         }
+//         if (tCurr - tStart >= mustRunDelay) {
+//             fn.apply(context, args)
+//             tStart = tCurr
+//         } else {
+//             timer = setTimeout(function () {
+//                 fn.apply(context, args)
+//             }, delay)
+//         }
+//     }
+// }
 
 const pad = (val) => {
     val = Math.floor(val)
@@ -44,6 +41,6 @@ const pad = (val) => {
     return val
 }
 
-exports.debounce = debounce
+exports.throttle = throttle
 exports.pad = pad
 

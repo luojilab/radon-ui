@@ -11,6 +11,7 @@ import radonSwitch from './form/switch.vue'
 import rdSlider from './form/slider.vue'
 import rdDatePicker from './form/datePicker.vue'
 import rdTimeline from './form/timeline.vue'
+import rdSelect from './form/select.vue'
 
 // global
 import radonModal from './presentation/modal.vue'
@@ -18,6 +19,7 @@ import rdTooltip from './presentation/toolTip.vue'
 import rdAlert from './presentation/alert.vue'
 
 export {
+    rdSelect,
     formItem,
     radonButton,
     radonButtonGroup,

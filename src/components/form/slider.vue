@@ -43,14 +43,12 @@
 }
 </style>
 <template>
-    <div class="rd-slider" @mousedown="init">
+    <div class="rd-slider">
         <div 
-            :style="{ 'left': handle.percent + '%' }"
             class="rd-slider-handle"
+            :style="{ 'left': handle.percent + '%' }"
             :class="{ 'move': handle.move }"
-            @mousedown="touchAction" 
-            @mouseup="mouseupAction" 
-            @mousemove="moveAction"
+            @mousedown="touchAction"
         >
             <div class="rd-slider-handle-tip" v-if="showTip">{{handle.percent}}</div>
         </div>
@@ -59,11 +57,6 @@
     </div>
 </template>
 <script>
-const pauseEvent = function (e) {
-    e.stopPropagation()
-    e.preventDefault()
-}
-
 const getMousePosition = function (e) {
     return e.pageX
 }
@@ -71,6 +64,7 @@ const getMousePosition = function (e) {
 const calcPercent = function (x, start, width) {
     return Math.floor((x - start) / width * 100)
 }
+
 export default {
     props: {
         value: Number,
@@ -115,19 +109,17 @@ export default {
     methods: {
         init () {
             this.startX = this.$el.getBoundingClientRect().left
-            this.width = this.$el.clientWidth
+            this.width = this.$el.getBoundingClientRect().width
+            window.a = this.$el
         },
         touchAction (e) {
-            pauseEvent(e)
+            this.init()
             this.handle.move = true
         },
         mouseupAction (e) {
-            pauseEvent(e)
             this.handle.move = false
         },
         moveAction (e) {
-            pauseEvent(e)
-            getMousePosition(true, e)
             if (!this.handle.move) return
             const x = getMousePosition(e) - 7
             if (x > this.startX && x < this.startX + this.width) {

@@ -24,7 +24,10 @@ export default {
         </textarea>
     </mark>
         <p>
-            <rd-slider :value.sync="slider"></rd-slider>
+            {{slider.percent}}
+        </p>
+        <p>
+            <rd-slider :value.sync="slider.percent"></rd-slider>
         </p>
     </div>
 </div>
@@ -41,7 +44,9 @@ export default {
     },
     data () {
         return {
-            slider: 43
+            slider: {
+                percent: 66
+            }
         }
     },
     components: {

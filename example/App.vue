@@ -8,12 +8,19 @@ html,body{
 .container{
     height: 100%;
     position: relative;
-    display: flex;
+    padding-left: 20%;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
-.sidebar{
+.sidebar {
+    position: fixed;
     width: 20%;
     height: 100%;
     border-right: 1px solid #f7f7f7;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    background-color: #fff;
 }
 .content{
     height: 100%;
@@ -115,8 +122,48 @@ export default {
                     subTitle: '单选框',
                     link: 'radio'
                 }, {
-                    title: 'Form',
-                    subTitle: '单选框',
+                    title: 'Textfield',
+                    subTitle: '输入框',
+                    link: 'textfield'
+                }, {
+                    title: 'Switch',
+                    subTitle: '开关',
+                    link: 'switch'
+                }, {
+                    title: 'Timeline',
+                    subTitle: '时间线',
+                    link: 'timeline'
+                }, {
+                    title: 'Slider',
+                    subTitle: '滑动输入',
+                    link: 'slider'
+                }, {
+                    title: 'Progress',
+                    subTitle: '进度条',
+                    link: 'progress'
+                }, {
+                    title: 'Datepicker',
+                    subTitle: '日期选择',
+                    link: 'datepicker'
+                }, {
+                    title: 'Select',
+                    subTitle: '选择器',
+                    link: 'select'
+                }, {
+                    title: 'Cascader',
+                    subTitle: '级联选择器',
+                    link: 'cascader'
+                }, {
+                    title: 'Alert',
+                    subTitle: '警告提示',
+                    link: 'alert'
+                }, {
+                    title: 'Modal',
+                    subTitle: '对话框',
+                    link: 'modal'
+                }, {
+                    title: 'Demo',
+                    subTitle: 'playground',
                     link: 'form'
                 }]
             }],

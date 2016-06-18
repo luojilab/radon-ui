@@ -71,8 +71,8 @@
     </div>
 </template>
 <script>
-import radonSelect from '../../src/components/form/select.vue'
 import {
+    radonSelect,
     formItem,
     radonButton,
     radonButtonGroup,

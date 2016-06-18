@@ -47,16 +47,20 @@
     width: 1.5rem;
     box-sizing: border-box;
     cursor: pointer;
-}
-.rd-day-text:hover {
-    background-color: #c4edff;
-}
-.rd-day-text.selected {
-    border: 1px solid #2db7f5;
-    color: #2db7f5;
-}
-.rd-day-text.out-month {
-    color: #ccc;
+    &.unavailable {
+        color: #ccc;
+        cursor: not-allowed;
+    }
+    &.out-month {
+        color: #ccc;
+    }
+    &.selected {
+        border: 1px solid #2db7f5;
+        color: #2db7f5;
+    }
+    &:hover {
+        background-color: #c4edff;
+    }
 }
 .rd-datepicker-value-input {
     border: 0;
@@ -129,7 +133,8 @@
                         class="rd-day-text"
                         :class="{ 
                             'selected': day.selected,
-                            'out-month': !day.inMonth
+                            'out-month': !day.inMonth,
+                            'unavailable': day.unavailable
                         }"
                         @click="touchDay($event, day)"
                     >{{day.value}}</span>
@@ -175,13 +180,14 @@ const generateDayList = (time, currentMonth = false) => {
             time: moment(moment(time).get('year') + '-' + pad(moment(time).get('month') + 1) + '-' + pad(i)),
             value: i,
             selected: false,
+            unavailable: false,
             inMonth: currentMonth
         })
     }
     return dayList
 }
 
-const generateShowList = (time, selectValue) => {
+const generateShowList = (time) => {
     const nearMonth = getNearMonth(time)
     const currentDayList = generateDayList(time, true)
     const nextList = generateDayList(nearMonth.next)
@@ -195,9 +201,6 @@ const generateShowList = (time, selectValue) => {
     const listCount = 42 - currentDayList.length
     for (let i = 0; i < listCount; i++) {
         currentDayList.push(nextList[i])
-    }
-    if (selectValue) {
-        selectByValue(currentDayList, selectValue)
     }
     return currentDayList
 }
@@ -222,6 +225,14 @@ const selectByValue = (list, value) => {
     })
 }
 
+const weekLimit = (list, availables) => {
+    list.map(day => {
+        if (availables.indexOf(Math.floor(day.time.format('d'))) === -1) {
+            day.unavailable = true
+        }
+    })
+}
+
 export default {
     props: {
         value: {
@@ -230,10 +241,18 @@ export default {
         },
         options: {
             type: Object,
-            default: {
-                format: 'YYYY-MM-DD',
-                monthList: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                weekList: ['一', '二', '三', '四', '五', '六', '日']
+            default () {
+                return {
+                    format: 'YYYY-MM-DD',
+                    monthList: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                    weekList: ['一', '二', '三', '四', '五', '六', '日']
+                }
+            }
+        },
+        limit: {
+            type: Object,
+            default () {
+                return {}
             }
         }
     },
@@ -346,7 +365,21 @@ export default {
             }
         },
         updateData (selectValue) {
-            this.dayList = generateShowList(this.timeTmp.current, selectValue)
+            let list = generateShowList(this.timeTmp.current, selectValue)
+            if (selectValue) {
+                selectByValue(list, selectValue)
+            }
+            if (this.options.limit.weekDay) {
+                weekLimit(list, this.options.limit.weekDay.availables)
+            }
+            if (this.options.limit.customerLimit) {
+                list.forEach(day => {
+                    if (this.options.limit.customerLimit(day)) {
+                        day.unavailable = true
+                    }
+                })
+            }
+            this.dayList = list
             this.yearDisplay()
             this.monthDisplay()
         },
@@ -366,6 +399,7 @@ export default {
             })
         },
         touchDay (e, day) {
+            if (day.unavailable) return
             this.clearDay()
             day.selected = true
             this.togglePicker(e)

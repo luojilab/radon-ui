@@ -95,7 +95,15 @@ export default {
                 options: {
                     format: 'YYYY-MM-DD',
                     monthList: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                    weekList: ['一', '二', '三', '四', '五', '六', '日']
+                    weekList: ['一', '二', '三', '四', '五', '六', '日'],
+                    limit: {
+                        weekDay: {
+                            availables: [1, 2, 3, 4, 5]
+                        },
+                        customerLimit: function (day) {
+                            return Math.random() * 2 > 1
+                        }
+                    }
                 }
             },
             slider: 43,

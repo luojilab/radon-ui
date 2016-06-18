@@ -9,6 +9,8 @@
     color: #ffffff;
     font-size: .8rem;
     line-height: 1.2;
+    width: 60rem;
+    overflow-x: auto;
 }
 </style>
 <template>

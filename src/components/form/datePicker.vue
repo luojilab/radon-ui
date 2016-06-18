@@ -10,6 +10,10 @@
     line-height: 2rem;
     padding: 0 2rem 0 .5rem;
     vertical-align: bottom;
+    &.top .rd-datepicker-content {
+        top: initial;
+        bottom: 2rem;
+    }
 }
 .rd-datepicker-days {
     display: flex;
@@ -88,6 +92,9 @@
 }
 .rd-datepicker-content {
     border: 1px solid #f3f3f3;
+    position: absolute;
+    left: 0;
+    top: 2rem;
 }
 .rd-datepicker-contrl {
     background-color: #e6e6e6;
@@ -95,7 +102,10 @@
 }
 </style>
 <template>
-    <div class="rd-datepicker-container">
+    <div 
+        class="rd-datepicker-container"
+        :class="{ 'top': state.position === 'top' }"
+    >
         <div class="rd-datepicker-value" @click="togglePicker">
             <input class="rd-datepicker-value-input" type="text" v-model="value">
         </div>
@@ -219,12 +229,13 @@ export default {
                 dayListShow: true,
                 pickerShow: false,
                 monthListShow: false,
-                yearListShow: false
+                yearListShow: false,
+                position: 'bottom'
             },
             timeTmp: {
                 current: null,
-                year: '1971',
-                month: '01'
+                year: '2016',
+                month: '06'
             },
             weekList: generateWeekList(),
             dayList: [],
@@ -326,6 +337,11 @@ export default {
             this.monthDisplay()
         },
         togglePicker (e) {
+            if (e.clientY + document.body.scrollTop + 320 > document.body.offsetHeight) {
+                this.state.position = 'top'
+            } else {
+                this.state.position = 'bottom'
+            }
             this.state.pickerShow = !this.state.pickerShow
         },
         clearDay () {

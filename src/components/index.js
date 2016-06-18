@@ -15,6 +15,7 @@ import rdTimeline from './form/timeline.vue'
 // global
 import radonModal from './presentation/modal.vue'
 import rdTooltip from './presentation/toolTip.vue'
+import rdAlert from './presentation/alert.vue'
 
 export {
     formItem,
@@ -33,5 +34,6 @@ export {
 
     // global
     radonModal,
-    rdTooltip
+    rdTooltip,
+    rdAlert
 }

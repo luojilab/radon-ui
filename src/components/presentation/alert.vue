@@ -1,0 +1,125 @@
+<style lang="scss">
+@import '../../sass/index';
+.rd-alert {
+    position: relative;
+    border-radius: 6px;
+    color: #666;
+    font-size: .8rem;
+    line-height: 1rem;
+    margin-bottom: .2rem;
+    &.small {
+        line-height: 2rem;
+        padding-left: 2rem;
+        .rd-alert-icon {
+            line-height: 2rem;
+            left: .5rem;
+        }
+    }
+    &.success {
+        border: 1px solid #e7f6e1;
+        background-color: #f3faf0;
+        .rd-alert-icon {
+            color: #87d068;
+        }
+    }
+    &.info {
+        border: 1px solid #d5f1fd;
+        background-color: #eaf8fe;
+        .rd-alert-icon {
+            color: #2db7f5;
+        }
+    }
+    &.warning {
+        border: 1px solid #fec;
+        background-color: #fff7e6;
+        .rd-alert-icon {
+            color: #fa0;
+        }
+    }
+    &.failed {
+        border: 1px solid #fdc;
+        background-color: #ffeee6;
+        .rd-alert-icon {
+            color: #f50;
+        }
+    }
+}
+.rd-alert-icon {
+    position: absolute;
+}
+</style>
+<template>
+    <div 
+        class="rd-alert"
+        :class="classType(alert)"
+        v-for="alert in alerts"
+    >
+        <span 
+            class="rd-alert-icon"
+            :class="iconClass(alert)"
+        ></span>
+        <div class="rd-alert-body">
+            <span class="rd-alert-title">{{alert.title}}</span>
+            <p v-if="alert.content" class="rd-alert-content">{{alert.content}}</p>
+        </div>
+    </div>
+</template>
+<script>
+export default {
+    data () {
+        return {
+            alerts: [{
+                show: true,
+                state: 'success',
+                title: '成功提示的文案',
+                content: ''
+            }, {
+                show: true,
+                state: 'info',
+                title: '提示的文案',
+                content: ''
+            }, {
+                show: true,
+                state: 'warning',
+                title: '警告提示的文案',
+                content: ''
+            }, {
+                show: true,
+                state: 'failed',
+                title: '失败提示的文案',
+                content: ''
+            }]
+        }
+    },
+    methods: {
+        classType (alert) {
+            let classList = {}
+            classList[alert.state] = true
+            if (!alert.content) {
+                classList['small'] = true
+            }
+            return classList
+        },
+        iconClass (alert) {
+            let classList = {}
+            switch (alert.state) {
+            case 'success':
+                classList['ion-checkmark-circled'] = true
+                break
+            case 'failed':
+                classList['ion-close-circled'] = true
+                break
+            case 'warning':
+                classList['ion-alert-circled'] = true
+                break
+            case 'info':
+                classList['ion-information-circled'] = true
+                break
+            default:
+                classList['ion-checkmark-circled'] = true
+            }
+            return classList
+        }
+    }
+}
+</script>

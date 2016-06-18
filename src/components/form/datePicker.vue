@@ -104,6 +104,11 @@
     background-color: #e6e6e6;
     padding: 0 .5rem;
 }
+.rd-datepicker-clear {
+    position: absolute;
+    top: 0;
+    right: .3rem;
+}
 </style>
 <template>
     <div 
@@ -112,6 +117,11 @@
     >
         <div class="rd-datepicker-value" @click="togglePicker">
             <input class="rd-datepicker-value-input" type="text" v-model="value">
+            <i 
+                @click.stop="clearValue" 
+                class="rd-datepicker-clear ion-close-circled"
+                v-show="state.pickerShow"
+            ></i>
         </div>
         <div class="rd-datepicker-content" v-show="state.pickerShow">
             <div class="rd-datepicker-contrl">
@@ -369,15 +379,17 @@ export default {
             if (selectValue) {
                 selectByValue(list, selectValue)
             }
-            if (this.options.limit.weekDay) {
-                weekLimit(list, this.options.limit.weekDay.availables)
-            }
-            if (this.options.limit.customerLimit) {
-                list.forEach(day => {
-                    if (this.options.limit.customerLimit(day)) {
-                        day.unavailable = true
-                    }
-                })
+            if (this.options.limit) {
+                if (this.options.limit.weekDay) {
+                    weekLimit(list, this.options.limit.weekDay.availables)
+                }
+                if (this.options.limit.customerLimit) {
+                    list.forEach(day => {
+                        if (this.options.limit.customerLimit(day)) {
+                            day.unavailable = true
+                        }
+                    })
+                }
             }
             this.dayList = list
             this.yearDisplay()
@@ -397,6 +409,10 @@ export default {
                 day.selected = false
                 return day
             })
+        },
+        clearValue (e) {
+            this.value = ''
+            this.clearDay()
         },
         touchDay (e, day) {
             if (day.unavailable) return

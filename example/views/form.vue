@@ -98,7 +98,7 @@ export default {
                     weekList: ['一', '二', '三', '四', '五', '六', '日'],
                     limit: {
                         weekDay: {
-                            availables: [1, 2, 3, 4, 5]
+                            availables: [1, 2, 3, 4, 5, 6, 0]
                         },
                         customerLimit: function (day) {
                             return Math.random() * 2 > 1

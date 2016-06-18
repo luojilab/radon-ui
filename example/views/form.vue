@@ -62,7 +62,7 @@
                 <rd-slider :value.sync="slider"></rd-slider>
             </form-item>
             <form-item title="出发时间:">
-                <rd-date-picker></rd-date-picker>
+                <rd-date-picker value.sync="date.value" :options="date.options"></rd-date-picker>
             </form-item>
         </form>
     </div>
@@ -90,6 +90,14 @@ export default {
     },
     data () {
         return {
+            date: {
+                value: '',
+                options: {
+                    format: 'YYYY-MM-DD',
+                    monthList: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                    weekList: ['一', '二', '三', '四', '五', '六', '日']
+                }
+            },
             slider: 43,
             switchA: false,
             progressCommon: {

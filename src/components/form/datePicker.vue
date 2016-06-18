@@ -200,14 +200,6 @@ const generateShowList = (time) => {
     return currentDayList
 }
 
-const generateWeekList = () => {
-    // let week = []
-    // for (let i = 1; i < 8; i++) {
-    //     week.push(i)
-    // }
-    return ['一', '二', '三', '四', '五', '六', '日']
-}
-
 const generateYearList = (year) => {
     let years = []
     for (let i = 5; i > 0; i--) {
@@ -221,10 +213,22 @@ const generateYearList = (year) => {
 }
 
 export default {
+    props: {
+        value: {
+            type: String,
+            required: true
+        },
+        options: {
+            type: Object,
+            default: {
+                format: 'YYYY-MM-DD',
+                monthList: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                weekList: ['一', '二', '三', '四', '五', '六', '日']
+            }
+        }
+    },
     data () {
         return {
-            value: '',
-            format: 'YYYY-MM-DD',
             state: {
                 dayListShow: true,
                 pickerShow: false,
@@ -237,17 +241,19 @@ export default {
                 year: '2016',
                 month: '06'
             },
-            weekList: generateWeekList(),
+            weekList: [],
             dayList: [],
-            monthList: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            monthList: [],
             yearList: []
         }
     },
     ready () {
-        this.parse(this.value, this.format)
+        this.parse(this.value, this.options.format)
     },
     methods: {
         init (current) {
+            this.weekList = this.options.weekList || ['一', '二', '三', '四', '五', '六', '日']
+            this.monthList = this.options.monthList || ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
             this.dayList = generateShowList(current)
             this.timeTmp.current = current
             this.updateData()

@@ -4,15 +4,33 @@
     position: relative;
     border-radius: 6px;
     color: #666;
-    font-size: .8rem;
     line-height: 1rem;
     margin-bottom: .2rem;
+    padding: .5rem 1rem .5rem 3rem;
+    .rd-alert-icon {
+        font-size: 2rem;
+        top: .5rem;
+        left: .5rem;
+    }
+    .rd-alert-title {
+        font-size: 1rem;
+    }
+    .rd-alert-content {
+        margin: .5rem 0 0 0;
+        font-size: .8rem;
+    }
     &.small {
-        line-height: 2rem;
-        padding-left: 2rem;
+        padding: 0;
+        .rd-alert-title {
+            font-size: .8rem;
+            line-height: 2rem;
+            padding-left: 2rem;
+        }
         .rd-alert-icon {
             line-height: 2rem;
             left: .5rem;
+            font-size: 1rem;
+            top: initial;
         }
     }
     &.success {
@@ -72,7 +90,7 @@ export default {
                 show: true,
                 state: 'success',
                 title: '成功提示的文案',
-                content: ''
+                content: '成功提示的辅助性文字介绍成功提示的辅助性文字介绍成功提示的辅助性文字介绍成功提示的辅助性文字介绍'
             }, {
                 show: true,
                 state: 'info',

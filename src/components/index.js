@@ -13,6 +13,7 @@ import rdDatePicker from './form/datePicker.vue'
 
 // global
 import radonModal from './presentation/modal.vue'
+import rdTooltip from './presentation/toolTip.vue'
 
 export {
     formItem,
@@ -29,5 +30,6 @@ export {
     rdDatePicker,
 
     // global
-    radonModal
+    radonModal,
+    rdTooltip
 }

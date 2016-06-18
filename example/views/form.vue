@@ -62,6 +62,7 @@
                 <rd-slider :value.sync="slider"></rd-slider>
             </form-item>
             <form-item title="出发时间:">
+                <span>233333333<rd-tooltip></td-tooltip></span>
                 <rd-date-picker :value.sync="datePicker.value" :options="datePicker.options"></rd-date-picker>
             </form-item>
         </form>
@@ -81,7 +82,8 @@ import {
     radonCascader,
     radonSwitch,
     rdSlider,
-    rdDatePicker
+    rdDatePicker,
+    rdTooltip
 } from '../../src/components/index'
 
 export default {
@@ -254,7 +256,8 @@ export default {
         radonCascader,
         radonSwitch,
         rdSlider,
-        rdDatePicker
+        rdDatePicker,
+        rdTooltip
     },
     methods: {
         userInputing () {

@@ -65,9 +65,6 @@
 .rd-datepicker-value-input {
     border: 0;
 }
-.rd-datepicker-contrl {
-    display: flex;
-}
 .rd-datepicker-info-month,
 .rd-datepicker-info-year {
     position: relative;
@@ -101,6 +98,7 @@
     top: 2rem;
 }
 .rd-datepicker-contrl {
+    display: flex;
     background-color: #e6e6e6;
     padding: 0 .5rem;
 }

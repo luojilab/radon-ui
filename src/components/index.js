@@ -10,6 +10,7 @@ import radonCascader from './form/cascader.vue'
 import radonSwitch from './form/switch.vue'
 import rdSlider from './form/slider.vue'
 import rdDatePicker from './form/datePicker.vue'
+import rdTimeline from './form/timeline.vue'
 
 // global
 import radonModal from './presentation/modal.vue'
@@ -28,6 +29,7 @@ export {
     radonSwitch,
     rdSlider,
     rdDatePicker,
+    rdTimeline,
 
     // global
     radonModal,

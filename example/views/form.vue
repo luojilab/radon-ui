@@ -60,6 +60,7 @@
             </form-item>
             <form-item title="price:">
                 <rd-slider :value.sync="slider"></rd-slider>
+                <rd-timeline :timeline="timeline"></rd-timeline>
             </form-item>
             <form-item title="出发时间:">
                 <span>233333333<rd-tooltip></td-tooltip></span>
@@ -83,7 +84,8 @@ import {
     radonSwitch,
     rdSlider,
     rdDatePicker,
-    rdTooltip
+    rdTooltip,
+    rdTimeline
 } from '../../src/components/index'
 
 export default {
@@ -92,6 +94,19 @@ export default {
     },
     data () {
         return {
+            timeline: [{
+                icon: 'ion-alert-circled',
+                color: '#2db7f5',
+                text: '创建服务现场 2015-09-01'
+            },
+            {
+                color: '#2db7f5',
+                text: '创建服务现场 2015-09-01'
+            },
+            {
+                color: 'red',
+                text: '创建服务现场 2015-09-01'
+            }],
             datePicker: {
                 value: '',
                 options: {
@@ -257,7 +272,8 @@ export default {
         radonSwitch,
         rdSlider,
         rdDatePicker,
-        rdTooltip
+        rdTooltip,
+        rdTimeline
     },
     methods: {
         userInputing () {

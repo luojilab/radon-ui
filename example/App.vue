@@ -1,3 +1,4 @@
+<style src="./lib/highlight/styles/agate.css"></style>
 <style lang="scss">
 @import '../src/sass/index';
 html,body{
@@ -59,11 +60,6 @@ html,body{
 }
 .ex-card {
     margin: 2rem 1rem;
-}
-.ex-code {
-    background: #4a4a4a;
-    padding: 1rem;
-    color: #ffffff;
 }
 </style>
 <template>

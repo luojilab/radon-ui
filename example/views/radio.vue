@@ -1,25 +1,32 @@
 <template>
 <div class="ex-content">
-    <h2>Radio 单选框</h2>
     <div class="ex-card">
-        <h3>按钮类型</h3>
-        <p>简单的checkbox</p>
-        <p class="ex-code">
-        export default { <br>
-        &nbsp;&nbsp;template: '&lt;radon-checkbox :checkbox=&quot;checkbox&quot;&gt;&lt;/radon-checkbox&gt;'<br>
-        &nbsp;&nbsp;data () {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;return {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;checkbox: {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;checked: false,<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text: '我已阅读用户协议'<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-        &nbsp;&nbsp;},<br>
-        &nbsp;&nbsp;components: {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;radonCheckbox<br>
-        &nbsp;&nbsp;}<br>
-        }<br>
-        </p>
+    <mark>
+        <textarea class="ex-mark-text">
+# Radio 单选框
+简单的radio
+
+## 代码
+```javascript
+export default { 
+  template: '<radon-checkbox :checkbox="checkbox"></radon-checkbox>'
+  data () {
+    return {
+      checkbox: {
+        checked: false,
+        text: '我已阅读用户协议'
+      }
+    }
+  },
+  components: {
+    radonCheckbox
+  }
+}
+```
+## 示例
+
+        </textarea>
+    </mark>
         <p>
             <radon-radio :radios="radios"></radon-radio>
         </p>
@@ -27,6 +34,7 @@
 </div>
 </template>
 <script>
+import mark from './mark.vue'
 import {
     radonRadio
 } from '../../src/components/index'
@@ -53,7 +61,8 @@ export default {
         }
     },
     components: {
-        radonRadio
+        radonRadio,
+        mark
     }
 }
 </script>

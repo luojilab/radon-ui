@@ -20,7 +20,7 @@
     font-size: .8rem;
     padding: 0 .5rem;
 }
-.rd-datepicker-months {
+.rd-datepicker-list {
     background-color: #fff;
     width: 13rem;
     font-size: .8rem;
@@ -28,7 +28,7 @@
     height: 14rem;
     overflow-y: auto;
 }
-.rd-datepicker-month-item:hover {
+.rd-datepicker-list-item:hover {
     background: #f3f2f2;
 }
 .rd-day-item,
@@ -125,22 +125,22 @@
                     >{{day.value}}</span>
                 </div>
             </div>
-            <div class="rd-datepicker-months" v-if="state.monthListShow">
+            <div class="rd-datepicker-list" v-if="state.monthListShow">
                 <div 
-                    class="rd-datepicker-month-item" 
+                    class="rd-datepicker-list-item" 
                     v-for="item in monthList" 
                     @click="setMonth(item)"
                 >
-                    <span class="rd-datepicker-month-item-text">{{item}}</span>
+                    <span class="rd-datepicker-list-item-text">{{item}}</span>
                 </div>
             </div>
-            <div class="rd-datepicker-months" v-if="state.yearListShow" @scroll="scrollingYear">
+            <div class="rd-datepicker-list" v-if="state.yearListShow" @scroll="scrollingYear">
                 <div 
-                    class="rd-datepicker-month-item" 
+                    class="rd-datepicker-list-item" 
                     v-for="item in yearList" 
                     @click="setYear(item)"
                 >
-                    <span class="rd-datepicker-month-item-text">{{item}}</span>
+                    <span class="rd-datepicker-list-item-text">{{item}}</span>
                 </div>
             </div>
         </div>
@@ -200,11 +200,11 @@ const generateWeekList = () => {
 
 const generateYearList = (year) => {
     let years = []
-    for (let i = 10; i > 0; i--) {
+    for (let i = 5; i > 0; i--) {
         years.push(year - i)
     }
     years.push(year)
-    for (let i = 1; i < 10; i++) {
+    for (let i = 1; i < 5; i++) {
         years.push(Math.floor(year) + i)
     }
     return years
@@ -214,6 +214,7 @@ export default {
     data () {
         return {
             value: '',
+            format: 'YYYY-MM-DD',
             state: {
                 dayListShow: true,
                 pickerShow: false,
@@ -232,13 +233,20 @@ export default {
         }
     },
     ready () {
-        this.init()
+        this.parse(this.value, this.format)
     },
     methods: {
-        init () {
-            let current = moment()
+        init (current) {
             this.dayList = generateShowList(current)
             this.timeTmp.current = current
+            this.updateData()
+        },
+        parse (value, format = 'YYYY-MM-DD') {
+            let current = moment(value)
+            if (moment(value).format(format) === 'Invalid date') {
+                current = moment()
+            }
+            this.init(current)
         },
         yearDisplay () {
             this.timeTmp.year = moment(this.timeTmp.current).get('year')
@@ -296,7 +304,7 @@ export default {
         },
         scrollingYear (e) {
             const $el = e.target
-            const childHeight = $el.getElementsByClassName('rd-datepicker-month-item')[0].offsetHeight
+            const childHeight = $el.getElementsByClassName('rd-datepicker-list-item')[0].offsetHeight
             if ($el.scrollTop < childHeight) {
                 let topYear = this.yearList[0]
                 for (let i = -1; i > -3; i--) {

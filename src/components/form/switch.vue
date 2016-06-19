@@ -9,7 +9,7 @@
         left: .2rem;
     }
     &.open .rd-switch-inner {
-        left: 1.5rem;
+        transform: translate3d(1.3rem, 0, 0);
     }
 }
 .rd-switch-container {
@@ -20,8 +20,11 @@
     width: 3rem;
     border-radius: .75rem;
     transition: color .2s;
+    &.open {
+        background: #2db7f5;
+    }
     &.open .rd-switch-inner {
-        left: 1.5rem;
+        transform: translate3d(1.3rem, 0, 0);
     }
 }
 .rd-switch-inner {
@@ -32,10 +35,8 @@
     top: .09rem;
     left: .2rem;
     border-radius: 50%;
-    transition: all .2s;
-}
-.rd-switch-container.open {
-    background: #2db7f5;
+    transform: translate3d(0, 0, 0);
+    transition: transform cubic-bezier(0.23, 1, 0.32, 1) .2s;
 }
 </style>
 <template>

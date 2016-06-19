@@ -110,14 +110,13 @@ export default {
             handle: {
                 $el: null,
                 move: false,
-                currentX: 600,
-                percent: 20
+                currentX: 0,
+                percent: 0
             }
         }
     },
     ready () {
         this.init()
-        this.handle.percent = this.value
         document.body.addEventListener('mousemove', this.moveAction, false)
         document.body.addEventListener('mouseup', this.mouseupAction, false)
     },
@@ -130,8 +129,8 @@ export default {
             this.handle.$el = this.$el.getElementsByClassName('rd-slider-handle')[0]
             this.handleWidth = this.handle.$el.getBoundingClientRect().width
             this.startX = this.$el.getBoundingClientRect().left
-            this.width = this.$el.getBoundingClientRect().width // - this.handleWidth
-            console.log(this.startX, this.$el.getBoundingClientRect().left, this.handleWidth)
+            this.width = this.$el.getBoundingClientRect().width
+            this.handle.currentX = this.value * this.width * 0.01
         },
         touchAction (e) {
             this.init()

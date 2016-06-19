@@ -19,6 +19,7 @@
             <radon-button>默认按钮</radon-button>
             <radon-button type="primary">推荐按钮</radon-button>
             <radon-button type="ghost">幽灵按钮</radon-button>
+            <radon-button type="ghost" :disabled="true">幽灵按钮(失效)</radon-button>
         </p>
     </div>
     <div class="ex-card">

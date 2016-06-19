@@ -64,7 +64,9 @@
     height: 2rem;
     line-height: 2rem;
     padding: 0;
-    margin-right: 0;
+    i {
+        margin-right: 0;
+    }
 }
 @-webkit-keyframes loading {
   from {
@@ -97,6 +99,16 @@
     display: inline-block;
     animation: loading 1s infinite linear;
 }
+.rd-btn-disabled {
+    color: #c3c3c3;
+    background: #ececec;
+    cursor: not-allowed;
+}
+.rd-btn-disabled:hover {
+    color: #a7a7a7;
+    background: #ececec;
+    border-color: #d9d9d9;
+}
 </style>
 <template>
     <button 
@@ -107,7 +119,8 @@
             'rd-btn-ghost'   : type === 'ghost',
             'rd-btn-icon'    : type === 'icon',
             'rd-btn-small'   : size === 'small',
-            'rd-btn-large'   : size === 'large'
+            'rd-btn-large'   : size === 'large',
+            'rd-btn-disabled': disabled
         }"
     >
         <span class="rd-btn-loading ion-load-a" v-if="loading"></span>
@@ -132,6 +145,12 @@ export default {
             }
         },
         loading: {
+            type: Boolean,
+            default () {
+                return false
+            }
+        },
+        disabled: {
             type: Boolean,
             default () {
                 return false

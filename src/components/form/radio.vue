@@ -6,21 +6,24 @@
 .rd-radio-inner {
     position: relative;
     display: inline-block;
-    height: 16px;
-    width: 16px;
+    height: 1rem;
+    width: 1rem;
     border: 1px solid #ccc;
     border-radius: 50%;
 }
 .rd-radio-inner::after {
-    content: ' ';
+    content: '';
+    position: absolute;
     display: inline-block;
     background: #57c5f7;
     border-radius: 50%;
-    height: 8px;
-    width: 8px;
-    position: absolute;
-    top: 3px;
-    left: 3px;
+    height: .5rem;
+    width: .5rem;
+    opacity: 1;
+    top: 50%;
+    left: 50%;
+    margin-top: -.25rem;
+    margin-left: -.25rem;
     border: none;
     opacity: 0;
     transition: opacity .2s;

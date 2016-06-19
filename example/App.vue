@@ -71,12 +71,39 @@ html,body{
 .ex-card {
     margin: 2rem 1rem;
 }
+.show-slider {
+    display: none;
+    position: fixed;
+    font-size: 2rem;
+    left: 1rem;
+    top: .5rem;
+    line-height: 2rem;
+    z-index: 3;
+}
+@media screen and (max-width: 1000px) {
+    html {
+        font-size: 40px;
+    }
+    .container {
+        padding-left: 0;
+    }
+    .show-slider {
+        display: inline-block;
+    }
+    .sidebar {
+        padding-top: 3rem;
+        z-index: 2;
+    }
+}
 </style>
 <template>
 	<div class="container">
-		<div class="sidebar">
+        <div class="show-slider" @click="sliderShow = !sliderShow">
+            <span class="ion-navicon"></span>   
+        </div>
+		<div class="sidebar" v-show="sliderShow">
             <div class="ex-menu-container">
-                <menu :menu="menu"></menu>
+                <menu :menu="menu" @click="mobileClick"></menu>
             </div>      
         </div>
 		<div class="content">
@@ -96,6 +123,7 @@ import {
 export default {
     data () {
         return {
+            sliderShow: document.body.offsetWidth > 1000,
             Notifications: [],
             menu: [{
                 title: 'Radon UI for Vue',
@@ -193,6 +221,11 @@ export default {
         rdNotification
     },
     methods: {
+        mobileClick () {
+            if (document.body.offsetWidth < 768) {
+                this.sliderShow = false
+            }
+        }
     }
 }
 </script>

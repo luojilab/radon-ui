@@ -49,10 +49,10 @@ export default {
             progress.percent = 0
             progress.options.state = ''
             let timer = setInterval(() => {
-                if (progress.percent < 100) {
+                if (progress.percent &lt; 100) {
                     progress.percent++
                 } else {
-                    if (Math.random() * 2 < 1) {
+                    if (Math.random() * 2 &lt; 1) {
                         progress.options.state = 'failed'
                     } else {
                         progress.options.state = 'success'

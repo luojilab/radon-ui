@@ -46,6 +46,8 @@
     border: 1px solid #ccc;
     top: 2.2rem;
     left: -1px;
+    background-color: #fff;
+    z-index: 2;
 }
 
 .rd-select-option {

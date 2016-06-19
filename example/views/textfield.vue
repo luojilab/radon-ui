@@ -8,6 +8,7 @@
 ## 代码
 ```javascript
 export default {
+    template: '<radon-text :textfield="form.user" :input="userInputing"></radon-text>'
     data () {
         return {
             form: {
@@ -28,7 +29,7 @@ export default {
         userInputing () {
             this.form.user.state = 'loading'
             setTimeout(() => {
-                if (this.form.user.value.length < 6) {
+                if (this.form.user.value.length &lt; 6) {
                     this.form.user.state = 'failed'
                     this.form.user.tip = '该用户名已被使用'
                 } else {
@@ -41,7 +42,6 @@ export default {
 }
 ```
 ## 示例
-
         </textarea>
     </mark>
         <p>
@@ -77,7 +77,6 @@ export default {
     methods: {
         userInputing () {
             this.form.user.state = 'loading'
-
             setTimeout(() => {
                 if (this.form.user.value.length < 6) {
                     this.form.user.state = 'failed'

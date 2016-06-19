@@ -17,11 +17,17 @@
 .rd-timeline-icon-dot {
     position: absolute;
     left: 0;
+    top: .1rem;
     z-index: 1;
     display: inline-block;
     height: .9rem;
     width: .9rem;
     border-radius: 50%;
+    background-color: #fff;
+    transtion: opcity .2s;
+}
+.rd-timeline-icon-dot:hover {
+    opacity: 0.8;
 }
 .rd-timeline-icon-circle {
     background: rgba(255, 255, 255, 0.92);
@@ -29,8 +35,8 @@
 }
 .rd-timeline-item-tail {
     position: absolute;
-    left: 5px;
-    top: 0;
+    left: .4rem;
+    top: .2rem;
     height: 100%;
     border-left: 2px solid #e9e9e9;
 }

@@ -8,17 +8,17 @@
 
 ### 按钮类型
 ```html
-<radon-button>default</radon-button>
-<radon-button type="primary">primary</radon-button>
-<radon-button type="ghost">ghost</radon-button>
+<radon-button>默认按钮</radon-button>
+<radon-button type="primary">推荐按钮</radon-button>
+<radon-button type="ghost">幽灵按钮</radon-button>
 
 ```
         </textarea>
     </mark>
         <p>
-            <radon-button>default</radon-button>
-            <radon-button type="primary">primary</radon-button>
-            <radon-button type="ghost">ghost</radon-button>
+            <radon-button>默认按钮</radon-button>
+            <radon-button type="primary">推荐按钮</radon-button>
+            <radon-button type="ghost">幽灵按钮</radon-button>
         </p>
     </div>
     <div class="ex-card">
@@ -34,9 +34,9 @@
             </textarea>
         </mark>
         <p>
-            <radon-button type="primary" size="large">large</radon-button>
-            <radon-button type="primary">common</radon-button>
-            <radon-button type="primary" size="small">small</radon-button>
+            <radon-button type="primary" size="large">Large</radon-button>
+            <radon-button type="primary">Common</radon-button>
+            <radon-button type="primary" size="small">Small</radon-button>
         </p>
     </div>
     <div class="ex-card">
@@ -82,13 +82,13 @@
             <textarea class="ex-mark-text">
 ### loading
 ```html
-<radon-button type="ghost" :loading="true">save</radon-button>
+<radon-button type="ghost" :loading="true">保存</radon-button>
 
 ```
             </textarea>
         </mark>
         <p>
-            <radon-button type="ghost" :loading="true">save</radon-button>
+            <radon-button type="ghost" :loading="true">保存</radon-button>
         </p>
     </div>
 </div>

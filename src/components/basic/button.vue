@@ -7,16 +7,22 @@
     -ms-touch-action: manipulation;
     touch-action: manipulation;
     cursor: pointer;
-    background-color: #57c5f7;
     border: 1px solid transparent;
     white-space: nowrap;
-    padding: .5rem;
-    font-size: 1rem;
+    padding: .3rem;
+    font-size: .8rem;
+    line-height: 1.5;
     min-width: 5rem;
-    color: #fff;
     border-radius: 4px;
     transition: background 0.2s;
     outline: none;
+    color: #666;
+    background-color: #f7f7f7;
+    border-color: #d9d9d9;
+    i,
+    .rd-btn-loading {
+        margin-right: .3rem;
+    }
 }
 .rd-btn-default {
     color: #666;
@@ -26,6 +32,7 @@
 .rd-btn-primary {
     color: #fff;
     background-color: #57c5f7;
+    border-color: #57c5f7;
 }
 .rd-btn-ghost {
     color: #666;
@@ -47,7 +54,7 @@
     min-width: initial;
 }
 .rd-btn.rd-btn-large {
-    padding: .5rem 1.5rem;
+    padding: .3rem 1.5rem;
     font-size: 1.4rem;
 }
 .rd-btn.rd-btn-icon {
@@ -57,6 +64,7 @@
     height: 2rem;
     line-height: 2rem;
     padding: 0;
+    margin-right: 0;
 }
 @-webkit-keyframes loading {
   from {

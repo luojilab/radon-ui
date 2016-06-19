@@ -5,7 +5,7 @@
     .rd-switch-inner {
         height: .8rem;
         width: .8rem;
-        top: .1rem;
+        top: .09rem;
         left: .2rem;
     }
     &.open .rd-switch-inner {
@@ -21,7 +21,7 @@
     border-radius: .75rem;
     transition: color .2s;
     &.open .rd-switch-inner {
-        left: 1.6rem;
+        left: 1.5rem;
     }
 }
 .rd-switch-inner {
@@ -29,7 +29,7 @@
     height: 1.3rem;
     width: 1.3rem;
     background: #fff;
-    top: .1rem;
+    top: .09rem;
     left: .2rem;
     border-radius: 50%;
     transition: all .2s;

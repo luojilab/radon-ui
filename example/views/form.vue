@@ -5,8 +5,8 @@
 </style>
 <template>
     <div>
-        <radon-button @click="notificationAction">default</radon-button>
-        <radon-button type="primary">primary</radon-button>
+        <radon-button @click="notificationAction">默认按钮</radon-button>
+        <radon-button type="primary">按钮</radon-button>
         <radon-button type="ghost" size="large">large</radon-button>
         <radon-button type="ghost">common</radon-button>
         <radon-button type="ghost" size="small">small</radon-button>

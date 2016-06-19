@@ -5,7 +5,7 @@
 </style>
 <template>
     <div>
-        <radon-button>default</radon-button>
+        <radon-button @click="notificationAction">default</radon-button>
         <radon-button type="primary">primary</radon-button>
         <radon-button type="ghost" size="large">large</radon-button>
         <radon-button type="ghost">common</radon-button>
@@ -198,9 +198,6 @@ const options = [{
 }]
 
 export default {
-    props: {
-        createModal: Function
-    },
     data () {
         return {
             cascader: {
@@ -390,6 +387,9 @@ export default {
         rdAlert
     },
     methods: {
+        notificationAction () {
+            this.$Notification.success('2333', '233', 5000)
+        },
         userInputing () {
             this.form.user.state = 'loading'
 
@@ -413,7 +413,7 @@ export default {
             }
         },
         failed (input) {
-            this.createModal('网络错误', '无法连接到服务器', () => {
+            this.$Modal.create('网络错误', '无法连接到服务器', () => {
                 input.state = 'default'
             }, () => {
                 console.log('canceled')

@@ -8,13 +8,13 @@ html,body{
 .container{
     height: 100%;
     position: relative;
-    padding-left: 20%;
+    padding-left: 15rem;
     box-sizing: border-box;
     overflow-x: hidden;
 }
 .sidebar {
     position: fixed;
-    width: 20%;
+    width: 15rem;
     height: 100%;
     border-right: 1px solid #f7f7f7;
     top: 0;
@@ -34,6 +34,7 @@ html,body{
 }
 .ex-menu-item {
     position: relative;
+    cursor: pointer;
 }
 .ex-menu-title-container {
     font-size: 1rem;
@@ -50,6 +51,8 @@ html,body{
 }
 .ex-sub-menu-item {
     padding: 1rem 2rem;
+    font-size: .8rem;
+    cursor: pointer;
 }
 .ex-menu-title-arrow {
     position: absolute;
@@ -77,18 +80,23 @@ html,body{
             </div>      
         </div>
 		<div class="content">
-			<router-view :create-modal="createModal"></router-view>
+			<router-view></router-view>
 		</div>
         <radon-modal :modal="modal"></radon-modal>
+        <rd-notification :notifications="Notifications"></rd-notification>
 	</div>
 </template>
 <script>
 import Menu from './views/menu.vue'
-import { radonModal } from '../src/components/index'
+import {
+    radonModal,
+    rdNotification
+} from '../src/components/index'
 
 export default {
     data () {
         return {
+            Notifications: [],
             menu: [{
                 title: 'Radon UI for Vue',
                 subTitle: 'ui',
@@ -176,20 +184,15 @@ export default {
             }
         }
     },
+    created () {
+        this.$SetRoot(this)
+    },
     components: {
         Menu,
-        radonModal
+        radonModal,
+        rdNotification
     },
     methods: {
-        createModal (title, text, confirm, cancel) {
-            this.modal = {
-                show: true,
-                title: title,
-                content: text,
-                cancel: cancel,
-                confirm: confirm
-            }
-        }
     }
 }
 </script>

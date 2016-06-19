@@ -17,6 +17,7 @@ import rdSelect from './form/select.vue'
 import radonModal from './presentation/modal.vue'
 import rdTooltip from './presentation/toolTip.vue'
 import rdAlert from './presentation/alert.vue'
+import rdNotification from './presentation/notification.vue'
 
 export {
     rdSelect,
@@ -35,6 +36,7 @@ export {
     rdTimeline,
 
     // global
+    rdNotification,
     radonModal,
     rdTooltip,
     rdAlert

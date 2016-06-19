@@ -48,6 +48,7 @@
     "sass-loader": "^3.2.0",
     "shelljs": "^0.6.0",
     "url-loader": "^0.5.7",
+    "vue-animated-list": "^1.0.2",
     "vue-hot-reload-api": "^1.2.0",
     "vue-html-loader": "^1.0.0",
     "vue-loader": "^8.3.0",

@@ -9,8 +9,9 @@
     padding: .5rem 1rem .5rem 3rem;
     .rd-alert-icon {
         font-size: 2rem;
-        top: .5rem;
+        top: 50%;
         left: .5rem;
+        margin-top: -1rem;
     }
     .rd-alert-title {
         font-size: 1rem;
@@ -31,6 +32,7 @@
             left: .5rem;
             font-size: 1rem;
             top: initial;
+            margin-top: 0;
         }
     }
     &.success {

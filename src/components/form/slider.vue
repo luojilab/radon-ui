@@ -9,17 +9,33 @@
     border-radius: .2rem;
 }
 .rd-slider-handle {
-    position: relative;
-    background: rgba(255, 255, 255, 0.92);
-    height: 0.9rem;
-    width: .9rem;
     position: absolute;
-    top: -.25rem;
+    height: 2rem;
+    width: 2rem;
+    top: -.8rem;
     left: 0;
     border-radius: 50%;
     cursor: pointer;
-    border: .15rem solid #2db7f5;
-    transition: left .1s;
+    background-color: rgba(0, 0, 0, 0);
+    transition: left .1s, background-color .2s;
+    z-index: 1;
+    &::after {
+        content: '';
+        position: absolute;
+        background: rgba(255, 255, 255, 0.92);
+        height: .9rem;
+        width: .9rem;
+        top: 50%;
+        left: 50%;
+        margin: -.45rem;
+        border-radius: 50%;
+        cursor: pointer;
+        border: .15rem solid #2db7f5;
+        transition: height cubic-bezier(0.23, 1, 0.32, 1) 450ms, width cubic-bezier(0.23, 1, 0.32, 1) 450ms, margin 10ms;
+    }
+    &:hover {
+       background-color: rgba(0, 0, 0, 0.16);
+    }
 }
 .rd-slider-handle-tip {
     display: none;
@@ -35,6 +51,7 @@
     padding: .5rem;
     border-radius: .5rem;
     transition: all .2s;
+    transform: translateX(-1rem);
 }
 .rd-slider-handle.move .rd-slider-handle-tip {
     display: block;
@@ -46,7 +63,7 @@
     <div class="rd-slider">
         <div 
             class="rd-slider-handle"
-            :style="{ 'left': handle.percent + '%' }"
+            :style="{ 'transform': 'translate3D(' + handle.currentX + 'px, 0, 0)' }"
             :class="{ 'move': handle.move }"
             @mousedown="touchAction"
         >
@@ -61,8 +78,8 @@ const getMousePosition = function (e) {
     return e.pageX
 }
 
-const calcPercent = function (x, start, width) {
-    return Math.floor((x - start) / width * 100)
+const calcPercent = function (x, width) {
+    return Math.floor(x / width * 100)
 }
 
 export default {
@@ -89,7 +106,9 @@ export default {
         return {
             startX: 0,
             width: 0,
+            handleWidth: 0,
             handle: {
+                $el: null,
                 move: false,
                 currentX: 600,
                 percent: 20
@@ -108,9 +127,11 @@ export default {
     },
     methods: {
         init () {
+            this.handle.$el = this.$el.getElementsByClassName('rd-slider-handle')[0]
+            this.handleWidth = this.handle.$el.getBoundingClientRect().width
             this.startX = this.$el.getBoundingClientRect().left
-            this.width = this.$el.getBoundingClientRect().width
-            window.a = this.$el
+            this.width = this.$el.getBoundingClientRect().width // - this.handleWidth
+            console.log(this.startX, this.$el.getBoundingClientRect().left, this.handleWidth)
         },
         touchAction (e) {
             this.init()
@@ -121,14 +142,16 @@ export default {
         },
         moveAction (e) {
             if (!this.handle.move) return
-            const x = getMousePosition(e) - 7
-            if (x > this.startX && x < this.startX + this.width) {
-                this.handle.currentX = getMousePosition(e) - 7
-                if (this.checkSize(calcPercent(this.handle.currentX, this.startX, this.width))) {
-                    let percent = calcPercent(this.handle.currentX, this.startX, this.width)
+            const radius = this.handleWidth * 0.5
+            const x = getMousePosition(e) - this.startX - radius
+
+            if (x > -radius && x < this.startX + this.width) {
+                let percent = calcPercent(x + radius, this.width)
+                if (this.checkSize(percent)) {
                     percent = this.setStep(percent)
                     this.handle.percent = percent
                     this.value = percent
+                    this.handle.currentX = x
                 }
             }
         },

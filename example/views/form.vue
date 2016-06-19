@@ -67,6 +67,9 @@
                 <rd-date-picker :value.sync="datePicker.value" :options="datePicker.options"></rd-date-picker>
                 <rd-alert></rd-alert>
             </form-item>
+            <div>
+                <rd-table></rd-table>
+            </div>
         </form>
     </div>
 </template>
@@ -87,7 +90,8 @@ import {
     rdDatePicker,
     rdTooltip,
     rdTimeline,
-    rdAlert
+    rdAlert,
+    rdTable
 } from '../../src/components/index'
 
 const options = [{
@@ -384,7 +388,8 @@ export default {
         rdDatePicker,
         rdTooltip,
         rdTimeline,
-        rdAlert
+        rdAlert,
+        rdTable
     },
     methods: {
         notificationAction () {

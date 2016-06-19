@@ -48,9 +48,6 @@ import {
 } from '../../src/components/index'
 
 export default {
-    props: {
-        createModal: Function
-    },
     data () {
         return {
             timeline: [{

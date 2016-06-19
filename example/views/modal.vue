@@ -65,9 +65,6 @@ import {
 } from '../../src/components/index'
 
 export default {
-    props: {
-        createModal: Function
-    },
     data () {
         return {}
     },
@@ -77,7 +74,7 @@ export default {
     },
     methods: {
         open () {
-            this.createModal(
+            this.$Modal.create(
                 '这里是标题',
                 '这里应该说点什么',
                 () => {

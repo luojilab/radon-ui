@@ -183,9 +183,6 @@ const options = [{
 }]
 
 export default {
-    props: {
-        createModal: Function
-    },
     data () {
         return {
             cascader: {

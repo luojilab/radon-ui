@@ -13,6 +13,7 @@ import rdDatePicker from './form/datePicker.vue'
 import rdTimeline from './form/timeline.vue'
 import rdSelect from './form/select.vue'
 import rdTable from './form/tabel.vue'
+import rdTimePicker from './form/timePicker.vue'
 
 // global
 import radonModal from './presentation/modal.vue'
@@ -36,6 +37,7 @@ export {
     rdDatePicker,
     rdTimeline,
     rdTable,
+    rdTimePicker,
 
     // global
     rdNotification,

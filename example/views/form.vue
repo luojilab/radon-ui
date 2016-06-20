@@ -64,6 +64,7 @@
             </form-item>
             <form-item title="出发时间:">
                 <span>233333333<rd-tooltip></td-tooltip></span>
+                <rd-time-picker></rd-time-picker>
                 <rd-date-picker :value.sync="datePicker.value" :options="datePicker.options"></rd-date-picker>
                 <rd-alert></rd-alert>
             </form-item>
@@ -91,7 +92,8 @@ import {
     rdTooltip,
     rdTimeline,
     rdAlert,
-    rdTable
+    rdTable,
+    rdTimePicker
 } from '../../src/components/index'
 
 const options = [{
@@ -455,7 +457,8 @@ export default {
         rdTooltip,
         rdTimeline,
         rdAlert,
-        rdTable
+        rdTable,
+        rdTimePicker
     },
     methods: {
         editTable (row) {

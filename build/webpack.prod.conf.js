@@ -6,6 +6,7 @@ var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 var env = process.env.NODE_ENV === 'testing' ? require('../config/test.env') : config.build.env
 
 var webpackConfig = merge(baseWebpackConfig, {
@@ -20,10 +21,11 @@ var webpackConfig = merge(baseWebpackConfig, {
     },
     vue: {
         loaders: utils.cssLoaders({
-            sourceMap: config.build.productionSourceMap,
-            extract: true
-        })
-    },
+          sourceMap: true,
+          extract: true
+        }),
+        postcss: [require('precss')(), require("postcss-url")()]
+      },
     plugins: [
         // http://vuejs.github.io/vue-loader/workflow/production.html
         new webpack.DefinePlugin({
@@ -34,9 +36,15 @@ var webpackConfig = merge(baseWebpackConfig, {
                 warnings: false
             }
         }),
-        new webpack.optimize.OccurenceOrderPlugin(),
         // extract css into its own file
-        // new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash].css')),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        // optimize duplicate code
+        new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash].css')),
+        new OptimizeCssAssetsPlugin({
+          cssProcessor: require('cssnano'),
+          cssProcessorOptions: { discardComments: {removeAll: true } },
+          canPrint: true
+        }),
         // generate dist index.html with correct asset hash for caching.
         // you can customize output by editing /index.html
         // see https://github.com/ampedandwired/html-webpack-plugin
@@ -87,7 +95,14 @@ var webpackConfig = merge(baseWebpackConfig, {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'manifest',
             chunks: ['vendor']
-        })
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+                compress: {
+                    warnings: false
+                },
+                exclude: /vendor*/i
+            }
+        )
     ]
 })
 

@@ -11,11 +11,13 @@ Object.keys(baseWebpackConfig.entry).forEach(function (name) {
 })
 
 module.exports = merge(baseWebpackConfig, {
-  module: {
-    loaders: utils.styleLoaders()
-  },
-  // eval-source-map is faster for development
   devtool: '#eval-source-map',
+  vue: {
+    loaders: utils.cssLoaders({
+      sourceMap: true
+    }),
+    postcss: [require('precss')(), require("postcss-url")()]
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': config.dev.env

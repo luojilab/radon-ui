@@ -1,5 +1,5 @@
 <style>
-@import '../../css/index';
+@import '../../css/base/base';
 .rd-datepicker-container {
     position: relative;
     border: 1px solid $border-color-base;
@@ -64,6 +64,8 @@
 }
 .rd-datepicker-value-input {
     border: 0;
+    height: 100%;
+    outline: 0;
 }
 .rd-datepicker-info-month,
 .rd-datepicker-info-year {

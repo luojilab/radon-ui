@@ -1,6 +1,101 @@
-<style>
+<style lang="scss">
 @import '../../css/index';
 
+.rd-page{
+    font-size: 12px;
+    &:after{
+        display: table;
+        content: '';
+        height: 0;
+        clear: both;
+        overflow: hidden;
+    }
+    .item {
+        cursor: pointer;
+        border-radius: 6px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        min-width: 28px;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        list-style: none;
+        float: left;
+        border: 1px solid $border-color-base ;
+        background-color: #fff;
+        margin-right: 8px;
+        font-family: Arial;
+        span{
+            margin: 0 6px;
+            color: $text-color;
+        }
+        &:hover{
+            border-color: $primary-color ;
+            span{
+                color: $info-color;
+            }
+        }
+        &.active{
+            background-color: $primary-color ;
+            border-color: $info-color ;
+            span{
+                color: #fff;
+            }
+        }
+        &.disabled{
+            cursor: not-allowed;
+            border-color: $border-color-base;
+            span{
+                color: $btn-disable-color ;
+            }
+        }
+    }
+    .jump-prev, .jump-next{
+        font-family: Arial;
+        cursor: pointer;
+        color: $text-color;
+        border-radius: 6px;
+        list-style: none;
+        min-width: 28px;
+        height: 28px;
+        line-height: 28px;
+        float: left;
+        text-align: center;
+        -webkit-transition: all .3s ease;
+        transition: all .3s ease;
+        display: inline-block;
+        margin-right: 8px;
+        &:after{
+            content: "\2022\2022\2022";
+            display: block;
+            letter-spacing: 2px;
+            color: $btn-disable-color;
+            text-align: center;
+        }
+    }
+    .jump-prev:hover{
+        &:after{
+            content: "\f3d2\f3d2";
+            color: $primary-color;
+            display: inline-block;
+            zoom: 1;
+            letter-spacing: 1px;
+            font-family: "Ionicons";
+        }
+    }
+    .jump-next:hover{
+        &:after{
+            content: "\f3d3\f3d3";
+            color: $primary-color;
+            display: inline-block;
+            zoom: 1;
+            letter-spacing: 1px;
+            font-family: "Ionicons";
+        }
+    }
+}
 </style>
 <template>
     <div class="rd-pagination">
@@ -8,21 +103,27 @@
         <div class="rd-jump" v-if="showJump">
             <input type="text" v-model="pageJump" /><span>search</span>
         </div>
-        <ul class="rd-page" v-if="showList">
-            <li @click="first" v-show="pageStart != 1">
-                <span>first</span>
+        <ul class="rd-page" v-if="showList && pageList.length > 0">
+            <li class="item" @click="prev" :class="{'disabled': pageStart == 1}" >
+                <span class="ion-ios-arrow-left"></span>
             </li>
-            <li @click="prev" v-show="pageStart != 1" class="button">
-                <span>Prev</span>
+            <li class="item" :class="{'active': 1 == pageStart}" @click="first">
+                <span>1</span>
             </li>
-            <li :class="{'active': el == pageStart}" @click="pagePath(el)" v-for="el in pageList">
+             <li class="jump-prev" @click="jump(-5)"  v-show="pageLimit.max > 10 && pageStart > 4">
+                <span></span>
+            </li>
+            <li class="item" :class="{'active': el == pageStart}" @click="pagePath(el)" v-for="el in pageList">
                 <span>{{el}}</span>
             </li>
-            <li @click="next" v-show="pageStart != pageLimit.max" class="button">
-                <span>Next</span>
+            <li class="jump-next" @click="jump(5)" v-show="pageLimit.max > 10 && pageStart <= pageLimit.max - 4">
+                <span></span>
             </li>
-            <li @click="last" v-show="pageStart != pageLimit.max">
-                <span>Last</span>
+            <li class="item" @click="last" :class="{'active': pageLimit.max == pageStart}" >
+                <span>{{pageLimit.max}}</span>
+            </li>
+            <li class="item" @click="next" :class="{'disabled': pageStart == pageLimit.max}" >
+                <span class="ion-ios-arrow-right"></span>
             </li>
         </ul>
     </div>
@@ -40,53 +141,16 @@ let optionsDefault = {
     },
     showInfo: false,
     showJump: false,
-    listNumber: 7
+    listNumber: 5
 }
 let vueObj = {
     length: 0
 }
 
-function getData (pageIndex) {
-    let params = {
-        [this.$optionsDefault.remote.pageIndexName]: pageIndex + this.$optionsDefault.remote.offset,
-        [this.$optionsDefault.remote.pageSizeName]: this.$optionsDefault.pageSize
-    }
-    Object.assign(params, this.$optionsDefault.remote.params)
-    let ajax = this.$ajax || this.$http
-    ajax.get(this.$optionsDefault.remote.url, params).then((res) => {
-        var resData = res.data
-        this.pageData = this.$optionsDefault.remote.dataKey ? resData[this.$optionsDefault.remote.dataKey] : resData
-        this.pageLimit.total = resData[this.$optionsDefault.remote.totalName]
-        if (this.pageLimit.total % this.$optionsDefault.pageSize === 0) {
-            this.pageLimit.max = Math.floor(this.pageLimit.total / this.$optionsDefault.pageSize) || 5
-        } else {
-            this.pageLimit.max = Math.floor(this.pageLimit.total / this.$optionsDefault.pageSize + 1) || 5
-        }
-        pageListInit.call(this, pageIndex)
-    }, function (error) {
-        console.error(error)
-    })
-};
-
-function pageListInit (now) {
-    let arr = []
-    for (let i = 1; i <= this.pageLimit.max; i++) {
-        arr.push(i)
-    }
-    if (now < this.$optionsDefault.listNumber) {
-        this.pageList = arr.slice(0, 9)
-    } else if (now > this.pageLimit.max - optionsDefault.listNumber + 1) {
-        this.pageList = arr.slice(-9)
-    } else {
-        let start = now - 1 - Math.floor(optionsDefault.listNumber / 2)
-        this.pageList = arr.slice(start, start + optionsDefault.listNumber)
-    }
-};
-
 let pagination = {
     replace: true,
     inherit: false,
-    props: ['pageData', 'url', 'name'],
+    props: ['pageData', 'url', 'name', 'dataKey', 'options'],
     data () {
         return {
             showJump: false,
@@ -104,7 +168,7 @@ let pagination = {
     },
     ready () {
         this.$optionsDefault = {}
-        Object.assign(this.$optionsDefault, optionsDefault, this.$ajaxOptionsDefault)
+        Object.assign(this.$optionsDefault, optionsDefault, this.options)
         if (this.url) {
             this.$optionsDefault.remote.url = this.url
         }
@@ -115,28 +179,84 @@ let pagination = {
             vueObj[vueObj.length] = this
             vueObj.length++
         }
-        getData.call(this, 1, 10)
+        this.getData(1)
     },
     methods: {
         pagePath (pageNumber) {
             this.pageStart = pageNumber
-            getData.call(this, this.pageStart)
+            this.getData()
         },
         first () {
-            this.pageStart = 1
-            getData.call(this, this.pageStart)
+            if (this.pageStart !== 1) {
+                this.pageStart = 1
+                this.getData()
+            }
         },
         last () {
-            this.pageStart = this.pageLimit.max
-            getData.call(this, this.pageStart)
+            if (this.pageStart !== this.pageLimit.max) {
+                this.pageStart = this.pageLimit.max
+                this.getData()
+            }
         },
         prev () {
+            if (this.pageStart === 1) {
+                return
+            }
             this.pageStart > this.pageLimit.min ? this.pageStart-- : this.pageStart = 1
-            getData.call(this, this.pageStart)
+            this.getData()
         },
         next () {
+            if (this.pageStart === this.pageLimit.max) {
+                return
+            }
             this.pageStart < this.pageLimit.max ? this.pageStart++ : this.pageStart = this.max
-            getData.call(this, this.pageStart, optionsDefault.pageSize)
+            this.getData()
+        },
+        jump (pageNumber) {
+            this.pageStart = this.pageStart + pageNumber > 1 ? (this.pageStart + pageNumber) : 1
+            if (this.pageStart > this.pageLimit.max) {
+                this.pageStart = this.pageLimit.max
+            }
+            this.getData()
+        },
+        getData () {
+            let params = {
+                [this.$optionsDefault.remote.pageIndexName]: this.pageStart + this.$optionsDefault.remote.offset,
+                [this.$optionsDefault.remote.pageSizeName]: this.$optionsDefault.pageSize
+            }
+            Object.assign(params, this.$optionsDefault.remote.params)
+            let ajax = this.$ajax || this.$http
+            ajax.get(this.$optionsDefault.remote.url, params).then((res) => {
+                var resData = res.data
+                this.pageData = this.dataKey ? resData[this.dataKey] : resData
+                this.pageLimit.total = resData[this.$optionsDefault.remote.totalName]
+                if (this.pageLimit.total % this.$optionsDefault.pageSize === 0) {
+                    this.pageLimit.max = Math.floor(this.pageLimit.total / this.$optionsDefault.pageSize) || 5
+                } else {
+                    this.pageLimit.max = Math.floor(this.pageLimit.total / this.$optionsDefault.pageSize + 1) || 5
+                }
+                this.pageListInit()
+            }, function (error) {
+                console.error(error)
+            })
+        },
+        pageListInit () {
+            let arr = []
+            for (let i = 2; i <= this.pageLimit.max - 1; i++) {
+                arr.push(i)
+            }
+            if (this.pageLimit.max < 10) {
+                this.pageList = arr.slice(0, this.pageLimit.max)
+                return
+            }
+            if (this.pageStart < 4) {
+                this.pageList = arr.slice(0, 4)
+            } else if (this.pageStart > this.pageLimit.max - optionsDefault.listNumber + 2) {
+                this.pageList = arr.slice(-4)
+            } else {
+                let start = this.pageStart - 2 - Math.floor(optionsDefault.listNumber / 2)
+                this.pageList = arr.slice(start, start + optionsDefault.listNumber)
+            }
         }
     }
 }

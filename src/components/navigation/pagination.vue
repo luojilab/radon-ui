@@ -1,4 +1,4 @@
-<style lang="scss">
+<style>
 @import '../../css/index';
 
 .rd-page{

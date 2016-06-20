@@ -36,10 +36,12 @@ var webpackConfig = merge(baseWebpackConfig, {
                 warnings: false
             }
         }),
-        // extract css into its own file
+        
         new webpack.optimize.OccurenceOrderPlugin(),
+        // extract css into its own file
+        new ExtractTextPlugin(utils.assetsPath('css/[name].css')),
+        // https://github.com/NMFR/optimize-css-assets-webpack-plugin
         // optimize duplicate code
-        new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash].css')),
         new OptimizeCssAssetsPlugin({
           cssProcessor: require('cssnano'),
           cssProcessorOptions: { discardComments: {removeAll: true } },

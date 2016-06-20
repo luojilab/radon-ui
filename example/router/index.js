@@ -90,6 +90,12 @@ router.map({
             require(['../views/progress.vue'], resolve)
         }
     },
+    '/table': {
+        name: 'table',
+        component: (resolve) => {
+            require(['../views/table.vue'], resolve)
+        }
+    },
     '/form': {
         name: 'from',
         component: (resolve) => {

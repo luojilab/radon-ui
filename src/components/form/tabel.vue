@@ -16,111 +16,62 @@
     text-align: left;
     padding: 1rem .5rem;
 }
+.rd-table-td .rd-btn {
+    margin-right: .5rem;
+}
 </style>
 <template>
     <table class="rd-table">
         <thead class="rd-table-thead">
             <tr class="rd-table-th">
-                <td v-if="options.select">
+                <td v-if="table.options.select">
                     <radon-checkbox @click="selectAllAction" :checkbox="selectAll"></radon-checkbox>
                 </td>
-                <td class="rd-table-td" v-for="col in data.columns">{{col.value}}</td>
+                <td class="rd-table-td" v-for="col in table.columns">{{col.value}}</td>
+                <td v-if="table.actions">
+                    <span>操作</span>
+                </td>
             </tr>
         </thead>
         <tbody>
-            <tr class="rd-table-th" v-for="row in data.tableData" track-by="$index">
-                <td v-if="row.SELECT_CHECKBOX && row.SELECT_CHECKBOX.show">
-                    <radon-checkbox :checkbox="row.SELECT_CHECKBOX.checkbox"></radon-checkbox>
+            <tr class="rd-table-th" v-for="row in table.tableData" track-by="$index">
+                <td v-if="row.checkbox">
+                    <radon-checkbox :checkbox="row.checkbox"></radon-checkbox>
                 </td>
                 <td class="rd-table-td" v-for="val in row.value" track-by="$index">{{val}}</td>
+                <td class="rd-table-td" v-if="table.actions">
+                    <rd-button v-for="action in table.actions" size="small" @click="action.func($event, row)">{{action.text}}</rd-button>
+                </td>
             </tr>
         </tbody>
     </table>
 </template>
 <script>
 import radonCheckbox from '../form/checkbox.vue'
+import rdButton from '../basic/button.vue'
 
-const tableData = [{
-    value: [
-        '王尼玛',
-        '33',
-        'wangnima'
-    ]
-}, {
-    value: [
-        '赵铁柱',
-        '26',
-        'Iron-column-zhao'
-    ]
-}, {
-    value: [
-        '张全蛋',
-        '27',
-        'Michael Jack'
-    ]
-}]
-
-const generateTableData = (options, columns, source) => {
-    let tableData = []
-    let select = options.select || false
-    tableData = source.map(row => {
-        row['SELECT_CHECKBOX'] = {
-            show: select,
-            checkbox: {
-                checked: false,
-                text: ''
-            }
-        }
-        return row
-    })
-    let tmp
-    tmp = tableData.slice()
-    tmp.forEach(item => {
-        tableData.push(item)
-    })
-    tmp.forEach(item => {
-        tableData.push(item)
-    })
-    tmp.forEach(item => {
-        tableData.push(item)
-    })
-    return tableData
-}
 export default {
+    props: {
+        table: {
+            type: Object
+        }
+    },
     data () {
         return {
-            options: {
-                select: true
-            },
             selectAll: {
                 checked: false,
                 text: ''
-            },
-            data: {
-                columns: [{
-                    key: 'col1',
-                    value: '姓名'
-                }, {
-                    key: 'col2',
-                    value: '年龄'
-                }, {
-                    key: 'col3',
-                    value: '微信'
-                }],
-                tableData: []
             }
         }
     },
     components: {
-        radonCheckbox
-    },
-    created () {
-        this.data.tableData = generateTableData(this.options, this.columns, tableData)
+        radonCheckbox,
+        rdButton
     },
     methods: {
         selectAllAction (e) {
-            this.data.tableData.forEach(row => {
-                row.SELECT_CHECKBOX.checkbox.checked = !this.selectAll.checked
+            this.table.tableData.forEach(row => {
+                row.checkbox.checked = !this.selectAll.checked
             })
         }
     }

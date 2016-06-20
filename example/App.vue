@@ -161,6 +161,10 @@ export default {
                     subTitle: '输入框',
                     link: 'textfield'
                 }, {
+                    title: 'Table',
+                    subTitle: '表格',
+                    link: 'table'
+                }, {
                     title: 'Switch',
                     subTitle: '开关',
                     link: 'switch'

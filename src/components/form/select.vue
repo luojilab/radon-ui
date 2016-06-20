@@ -1,5 +1,5 @@
 <style>
-@import '../../css/index';
+@import '../../css/_index.css';
 .rd-select-container {
     position: relative;
     border: 1px solid $border-color-base;
@@ -126,7 +126,6 @@
     </div>
 </template>
 <script>
-import '../../sass/index.scss'
 export default {
     props: {
         value: {

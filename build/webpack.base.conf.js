@@ -89,6 +89,7 @@ module.exports = {
   vue: {
     loaders: utils.cssLoaders({
       sourceMap: true
-    })
+    }),
+    postcss: [require('precss')(), require("postcss-url")()]
   }
 }

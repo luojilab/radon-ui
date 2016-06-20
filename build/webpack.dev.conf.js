@@ -14,9 +14,6 @@ module.exports = merge(baseWebpackConfig, {
   module: {
     loaders: utils.styleLoaders()
   },
-  vue: {
-    postcss: [require('precss')(), require("postcss-url")()],
-  },
   // eval-source-map is faster for development
   devtool: '#eval-source-map',
   plugins: [

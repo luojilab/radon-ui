@@ -6,7 +6,8 @@
     .rd-switch-inner {
         height: .8rem;
         width: .8rem;
-        top: .09rem;
+        top: 50%;
+        margin-top: -.40rem;
         left: .2rem;
     }
     &.open .rd-switch-inner {
@@ -33,7 +34,8 @@
     height: 1.3rem;
     width: 1.3rem;
     background: #fff;
-    top: .09rem;
+    top: 50%;
+    margin-top: -.65rem;
     left: .2rem;
     border-radius: 50%;
     transform: translate3d(0, 0, 0);

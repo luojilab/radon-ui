@@ -23,7 +23,6 @@
 </template>
 <script>
 import marked from 'marked'
-import highlight from 'highlight.js'
 
 const HTMLDeCode = (str) => {
     const div = document.createElement('div')
@@ -33,7 +32,7 @@ const HTMLDeCode = (str) => {
 
 marked.setOptions({
     highlight: function (code) {
-        return highlight.highlightAuto(code).value
+        return window.highlight.highlightAuto(code).value
     }
 })
 

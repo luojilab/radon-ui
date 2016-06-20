@@ -1,3 +1,11 @@
+.rd-row {
+    position: relative;
+    margin-left: 0;
+    margin-right: 0;
+    height: auto;
+    zoom: 1;
+    display: block;
+}
 .rd-row-flex {
   display: flex;
   flex-direction: row;
@@ -47,5 +55,8 @@
 
 $baseWidth: 4.166667%;
 @for $i from 1 to 24 {
-    .rd-col-$i { width: calc($i * $baseWidth); }
+    .rd-col-$i {
+      display: block;
+      width: calc($i * $baseWidth);
+    }
 }

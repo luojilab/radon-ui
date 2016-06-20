@@ -42,6 +42,17 @@ Object.keys(proxyTable).forEach(function (context) {
   app.use(proxyMiddleware(context, options))
 })
 
+
+app.route('/mock/page').get(function(req, res, next){
+  var arry = [];
+  var length = req.query.pageSize || 10;
+  var number = req.query.pageIndex || 0;
+  for(var i=1; i<=length ; i++){
+    arry.push(10 *number + i);
+  }
+  res.send({data: arry, total: 122});
+})
+
 // handle fallback for HTML5 history API
 app.use(require('connect-history-api-fallback')())
 

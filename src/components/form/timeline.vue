@@ -16,8 +16,9 @@
 }
 .rd-timeline-icon-dot {
     position: absolute;
-    left: 0;
+    left: .1rem;
     top: .1rem;
+    font-size: 1rem;
     z-index: 1;
     display: inline-block;
     height: .9rem;
@@ -32,13 +33,14 @@
 .rd-timeline-icon-circle {
     background: rgba(255, 255, 255, 0.92);
     border: .15rem solid #2db7f5;
+    left: 0;
 }
 .rd-timeline-item-tail {
     position: absolute;
-    left: .4rem;
+    left: .475rem;
     top: .2rem;
     height: 100%;
-    border-left: 2px solid #e9e9e9;
+    border-left: .15rem solid #e9e9e9;
 }
 .rd-timeline-text {
     font-size: .8rem;

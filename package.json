@@ -17,6 +17,7 @@
     "vue": "^1.0.21"
   },
   "devDependencies": {
+    "autoprefixer": "^6.3.6",
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
     "babel-plugin-transform-runtime": "^6.0.0",
@@ -24,6 +25,7 @@
     "babel-preset-stage-2": "^6.0.0",
     "connect-history-api-fallback": "^1.1.0",
     "css-loader": "^0.23.0",
+    "cssnext": "^1.8.4",
     "eslint": "^2.10.2",
     "eslint-config-standard": "^5.1.0",
     "eslint-friendly-formatter": "^2.0.5",
@@ -44,6 +46,9 @@
     "node-bourbon": "^4.2.8",
     "node-sass": "^3.7.0",
     "ora": "^0.2.0",
+    "postcss-scss": "^0.1.8",
+    "postcss-url": "^5.1.2",
+    "precss": "^1.4.0",
     "resolve-url-loader": "^1.4.3",
     "sass-loader": "^3.2.0",
     "shelljs": "^0.6.0",

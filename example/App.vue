@@ -1,6 +1,5 @@
 <style src="./lib/highlight/styles/agate.css"></style>
-<style lang="scss">
-@import '../src/sass/index';
+<style>
 html,body{
     height: 100%;
     margin: 0;

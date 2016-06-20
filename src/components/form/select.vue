@@ -1,5 +1,5 @@
-<style lang="scss">
-@import '../../sass/index';
+<style>
+@import '../../css/index';
 .rd-select-container {
     position: relative;
     border: 1px solid $border-color-base;

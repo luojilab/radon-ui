@@ -1,4 +1,5 @@
-<style lang="scss">
+<style>
+@import '../../css/index';
 .rd-slider {
     position: relative;
 }

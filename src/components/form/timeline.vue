@@ -1,5 +1,5 @@
-<style lang="scss">
-@import '../../sass/index';
+<style>
+@import '../../css/index';
 .rd-timeline-container {
     list-style: none;
     margin: 0;

@@ -73,6 +73,17 @@ const generateTableData = (options, columns, source) => {
         }
         return row
     })
+    let tmp
+    tmp = tableData.slice()
+    tmp.forEach(item => {
+        tableData.push(item)
+    })
+    tmp.forEach(item => {
+        tableData.push(item)
+    })
+    tmp.forEach(item => {
+        tableData.push(item)
+    })
     return tableData
 }
 export default {
@@ -103,9 +114,8 @@ export default {
     components: {
         radonCheckbox
     },
-    ready () {
+    created () {
         this.data.tableData = generateTableData(this.options, this.columns, tableData)
-        console.log(generateTableData(this.options, this.columns, tableData))
     },
     methods: {
         selectAllAction (e) {

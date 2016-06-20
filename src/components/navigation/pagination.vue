@@ -1,5 +1,5 @@
-<style lang="scss">
-@import '../../sass/index.scss';
+<style>
+@import '../../css/index';
 
 </style>
 <template>

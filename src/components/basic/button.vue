@@ -1,5 +1,5 @@
-<style lang="scss">
-@import '../../sass/index';
+<style>
+@import '../../css/index';
 .rd-btn {
     display: inline-block;
     text-align: center;

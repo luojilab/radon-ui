@@ -1,5 +1,5 @@
-<style lang="scss">
-@import '../../sass/index';
+<style>
+@import '../../css/index';
 .rd-form-item {
     display: flex;
 }

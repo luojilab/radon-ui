@@ -1,4 +1,5 @@
-<style lang="scss">
+<style>
+@import '../../css/index';
 .rd-notification-container {
     position: fixed;
     top: 1rem;

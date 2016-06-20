@@ -1,5 +1,5 @@
-<style lang="scss">
-@import '../../sass/index';
+<style>
+@import '../../css/index';
 .rd-textfield-input {
     font-size: 1rem;
     line-height: 1.7;

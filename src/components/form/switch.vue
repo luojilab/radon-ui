@@ -1,4 +1,5 @@
-<style lang="scss">
+<style>
+@import '../../css/index';
 .rd-switch-container.small {
     height: 1rem;
     width: 2.5rem;

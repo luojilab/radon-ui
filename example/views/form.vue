@@ -65,7 +65,7 @@
             <form-item title="出发时间:">
                 <span>233333333<rd-tooltip></td-tooltip></span>
                 <rd-date-picker :value.sync="datePicker.value" :options="datePicker.options"></rd-date-picker>
-                <rd-time-picker></rd-time-picker>
+                <rd-time-picker value="timePicker"></rd-time-picker>
                 <rd-alert></rd-alert>
             </form-item>
             <div>
@@ -289,11 +289,13 @@ export default {
                 color: 'red',
                 text: '创建服务现场 2015-09-01'
             }],
+            timePicker: '',
             datePicker: {
                 value: '',
                 options: {
+                    timePicker: true,
                     format: 'YYYY-MM-DD',
-                    monthList: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                    monthList: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
                     weekList: ['一', '二', '三', '四', '五', '六', '日'],
                     limit: {
                         weekDay: {

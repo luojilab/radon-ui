@@ -78,7 +78,7 @@
     border: 0;
     height: 100%;
     outline: 0;
-    width: 4.5rem;
+    width: 4.1rem;
 }
 .rd-datepicker-info-month,
 .rd-datepicker-info-year {
@@ -138,13 +138,13 @@
         }"
     >
         <div class="rd-datepicker-value" @click.stop="togglePicker">
-            <input class="rd-datepicker-value-input" type="text" v-model="value">
+            <input class="rd-datepicker-value-input" placeholder="请选择时间" type="text" v-model="value">
             <i 
                 @click.stop="clearValue" 
                 class="rd-datepicker-clear ion-close-circled"
                 v-show="state.pickerShow"
             ></i>
-            <rd-time-picker></rd-time-picker>
+            <rd-time-picker :value.sync="timeTmp.time" :change="timeChange"></rd-time-picker>
         </div>
         <div class="rd-datepicker-content" v-show="state.pickerShow">
             <div class="rd-datepicker-contrl">
@@ -281,9 +281,9 @@ export default {
             type: Object,
             default () {
                 return {
+                    timePicker: false,
                     format: 'YYYY-MM-DD',
-                    monthList: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'
-                    ],
+                    monthList: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
                     weekList: ['一', '二', '三', '四', '五', '六', '日']
                 }
             }
@@ -307,6 +307,7 @@ export default {
                 position: 'bottom'
             },
             timeTmp: {
+                time: '',
                 current: null,
                 year: '2016',
                 month: '06'
@@ -335,6 +336,7 @@ export default {
             }
         },
         init (current) {
+            this.state.timePickerShow = this.options.timePicker || false
             this.weekList = this.options.weekList || ['一', '二', '三', '四', '五', '六', '日']
             this.monthList = this.options.monthList || ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
         },
@@ -462,11 +464,29 @@ export default {
             if (day.unavailable) return
             this.clearDay()
             day.selected = true
-            // this.togglePicker(e)
+            if (this.state.timePickerShow) {
+                if (!this.timeTmp.time) {
+                    let now = new Date()
+                    this.timeTmp.time = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds())
+                }
+            }
             this.output(day)
         },
+        timeChange () {
+            this.dayList.forEach(day => {
+                if (day.selected) {
+                    let tmp = moment(day.time).format('YYYY-MM-DD')
+                    this.value = moment(tmp + ' ' + this.timeTmp.time).format('YYYY-MM-DD HH:mm:ss')
+                }
+            })
+        },
         output (day) {
-            this.value = moment(day.time).format('YYYY-MM-DD')
+            if (!this.state.timePickerShow) {
+                this.value = moment(day.time).format('YYYY-MM-DD')
+            } else {
+                let tmp = moment(day.time).format('YYYY-MM-DD')
+                this.value = moment(tmp + ' ' + this.timeTmp.time).format('YYYY-MM-DD HH:mm:ss')
+            }
         }
     }
 }

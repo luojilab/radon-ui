@@ -46,10 +46,7 @@ export default {
     },
     methods: {
         getParentSize () {
-            window.a = this.$el
             const partentRect = this.$el.parentNode.getBoundingClientRect()
-            console.log(partentRect)
-            console.log(this.$el.offsetWidth)
             this.position.x = partentRect.left + partentRect.width * 0.5 - this.$el.clientWidth * 0.5
             this.position.y = partentRect.top - this.$el.clientHeight - 10
             this.showAction()

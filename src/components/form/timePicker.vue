@@ -58,7 +58,7 @@
         :class="{ 'top': state.position === 'top' }"
     >
         <div class="rd-timepicker-value">
-            <input type="text" class="rd-timepicker-value-input" v-model="value">
+            <input type="text" class="rd-timepicker-value-input" placeholder="请选择时间" v-model="value">
             <i 
                 @click.stop="clearValue" 
                 class="rd-datepicker-clear ion-close-circled"
@@ -118,9 +118,16 @@ const timeValueParser = (value) => {
     return [pad(now.getHours()), pad(now.getMinutes()), pad(now.getSeconds())]
 }
 export default {
+    props: {
+        value: String,
+        change: {
+            type: Function,
+            default () {
+            }
+        }
+    },
     data () {
         return {
-            value: '',
             tmp: ['00', '00', '00'],
             state: {
                 position: 'buttom',
@@ -206,6 +213,7 @@ export default {
             this.scrollByItem(type, obj.value)
             obj.selected = true
             this.updateValue()
+            this.change()
         },
         scrollByItem (type, val) {
             try {

@@ -22,19 +22,11 @@
     </div>
 </template>
 <script>
-import marked from 'marked'
-
 const HTMLDeCode = (str) => {
     const div = document.createElement('div')
     div.innerHTML = str
     return div.innerText || div.textContent
 }
-
-marked.setOptions({
-    highlight: function (code) {
-        return window.highlight.highlightAuto(code).value
-    }
-})
 
 export default {
     data () {
@@ -43,12 +35,7 @@ export default {
         }
     },
     ready () {
-        this.mark = marked((HTMLDeCode(this.$el.getElementsByClassName('ex-mark-text')[0].innerHTML)))
-    },
-    methods: {
-        markMe (str) {
-            return marked(str)
-        }
+        this.mark = window.marked((HTMLDeCode(this.$el.getElementsByClassName('ex-mark-text')[0].innerHTML)))
     }
 }
 </script>

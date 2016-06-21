@@ -20,6 +20,7 @@ import radonModal from './presentation/modal.vue'
 import rdTooltip from './presentation/toolTip.vue'
 import rdAlert from './presentation/alert.vue'
 import rdNotification from './presentation/notification.vue'
+import rdSpin from './presentation/spin.vue'
 
 export {
     rdSelect,
@@ -43,5 +44,6 @@ export {
     rdNotification,
     radonModal,
     rdTooltip,
-    rdAlert
+    rdAlert,
+    rdSpin
 }

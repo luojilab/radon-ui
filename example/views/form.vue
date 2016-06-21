@@ -71,6 +71,10 @@
                 <rd-table :table="TableData"></rd-table>
             </div>
             <p>
+                <rd-spin></rd-spin>
+                <rd-spin color="red"></rd-spin>
+            </p>
+            <p>
                 <span>233333333<rd-tooltip>这里是tooltip</rd-tooltip></span>
                 <span>啊啊啊<rd-tooltip>这里是tooltip</rd-tooltip></span>
                 <span>按时打算发生的<rd-tooltip>这里是tooltip</td-tooltip></span>
@@ -98,7 +102,8 @@ import {
     rdTimeline,
     rdAlert,
     rdTable,
-    rdTimePicker
+    rdTimePicker,
+    rdSpin
 } from '../../src/components/index'
 
 const options = [{
@@ -465,7 +470,8 @@ export default {
         rdTimeline,
         rdAlert,
         rdTable,
-        rdTimePicker
+        rdTimePicker,
+        rdSpin
     },
     methods: {
         editTable (row) {

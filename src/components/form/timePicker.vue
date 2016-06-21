@@ -52,7 +52,11 @@
 }   
 </style>
 <template>
-    <div class="rd-timepicker-container" @click.stop="togglePicker">
+    <div 
+        class="rd-timepicker-container" 
+        @click.stop="togglePicker"
+        :class="{ 'top': state.position === 'top' }"
+    >
         <div class="rd-timepicker-value">
             <input type="text" class="rd-timepicker-value-input" v-model="value">
             <i 

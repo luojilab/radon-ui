@@ -62,10 +62,23 @@
         background-color: #c4edff;
     }
 }
+.rd-datepicker-value > .rd-timepicker-container {
+    border: none;
+    padding: 0;
+    min-width: initial;
+    width: 3rem;
+    .rd-timepicker-value-input {
+        width: 100%;
+    }
+    .rd-datepicker-clear {
+        display: none;
+    }
+}
 .rd-datepicker-value-input {
     border: 0;
     height: 100%;
     outline: 0;
+    width: 4.5rem;
 }
 .rd-datepicker-info-month,
 .rd-datepicker-info-year {
@@ -109,11 +122,20 @@
     top: 0;
     right: .3rem;
 }
+.rd-datepicker-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: .5rem;
+    border-top: 1px solid #e9e9e9;
+}
 </style>
 <template>
     <div 
         class="rd-datepicker-container"
-        :class="{ 'top': state.position === 'top' }"
+        :class="{
+            'top': state.position === 'top',
+            'open': state.pickerShow
+        }"
     >
         <div class="rd-datepicker-value" @click.stop="togglePicker">
             <input class="rd-datepicker-value-input" type="text" v-model="value">
@@ -122,6 +144,7 @@
                 class="rd-datepicker-clear ion-close-circled"
                 v-show="state.pickerShow"
             ></i>
+            <rd-time-picker></rd-time-picker>
         </div>
         <div class="rd-datepicker-content" v-show="state.pickerShow">
             <div class="rd-datepicker-contrl">
@@ -168,12 +191,17 @@
                     <span class="rd-datepicker-list-item-text">{{item}}</span>
                 </div>
             </div>
+            <div class="rd-datepicker-footer">
+                <rd-button @click.stop="togglePicker" size="small" type="primary">确认</rd-button>
+            </div>
         </div>
     </div>
 </template>
 <script>
 import moment from 'moment'
-import { pad } from '../utils.js'
+import { pad } from '../utils'
+import rdButton from '../basic/button.vue'
+import rdTimePicker from './timePicker.vue'
 
 const getNearMonth = (time) => {
     return {
@@ -270,6 +298,8 @@ export default {
     data () {
         return {
             state: {
+                autoHide: false,
+                timePickerShow: true,
                 dayListShow: true,
                 pickerShow: false,
                 monthListShow: false,
@@ -293,6 +323,10 @@ export default {
     },
     beforeDestroy () {
         window.removeEventListener('click', this.hide)
+    },
+    components: {
+        rdTimePicker,
+        rdButton
     },
     methods: {
         hide (e) {
@@ -428,7 +462,7 @@ export default {
             if (day.unavailable) return
             this.clearDay()
             day.selected = true
-            this.togglePicker(e)
+            // this.togglePicker(e)
             this.output(day)
         },
         output (day) {

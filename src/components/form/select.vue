@@ -95,6 +95,7 @@
     width: 100%;
     border: 0;
     opacity: .5;
+    outline: none;
 }
 </style>
 <template>

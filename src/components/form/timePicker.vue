@@ -15,6 +15,33 @@
         bottom: 2rem;
     }
 }
+.rd-timepicker-content {
+    border: 1px solid #f3f3f3;
+    position: absolute;
+    left: 0;
+    top: 2rem;
+    display: flex;
+    width: 9rem;
+    background-color: #fff;
+    text-align: center;
+}
+.rd-timepicker-hour,
+.rd-timepicker-min,
+.rd-timepicker-sec {
+    width: 33.33%;
+    height: 8rem;
+    overflow-y: auto;
+}
+.rd-timepicker-item {
+    cursor: pointer;
+    border-radius: 4px;
+    &.select {
+        background: #b9e9ff;
+    }
+    &:hover {
+       background: #b9e9ff;
+    }
+}
 .rd-timepicker-value-input {
     border: 0;
     height: 100%;
@@ -22,9 +49,9 @@
 }   
 </style>
 <template>
-    <div class="rd-timepicker-container" click="togglePicker">
+    <div class="rd-timepicker-container" @click.stop="togglePicker">
         <div class="rd-timepicker-value">
-            <input type="text" class="rd-timepicker-value-input">
+            <input type="text" class="rd-timepicker-value-input" v-model="value">
             <i 
                 @click.stop="clearValue" 
                 class="rd-datepicker-clear ion-close-circled"
@@ -33,23 +60,42 @@
         </div>
         <div class="rd-timepicker-content" v-show="state.pickerShow">
             <div class="rd-timepicker-hour">
-                <div class="rd-timepicker-item" v-for="hour in time.hours">{{hour}}</div>
+                <div 
+                    @click.stop="touchItem('hour', hour)"
+                    class="rd-timepicker-item" 
+                    v-for="hour in time.hours"
+                    :class="{ 'select': hour.selected }"
+                >{{hour.value}}</div>
             </div>
             <div class="rd-timepicker-min">
-                <div class="rd-timepicker-item" v-for="min in time.mins">{{min}}</div>
+                <div 
+                    @click.stop="touchItem('min', min)"
+                    class="rd-timepicker-item" 
+                    v-for="min in time.mins"
+                    :class="{ 'select': min.selected }"
+                >{{min.value}}</div>
             </div>
             <div class="rd-timepicker-sec">
-                <div class="rd-timepicker-item" v-for="sec in time.secs">{{sec}}</div>
+                <div 
+                    @click.stop="touchItem('sec', sec)"
+                    class="rd-timepicker-item" 
+                    v-for="sec in time.secs"
+                    :class="{ 'select': sec.selected }"
+                >{{sec.value}}</div>
             </div>
         </div>
     </div>
 </template>
 <script>
+import { pad } from '../utils'
 const generateCount = (count) => {
     let list = []
     while (count) {
         count--
-        list.unshift(count)
+        list.unshift({
+            selected: false,
+            value: pad(count)
+        })
     }
     return list
 }
@@ -57,6 +103,7 @@ export default {
     data () {
         return {
             value: '',
+            tmp: ['00', '00', '00'],
             state: {
                 position: 'buttom',
                 pickerShow: false
@@ -68,6 +115,12 @@ export default {
             }
         }
     },
+    ready () {
+        window.addEventListener('click', this.hide, false)
+    },
+    beforeDestroy () {
+        window.removeEventListener('click', this.hide)
+    },
     methods: {
         togglePicker (e) {
             if (e.clientY + document.body.scrollTop + 320 > document.body.offsetHeight) {
@@ -75,10 +128,56 @@ export default {
             } else {
                 this.state.position = 'bottom'
             }
-            this.parse(this.value, this.options.format)
+            // this.parse(this.value, this.options.format)
             this.state.pickerShow = !this.state.pickerShow
         },
+        hide (e) {
+            if (e.path.indexOf(this.$el) === -1) {
+                this.state.pickerShow = false
+            }
+        },
+        touchItem (type, obj) {
+            this.clearByType(type)
+            switch (type) {
+            case 'hour':
+                this.tmp[0] = obj.value
+                break
+            case 'min':
+                this.tmp[1] = obj.value
+                break
+            case 'sec':
+                this.tmp[2] = obj.value
+                break
+            }
+            obj.selected = true
+            this.updateValue()
+        },
+        updateValue () {
+            this.value = this.tmp.join(':')
+        },
+        clearByType (type) {
+            switch (type) {
+            case 'hour':
+                this.time.hours.forEach(item => {
+                    item.selected = false
+                })
+                break
+            case 'min':
+                this.time.mins.forEach(item => {
+                    item.selected = false
+                })
+                break
+            case 'sec':
+                this.time.secs.forEach(item => {
+                    item.selected = false
+                })
+                break
+            }
+        },
         clearValue (e) {
+            this.clearByType('hour')
+            this.clearByType('min')
+            this.clearByType('sec')
             this.value = ''
         }
     }

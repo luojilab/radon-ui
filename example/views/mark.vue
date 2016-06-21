@@ -15,10 +15,10 @@
 </style>
 <template>
     <div class="marked">
-        <slot></slot>
         <div>
             {{{mark}}}
         </div>
+        <slot></slot>
     </div>
 </template>
 <script>

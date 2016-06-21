@@ -5,17 +5,52 @@
         <textarea class="ex-mark-text">
 # Radio 单选框
 简单的radio
+        </textarea>
+    </mark>
+        <p>
+            <radon-radio :radios="radios"></radon-radio>
+        </p>
+    <mark>
+        <textarea class="ex-mark-text">
+# API
 
-## 代码
+## radios
+承载多个 radio 对象的数组
+
+```
+radios: [{
+    // radio 的选择状态
+    checked: false,
+    // radio 的展示文字
+    value: 'A'
+}, {
+    checked: false,
+    value: 'B'
+}]
+```
+        </textarea>
+    </mark>
+    <mark>
+        <textarea class="ex-mark-text">
+## 完整示例代码
 ```javascript
 export default { 
-  template: '<radon-checkbox :checkbox="checkbox"></radon-checkbox>'
+  template: '<radon-radio :radios="radios"></radon-radio>'
   data () {
     return {
-      checkbox: {
-        checked: false,
-        text: '我已阅读用户协议'
-      }
+        radios: [{
+            checked: false,
+            value: 'A'
+        }, {
+            checked: false,
+            value: 'B'
+        }, {
+            checked: false,
+            value: 'C'
+        }, {
+            checked: false,
+            value: 'aa'
+        }]
     }
   },
   components: {
@@ -27,9 +62,6 @@ export default {
 
         </textarea>
     </mark>
-        <p>
-            <radon-radio :radios="radios"></radon-radio>
-        </p>
     </div>
 </div>
 </template>

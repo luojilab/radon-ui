@@ -62,7 +62,7 @@
             ></i>
         </div>
         <div class="rd-timepicker-content" v-show="state.pickerShow">
-            <div class="rd-timepicker-hour">
+            <div class="rd-timepicker-hour" v-el:hour>
                 <div 
                     @click.stop="touchItem($event, 'hour', hour)"
                     class="rd-timepicker-item" 
@@ -71,7 +71,7 @@
                     v-el:time-hour
                 >{{hour.value}}</div>
             </div>
-            <div class="rd-timepicker-min">
+            <div class="rd-timepicker-min" v-el:min>
                 <div 
                     @click.stop="touchItem($event, 'min', min)"
                     class="rd-timepicker-item" 
@@ -80,7 +80,7 @@
                     v-el:time-min
                 >{{min.value}}</div>
             </div>
-            <div class="rd-timepicker-sec">
+            <div class="rd-timepicker-sec" v-el:sec>
                 <div 
                     @click.stop="touchItem($event, 'sec', sec)"
                     class="rd-timepicker-item" 
@@ -105,6 +105,14 @@ const generateCount = (count) => {
     }
     return list
 }
+
+const timeValueParser = (value) => {
+    if (/[0-2][0-9]:[0-6][0-9]:[0-6][0-9]/.test(value)) {
+        return value.split(':')
+    }
+    let now = new Date()
+    return [pad(now.getHours()), pad(now.getMinutes()), pad(now.getSeconds())]
+}
 export default {
     data () {
         return {
@@ -128,13 +136,49 @@ export default {
         window.removeEventListener('click', this.hide)
     },
     methods: {
+        parse () {
+            this.tmp = timeValueParser(this.value)
+            this.selectByValue('hour', this.tmp[0])
+            this.selectByValue('min', this.tmp[1])
+            this.selectByValue('sec', this.tmp[2])
+            this.scrollByItem('hour', this.tmp[0])
+            this.scrollByItem('min', this.tmp[1])
+            this.scrollByItem('sec', this.tmp[2])
+            this.updateValue()
+        },
+        selectByValue (type, val) {
+            this.clearByType(type)
+            switch (type) {
+            case 'hour':
+                this.time.hours.forEach(item => {
+                    if (item.value === val) {
+                        item.selected = true
+                    }
+                })
+                break
+            case 'min':
+                this.time.mins.forEach(item => {
+                    if (item.value === val) {
+                        item.selected = true
+                    }
+                })
+                break
+            case 'sec':
+                this.time.secs.forEach(item => {
+                    if (item.value === val) {
+                        item.selected = true
+                    }
+                })
+                break
+            }
+        },
         togglePicker (e) {
             if (e.clientY + document.body.scrollTop + 320 > document.body.offsetHeight) {
                 this.state.position = 'top'
             } else {
                 this.state.position = 'bottom'
             }
-            // this.parse(this.value, this.options.format)
+            this.parse()
             this.state.pickerShow = !this.state.pickerShow
         },
         hide (e) {
@@ -155,13 +199,17 @@ export default {
                 this.tmp[2] = obj.value
                 break
             }
-            this.scrollByItem(e, obj.value)
+            this.scrollByItem(type, obj.value)
             obj.selected = true
             this.updateValue()
         },
-        scrollByItem (e, val) {
-            let $listEl = e.target.parentNode
-            $listEl.scrollTop = Math.floor(val) * 32
+        scrollByItem (type, val) {
+            try {
+                const $el = this.$els[type]
+                $el.scrollTop = Math.floor(val) * 32
+            } catch (e) {
+                console.log(e)
+            }
         },
         updateValue () {
             this.value = this.tmp.join(':')

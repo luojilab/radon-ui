@@ -64,8 +64,8 @@
             </form-item>
             <form-item title="出发时间:">
                 <span>233333333<rd-tooltip></td-tooltip></span>
-                <rd-time-picker></rd-time-picker>
                 <rd-date-picker :value.sync="datePicker.value" :options="datePicker.options"></rd-date-picker>
+                <rd-time-picker></rd-time-picker>
                 <rd-alert></rd-alert>
             </form-item>
             <div>

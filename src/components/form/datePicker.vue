@@ -115,7 +115,7 @@
         class="rd-datepicker-container"
         :class="{ 'top': state.position === 'top' }"
     >
-        <div class="rd-datepicker-value" @click="togglePicker">
+        <div class="rd-datepicker-value" @click.stop="togglePicker">
             <input class="rd-datepicker-value-input" type="text" v-model="value">
             <i 
                 @click.stop="clearValue" 
@@ -126,14 +126,14 @@
         <div class="rd-datepicker-content" v-show="state.pickerShow">
             <div class="rd-datepicker-contrl">
                 <div class="rd-datepicker-info-year">
-                    <span class="rd-datepicker-arrow ion-ios-arrow-left" @click="moveYear(false)"></span>
-                    <span class="rd-datepicker-year-text" @click="toggleView('year')">{{timeTmp.year}}</span>
-                     <span class="rd-datepicker-arrow ion-ios-arrow-right" @click="moveYear(true)"></span>
+                    <span class="rd-datepicker-arrow ion-ios-arrow-left" @click.stop="moveYear(false)"></span>
+                    <span class="rd-datepicker-year-text" @click.stop="toggleView('year')">{{timeTmp.year}}</span>
+                     <span class="rd-datepicker-arrow ion-ios-arrow-right" @click.stop="moveYear(true)"></span>
                 </div>
                 <div class="rd-datepicker-info-month">
-                    <span class="rd-datepicker-arrow ion-ios-arrow-left" @click="moveMonth(false)"></span>
-                    <span class="rd-datepicker-month-text" @click="toggleView('month')">{{timeTmp.month}}</span>
-                    <span class="rd-datepicker-arrow ion-ios-arrow-right" @click="moveMonth(true)"></span>
+                    <span class="rd-datepicker-arrow ion-ios-arrow-left" @click.stop="moveMonth(false)"></span>
+                    <span class="rd-datepicker-month-text" @click.stop="toggleView('month')">{{timeTmp.month}}</span>
+                    <span class="rd-datepicker-arrow ion-ios-arrow-right" @click.stop="moveMonth(true)"></span>
                 </div>
             </div>
             <div class="rd-datepicker-days" v-show="state.dayListShow">
@@ -146,7 +146,7 @@
                             'out-month': !day.inMonth,
                             'unavailable': day.unavailable
                         }"
-                        @click="touchDay($event, day)"
+                        @click.stop="touchDay($event, day)"
                     >{{day.value}}</span>
                 </div>
             </div>
@@ -154,7 +154,7 @@
                 <div 
                     class="rd-datepicker-list-item" 
                     v-for="item in monthList" 
-                    @click="setMonth(item)"
+                    @click.stop="setMonth(item)"
                 >
                     <span class="rd-datepicker-list-item-text">{{item}}</span>
                 </div>
@@ -163,7 +163,7 @@
                 <div 
                     class="rd-datepicker-list-item" 
                     v-for="item in yearList" 
-                    @click="setYear(item)"
+                    @click.stop="setYear(item)"
                 >
                     <span class="rd-datepicker-list-item-text">{{item}}</span>
                 </div>
@@ -289,8 +289,17 @@ export default {
     },
     ready () {
         this.init()
+        window.addEventListener('click', this.hide, false)
+    },
+    beforeDestroy () {
+        window.removeEventListener('click', this.hide)
     },
     methods: {
+        hide (e) {
+            if (e.path.indexOf(this.$el) === -1) {
+                this.state.pickerShow = false
+            }
+        },
         init (current) {
             this.weekList = this.options.weekList || ['一', '二', '三', '四', '五', '六', '日']
             this.monthList = this.options.monthList || ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']

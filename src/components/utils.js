@@ -90,7 +90,7 @@ const pad = (val) => {
     if (val < 10) {
         return '0' + val
     }
-    return val
+    return val + ''
 }
 
 exports.throttle = throttle

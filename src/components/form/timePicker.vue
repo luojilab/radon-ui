@@ -31,6 +31,9 @@
     width: 33.33%;
     height: 8rem;
     overflow-y: auto;
+    &>.rd-timepicker-item:last-child {
+        margin-bottom: 6rem;
+    }
 }
 .rd-timepicker-item {
     cursor: pointer;
@@ -61,26 +64,29 @@
         <div class="rd-timepicker-content" v-show="state.pickerShow">
             <div class="rd-timepicker-hour">
                 <div 
-                    @click.stop="touchItem('hour', hour)"
+                    @click.stop="touchItem($event, 'hour', hour)"
                     class="rd-timepicker-item" 
                     v-for="hour in time.hours"
                     :class="{ 'select': hour.selected }"
+                    v-el:time-hour
                 >{{hour.value}}</div>
             </div>
             <div class="rd-timepicker-min">
                 <div 
-                    @click.stop="touchItem('min', min)"
+                    @click.stop="touchItem($event, 'min', min)"
                     class="rd-timepicker-item" 
                     v-for="min in time.mins"
                     :class="{ 'select': min.selected }"
+                    v-el:time-min
                 >{{min.value}}</div>
             </div>
             <div class="rd-timepicker-sec">
                 <div 
-                    @click.stop="touchItem('sec', sec)"
+                    @click.stop="touchItem($event, 'sec', sec)"
                     class="rd-timepicker-item" 
                     v-for="sec in time.secs"
                     :class="{ 'select': sec.selected }"
+                    v-el:time-sec
                 >{{sec.value}}</div>
             </div>
         </div>
@@ -136,7 +142,7 @@ export default {
                 this.state.pickerShow = false
             }
         },
-        touchItem (type, obj) {
+        touchItem (e, type, obj) {
             this.clearByType(type)
             switch (type) {
             case 'hour':
@@ -149,8 +155,13 @@ export default {
                 this.tmp[2] = obj.value
                 break
             }
+            this.scrollByItem(e, obj.value)
             obj.selected = true
             this.updateValue()
+        },
+        scrollByItem (e, val) {
+            let $listEl = e.target.parentNode
+            $listEl.scrollTop = Math.floor(val) * 32
         },
         updateValue () {
             this.value = this.tmp.join(':')

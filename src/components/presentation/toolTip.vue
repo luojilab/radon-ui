@@ -16,8 +16,7 @@
 </style>
 <template>
     <div 
-        class="rd-tooltip-container" 
-        @click="showAction" 
+        class="rd-tooltip-container"
         :style="{
             'visibility': show,
             'top': position.y + 'px',
@@ -25,14 +24,13 @@
         }"
         transition="expand"
     >
-        <span>{{title}}</span>
+        <slot></slot>
     </div>
 </template>
 <script>
 export default {
     data () {
         return {
-            title: '提示文字',
             show: 'hidden',
             position: {
                 x: 0,
@@ -48,7 +46,11 @@ export default {
         getParentSize () {
             const partentRect = this.$el.parentNode.getBoundingClientRect()
             this.position.x = partentRect.left + partentRect.width * 0.5 - this.$el.clientWidth * 0.5
-            this.position.y = partentRect.top - this.$el.clientHeight - 10
+            if (partentRect.top < 50) {
+                this.position.y = partentRect.top + partentRect.height + 10
+            } else {
+                this.position.y = partentRect.top - this.$el.clientHeight - 10
+            }
             this.showAction()
         },
         showAction (e) {

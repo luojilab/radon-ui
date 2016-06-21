@@ -127,6 +127,7 @@
     justify-content: flex-end;
     padding: .5rem;
     border-top: 1px solid #e9e9e9;
+    background-color: #fff;
 }
 </style>
 <template>
@@ -144,7 +145,7 @@
                 class="rd-datepicker-clear ion-close-circled"
                 v-show="state.pickerShow"
             ></i>
-            <rd-time-picker :value.sync="timeTmp.time" :change="timeChange"></rd-time-picker>
+            <rd-time-picker v-if="state.timePickerShow" :value.sync="timeTmp.time" :change="timeChange"></rd-time-picker>
         </div>
         <div class="rd-datepicker-content" v-show="state.pickerShow">
             <div class="rd-datepicker-contrl">

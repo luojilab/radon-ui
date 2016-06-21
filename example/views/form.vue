@@ -5,7 +5,7 @@
 </style>
 <template>
     <div>
-        <radon-button @click="notificationAction">默认按钮</radon-button>
+        <radon-button @click="notificationAction"><rd-tooltip>点我触发notification</rd-tooltip>默认按钮</radon-button>
         <radon-button type="primary">按钮</radon-button>
         <radon-button type="ghost" size="large">large</radon-button>
         <radon-button type="ghost">common</radon-button>
@@ -63,7 +63,6 @@
                 <rd-timeline :timeline="timeline"></rd-timeline>
             </form-item>
             <form-item title="出发时间:">
-                <span>233333333<rd-tooltip></td-tooltip></span>
                 <rd-date-picker :value.sync="datePicker.value" :options="datePicker.options"></rd-date-picker>
                 <rd-time-picker value="timePicker"></rd-time-picker>
                 <rd-alert></rd-alert>
@@ -71,6 +70,12 @@
             <div>
                 <rd-table :table="TableData"></rd-table>
             </div>
+            <p>
+                <span>233333333<rd-tooltip>这里是tooltip</rd-tooltip></span>
+                <span>啊啊啊<rd-tooltip>这里是tooltip</rd-tooltip></span>
+                <span>按时打算发生的<rd-tooltip>这里是tooltip</td-tooltip></span>
+                <span>啊啊<rd-tooltip>这里是tooltip</rd-tooltip></span>
+            </p>
         </form>
     </div>
 </template>

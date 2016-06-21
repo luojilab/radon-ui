@@ -4,8 +4,46 @@
     <mark>
         <textarea class="ex-mark-text">
 # Textfield 输入框
+## 示例
+        </textarea>
+    </mark>
+    <p>
+        <radon-text :textfield="form.user" :input="userInputing"></radon-text>
+    </p>
+    <mark>
+        <textarea class="ex-mark-text">
+## API
 
-## 代码
+### textfield
+输入框的基础对象
+```
+<template>
+    <radon-text :textfield="user"></radon-text>   
+</template>
+user: {
+    // value 值 :String
+    value: '',
+    // placeHolder :String
+    placeHolder: 'input here',
+    // 输入框状态 :String
+    state: 'default', // ['warning', 'failed', 'info', 'success']
+    // 输入框提示文字 :String 
+    tip: '' 
+}
+```
+### input
+输入框 oninput hook
+```
+<radon-text :textfield="obj" :input="Inputing"></radon-text>
+
+methods: {
+    Inputing () {
+        console.log('is inputing')
+    }
+}
+```
+
+## 完整示例代码
 ```javascript
 export default {
     template: '<radon-text :textfield="form.user" :input="userInputing"></radon-text>'
@@ -44,9 +82,6 @@ export default {
 ## 示例
         </textarea>
     </mark>
-        <p>
-            <radon-text :textfield="form.user" :input="userInputing"></radon-text>
-        </p>
     </div>
 </div>
 </template>

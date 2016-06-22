@@ -224,12 +224,21 @@ export default {
                 separator: '/',
                 list: [{
                     icon: 'ion-home',
-                    value: '首页'
+                    value: '首页',
+                    route: {
+                        path: '/'
+                    }
                 }, {
                     icon: 'ion-document',
-                    value: '订单'
+                    value: '订单',
+                    route: {
+                        path: '/button'
+                    }
                 }, {
-                    value: '订单查询'
+                    value: '订单查询',
+                    route: {
+                        path: '/form'
+                    }
                 }]
             },
             TableData: {

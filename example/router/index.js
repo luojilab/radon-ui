@@ -96,6 +96,18 @@ router.map({
             require(['../views/table.vue'], resolve)
         }
     },
+    '/spin': {
+        name: 'spin',
+        component: (resolve) => {
+            require(['../views/spin.vue'], resolve)
+        }
+    },
+    '/tooltip': {
+        name: 'tooltip',
+        component: (resolve) => {
+            require(['../views/tooltip.vue'], resolve)
+        }
+    },
     '/form': {
         name: 'from',
         component: (resolve) => {

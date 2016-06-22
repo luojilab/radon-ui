@@ -201,6 +201,14 @@ export default {
                     subTitle: '对话框',
                     link: 'modal'
                 }, {
+                    title: 'Tooltip',
+                    subTitle: '对话框',
+                    link: 'tooltip'
+                }, {
+                    title: 'Spin',
+                    subTitle: '加载中',
+                    link: 'spin'
+                }, {
                     title: 'Demo',
                     subTitle: 'playground',
                     link: 'form'

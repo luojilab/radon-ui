@@ -4,6 +4,7 @@
     position: fixed;
     background: #656565;
     color: #fff;
+    font-size: .8rem;
     padding: .5rem;
     border-radius: 4px;
 }

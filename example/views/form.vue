@@ -80,6 +80,9 @@
                 <span>按时打算发生的<rd-tooltip>这里是tooltip</td-tooltip></span>
                 <span>啊啊<rd-tooltip>这里是tooltip</rd-tooltip></span>
             </p>
+            <p>
+                <breadcrumb :breadcrumb="breadcrumb.list" separator="/"></breadcrumb>
+            </p>
         </form>
     </div>
 </template>
@@ -103,7 +106,8 @@ import {
     rdAlert,
     rdTable,
     rdTimePicker,
-    rdSpin
+    rdSpin,
+    breadcrumb
 } from '../../src/components/index'
 
 const options = [{
@@ -216,6 +220,18 @@ const options = [{
 export default {
     data () {
         return {
+            breadcrumb: {
+                separator: '/',
+                list: [{
+                    icon: 'ion-home',
+                    value: '首页'
+                }, {
+                    icon: 'ion-document',
+                    value: '订单'
+                }, {
+                    value: '订单查询'
+                }]
+            },
             TableData: {
                 options: {
                     select: true
@@ -471,7 +487,8 @@ export default {
         rdAlert,
         rdTable,
         rdTimePicker,
-        rdSpin
+        rdSpin,
+        breadcrumb
     },
     methods: {
         editTable (row) {

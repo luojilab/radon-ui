@@ -85,6 +85,8 @@
     </div>
 </template>
 <script>
+import { ICON_MAP } from '../utils'
+
 export default {
     props: {
         alerts: Array
@@ -100,22 +102,7 @@ export default {
         },
         iconClass (alert) {
             let classList = {}
-            switch (alert.state) {
-            case 'success':
-                classList['ion-checkmark-circled'] = true
-                break
-            case 'failed':
-                classList['ion-close-circled'] = true
-                break
-            case 'warning':
-                classList['ion-alert-circled'] = true
-                break
-            case 'info':
-                classList['ion-information-circled'] = true
-                break
-            default:
-                classList['ion-checkmark-circled'] = true
-            }
+            classList[ICON_MAP[alert.state]] = true
             return classList
         }
     }

@@ -22,8 +22,12 @@ this.$Modal.create(title:String, content:String, onConfirm:Function, onCancle:Fu
         <textarea class="ex-mark-text">
 ## 示例代码
 ```javascript
+//root component
+import {
+    radonModal
+} from '../src/components/index'
+
 export default {
-    template: '<radon-modal :modal="modal"></radon-modal>',
     data () {
         return {
             modal: {
@@ -35,19 +39,21 @@ export default {
             }
         }
     },
+    created () {
+        this.$SetRoot(this)
+    },
+    components: {
+        radonModal
+    },
+}
+
+// any vue components
+export default {
+    template: '<radon-button @click="open">开启对话框</radon-button>',
     components: {
         radonModal
     },
     methods: {
-        createModal (title, text, confirm, cancel) {
-            this.modal = {
-                show: true,
-                title: title,
-                content: text,
-                cancel: cancel,
-                confirm: confirm
-            }
-        },
         open () {
             this.createModal(
                 '这里是标题',

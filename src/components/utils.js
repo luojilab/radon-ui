@@ -11,7 +11,7 @@ function throttle (callback, limit) {
     }
 }
 
-const install = (Vue) => {
+const RadonInstall = (Vue) => {
     Vue.use(require('vue-animated-list'))
 
     let $root
@@ -93,7 +93,17 @@ const pad = (val) => {
     return val + ''
 }
 
-exports.throttle = throttle
-exports.pad = pad
-exports.RadonInstall = install
+const ICON_MAP = {
+    'success': 'ion-checkmark-circled',
+    'failed': 'ion-close-circled',
+    'warning': 'ion-alert-circled',
+    'info': 'ion-information-circled',
+    'loading': 'ion-load-a'
+}
 
+export {
+    ICON_MAP,
+    throttle,
+    pad,
+    RadonInstall
+}

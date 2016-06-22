@@ -8,7 +8,7 @@
         </textarea>
     </mark>
     <p>
-        <radon-text :textfield="form.user" :input="userInputing"></radon-text>
+        <radon-text :textfield="form.user" :input="userInputing" :change="userInputed"></radon-text>
     </p>
     <mark>
         <textarea class="ex-mark-text">
@@ -34,7 +34,7 @@ user: {
 ### input
 输入框 oninput hook
 ```
-<radon-text :textfield="obj" :input="Inputing"></radon-text>
+<radon-text :textfield="obj" :input="Inputing" :change="userInputed"></radon-text>
 
 methods: {
     Inputing () {
@@ -67,14 +67,10 @@ export default {
         userInputing () {
             this.form.user.state = 'loading'
             setTimeout(() => {
-                if (this.form.user.value.length &lt; 6) {
-                    this.form.user.state = 'failed'
-                    this.form.user.tip = '该用户名已被使用'
-                } else {
-                    this.form.user.state = 'default'
-                    this.form.user.tip = ''
-                }
-            }, 2000)
+                let i = Math.floor(Math.random() * 4.9)
+                this.form.user.state = MAP[i].state
+                this.form.user.tip = MAP[i].tip
+            }, 500)
         }
     }
 }
@@ -90,6 +86,29 @@ import mark from './mark.vue'
 import {
     radonText
 } from '../../src/components/index'
+
+const MAP = {
+    0: {
+        state: 'loading',
+        tip: 'loading?!'
+    },
+    1: {
+        state: 'failed',
+        tip: '该用户名已被使用'
+    },
+    2: {
+        state: 'success',
+        tip: '该用户名似乎没有被使用'
+    },
+    3: {
+        state: 'info',
+        tip: '该用户名已被使用'
+    },
+    4: {
+        state: 'warning',
+        tip: '该用户名已被使用'
+    }
+}
 
 export default {
     data () {
@@ -113,14 +132,14 @@ export default {
         userInputing () {
             this.form.user.state = 'loading'
             setTimeout(() => {
-                if (this.form.user.value.length < 6) {
-                    this.form.user.state = 'failed'
-                    this.form.user.tip = '该用户名已被使用'
-                } else {
-                    this.form.user.state = 'default'
-                    this.form.user.tip = ''
-                }
-            }, 2000)
+                let i = Math.floor(Math.random() * 4.9)
+                this.form.user.state = MAP[i].state
+                this.form.user.tip = MAP[i].tip
+            }, 500)
+        },
+        userInputed () {
+            console.log('?')
+            this.$Notification.success('你输入了' + this.form.user.value, '', 5000)
         }
     }
 }

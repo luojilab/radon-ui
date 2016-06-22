@@ -10,6 +10,8 @@
     width: 1rem;
     border: 1px solid #ccc;
     border-radius: 50%;
+    box-sizing: border-box;
+    vertical-align: text-top;
 }
 .rd-radio-inner::after {
     content: '';

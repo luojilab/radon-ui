@@ -20,7 +20,6 @@ html, body {
 
 body {
   font-family: $font-family;
-  font-size: $font-size-base;
   line-height: $line-height-base;
   color: $text-color;
   background-color: $body-background;
@@ -99,15 +98,6 @@ a {
 }
 .invisible {
   visibility: hidden;
-}
-
-.rd-divider {
-  margin: 0 4px;
-  color: #999;
-  display: inline-block;
-  height: 8px;
-  width: 1px;
-  background: #ccc;
 }
 
 code,

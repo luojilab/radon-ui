@@ -19,6 +19,44 @@
 .rd-textfield-wrapper {
     position: relative;
     width: 100%;
+    &.loading {
+        .rd-textfield-icon {
+            animation: loading 1s infinite linear;
+            color: #797979;
+        }
+    }
+    &.warning {
+        .rd-textfield-icon {
+            color: #fa0;
+        }
+        .rd-textfield-input {
+            border-color: #fa0;
+        }
+    }
+    &.failed {
+        .rd-textfield-icon {
+            color: #f50;
+        }
+        .rd-textfield-input {
+            border-color: #f50;
+        }
+    }
+    &.success {
+        .rd-textfield-input {
+            border: 1px solid #87d068;
+        }
+        .rd-textfield-icon {
+            color: #87d068;
+        }
+    }
+    &.info {
+        .rd-textfield-input {
+            border: 1px solid #2db7f5;
+        }
+        .rd-textfield-icon {
+            color: #2db7f5;
+        }
+    }
 }
 @-webkit-keyframes loading {
   from {
@@ -46,43 +84,33 @@
     transform: rotate(360deg);
   }
 }
-.rd-textfield-loading-icon,
-.rd-textfield-warning-icon,
-.rd-textfield-failed-icon {
+.rd-textfield-icon {
     display: inline-block;
     position: absolute;
     right: .5rem;
-    top: .45rem;
-}
-.rd-textfield-loading-icon {
-    animation: loading 1s infinite linear;
-    color: #797979;
-}
-.rd-textfield-warning .rd-textfield-input {
-    border-color: #fa0;
-}
-.rd-textfield-warning-icon {
-    color: #fa0;
-}
-.rd-textfield-failed .rd-textfield-input {
-    border-color: #f50;
-}
-.rd-textfield-failed-icon {
-    color: #f50;
+    top: 50%;
+    margin-top: -.5rem;
+    height: 1rem;
+    line-height: 1rem;
+    font-size: 1rem;
 }
 .rd-textfield-tip {
     position: absolute;
     left: 0;
     bottom: -1rem;
     font-size: .8rem;
+    line-height: .8rem;
 }
 </style>
 <template>
     <div 
         class="rd-textfield-wrapper"
-        :class="{ 
-        'rd-textfield-warning': textState === 'warning',
-        'rd-textfield-failed': textState === 'failed'
+        :class="{
+        'loading': textState === 'loading',
+        'warning': textState === 'warning',
+        'failed': textState === 'failed',
+        'info': textState === 'info',
+        'success': textState === 'success'
      }"
     >
         <input 
@@ -90,22 +118,23 @@
             class="rd-textfield-input" 
             v-model="textfield.value" 
             :placeholder="textfield.placeHolder"
+            @change="changing"
             @input="inputing"
         >
         <span class="rd-textfield-tip" v-if="textfield.tip">{{textfield.tip}}</span>
-        <i class="rd-textfield-loading-icon ion-load-a" v-if="textState === 'loading'"></i>
-        <i class="rd-textfield-warning-icon ion-information-circled" v-if="textState === 'warning'"></i>
-        <i class="rd-textfield-failed-icon ion-close-circled" v-if="textState === 'failed'"></i>
+        <i class="rd-textfield-icon" :class="textIcon"></i>
     </div>
 </template>
 <script>
+import { ICON_MAP } from '../utils'
 export default {
     props: {
         textfield: {
             type: Object,
             required: true
         },
-        input: Function
+        input: Function,
+        change: Function
     },
     computed: {
         textState () {
@@ -113,12 +142,22 @@ export default {
                 return this.textfield.state
             }
             return 'default'
+        },
+        textIcon () {
+            let classList = {}
+            classList[ICON_MAP[this.textState]] = true
+            return classList
         }
     },
     methods: {
+        changing () {
+            if (this.change) {
+                this.change(this.textfield)
+            }
+        },
         inputing () {
             if (this.input) {
-                this.input()
+                this.input(this.textfield)
             }
         }
     }

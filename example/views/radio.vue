@@ -5,6 +5,11 @@
         <textarea class="ex-mark-text">
 # Radio 单选框
 简单的radio
+
+## 何时使用
+
+用于在多个备选项中选中单个状态。
+和 Select 的区别是，Radio 所有选项默认可见，方便用户在比较中选择，因此选项不宜过多。
         </textarea>
     </mark>
         <p>
@@ -19,9 +24,9 @@
 
 ```
 radios: [{
-    // radio 的选择状态
+    // radio 的选择状态:Boolean
     checked: false,
-    // radio 的展示文字
+    // radio 的展示文字: String
     value: 'A'
 }, {
     checked: false,
@@ -40,16 +45,16 @@ export default {
     return {
         radios: [{
             checked: false,
-            value: 'A'
+            value: '北京'
         }, {
             checked: false,
-            value: 'B'
+            value: '上海'
         }, {
             checked: false,
-            value: 'C'
+            value: '杭州'
         }, {
             checked: false,
-            value: 'aa'
+            value: '成都'
         }]
     }
   },
@@ -58,8 +63,6 @@ export default {
   }
 }
 ```
-## 示例
-
         </textarea>
     </mark>
     </div>
@@ -76,16 +79,16 @@ export default {
         return {
             radios: [{
                 checked: false,
-                value: 'A'
+                value: '北京'
             }, {
                 checked: false,
-                value: 'B'
+                value: '上海'
             }, {
                 checked: false,
-                value: 'C'
+                value: '杭州'
             }, {
                 checked: false,
-                value: 'aa'
+                value: '成都'
             }]
         }
     },

@@ -28,9 +28,6 @@
 
         </textarea>
     </mark>
-        <p>
-            <rd-timeline :timeline="timeline"></rd-timeline>
-        </p>
     </div>
 </div>
 </template>

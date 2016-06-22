@@ -34,11 +34,22 @@ user: {
 ### input
 输入框 oninput hook
 ```
-<radon-text :textfield="obj" :input="Inputing" :change="userInputed"></radon-text>
+<radon-text :textfield="obj" :input="Inputing" ></radon-text>
 
 methods: {
     Inputing () {
         console.log('is inputing')
+    }
+}
+```
+### change
+输入框 onchange hook
+```
+<radon-text :textfield="obj" :change="userInputed"></radon-text>
+
+methods: {
+    userInputed () {
+        console.log('is changed')
     }
 }
 ```

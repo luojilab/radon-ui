@@ -49,6 +49,7 @@
     border: 0;
     height: 100%;
     outline: 0;
+    font-size: .8rem;
 }   
 </style>
 <template>
@@ -58,7 +59,7 @@
         :class="{ 'top': state.position === 'top' }"
     >
         <div class="rd-timepicker-value">
-            <input type="text" class="rd-timepicker-value-input" placeholder="请选择时间" v-model="value">
+            <input type="text" class="rd-timepicker-value-input" :placeholder="placeholder" v-model="value">
             <i 
                 @click.stop="clearValue" 
                 class="rd-datepicker-clear ion-close-circled"
@@ -120,6 +121,12 @@ const timeValueParser = (value) => {
 export default {
     props: {
         value: String,
+        placeholder: {
+            type: String,
+            default () {
+                return ''
+            }
+        },
         change: {
             type: Function,
             default () {

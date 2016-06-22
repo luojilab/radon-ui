@@ -66,7 +66,7 @@
     border: none;
     padding: 0;
     min-width: initial;
-    width: 3rem;
+    width: 3.2rem;
     .rd-timepicker-value-input {
         width: 100%;
     }
@@ -78,7 +78,8 @@
     border: 0;
     height: 100%;
     outline: 0;
-    width: 4.1rem;
+    width: 4.15rem;
+    font-size: .8rem;
 }
 .rd-datepicker-info-month,
 .rd-datepicker-info-year {
@@ -145,7 +146,7 @@
                 class="rd-datepicker-clear ion-close-circled"
                 v-show="state.pickerShow"
             ></i>
-            <rd-time-picker v-if="state.timePickerShow" :value.sync="timeTmp.time" :change="timeChange"></rd-time-picker>
+            <rd-time-picker v-if="state.timePickerShow" placeholder="" :value.sync="timeTmp.time" :change="timeChange"></rd-time-picker>
         </div>
         <div class="rd-datepicker-content" v-show="state.pickerShow">
             <div class="rd-datepicker-contrl">
@@ -339,7 +340,7 @@ export default {
         init (current) {
             this.state.timePickerShow = this.options.timePicker || false
             this.weekList = this.options.weekList || ['一', '二', '三', '四', '五', '六', '日']
-            this.monthList = this.options.monthList || ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+            this.monthList = this.options.monthList || ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
         },
         parse (value, format = 'YYYY-MM-DD') {
             let current = moment(value)

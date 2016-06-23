@@ -352,11 +352,11 @@ export default {
                     active: true
                 }, {
                     title: '组件',
-                    link: '',
+                    link: 'basic/button',
                     active: false
                 }, {
                     title: '资源',
-                    link: '',
+                    link: '/',
                     active: false
                 }]
             },

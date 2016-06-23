@@ -64,10 +64,10 @@
 .rd-notification-icon{
     position: absolute;
     top: 50%;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     left: 1rem;
-    margin-top: -1.25rem;
-    line-height: 2.5rem;
+    margin-top: -.75rem;
+    line-height: 1.5rem;
 }
 .notification-transition {
   transition: opacity .5s ease;

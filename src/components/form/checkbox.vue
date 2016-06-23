@@ -19,13 +19,18 @@
     top: .5rem;
 }
 .rd-checkbox-inner-icon {
-    color: #fff;
     position: absolute;
-    font-size: .5rem;
-    left: .2rem;
-    top: 0;
-    line-height: 1rem;
+    color: #fff;
+    font-size: .8rem;
+    left: 50%;
+    top: 50%;
+    width: .8rem;
+    height: .8rem;
+    margin-top: -.3rem;
+    margin-left: -.4rem;
+    line-height: .8rem;
     opacity: 0;
+    text-align: center;
     transition: opacity .2s;
 }
 .rd-checkbox-inner.selected {

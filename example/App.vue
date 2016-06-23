@@ -347,10 +347,10 @@ export default {
                     title: '联系我们',
                     links: [{
                         title: '反馈和建议',
-                        link: '#'
+                        link: 'http://gitlab.dev.didatrip.com/FE/radon-ui'
                     }, {
                         title: '报告bug',
-                        link: '#'
+                        link: 'http://gitlab.dev.didatrip.com/FE/radon-ui'
                     }]
                 }]
             },

@@ -2,9 +2,18 @@
 @import '../../css/index';
 .rd-progress-circle-inner {
     position: relative;
-    width: 132px;
-    height: 132px;
-    font-size: 27.12px;
+    width: 8rem;
+    height: 8rem;
+    font-size: 2rem;
+    display: inline-block;
+}
+.rd-progress-circle-inner.small {
+    width: 4rem;
+    height: 4rem;
+    font-size: 1rem;
+}
+.rd-progress-circle-inner.small .rd-progress-circle-state {
+    font-size: 1rem;
 }
 .rd-progress-circle-info {
     display: block;
@@ -18,8 +27,8 @@
     left: 0;
     margin: 0;
 }
-.rd-progress-circle-success .rd-progress-circle-text,
-.rd-progress-circle-failed .rd-progress-circle-text {
+.rd-progress-circle-inner.success .rd-progress-circle-text,
+.rd-progress-circle-inner.failed .rd-progress-circle-text {
     display: none;
 }
 .rd-progress-circle-state.ion-checkmark-round{
@@ -34,10 +43,7 @@
 <template>
     <div
         class="rd-progress-circle-inner"
-        :class="{ 
-            'rd-progress-circle-success': progress.options.state === 'success',
-            'rd-progress-circle-failed': progress.options.state === 'failed'
-        }"
+        :class="innerClass(progress.options)"
     >
         <svg class="rc-progress-circle" viewBox="0 0 100 100">
             <path class="rc-progress-circle-trail" d="M 50,50 m 0,-47
@@ -85,6 +91,18 @@ export default {
                 return this.progress.options.format(this.progress.percent)
             }
             return this.progress.percent + '%'
+        }
+    },
+    methods: {
+        innerClass (options) {
+            let classList = {}
+            if (options.state) {
+                classList[options.state] = true
+            }
+            if (options.size) {
+                classList[options.size] = true
+            }
+            return classList
         }
     }
 }

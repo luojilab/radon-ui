@@ -20,8 +20,9 @@ data () {
         startDate: ''
     }
 }
-
-// template
+```
+```
+<!-- template -->
 <div class="customer">
     <rd-date-picker :value="startDate"></rd-date-picker>
 </div>

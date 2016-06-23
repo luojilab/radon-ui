@@ -122,17 +122,17 @@ router.map({
         }
     },
     'presentation/pagination': {
-        name: 'from',
+        name: 'pagination',
         component: (resolve) => {
             require(['../views/presentation/pagination.vue'], resolve)
         }
     },
 
     // Navigation
-    'presentation/breadcrumb': {
-        name: 'from',
+    'navigation/breadcrumb': {
+        name: 'breadcrumb',
         component: (resolve) => {
-            require(['../views/presentation/pagination.vue'], resolve)
+            require(['../views/navigation/breadcrumb.vue'], resolve)
         }
     },
 

@@ -97,6 +97,12 @@ router.map({
             require(['../views/presentation/timeline.vue'], resolve)
         }
     },
+    'presentation/notification': {
+        name: 'notification',
+        component: (resolve) => {
+            require(['../views/presentation/notification.vue'], resolve)
+        }
+    },
     'presentation/modal': {
         name: 'modal',
         component: (resolve) => {

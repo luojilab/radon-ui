@@ -282,10 +282,6 @@ export default {
                         subTitle: '开关',
                         link: 'form/switch'
                     }, {
-                        title: 'Timeline',
-                        subTitle: '时间线',
-                        link: 'form/timeline'
-                    }, {
                         title: 'Slider',
                         subTitle: '滑动输入',
                         link: 'form/slider'
@@ -313,9 +309,17 @@ export default {
                         subTitle: '对话框',
                         link: 'presentation/modal'
                     }, {
+                        title: 'Notification',
+                        subTitle: '通知',
+                        link: 'presentation/notification'
+                    }, {
                         title: 'Progress',
                         subTitle: '进度条',
                         link: 'presentation/progress'
+                    }, {
+                        title: 'Timeline',
+                        subTitle: '时间线',
+                        link: 'presentation/timeline'
                     }, {
                         title: 'Tooltip',
                         subTitle: '对话框',

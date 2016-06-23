@@ -4,6 +4,75 @@
     <mark>
         <textarea class="ex-mark-text">
 # Table 表格
+> 展示行列数据。
+
+## API
+```
+<rd-table :table="TableData"></rd-table>
+```
+```
+TableData: {
+    // 基础设置 
+    options: {
+        // 是否展示选择 :Boolean
+        select: true
+    },
+    // 列描述数据对象
+    columns: [{
+        key: 'col1',
+        value: '姓名'
+    }, {
+        key: 'col2',
+        value: '年龄'
+    }, {
+        key: 'col3',
+        value: '微信'
+    }],
+    // 行操作对象:Array
+    actions: [{
+        type: 'button',
+        text: '编辑',
+        func: (e, row) => {
+            this.editTable(row)
+        }
+    }, {
+        type: 'button',
+        text: '删除',
+        func: (e, row) => {
+            console.log(row)
+            this.removeTableItem(row)
+        }
+    }],
+    // 展示数据 :Array
+    tableData: [{
+        // 行列对象属性
+        xx: 'xx',
+        id: 1,
+
+        // 开启选择时应该有该属性
+        checkbox: {
+            disabled: false,
+            checked: false,
+            text: ''
+        },
+
+        // 表格顺序展示值
+        value: [
+            '王尼玛',
+            '33',
+            'wangnima'
+        ]
+    }]
+}
+```
+        </textarea>
+    </mark>
+    <p>
+        <rd-table :table="TableData"></rd-table>
+    </p>
+    <mark>
+        <textarea class="ex-mark-text">
+
 
 ## 代码
 ```javascript
@@ -98,13 +167,10 @@ export default {
     }
 }
 ```
-## 示例
 
         </textarea>
     </mark>
-        <p>
-            <rd-table :table="TableData"></rd-table>
-        </p>
+        
     </div>
 </div>
 </template>

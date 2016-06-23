@@ -14,7 +14,7 @@ html,body{
     width: 100%;
     padding: 0 3rem;
     z-index: 999;
-    background: #0099cc;
+    background: #30abd5;
     box-sizing: border-box;
 }
 .ex-header-logo {

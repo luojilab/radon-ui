@@ -11,7 +11,7 @@
     width: 20rem;
     background-color: #fff;
     margin-right: 1rem;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.41);
+    border: 1px solid #eaf8fe;
     border-radius: 4px;
     padding: 1rem 1.5rem;
     margin-bottom: 1rem;
@@ -99,12 +99,7 @@
     </div>
 </template>
 <script>
-const ICON_MAP = {
-    'success': 'ion-checkmark-circled',
-    'failed': 'ion-close-circled',
-    'warning': 'ion-alert-circled',
-    'info': 'ion-information-circled'
-}
+import { ICON_MAP } from '../utils'
 export default {
     props: {
         notifications: Array

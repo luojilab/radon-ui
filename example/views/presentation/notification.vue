@@ -15,6 +15,8 @@
 this.$Notification.success(title:String, content:String, wait:Number)  
 ```
 ## 示例
+
+点击下面四个按钮试试
         </textarea>
     </mark>
     <p>

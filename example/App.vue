@@ -240,7 +240,11 @@ export default {
     data () {
         return {
             sliderShow: document.body.offsetWidth > 1000,
-            Notifications: [],
+            Notifications: [{
+                content: '',
+                title: 'warning',
+                type: 'warning'
+            }],
             menu: [{
                 title: '快速上手',
                 link: '/'

@@ -9,10 +9,11 @@
 ```javascript
 export default { 
   template: `<radon-switch :checked.sync="switchA" size="small"></radon-switch>
-            <radon-switch :checked.sync="switchA"></radon-switch>`,
+            <radon-switch :checked.sync="switchB"></radon-switch>`,
   data () {
         return {
-            switchA: false
+            switchA: false,
+            switchB: false
         }
     },
     components: {
@@ -25,7 +26,7 @@ export default {
     </mark>
         <p>
             <radon-switch :checked.sync="switchA" size="small"></radon-switch>
-            <radon-switch :checked.sync="switchA"></radon-switch>
+            <radon-switch :checked.sync="switchB"></radon-switch>
         </p>
     </div>
 </div>
@@ -39,7 +40,8 @@ import {
 export default {
     data () {
         return {
-            switchA: false
+            switchA: false,
+            switchB: false
         }
     },
     components: {

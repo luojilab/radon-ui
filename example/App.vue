@@ -61,9 +61,7 @@ html,body{
 .sidebar {
     width: 15rem;
     height: 100%;
-    top: 0;
-    left: 0;
-    overflow-y: auto;
+    margin-bottom: 5rem;
     background-color: #fff;
 }
 .content{
@@ -127,10 +125,11 @@ html,body{
     display: none;
     position: fixed;
     font-size: 2rem;
-    left: 1rem;
-    top: .5rem;
+    right: 1rem;
+    top: 1rem;
     line-height: 2rem;
     z-index: 3;
+    color: #666;
 }
 .ex-footer {
     display: flex;
@@ -164,18 +163,52 @@ html,body{
     color: #fff;
 }
 @media screen and (max-width: 1000px) {
-    html {
-        font-size: 40px;
+    .ex-header {
+        padding: 0 1rem;
+    }
+    .page-wrapper {
+        padding: 0;
     }
     .container {
         padding-left: 0;
+    }
+    .content {
+        min-width: initial;
+        padding: 1rem;
+        box-sizing: border-box;
+        overflow: hidden;
     }
     .show-slider {
         display: inline-block;
     }
     .sidebar {
-        padding-top: 3rem;
+        position: fixed;
         z-index: 2;
+        top: 0;
+        overflow-y: auto;
+    }
+    .ex-header-nav {
+        display: none;
+    }
+    .ex-footer {
+        padding: .5rem 1rem;
+        font-size: .8rem;
+    }
+    .ex-footer {
+        flex-wrap: wrap;
+    }
+    .ex-footer-nav {
+        width: 100%;
+    }
+    .ex-footer-nav-item {
+        text-align: center;
+    }
+    .ex-footer-info {
+        width: 100%;
+        text-align: center;
+    }
+    .ex-footer-nav-link {
+        font-size: .6rem;
     }
 }
 </style>
@@ -187,6 +220,9 @@ html,body{
                     <span class="ex-header-logo-text">Radon UI</span>
                 </div>
             </a>
+            <div class="show-slider" @click="sliderShow = !sliderShow">
+                <span class="ion-navicon"></span>   
+            </div>
             <nav class="ex-header-nav">
                 <a v-for="item in header.nav" v-link="{ path: item.link }">
                     <div class="ex-header-nav-item" :class="{ 'active': item.active }">
@@ -197,9 +233,6 @@ html,body{
         </header>
         <div class="page-wrapper">
             <div class="container">
-                <div class="show-slider" @click="sliderShow = !sliderShow">
-                    <span class="ion-navicon"></span>   
-                </div>
                 <div class="sidebar" v-show="sliderShow">
                     <div class="ex-menu-container">
                         <menu :menu="menu" @click="mobileClick"></menu>
@@ -380,6 +413,9 @@ export default {
                     }, {
                         title: 'Webpack',
                         link: 'http://webpack.github.io/'
+                    }, {
+                        title: 'ionicons',
+                        link: 'http://ionicons.com/'
                     }]
                 }, {
                     title: '联系我们',

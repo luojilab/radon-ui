@@ -34,12 +34,12 @@ breadcrumb: {
         icon: 'ion-document',
         value: '订单',
         route: {
-            path: '/button'
+            path: '/form/checkbox'
         }
     }, {
         value: '订单查询',
         route: {
-            path: '/form'
+            path: '/navigation/breadcrumb'
         }
     }]
 }

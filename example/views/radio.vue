@@ -4,12 +4,9 @@
     <mark>
         <textarea class="ex-mark-text">
 # Radio 单选框
-简单的radio
-
-## 何时使用
-
-用于在多个备选项中选中单个状态。
-和 Select 的区别是，Radio 所有选项默认可见，方便用户在比较中选择，因此选项不宜过多。
+> 简单的radio
+ * 用于在多个备选项中选中单个状态。
+ * 和 Select 的区别是，Radio 所有选项默认可见，方便用户在比较中选择，因此选项不宜过多。
         </textarea>
     </mark>
         <p>
@@ -21,6 +18,9 @@
 
 ## radios
 承载多个 radio 对象的数组
+```html
+<radon-radio :radios="radios"></radon-radio>
+```
 
 ```
 radios: [{
@@ -37,7 +37,7 @@ radios: [{
     </mark>
     <mark>
         <textarea class="ex-mark-text">
-## 完整示例代码
+## 示例代码
 ```javascript
 export default { 
   template: '<radon-radio :radios="radios"></radon-radio>'

@@ -137,11 +137,11 @@ export default {
 </div>
 </template>
 <script>
-import mark from './mark.vue'
+import { Mark } from '../index'
 import {
     radonProgress,
     randonProgressCircle
-} from '../../src/components/index'
+} from '../../../src/components/index'
 
 export default {
     data () {
@@ -222,7 +222,7 @@ export default {
     components: {
         radonProgress,
         randonProgressCircle,
-        mark
+        Mark
     },
     methods: {
         startProgress (progress) {

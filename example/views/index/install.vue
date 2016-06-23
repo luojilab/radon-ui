@@ -38,11 +38,11 @@ git submodule update
 </div>
 </template>
 <script>
-import mark from '../mark.vue'
+import { Mark } from '../index'
 
 export default {
     components: {
-        mark
+        Mark
     }
 }
 </script>

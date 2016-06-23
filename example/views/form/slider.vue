@@ -33,10 +33,10 @@ export default {
 </div>
 </template>
 <script>
-import mark from './mark.vue'
+import { Mark } from '../index'
 import {
     rdSlider
-} from '../../src/components/index'
+} from '../../../src/components/index'
 
 export default {
     data () {
@@ -48,7 +48,7 @@ export default {
     },
     components: {
         rdSlider,
-        mark
+        Mark
     }
 }
 </script>

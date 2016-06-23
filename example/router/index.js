@@ -6,6 +6,7 @@ Vue.use(VueRouter)
 const router = new VueRouter()
 
 router.map({
+    // Index
     '/': {
         name: 'index',
         component: (resolve) => {
@@ -18,112 +19,128 @@ router.map({
             require(['../views/index/install.vue'], resolve)
         }
     },
-    '/button': {
+
+    // Basic
+    '/basic/button': {
         name: 'button',
         component: (resolve) => {
-            require(['../views/button.vue'], resolve)
+            require(['../views/basic/button.vue'], resolve)
         }
     },
-    '/checkbox': {
+
+    // Form
+    'form/checkbox': {
         name: 'checkbox',
         component: (resolve) => {
-            require(['../views/checkbox.vue'], resolve)
+            require(['../views/form/checkbox.vue'], resolve)
         }
     },
-    '/radio': {
+    'form/radio': {
         name: 'radio',
         component: (resolve) => {
-            require(['../views/radio.vue'], resolve)
+            require(['../views/form/radio.vue'], resolve)
         }
     },
-    '/datepicker': {
+    'form/datepicker': {
         name: 'datepicker',
         component: (resolve) => {
-            require(['../views/datepicker.vue'], resolve)
+            require(['../views/form/datepicker.vue'], resolve)
         }
     },
-    '/slider': {
+    'form/slider': {
         name: 'slider',
         component: (resolve) => {
-            require(['../views/slider.vue'], resolve)
+            require(['../views/form/slider.vue'], resolve)
         }
     },
-    '/switch': {
+    'form/switch': {
         name: 'switch',
         component: (resolve) => {
-            require(['../views/switch.vue'], resolve)
+            require(['../views/form/switch.vue'], resolve)
         }
     },
-    '/textfield': {
+    'form/textfield': {
         name: 'textfield',
         component: (resolve) => {
-            require(['../views/textfield.vue'], resolve)
+            require(['../views/form/textfield.vue'], resolve)
         }
     },
-    '/timeline': {
-        name: 'timeline',
-        component: (resolve) => {
-            require(['../views/timeline.vue'], resolve)
-        }
-    },
-    '/cascader': {
+    'form/cascader': {
         name: 'cascader',
         component: (resolve) => {
-            require(['../views/cascader.vue'], resolve)
+            require(['../views/form/cascader.vue'], resolve)
         }
     },
-    '/select': {
+    'form/select': {
         name: 'select',
         component: (resolve) => {
-            require(['../views/select.vue'], resolve)
+            require(['../views/form/select.vue'], resolve)
         }
     },
-    '/modal': {
-        name: 'modal',
-        component: (resolve) => {
-            require(['../views/modal.vue'], resolve)
-        }
-    },
-    '/alert': {
-        name: 'alert',
-        component: (resolve) => {
-            require(['../views/alert.vue'], resolve)
-        }
-    },
-    '/progress': {
-        name: 'progress',
-        component: (resolve) => {
-            require(['../views/progress.vue'], resolve)
-        }
-    },
-    '/table': {
+    'form/table': {
         name: 'table',
         component: (resolve) => {
-            require(['../views/table.vue'], resolve)
+            require(['../views/form/table.vue'], resolve)
         }
     },
-    '/spin': {
+
+    // Presentation
+    'presentation/progress': {
+        name: 'progress',
+        component: (resolve) => {
+            require(['../views/presentation/progress.vue'], resolve)
+        }
+    },
+    'presentation/timeline': {
+        name: 'timeline',
+        component: (resolve) => {
+            require(['../views/presentation/timeline.vue'], resolve)
+        }
+    },
+    'presentation/modal': {
+        name: 'modal',
+        component: (resolve) => {
+            require(['../views/presentation/modal.vue'], resolve)
+        }
+    },
+    'presentation/alert': {
+        name: 'alert',
+        component: (resolve) => {
+            require(['../views/presentation/alert.vue'], resolve)
+        }
+    },
+    'presentation/spin': {
         name: 'spin',
         component: (resolve) => {
-            require(['../views/spin.vue'], resolve)
+            require(['../views/presentation/spin.vue'], resolve)
         }
     },
-    '/tooltip': {
+    'presentation/tooltip': {
         name: 'tooltip',
         component: (resolve) => {
-            require(['../views/tooltip.vue'], resolve)
+            require(['../views/presentation/tooltip.vue'], resolve)
         }
     },
+    'presentation/pagination': {
+        name: 'from',
+        component: (resolve) => {
+            require(['../views/presentation/pagination.vue'], resolve)
+        }
+    },
+
+    // Navigation
+    'presentation/breadcrumb': {
+        name: 'from',
+        component: (resolve) => {
+            require(['../views/presentation/pagination.vue'], resolve)
+        }
+    },
+
+    // Other
     '/form': {
         name: 'from',
         component: (resolve) => {
             require(['../views/form.vue'], resolve)
-        }
-    },
-    '/pagination': {
-        name: 'from',
-        component: (resolve) => {
-            require(['../views/pagination.vue'], resolve)
         }
     }
 })

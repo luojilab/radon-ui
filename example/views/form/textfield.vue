@@ -93,10 +93,10 @@ export default {
 </div>
 </template>
 <script>
-import mark from './mark.vue'
+import { Mark } from '../index'
 import {
     radonText
-} from '../../src/components/index'
+} from '../../../src/components/index'
 
 const MAP = {
     0: {
@@ -137,7 +137,7 @@ export default {
     },
     components: {
         radonText,
-        mark
+        Mark
     },
     methods: {
         userInputing () {

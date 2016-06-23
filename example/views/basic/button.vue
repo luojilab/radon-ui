@@ -95,12 +95,12 @@
 </div>
 </template>
 <script>
-import mark from './mark.vue'
+import { Mark } from '../index'
 import {
     formItem,
     radonButton,
     radonButtonGroup
-} from '../../src/components/index'
+} from '../../../src/components/index'
 
 export default {
     data () {
@@ -114,7 +114,7 @@ export default {
         formItem,
         radonButton,
         radonButtonGroup,
-        mark
+        Mark
     }
 }
 </script>

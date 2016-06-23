@@ -139,10 +139,10 @@ export default {
 </div>
 </template>
 <script>
-import mark from './mark.vue'
+import { Mark } from '../index'
 import {
     radonCascader
-} from '../../src/components/index'
+} from '../../../src/components/index'
 
 const options = [{
     value: 'china',
@@ -262,7 +262,7 @@ export default {
     },
     components: {
         radonCascader,
-        mark
+        Mark
     }
 }
 </script>

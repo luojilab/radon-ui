@@ -35,6 +35,7 @@ data () {
 
  > chrome
 
+
  ## 如何贡献
  我们欢迎任何形式的贡献，有任何建议或意见您可以进行 [Pull Request](http://gitlab.dev.didatrip.com/FE/radon-ui)，或者给我们[提问](http://gitlab.dev.didatrip.com/FE/radon-ui)。
 
@@ -44,11 +45,11 @@ data () {
 </div>
 </template>
 <script>
-import mark from '../mark.vue'
+import { Mark } from '../index'
 
 export default {
     components: {
-        mark
+        Mark
     }
 }
 </script>

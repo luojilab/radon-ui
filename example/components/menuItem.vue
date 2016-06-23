@@ -8,7 +8,23 @@
             <span class="ex-menu-sub-title" v-if="menuItem.subTitle">{{menuItem.subTitle}}</span>
             <span class="ex-menu-title-arrow ion-chevron-down" v-if="menuItem.subMenu"></span>
         </div>
-        <ul v-if="menuItem.subMenu" v-show="showSub">
+        <div v-if="menuItem.subMenu && menuItem.group" v-show="showSub">
+            <div v-for="item in menuItem.subMenu">
+                <div class="ex-menu-group-title">{{item.title}}</div>
+                <ul >
+                    <li 
+                        v-link="{ path: '/' + subMenuItem.link, activeClass: 'active'}"
+                        class="ex-sub-menu-item"
+                        :class="{ 'active': subMenuItem.active }"
+                        v-for="subMenuItem in item.group"
+                    >
+                        <span class="ex-sub-menu-title">{{subMenuItem.title}}</span>
+                        <span class="ex-sub-menu-sub-title" v-if="subMenuItem.subTitle">{{subMenuItem.subTitle}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul v-if="menuItem.subMenu && !menuItem.group" v-show="showSub">
             <li 
                 v-link="{ path: '/' + subMenuItem.link, activeClass: 'active'}"
                 class="ex-sub-menu-item"

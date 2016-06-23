@@ -76,10 +76,10 @@ export default {
 </div>
 </template>
 <script>
-import mark from './mark.vue'
+import { Mark } from '../index'
 import {
     rdSelect
-} from '../../src/components/index'
+} from '../../../src/components/index'
 
 export default {
     data () {
@@ -107,7 +107,7 @@ export default {
     },
     components: {
         rdSelect,
-        mark
+        Mark
     }
 }
 </script>

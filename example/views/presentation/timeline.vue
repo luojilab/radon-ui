@@ -42,10 +42,10 @@ export default {
 </div>
 </template>
 <script>
-import mark from './mark.vue'
+import { Mark } from '../index'
 import {
     rdTimeline
-} from '../../src/components/index'
+} from '../../../src/components/index'
 
 export default {
     data () {
@@ -67,7 +67,7 @@ export default {
     },
     components: {
         rdTimeline,
-        mark
+        Mark
     }
 }
 </script>

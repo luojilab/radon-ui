@@ -5,7 +5,7 @@ html,body{
     margin: 0;
 }
 .page-wrapper {
-    background: #ececec;
+    background: #f1f4f9;
     padding: 1rem 4rem 4rem 4rem;
 }
 .ex-header {
@@ -14,7 +14,7 @@ html,body{
     width: 100%;
     padding: 0 3rem;
     z-index: 999;
-    background: #fff;
+    background: #0099cc;
     box-sizing: border-box;
 }
 .ex-header-logo {
@@ -27,7 +27,7 @@ html,body{
     margin: 1rem 1rem 0 0;
 }
 .ex-header-logo-text {
-    color: #66e6c9;
+    color: #fff;
     font-size: 2.5rem;
     font-weight: 100;
     line-height: 3rem;
@@ -38,16 +38,17 @@ html,body{
     width: 100%;
 }
 .ex-header-nav-item {
-    color: #666;
+    color: #fff;
     text-align: center;
-    line-height: 4rem;
+    font-size: .9rem;
+    line-height: 3.9rem;
     min-width: 4rem;
     cursor: pointer;
 }
 .ex-header-nav-item.active,
 .ex-header-nav-item:hover {
-    color: #66e6c9;
-    border-bottom: 2px solid #66e6c9;
+    color: #fff;
+    border-bottom: .2rem solid #fff;
 }
 .container {
     position: relative;
@@ -117,6 +118,11 @@ html,body{
 .ex-card {
     margin: 2rem 1rem;
 }
+.ex-menu-group-title {
+    color: #b9b9b9;
+    font-size: .8rem;
+    padding-left: 1.5rem;
+}
 .show-slider {
     display: none;
     position: fixed;
@@ -128,30 +134,34 @@ html,body{
 }
 .ex-footer {
     display: flex;
-    padding: 1rem 4rem 2rem 4rem;
-    background-color: #fff;
+    padding: 2rem 4rem 5rem 4rem;
+    background-color: #30abd5;
 }
 .ex-footer-nav {
     display: flex;
-    width: 100%;
+    width: 50%;
 }
 .ex-footer-info {
+    color: #fff;
     font-size: .8rem;
-    width: 16rem;
+    width: 50%;
     text-align: right;
 }
 .ex-footer-nav-item {
     flex: 1;
+}
+.ex-footer-nav-title {
+    color: #fff;
 }
 .ex-footer-nav-link {
     font-size: .8rem;
     margin: .25rem 0;
 }
 .ex-footer-nav-link-a {
-    color: #2db7f5;
+    color: #fff;
 }
 .ex-footer-nav-link-description {
-    color: #ababab;
+    color: #fff;
 }
 @media screen and (max-width: 1000px) {
     html {
@@ -178,7 +188,7 @@ html,body{
                 </div>
             </a>
             <nav class="ex-header-nav">
-                <a v-for="item in header.nav" :href="item.link">
+                <a v-for="item in header.nav" v-link="{ path: item.link }">
                     <div class="ex-header-nav-item" :class="{ 'active': item.active }">
                         <span class="ex-header-nav-text">{{item.title}}</span>
                     </div>
@@ -241,74 +251,98 @@ export default {
                 title: 'components',
                 link: 'form',
                 showSub: true,
+                group: true,
                 subMenu: [{
-                    title: 'Button',
-                    subTitle: '按钮',
-                    link: 'button'
+                    title: 'Basic',
+                    group: [{
+                        title: 'Button',
+                        subTitle: '按钮',
+                        link: 'basic/button'
+                    }]
                 }, {
-                    title: 'Checkbox',
-                    subTitle: '多选框',
-                    link: 'checkbox'
+                    title: 'Form',
+                    group: [{
+                        title: 'Checkbox',
+                        subTitle: '多选框',
+                        link: 'form/checkbox'
+                    }, {
+                        title: 'Radio',
+                        subTitle: '单选框',
+                        link: 'form/radio'
+                    }, {
+                        title: 'Textfield',
+                        subTitle: '输入框',
+                        link: 'form/textfield'
+                    }, {
+                        title: 'Table',
+                        subTitle: '表格',
+                        link: 'form/table'
+                    }, {
+                        title: 'Switch',
+                        subTitle: '开关',
+                        link: 'form/switch'
+                    }, {
+                        title: 'Timeline',
+                        subTitle: '时间线',
+                        link: 'form/timeline'
+                    }, {
+                        title: 'Slider',
+                        subTitle: '滑动输入',
+                        link: 'form/slider'
+                    }, {
+                        title: 'Datepicker',
+                        subTitle: '日期选择',
+                        link: 'form/datepicker'
+                    }, {
+                        title: 'Select',
+                        subTitle: '选择器',
+                        link: 'form/select'
+                    }, {
+                        title: 'Cascader',
+                        subTitle: '级联选择器',
+                        link: 'form/cascader'
+                    }]
                 }, {
-                    title: 'Radio',
-                    subTitle: '单选框',
-                    link: 'radio'
+                    title: 'Presentation',
+                    group: [{
+                        title: 'Alert',
+                        subTitle: '警告提示',
+                        link: 'presentation/alert'
+                    }, {
+                        title: 'Modal',
+                        subTitle: '对话框',
+                        link: 'presentation/modal'
+                    }, {
+                        title: 'Progress',
+                        subTitle: '进度条',
+                        link: 'presentation/progress'
+                    }, {
+                        title: 'Tooltip',
+                        subTitle: '对话框',
+                        link: 'presentation/tooltip'
+                    }, {
+                        title: 'Spin',
+                        subTitle: '加载中',
+                        link: 'presentation/spin'
+                    }]
                 }, {
-                    title: 'Textfield',
-                    subTitle: '输入框',
-                    link: 'textfield'
+                    title: 'Navigation',
+                    group: [{
+                        title: 'Breadcrumb',
+                        subTitle: '面包屑',
+                        link: 'navigation/breadcrumb'
+                    }, {
+                        title: 'Pagination',
+                        subTitle: '分页',
+                        link: 'navigation/pagination'
+                    }]
                 }, {
-                    title: 'Table',
-                    subTitle: '表格',
-                    link: 'table'
-                }, {
-                    title: 'Switch',
-                    subTitle: '开关',
-                    link: 'switch'
-                }, {
-                    title: 'Timeline',
-                    subTitle: '时间线',
-                    link: 'timeline'
-                }, {
-                    title: 'Slider',
-                    subTitle: '滑动输入',
-                    link: 'slider'
-                }, {
-                    title: 'Progress',
-                    subTitle: '进度条',
-                    link: 'progress'
-                }, {
-                    title: 'Datepicker',
-                    subTitle: '日期选择',
-                    link: 'datepicker'
-                }, {
-                    title: 'Select',
-                    subTitle: '选择器',
-                    link: 'select'
-                }, {
-                    title: 'Cascader',
-                    subTitle: '级联选择器',
-                    link: 'cascader'
-                }, {
-                    title: 'Alert',
-                    subTitle: '警告提示',
-                    link: 'alert'
-                }, {
-                    title: 'Modal',
-                    subTitle: '对话框',
-                    link: 'modal'
-                }, {
-                    title: 'Tooltip',
-                    subTitle: '对话框',
-                    link: 'tooltip'
-                }, {
-                    title: 'Spin',
-                    subTitle: '加载中',
-                    link: 'spin'
-                }, {
-                    title: 'Demo',
-                    subTitle: 'playground',
-                    link: 'form'
+                    title: 'demo',
+                    group: [{
+                        title: 'Demo',
+                        subTitle: 'playground',
+                        link: 'form'
+                    }]
                 }]
             }],
             header: {

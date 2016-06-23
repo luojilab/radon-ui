@@ -69,10 +69,10 @@ export default {
 </div>
 </template>
 <script>
-import mark from './mark.vue'
+import { Mark } from '../index'
 import {
     radonRadio
-} from '../../src/components/index'
+} from '../../../src/components/index'
 
 export default {
     data () {
@@ -94,7 +94,7 @@ export default {
     },
     components: {
         radonRadio,
-        mark
+        Mark
     }
 }
 </script>

@@ -41,17 +41,17 @@ export default {
 </div>
 </template>
 <script>
-import mark from './mark.vue'
+import { Mark } from '../index'
 import {
     rdTooltip,
     radonButton
-} from '../../src/components/index'
+} from '../../../src/components/index'
 
 export default {
     components: {
         radonButton,
         rdTooltip,
-        mark
+        Mark
     }
 }
 </script>

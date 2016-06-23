@@ -70,17 +70,17 @@
     line-height: 1.5rem;
 }
 .notification-transition {
-  transition: opacity .5s ease;
+    transition: opacity .5s ease;
 }
 .notification-enter {
-  opacity: 0;
+    opacity: 0;
 }
 .notification-leave {
-  opacity: 0;
-  position: absolute;
+    opacity: 0;
+    position: absolute;
 }
 .notification-move {
-  transition: transform .5s cubic-bezier(.55,0,.1,1);
+    transition: transform .5s cubic-bezier(.55,0,.1,1);
 } 
 </style>
 <template>

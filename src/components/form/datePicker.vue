@@ -444,6 +444,7 @@ export default {
             this.monthDisplay()
         },
         togglePicker (e) {
+            e.preventDefault()
             if (e.clientY + document.body.scrollTop + 320 > document.body.offsetHeight) {
                 this.state.position = 'top'
             } else {

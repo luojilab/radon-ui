@@ -9,7 +9,13 @@ router.map({
     '/': {
         name: 'index',
         component: (resolve) => {
-            require(['../views/index.vue'], resolve)
+            require(['../views/index/index.vue'], resolve)
+        }
+    },
+    '/install': {
+        name: 'install',
+        component: (resolve) => {
+            require(['../views/index/install.vue'], resolve)
         }
     },
     '/button': {

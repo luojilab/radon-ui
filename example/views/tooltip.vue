@@ -4,6 +4,9 @@
     <mark>
         <textarea class="ex-mark-text">
 # Tooltip 文字提示 
+ > 鼠标移入则显示提示，移出消失，气泡浮层不承载复杂文本和操作。
+
+## 示例
         </textarea>
     </mark>
     <p>
@@ -12,17 +15,15 @@
     </p>
     <mark>
         <textarea class="ex-mark-text">
-## 代码
+## 示例代码
 ```html
-// template
+<!-- template -->
 <p>
-    <radon-button type="primary"><rd-tooltip>嗯</rd-tooltip>按钮的tooltip</radon-button>
-    <span>233333333<rd-tooltip>这里是tooltip</rd-tooltip></span>
-    <span>啊啊啊<rd-tooltip>这里是tooltip</rd-tooltip></span>
-    <span>按时打算发生的<rd-tooltip>这里是tooltip</td-tooltip></span>
-    <span>啊啊<rd-tooltip>这里是tooltip</rd-tooltip></span>
+    <radon-button type="primary"><rd-tooltip>这里是tooltip</rd-tooltip>鼠标移上来就会出现提示 按钮</radon-button>
+    <span>鼠标移上来就会出现提示<rd-tooltip>这里是tooltip</rd-tooltip></span>
 </p>
-
+```
+```javascript
 // script
 import {
     rdTooltip
@@ -34,8 +35,6 @@ export default {
     }
 }
 ```
-## 示例
-
         </textarea>
     </mark>
     </div>

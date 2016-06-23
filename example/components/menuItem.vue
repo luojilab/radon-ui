@@ -35,9 +35,18 @@ export default {
             showSub: false
         }
     },
+    created () {
+        if (this.menuItem.showSub) {
+            this.showSub = true
+        }
+    },
     methods: {
         toggleSub () {
-            this.showSub = !this.showSub
+            if (!this.menuItem.subMenu) {
+                this.$route.router.go({ path: this.menuItem.link })
+            } else {
+                this.showSub = !this.showSub
+            }
         }
     }
 }

@@ -4,7 +4,40 @@
     <mark>
         <textarea class="ex-mark-text">
 # Select 选择器
+ > 弹出一个下拉菜单给用户选择操作，用于代替原生的选择器
 
+## 示例
+        </textarea>
+    </mark>
+    <p>
+        <rd-select :value.sync="selectProvince.value" :options.sync="selectProvince.options"></rd-select>
+    </p>
+    <mark>
+        <textarea class="ex-mark-text">
+## API
+
+```html
+<radon-select :value.sync="selectProvince.value" :options.sync="selectProvince.options"></radon-select>
+```
+```javascript
+// 获取select选择的对象
+value   :Object
+
+// 提供待选对象集合
+options :Array
+
+options: {
+    // 选中状态 :Boolean
+    selected: false,
+    // 可用状态 : Boolean
+    disabled: false,
+    // 展示值 : String
+    value: '四川',
+
+    // 其他自定义属性
+    id: 1 
+}
+```
 ## 代码
 ```javascript
 export default {
@@ -37,13 +70,8 @@ export default {
     }
 }
 ```
-## 示例
-
         </textarea>
     </mark>
-        <p>
-            <rd-select :value.sync="selectProvince.value" :options.sync="selectProvince.options"></rd-select>
-        </p>
     </div>
 </div>
 </template>

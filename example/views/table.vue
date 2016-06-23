@@ -4,8 +4,14 @@
     <mark>
         <textarea class="ex-mark-text">
 # Table 表格
-> 展示行列数据。
-
+展示行列数据。
+        </textarea>
+    </mark>
+    <p>
+        <rd-table :table="TableData"></rd-table>
+    </p>
+    <mark>
+        <textarea class="ex-mark-text">
 ## API
 ```
 <rd-table :table="TableData"></rd-table>
@@ -67,9 +73,6 @@ TableData: {
 ```
         </textarea>
     </mark>
-    <p>
-        <rd-table :table="TableData"></rd-table>
-    </p>
     <mark>
         <textarea class="ex-mark-text">
 

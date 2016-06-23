@@ -1,29 +1,76 @@
-<style src="./lib/highlight/styles/agate.css"></style>
+<style src="./lib/highlight/styles/github-gist.css"></style>
 <style>
 html,body{
     height: 100%;
     margin: 0;
 }
-.container{
-    height: 100%;
+.page-wrapper {
+    background: #ececec;
+    padding: 1rem 4rem 4rem 4rem;
+}
+.ex-header {
+    display: flex;
+    height: 4rem;
+    width: 100%;
+    padding: 0 3rem;
+    z-index: 999;
+    background: #fff;
+    box-sizing: border-box;
+}
+.ex-header-logo {
+    padding-top: .5rem;
+    width: 12rem;
+}
+.ex-header-logo-img {
+    display: none;
+    height: 2rem;
+    margin: 1rem 1rem 0 0;
+}
+.ex-header-logo-text {
+    color: #66e6c9;
+    font-size: 2.5rem;
+    font-weight: 100;
+    line-height: 3rem;
+}
+.ex-header-nav {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+.ex-header-nav-item {
+    color: #666;
+    text-align: center;
+    line-height: 4rem;
+    min-width: 4rem;
+    cursor: pointer;
+}
+.ex-header-nav-item.active,
+.ex-header-nav-item:hover {
+    color: #66e6c9;
+    border-bottom: 2px solid #66e6c9;
+}
+.container {
     position: relative;
-    padding-left: 15rem;
+    display: flex;
+    height: 100%;
+    background: #fff;
     box-sizing: border-box;
     overflow-x: hidden;
 }
 .sidebar {
-    position: fixed;
     width: 15rem;
     height: 100%;
-    border-right: 1px solid #f7f7f7;
     top: 0;
     left: 0;
     overflow-y: auto;
     background-color: #fff;
 }
 .content{
+    min-width: 40rem;
     height: 100%;
     padding: 1rem;
+    background: #fff;
+    border-left: 1px solid #f7f7f7;
 }
 .ex-container {
     display: flex;
@@ -79,6 +126,33 @@ html,body{
     line-height: 2rem;
     z-index: 3;
 }
+.ex-footer {
+    display: flex;
+    padding: 1rem 4rem 2rem 4rem;
+    background-color: #fff;
+}
+.ex-footer-nav {
+    display: flex;
+    width: 100%;
+}
+.ex-footer-info {
+    font-size: .8rem;
+    width: 16rem;
+    text-align: right;
+}
+.ex-footer-nav-item {
+    flex: 1;
+}
+.ex-footer-nav-link {
+    font-size: .8rem;
+    margin: .25rem 0;
+}
+.ex-footer-nav-link-a {
+    color: #2db7f5;
+}
+.ex-footer-nav-link-description {
+    color: #ababab;
+}
 @media screen and (max-width: 1000px) {
     html {
         font-size: 40px;
@@ -96,24 +170,57 @@ html,body{
 }
 </style>
 <template>
-	<div class="container">
-        <div class="show-slider" @click="sliderShow = !sliderShow">
-            <span class="ion-navicon"></span>   
+    <div>
+        <header class="ex-header">
+            <a v-link="{ path: '/' }">
+                <div class="ex-header-logo">
+                    <span class="ex-header-logo-text">Radon UI</span>
+                </div>
+            </a>
+            <nav class="ex-header-nav">
+                <a v-for="item in header.nav" :href="item.link">
+                    <div class="ex-header-nav-item" :class="{ 'active': item.active }">
+                        <span class="ex-header-nav-text">{{item.title}}</span>
+                    </div>
+                </a>
+            </nav>
+        </header>
+        <div class="page-wrapper">
+            <div class="container">
+                <div class="show-slider" @click="sliderShow = !sliderShow">
+                    <span class="ion-navicon"></span>   
+                </div>
+                <div class="sidebar" v-show="sliderShow">
+                    <div class="ex-menu-container">
+                        <menu :menu="menu" @click="mobileClick"></menu>
+                    </div>      
+                </div>
+                <div class="content">
+                    <router-view></router-view>
+                </div>
+                <radon-modal :modal="modal"></radon-modal>
+                <rd-notification :notifications="Notifications"></rd-notification>
+            </div>
         </div>
-		<div class="sidebar" v-show="sliderShow">
-            <div class="ex-menu-container">
-                <menu :menu="menu" @click="mobileClick"></menu>
-            </div>      
-        </div>
-		<div class="content">
-			<router-view></router-view>
-		</div>
-        <radon-modal :modal="modal"></radon-modal>
-        <rd-notification :notifications="Notifications"></rd-notification>
-	</div>
+        <footer class="ex-footer">
+            <nav class="ex-footer-nav">
+                <div class="ex-footer-nav-item" v-for="item in footer.nav">
+                    <span class="ex-footer-nav-title">{{item.title}}</span>
+                    <div class="ex-footer-nav-link" v-for="link in item.links">
+                        <a  class="ex-footer-nav-link-a" :href="link.link">{{link.title}}</a>
+                        <span class="ex-footer-nav-link-description">{{link.sub}}</span>
+                    </div>
+                </div>
+            </nav>
+            <div class="ex-footer-info">
+                <p>©2016 罗辑思维前端团队出品</p>
+            </div>
+        </footer>
+    </div>
+    
 </template>
 <script>
-import Menu from './views/menu.vue'
+import Menu from './components/menu.vue'
 import {
     radonModal,
     rdNotification
@@ -125,25 +232,15 @@ export default {
             sliderShow: document.body.offsetWidth > 1000,
             Notifications: [],
             menu: [{
-                title: 'Radon UI for Vue',
-                subTitle: 'ui',
-                link: ''
-            }, {
                 title: '快速上手',
-                link: 'form',
-                subMenu: [{
-                    title: '安装',
-                    link: 'install'
-                }, {
-                    title: '升级指南',
-                    link: 'update'
-                }, {
-                    title: '更新日志',
-                    link: 'log'
-                }]
+                link: '/'
+            }, {
+                title: '安装',
+                link: '/install'
             }, {
                 title: 'components',
                 link: 'form',
+                showSub: true,
                 subMenu: [{
                     title: 'Button',
                     subTitle: '按钮',
@@ -214,6 +311,49 @@ export default {
                     link: 'form'
                 }]
             }],
+            header: {
+                nav: [{
+                    title: '首页',
+                    link: '',
+                    active: true
+                }, {
+                    title: '组件',
+                    link: '',
+                    active: false
+                }, {
+                    title: '资源',
+                    link: '',
+                    active: false
+                }]
+            },
+            footer: {
+                nav: [{
+                    title: '源码',
+                    links: [{
+                        title: '仓库',
+                        link: 'http://gitlab.dev.didatrip.com/FE/radon-ui',
+                        sub: '- Gitlab'
+                    }]
+                }, {
+                    title: '相关链接',
+                    links: [{
+                        title: 'Vue.js',
+                        link: 'http://vuejs.org/'
+                    }, {
+                        title: 'Webpack',
+                        link: 'http://webpack.github.io/'
+                    }]
+                }, {
+                    title: '联系我们',
+                    links: [{
+                        title: '反馈和建议',
+                        link: '#'
+                    }, {
+                        title: '报告bug',
+                        link: '#'
+                    }]
+                }]
+            },
             modal: {
                 show: false,
                 title: '',

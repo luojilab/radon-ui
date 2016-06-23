@@ -4,13 +4,35 @@
 }
 .marked code {
     display: block;
-    background: #4a4a4a;
+    background: #f7f7f7;
     padding: 1rem;
-    color: #ffffff;
+    color: #999;
     font-size: .8rem;
     line-height: 1.2;
-    width: 60rem;
     overflow-x: auto;
+}
+.marked {
+    font-size: .9rem;
+    line-height: 1.8;
+    color: #666;
+}
+.marked h1 {
+    font-size: 1.6rem;
+}
+.marked h2 {
+    font-size: 1.2rem;
+}
+.marked blockquote {
+    font-size: 90%;
+    color: #999;
+    border-left: 4px solid #e9e9e9;
+    padding-left: .8em;
+    margin: 1em 0;
+    font-style: italic;
+}
+.marked ul, ol {
+    padding: 0 2rem;
+    list-style: inherit;
 }
 </style>
 <template>

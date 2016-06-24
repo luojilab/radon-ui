@@ -34,6 +34,11 @@
     padding: 0 2rem;
     list-style: inherit;
 }
+@media screen and (max-width: 768px) {
+    .ex-card {
+        margin: 0;
+    }
+}
 </style>
 <template>
     <div class="marked">

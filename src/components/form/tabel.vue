@@ -19,6 +19,12 @@
 .rd-table-td .rd-btn {
     margin-right: .5rem;
 }
+@media screen and (max-width: 768px) {
+    .rd-table-td {
+        padding: 0 .5rem;
+        font-size: .8rem;
+    }
+}
 </style>
 <template>
     <table class="rd-table">

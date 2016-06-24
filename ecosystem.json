@@ -1,0 +1,44 @@
+{
+  "apps" : [
+    {
+      "name"      : "radon-ui",
+      "script"    : "./app.js",
+      "watch": true,
+      "max_memory_restart": "1024M",
+      "instances" : "1",
+      "exec_mode": "cluster",
+      "log_date_format": "YYYY-MM-DD HH:mm Z",
+      "error_file": "/data/logs/node/radon_error.log",
+      "out_file": "/data/logs/node/radon-out.log",
+      "env": {
+        "SERVER_CONFIG": "development",
+        "NODE_ENV": "development"
+      },
+      "env_testing" : {
+        "SERVER_CONFIG": "testing",
+        "NODE_ENV": "production",
+        "NODE_APP_INSTANCE" : 0
+      },
+      "env_simulation" : {
+        "SERVER_CONFIG": "simulation",
+        "NODE_ENV": "production",
+        "NODE_APP_INSTANCE" : 0
+      },
+      "env_production" : {
+        "SERVER_CONFIG": "production",
+        "NODE_ENV": "production",
+        "NODE_APP_INSTANCE" : 0
+      }
+    }
+  ],
+  "deploy" : {
+    "testing" : {
+      "user" : "root",
+      "host" : "192.168.100.50",
+      "ref"  : "origin/master",
+      "repo" : "git@192.168.100.40:FE/radon-ui.git",
+      "path" : "/frontend/radon-ui",
+      "post-deploy" : "npm install; pm2 startOrRestart ecosystem.json  --env testing"
+    }
+  }
+}

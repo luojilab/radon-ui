@@ -2,7 +2,7 @@
   "apps" : [
     {
       "name"      : "radon-ui",
-      "script"    : "./build/dev-server.js",
+      "script"    : "./app.js",
       "watch": true,
       "max_memory_restart": "1024M",
       "instances" : "1",

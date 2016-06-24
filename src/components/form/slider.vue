@@ -66,7 +66,8 @@
             class="rd-slider-handle"
             :style="{ 'transform': 'translate3D(' + handle.currentX + 'px, 0, 0)' }"
             :class="{ 'move': handle.move }"
-            @mousedown="touchAction"
+            @mousedown="startAction"
+            @touchstart="startAction"
         >
             <div class="rd-slider-handle-tip" v-if="showTip">{{handle.percent}}</div>
         </div>
@@ -76,6 +77,9 @@
 </template>
 <script>
 const getMousePosition = function (e) {
+    if (e.type === 'touchmove') {
+        return e.touches[0].pageX
+    }
     return e.pageX
 }
 
@@ -119,11 +123,15 @@ export default {
     ready () {
         this.init()
         document.body.addEventListener('mousemove', this.moveAction, false)
-        document.body.addEventListener('mouseup', this.mouseupAction, false)
+        document.body.addEventListener('mouseup', this.endAction, false)
+        document.body.addEventListener('touchmove', this.moveAction, false)
+        document.body.addEventListener('touchend', this.endAction, false)
     },
     beforeDestroy () {
         document.body.removeEventListener('mousemove', this.moveAction)
-        document.body.removeEventListener('mouseup', this.mouseupAction)
+        document.body.removeEventListener('mouseup', this.endAction)
+        document.body.removeEventListener('touchmove', this.moveAction)
+        document.body.removeEventListener('touchend', this.endAction)
     },
     methods: {
         init () {
@@ -133,11 +141,11 @@ export default {
             this.width = this.$el.getBoundingClientRect().width
             this.handle.currentX = this.value * this.width * 0.01
         },
-        touchAction (e) {
+        startAction (e) {
             this.init()
             this.handle.move = true
         },
-        mouseupAction (e) {
+        endAction (e) {
             this.handle.move = false
         },
         moveAction (e) {

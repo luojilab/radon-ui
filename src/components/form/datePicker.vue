@@ -78,8 +78,8 @@
     border: 0;
     height: 100%;
     outline: 0;
-    width: 4.15rem;
     font-size: .8rem;
+    margin-right: .5rem;
 }
 .rd-datepicker-info-month,
 .rd-datepicker-info-year {
@@ -112,6 +112,7 @@
     position: absolute;
     left: 0;
     top: 2rem;
+    z-index: 2;
 }
 .rd-datepicker-contrl {
     display: flex;
@@ -130,6 +131,9 @@
     border-top: 1px solid #e9e9e9;
     background-color: #fff;
 }
+.rd-datepicker-value {
+    display: flex;
+}
 </style>
 <template>
     <div 
@@ -140,7 +144,9 @@
         }"
     >
         <div class="rd-datepicker-value" @click.stop="togglePicker">
-            <input class="rd-datepicker-value-input" placeholder="请选择时间" type="text" v-model="value">
+            <div class="rd-datepicker-value-input">
+                {{valueDisplay(value)}}
+            </div>
             <i 
                 @click.stop="clearValue" 
                 class="rd-datepicker-clear ion-close-circled"
@@ -482,6 +488,15 @@ export default {
                     this.value = moment(tmp + ' ' + this.timeTmp.time).format('YYYY-MM-DD HH:mm:ss')
                 }
             })
+        },
+        valueDisplay (value) {
+            if (!value) {
+                return '请选择时间'
+            }
+            if (this.state.timePickerShow) {
+                return moment(value).format('YYYY-MM-DD')
+            }
+            return value
         },
         output (day) {
             if (!this.state.timePickerShow) {

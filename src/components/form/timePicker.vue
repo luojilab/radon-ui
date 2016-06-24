@@ -50,6 +50,7 @@
     height: 100%;
     outline: 0;
     font-size: .8rem;
+    vertical-align: text-top;
 }   
 </style>
 <template>

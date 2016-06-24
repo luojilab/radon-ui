@@ -56,6 +56,14 @@
     position: absolute;
     right: 1rem;
 }
+@media screen and (max-width: 768px) {
+    .rd-modal {
+        width: 90%;
+    }
+    .rd-modal-body {
+        min-height: 4rem;
+    }
+}
 </style>
 <template>
     <div class="rd-modal-container" v-show="modal.show">

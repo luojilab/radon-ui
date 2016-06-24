@@ -81,7 +81,20 @@
 }
 .notification-move {
     transition: transform .5s cubic-bezier(.55,0,.1,1);
-} 
+}
+@media screen and (max-width: 768px) {
+    .rd-notification-container {
+        top: 0;
+        right: 0;
+        width: 100%;
+        padding: 1rem 2rem;
+        box-sizing: border-box;
+    }
+    .rd-notification {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
 </style>
 <template>
     <div class="rd-notification-container">

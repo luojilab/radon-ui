@@ -273,7 +273,11 @@ export default {
     data () {
         return {
             sliderShow: document.body.offsetWidth > 1000,
-            Notifications: [],
+            Notifications: [{
+                title: '2333',
+                type: 'success',
+                content: ''
+            }],
             menu: [{
                 title: '快速上手',
                 link: '/'

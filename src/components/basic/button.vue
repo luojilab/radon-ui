@@ -26,7 +26,7 @@
 }
 .rd-btn-default {
     color: #666;
-    background-color: #f7f7f7;
+    background-color: #fff;
     border-color: #d9d9d9;
 }
 .rd-btn-primary {
@@ -36,7 +36,7 @@
 }
 .rd-btn-ghost {
     color: #666;
-    background-color: transparent;
+    background-color: #f7f7f7;
     border-color: #d9d9d9;
 }
 .rd-btn:focus, .rd-btn:hover {
@@ -64,6 +64,7 @@
     height: 2rem;
     line-height: 2rem;
     padding: 0;
+    background-color: #fff;
     i {
         margin-right: 0;
     }
@@ -122,6 +123,7 @@
             'rd-btn-large'   : size === 'large',
             'rd-btn-disabled': disabled
         }"
+        :style="styleList"
     >
         <span class="rd-btn-loading ion-load-a" v-if="loading"></span>
         <span>
@@ -150,11 +152,35 @@ export default {
                 return false
             }
         },
+        fontColor: {
+            type: String,
+            default () {
+                return ''
+            }
+        },
+        color: {
+            type: String,
+            default () {
+                return ''
+            }
+        },
         disabled: {
             type: Boolean,
             default () {
                 return false
             }
+        }
+    },
+    methods: {
+        styleList () {
+            let list = {}
+            if (this.color) {
+                list['background'] = this.color
+            }
+            if (this.fontColor) {
+                list['color'] = this.fontColor
+            }
+            return list
         }
     }
 }

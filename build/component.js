@@ -24,7 +24,6 @@ var copyIndex = function () {
             if (isJS.test(file)) {
                 fs.readFile(componentsDir + file, function (err, data) {
                     if (!err) {
-                        console.log(file)
                         fs.writeFile(basePath + file, data.toString(), function (err) {
                             if (err) {
                                 console.log(err)

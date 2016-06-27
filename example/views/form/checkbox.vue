@@ -48,6 +48,7 @@ export default {
                 text: '我已阅读用户协议'
             },
             checkA: {
+                disabled: false,
                 checked: false,
                 text: '同意服务条款'
             }

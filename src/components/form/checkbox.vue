@@ -39,18 +39,24 @@
 .rd-checkbox-inner.selected .rd-checkbox-inner-icon{
     opacity: 1;
 }
+.rd-checkbox-inner.disabled {
+    background: #eaeaea;
+}
 </style>
 <template>
     <label class="rd-checkbox-wrapper">
         <div class="rd-checkbox">
             <span 
                 class="rd-checkbox-inner"
-                :class="{ 'selected': checkbox.checked }"
+                :class="{
+                    'selected': checkbox.checked,
+                    'disabled': checkbox.disabled
+                }"
             >
                 <i class="rd-checkbox-inner-icon ion-checkmark-round"></i>
                 <input 
                     type="checkbox" 
-                    v-model="checkbox.checked" 
+                    :value="checkbox.checked"
                     class="rd-checkbox-input"
                     @change="changeAction"
                 >
@@ -69,6 +75,9 @@ export default {
     },
     methods: {
         changeAction () {
+            if (!this.checkbox.disabled) {
+                this.checkbox.checked = !this.checkbox.checked
+            }
             if (this.checkbox.change) {
                 this.checkbox.change()
             }

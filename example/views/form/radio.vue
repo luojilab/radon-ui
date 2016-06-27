@@ -44,6 +44,7 @@ export default {
   data () {
     return {
         radios: [{
+            disabled: true,
             checked: false,
             value: '北京'
         }, {
@@ -78,6 +79,7 @@ export default {
     data () {
         return {
             radios: [{
+                disabled: true,
                 checked: false,
                 value: '北京'
             }, {

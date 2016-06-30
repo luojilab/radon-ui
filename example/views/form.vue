@@ -83,7 +83,11 @@
             <p>
                 <breadcrumb :breadcrumb="breadcrumb.list" separator="/"></breadcrumb>
             </p>
+            
         </form>
+        <p>
+            <rd-audio :audio="audio"></rd-audio>
+        </p>
     </div>
 </template>
 <script>
@@ -107,7 +111,8 @@ import {
     rdTable,
     rdTimePicker,
     rdSpin,
-    breadcrumb
+    breadcrumb,
+    rdAudio
 } from '../../src/components/index'
 
 const options = [{
@@ -220,6 +225,18 @@ const options = [{
 export default {
     data () {
         return {
+            audio: {
+                title: 'ninelie-Aimer',
+                src: 'http://covteam.u.qiniudn.com/test2.mp3',
+                poster: 'http://covteam.u.qiniudn.com/ka2.jpg',
+                options: {
+                    preload: false,
+                    autoplay: false,
+                    rate: 1,
+                    loop: false,
+                    volume: 0.5
+                }
+            },
             breadcrumb: {
                 separator: '/',
                 list: [{
@@ -497,7 +514,8 @@ export default {
         rdTable,
         rdTimePicker,
         rdSpin,
-        breadcrumb
+        breadcrumb,
+        rdAudio
     },
     methods: {
         editTable (row) {

@@ -1,6 +1,10 @@
-import formItem from './form/formItem.vue'
+// basic
 import radonButton from './basic/button.vue'
 import radonButtonGroup from './basic/buttonGroup.vue'
+import rdAudio from './basic/audio.vue'
+
+// form
+import formItem from './form/formItem.vue'
 import radonCheckbox from './form/checkbox.vue'
 import radonText from './form/textfield.vue'
 import radonRadio from './form/radio.vue'
@@ -26,10 +30,14 @@ import rdNotification from './presentation/notification.vue'
 import rdSpin from './presentation/spin.vue'
 
 export {
-    rdSelect,
-    formItem,
+    // basic
+    rdAudio,
     radonButton,
     radonButtonGroup,
+
+    // form
+    rdSelect,
+    formItem,
     radonCheckbox,
     radonText,
     radonRadio,

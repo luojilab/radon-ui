@@ -86,6 +86,9 @@
             
         </form>
         <p>
+            <rd-number :number="number"></rd-number>
+        </p>
+        <p>
             <rd-audio :audio="audio"></rd-audio>
         </p>
     </div>
@@ -112,7 +115,8 @@ import {
     rdTimePicker,
     rdSpin,
     breadcrumb,
-    rdAudio
+    rdAudio,
+    rdNumber
 } from '../../src/components/index'
 
 const options = [{
@@ -225,6 +229,13 @@ const options = [{
 export default {
     data () {
         return {
+            number: {
+                value: 0,
+                step: 0.1,
+                format: 2,
+                min: -5,
+                max: 10
+            },
             audio: {
                 title: 'ninelie-Aimer',
                 src: 'http://covteam.u.qiniudn.com/test2.mp3',
@@ -515,7 +526,8 @@ export default {
         rdTimePicker,
         rdSpin,
         breadcrumb,
-        rdAudio
+        rdAudio,
+        rdNumber
     },
     methods: {
         editTable (row) {

@@ -18,6 +18,7 @@ import rdTimeline from './form/timeline.vue'
 import rdSelect from './form/select.vue'
 import rdTable from './form/tabel.vue'
 import rdTimePicker from './form/timePicker.vue'
+import rdNumber from './form/numberInput.vue'
 
 // layout
 import breadcrumb from './navigation/breadcrumb.vue'
@@ -50,6 +51,7 @@ export {
     rdTimeline,
     rdTable,
     rdTimePicker,
+    rdNumber,
 
     // layout
     breadcrumb,

@@ -191,13 +191,16 @@ export default {
                     select: true
                 },
                 columns: [{
-                    key: 'col1',
+                    index: 1,
+                    key: 'name',
                     value: '姓名'
                 }, {
-                    key: 'col2',
+                    index: 2,
+                    key: 'age',
                     value: '年龄'
                 }, {
-                    key: 'col3',
+                    index: 3,
+                    key: 'wechat',
                     value: '微信'
                 }],
                 actions: [{
@@ -216,40 +219,34 @@ export default {
                 }],
                 tableData: [{
                     id: 1,
+                    name: '王尼玛',
+                    age: '33',
+                    wechat: 'wangnima',
                     checkbox: {
                         disabled: false,
                         checked: false,
                         text: ''
-                    },
-                    value: [
-                        '王尼玛',
-                        '33',
-                        'wangnima'
-                    ]
+                    }
                 }, {
                     id: 2,
+                    name: '赵铁柱',
+                    age: '26',
+                    wechat: 'Iron-column-zhao',
                     checkbox: {
                         disabled: false,
                         checked: false,
                         text: ''
-                    },
-                    value: [
-                        '赵铁柱',
-                        '26',
-                        'Iron-column-zhao'
-                    ]
+                    }
                 }, {
                     id: 3,
+                    name: '张全蛋',
+                    age: '27',
+                    wechat: 'Michael Jack',
                     checkbox: {
                         disabled: false,
                         checked: false,
                         text: ''
-                    },
-                    value: [
-                        '张全蛋',
-                        '27',
-                        'Michael Jack'
-                    ]
+                    }
                 }]
             }
         }
@@ -260,7 +257,7 @@ export default {
     },
     methods: {
         editTable (row) {
-            this.$Notification.success('正在编辑' + row.value[0], '', 5000)
+            this.$Notification.success('正在编辑' + row._value[0], '', 5000)
         },
         removeTableItem (row) {
             this.TableData.tableData.forEach(item => {
@@ -268,7 +265,7 @@ export default {
                     this.TableData.tableData.$remove(item)
                 }
             })
-            this.$Notification.success('删除' + row.value[0] + '成功', '', 5000)
+            this.$Notification.success('删除' + row._value[0] + '成功', '', 5000)
         }
     }
 }

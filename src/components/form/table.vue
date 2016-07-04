@@ -40,11 +40,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="rd-table-th" v-for="row in table.tableData" track-by="$index">
+            <tr class="rd-table-th" v-for="row in List" track-by="$index">
                 <td v-if="row.checkbox">
                     <radon-checkbox :checkbox="row.checkbox"></radon-checkbox>
                 </td>
-                <td class="rd-table-td" v-for="val in row.value" track-by="$index">{{val}}</td>
+                <td class="rd-table-td" v-for="val in row._value" track-by="$index">{{val}}</td>
                 <td class="rd-table-td" v-if="table.actions">
                     <rd-button v-for="action in table.actions" size="small" @click="action.func($event, row)">{{action.text}}</rd-button>
                 </td>
@@ -55,6 +55,34 @@
 <script>
 import radonCheckbox from '../form/checkbox.vue'
 import rdButton from '../basic/button.vue'
+
+const generateList = (columns, tableData) => {
+    let cols = columns.sort((a, b) => {
+        return a.index - b.index
+    })
+    let MAP = {}
+    cols.forEach((col, index) => {
+        MAP[col.key] = index + 1
+    })
+
+    let List = []
+    let itemTmp = {
+        _value: []
+    }
+    tableData.forEach(item => {
+        itemTmp = {
+            _value: []
+        }
+        Object.keys(item).forEach(key => {
+            itemTmp[key] = item[key]
+            if (MAP[key]) {
+                itemTmp._value[MAP[key] - 1] = item[key]
+            }
+        })
+        List.push(itemTmp)
+    })
+    return List
+}
 
 export default {
     props: {
@@ -68,6 +96,11 @@ export default {
                 checked: false,
                 text: ''
             }
+        }
+    },
+    computed: {
+        List () {
+            return generateList(this.table.columns, this.table.tableData)
         }
     },
     components: {

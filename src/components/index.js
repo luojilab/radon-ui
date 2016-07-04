@@ -17,7 +17,7 @@ import rdSlider from './form/slider.vue'
 import rdDatePicker from './form/datePicker.vue'
 import rdTimeline from './form/timeline.vue'
 import rdSelect from './form/select.vue'
-import rdTable from './form/tabel.vue'
+import rdTable from './form/table.vue'
 import rdTimePicker from './form/timePicker.vue'
 import rdNumber from './form/numberInput.vue'
 

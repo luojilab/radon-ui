@@ -19,6 +19,24 @@
 .rd-table-td .rd-btn {
     margin-right: .5rem;
 }
+.rd-table-state {
+    font-size: .8rem;
+    padding: .2rem .5rem;
+    background: #a5a5a5;
+    color: #fff;
+    &.success {
+        background-color: #87d068;
+    }
+    &.info {
+        background-color: #2db7f5;
+    }
+    &.warning {
+        background-color: #fa0;
+    }
+    &.failed {
+        background-color: #f50;
+    }
+}
 @media screen and (max-width: 768px) {
     .rd-table-td {
         padding: 0 .5rem;
@@ -34,6 +52,9 @@
                     <radon-checkbox @click="selectAllAction" :checkbox="selectAll"></radon-checkbox>
                 </td>
                 <td class="rd-table-td" v-for="col in table.columns" @click="touchCol($event, col)">{{col.value}}</td>
+                <td v-if="table.options.state">
+                    状态
+                </td>
                 <td v-if="table.actions">
                     <span>操作</span>
                 </td>
@@ -45,6 +66,9 @@
                     <radon-checkbox :checkbox="row.checkbox"></radon-checkbox>
                 </td>
                 <td class="rd-table-td" v-for="val in row._value" track-by="$index">{{val}}</td>
+                <td class="rd-table-td" v-if="row.state">
+                    <span :class="stateTagClass(row.state)" class="rd-table-state">{{row.state.value}}</span>
+                </td>
                 <td class="rd-table-td" v-if="table.actions">
                     <rd-button v-for="action in table.actions" size="small" @click="action.func($event, row)">{{action.text}}</rd-button>
                 </td>
@@ -108,6 +132,11 @@ export default {
         rdButton
     },
     methods: {
+        stateTagClass (state) {
+            let classList = {}
+            classList[state.type] = true
+            return classList
+        },
         selectAllAction (e) {
             this.table.tableData.forEach(row => {
                 row.checkbox.checked = !this.selectAll.checked

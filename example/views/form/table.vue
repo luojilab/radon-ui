@@ -203,7 +203,8 @@ export default {
         return {
             TableData: {
                 options: {
-                    select: true
+                    select: true,
+                    state: true
                 },
                 columns: [{
                     index: 1,
@@ -243,6 +244,10 @@ export default {
                     name: '王尼玛',
                     age: '33',
                     wechat: 'wangnima',
+                    state: {
+                        type: 'success',
+                        value: '批准'
+                    },
                     checkbox: {
                         disabled: false,
                         checked: false,
@@ -253,6 +258,10 @@ export default {
                     name: '赵铁柱',
                     age: '26',
                     wechat: 'Iron-column-zhao',
+                    state: {
+                        type: 'info',
+                        value: '待审'
+                    },
                     checkbox: {
                         disabled: false,
                         checked: false,
@@ -263,6 +272,10 @@ export default {
                     name: '张全蛋',
                     age: '27',
                     wechat: 'Michael Jack',
+                    state: {
+                        type: 'failed',
+                        value: '拒绝'
+                    },
                     checkbox: {
                         disabled: false,
                         checked: false,

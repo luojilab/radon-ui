@@ -33,7 +33,7 @@
                 <td v-if="table.options.select">
                     <radon-checkbox @click="selectAllAction" :checkbox="selectAll"></radon-checkbox>
                 </td>
-                <td class="rd-table-td" v-for="col in table.columns">{{col.value}}</td>
+                <td class="rd-table-td" v-for="col in table.columns" @click="touchCol($event, col)">{{col.value}}</td>
                 <td v-if="table.actions">
                     <span>操作</span>
                 </td>
@@ -112,6 +112,11 @@ export default {
             this.table.tableData.forEach(row => {
                 row.checkbox.checked = !this.selectAll.checked
             })
+        },
+        touchCol (e, col) {
+            if (col.sort.func) {
+                col.sort.func(e, col)
+            }
         }
     }
 }

@@ -144,7 +144,7 @@ export default {
             })
         },
         touchCol (e, col) {
-            if (col.sort.func) {
+            if (col.sort && col.sort.func) {
                 col.sort.func(e, col)
             }
         }

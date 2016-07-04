@@ -207,6 +207,16 @@ export default {
                     state: true
                 },
                 columns: [{
+                    index: 0,
+                    key: 'id',
+                    value: 'ID',
+                    sort: {
+                        state: false,
+                        func: (e, col) => {
+                            this.sortBy(col)
+                        }
+                    }
+                }, {
                     index: 1,
                     key: 'name',
                     value: '姓名'
@@ -304,7 +314,6 @@ export default {
         sortBy (col) {
             if (col.key === 'age') {
                 if (col.sort.state) {
-                    console.log('o?')
                     this.TableData.tableData = this.TableData.tableData.sort((a, b) => {
                         return Math.floor(a.age) - Math.floor(b.age)
                     })
@@ -312,6 +321,19 @@ export default {
                 } else {
                     this.TableData.tableData = this.TableData.tableData.sort((a, b) => {
                         return Math.floor(b.age) - Math.floor(a.age)
+                    })
+                    col.sort.state = true
+                }
+            }
+            if (col.key === 'id') {
+                if (col.sort.state) {
+                    this.TableData.tableData = this.TableData.tableData.sort((a, b) => {
+                        return Math.floor(a.id) - Math.floor(b.id)
+                    })
+                    col.sort.state = false
+                } else {
+                    this.TableData.tableData = this.TableData.tableData.sort((a, b) => {
+                        return Math.floor(b.id) - Math.floor(a.id)
                     })
                     col.sort.state = true
                 }

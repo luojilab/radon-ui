@@ -13,6 +13,7 @@
     border-bottom: 1px solid #e9e9e9;
 }
 .rd-table-td {
+    font-size: .8rem;
     text-align: left;
     padding: 1rem .5rem;
 }

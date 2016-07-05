@@ -1,9 +1,13 @@
 <style>
 .rd-editable-container {
     display: inline-block;
+    &:hover {
+        background: #fff1d7;
+    }
 }
 .rd-editable-inner {
     display: flex;
+    background: #fff;
 }
 .rd-editable-inner .rd-btn {
     margin-left: .5rem;

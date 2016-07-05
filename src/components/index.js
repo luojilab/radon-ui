@@ -3,6 +3,7 @@ import radonButton from './basic/button.vue'
 import radonButtonGroup from './basic/buttonGroup.vue'
 import rdDropButton from './basic/dropButton.vue'
 import rdAudio from './basic/audio.vue'
+import rdUpload from './basic/upload.vue'
 
 // form
 import formItem from './form/formItem.vue'
@@ -37,6 +38,7 @@ export {
     radonButton,
     radonButtonGroup,
     rdDropButton,
+    rdUpload,
 
     // form
     rdSelect,

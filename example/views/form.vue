@@ -21,6 +21,9 @@
             <radon-button type="ghost" @click="notificationAction">common</radon-button>
             <radon-button type="ghost" @click="notificationAction">common</radon-button>
         </rd-drop-button>
+        <p>
+            <rd-upload></rd-upload>
+        </p>
         <form class="form">
             <form-item title="2333:">
                 <radon-text :textfield="form.user"></radon-text>
@@ -104,6 +107,7 @@ import {
     radonButton,
     radonButtonGroup,
     rdDropButton,
+    rdUpload,
     radonCheckbox,
     radonText,
     radonRadio,
@@ -513,6 +517,7 @@ export default {
         radonButton,
         radonButtonGroup,
         rdDropButton,
+        rdUpload,
         radonCheckbox,
         radonText,
         radonRadio,

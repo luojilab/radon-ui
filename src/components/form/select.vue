@@ -10,6 +10,7 @@
     line-height: 2rem;
     padding: 0 2rem 0 .5rem;
     vertical-align: bottom;
+    box-sizing: border-box;
 }
 
 .rd-select-container:hover {

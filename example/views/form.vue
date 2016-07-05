@@ -28,6 +28,9 @@
             <rd-upload></rd-upload>
         </p>
         <p>
+            <rd-text-select></rd-text-select>
+        </p>
+        <p>
             相信大多数前端开发人员，都使用过Angular、<rd-edit-text value="React" :tip="false"></rd-edit-text>或者<rd-edit-text value="Vue.js" :tip="true"></rd-edit-text>。他们都通过数据绑定的方法，提升了开发效率。
         </p>
         <form class="form">
@@ -123,6 +126,7 @@ import {
     radonCheckbox,
     radonText,
     rdEditText,
+    rdTextSelect,
     radonRadio,
     radonProgress,
     randonProgressCircle,
@@ -534,6 +538,7 @@ export default {
         radonCheckbox,
         radonText,
         rdEditText,
+        rdTextSelect,
         radonRadio,
         radonProgress,
         randonProgressCircle,

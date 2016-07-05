@@ -16,7 +16,8 @@
     padding: 2rem;
     border-radius: .5rem;
     box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
-    margin-top:10rem;
+    height: 60%;
+    max-width: 60%;
 }
 .rd-preview-close {
     position: absolute;
@@ -24,7 +25,8 @@
     top: .5rem;
 }
 .rd-preview-img {
-    max-width: 60rem
+    height: 100%;
+    max-width: 100%;
 }
 .rd-preview-close {
     position: absolute;

@@ -32,6 +32,7 @@ import rdTooltip from './presentation/toolTip.vue'
 import rdAlert from './presentation/alert.vue'
 import rdNotification from './presentation/notification.vue'
 import rdSpin from './presentation/spin.vue'
+import rdPreview from './presentation/preview.vue'
 
 export {
     // basic
@@ -65,6 +66,7 @@ export {
     // global
     rdNotification,
     radonModal,
+    rdPreview,
     rdTooltip,
     rdAlert,
     rdSpin

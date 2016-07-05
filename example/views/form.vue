@@ -2,6 +2,9 @@
     .form {
         max-width: 540px;
     }
+    .img-min {
+        width: 10rem;
+    }
 </style>
 <template>
     <div>
@@ -25,7 +28,7 @@
             <rd-upload></rd-upload>
         </p>
         <p>
-            相信大多数前端开发人员，都使用过Angular、React或者<rd-edit-text value="Vue.js"></rd-edit-text>。他们都通过数据绑定的方法，提升了开发效率。
+            相信大多数前端开发人员，都使用过Angular、<rd-edit-text value="React" :tip="false"></rd-edit-text>或者<rd-edit-text value="Vue.js" :tip="true"></rd-edit-text>。他们都通过数据绑定的方法，提升了开发效率。
         </p>
         <form class="form">
             <form-item title="2333:">
@@ -100,6 +103,12 @@
         </p>
         <p>
             <rd-audio :audio="audio"></rd-audio>
+        </p>
+        <p>
+            <img class="img-min" v-preview="'http:\/\/covteam.u.qiniudn.com/ka2.jpg'" src="http://covteam.u.qiniudn.com/ka2.jpg" alt="">
+        </p>
+        <p>
+            <img class="img-min" v-preview="'http:\/\/covteam.u.qiniudn.com/poster.png'" src="http://covteam.u.qiniudn.com/poster.png" alt="">
         </p>
     </div>
 </template>

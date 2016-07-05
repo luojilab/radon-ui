@@ -243,6 +243,7 @@ html,body{
                 </div>
                 <radon-modal :modal="modal"></radon-modal>
                 <rd-notification :notifications="Notifications"></rd-notification>
+                <rd-preview :preview="preview"></rd-preview>
             </div>
         </div>
         <footer class="ex-footer">
@@ -266,7 +267,8 @@ html,body{
 import Menu from './components/menu.vue'
 import {
     radonModal,
-    rdNotification
+    rdNotification,
+    rdPreview
 } from '../src/components/index'
 
 export default {
@@ -274,6 +276,14 @@ export default {
         return {
             sliderShow: document.body.offsetWidth > 1000,
             Notifications: [],
+            preview: {
+                show: true,
+                current: {
+                    title: '在实际传输数据之前，需要完成几个步骤',
+                    src: 'http://covteam.u.qiniudn.com/poster.png'
+                },
+                list: []
+            },
             menu: [{
                 title: '快速上手',
                 link: '/'
@@ -443,7 +453,8 @@ export default {
     components: {
         Menu,
         radonModal,
-        rdNotification
+        rdNotification,
+        rdPreview
     },
     methods: {
         mobileClick () {

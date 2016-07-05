@@ -9,6 +9,7 @@ import rdUpload from './basic/upload.vue'
 import formItem from './form/formItem.vue'
 import radonCheckbox from './form/checkbox.vue'
 import radonText from './form/textfield.vue'
+import rdEditText from './form/editable.vue'
 import radonRadio from './form/radio.vue'
 import radonProgress from './basic/progress.vue'
 import randonProgressCircle from './basic/progressCircle.vue'
@@ -45,6 +46,7 @@ export {
     formItem,
     radonCheckbox,
     radonText,
+    rdEditText,
     radonRadio,
     radonProgress,
     randonProgressCircle,

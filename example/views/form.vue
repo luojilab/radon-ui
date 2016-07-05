@@ -24,6 +24,9 @@
         <p>
             <rd-upload></rd-upload>
         </p>
+        <p>
+            相信大多数前端开发人员，都使用过Angular、React或者<rd-edit-text value="Vue.js"></rd-edit-text>。他们都通过数据绑定的方法，提升了开发效率。
+        </p>
         <form class="form">
             <form-item title="2333:">
                 <radon-text :textfield="form.user"></radon-text>
@@ -110,6 +113,7 @@ import {
     rdUpload,
     radonCheckbox,
     radonText,
+    rdEditText,
     radonRadio,
     radonProgress,
     randonProgressCircle,
@@ -520,6 +524,7 @@ export default {
         rdUpload,
         radonCheckbox,
         radonText,
+        rdEditText,
         radonRadio,
         radonProgress,
         randonProgressCircle,

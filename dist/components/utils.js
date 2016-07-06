@@ -83,6 +83,33 @@ const RadonInstall = (Vue) => {
             }
         }
     }
+
+    let previewList = []
+    Vue.directive('preview', {
+        bind: function () {
+            console.log(this)
+            this.el.addEventListener('click', (e) => {
+                e.stopPropagation()
+                $root.preview = {
+                    show: true,
+                    current: {
+                        title: '',
+                        src: this.el.src
+                    },
+                    list: []
+                }
+            })
+        },
+        update: function (newValue, oldValue) {
+            console.log('233')
+            // console.log(this)
+            previewList.push(1)
+        },
+        unbind: function () {
+            console.log('leave')
+            console.log(previewList.shift())
+        }
+    })
 }
 
 const pad = (val) => {

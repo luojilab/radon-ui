@@ -11,6 +11,7 @@
             'rd-btn-large'   : size === 'large',
             'rd-btn-disabled': disabled
         }"
+        :style="styleList"
     >
         <span class="rd-btn-loading ion-load-a" v-if="loading"></span>
         <span>
@@ -39,11 +40,35 @@ export default {
                 return false
             }
         },
+        fontColor: {
+            type: String,
+            default () {
+                return ''
+            }
+        },
+        color: {
+            type: String,
+            default () {
+                return ''
+            }
+        },
         disabled: {
             type: Boolean,
             default () {
                 return false
             }
+        }
+    },
+    methods: {
+        styleList () {
+            let list = {}
+            if (this.color) {
+                list['background'] = this.color
+            }
+            if (this.fontColor) {
+                list['color'] = this.fontColor
+            }
+            return list
         }
     }
 }

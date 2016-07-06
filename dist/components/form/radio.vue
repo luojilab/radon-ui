@@ -4,7 +4,10 @@
         <label 
             class="rd-radio" 
             v-for="radio in radios" 
-            :class="{ 'checked': radio.checked }"
+            :class="{
+                'checked': radio.checked,
+                'disabled': radio.disabled
+            }"
             @click="checkAction(radio)"
         >
             <span class="rd-radio-inner"></span>
@@ -20,12 +23,16 @@ export default {
     methods: {
         reset () {
             this.radios.map(radio => {
-                radio.checked = false
+                if (!radio.disabled) {
+                    radio.checked = false
+                }
             })
         },
         checkAction (radio) {
-            this.reset()
-            radio.checked = true
+            if (!radio.disabled) {
+                this.reset()
+                radio.checked = true
+            }
         }
     }
 }

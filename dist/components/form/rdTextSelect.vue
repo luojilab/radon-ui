@@ -1,21 +1,4 @@
-<style>
-.rd-text-select-container {
-    display: flex;
-}
-.rd-text-select-container .rd-textfield-input{
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-}
-.rd-text-select-container .rd-select-container {
-    border-radius: 4px;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-    border-left: none;
-    &:hover {
-        margin-left: -1px;
-    }
-}
-</style>
+
 
 <template>
     <div class="rd-text-select-container">

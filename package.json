@@ -1,7 +1,7 @@
 {
   "name": "radon-ui",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "A Vue.js components lib",
   "author": "Awe <hilongjw@gmail.com>",
   "private": true,
   "scripts": {

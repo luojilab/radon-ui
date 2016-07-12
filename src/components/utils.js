@@ -69,7 +69,7 @@ const RadonInstall = (Vue) => {
     }
 
     Vue.prototype.$SetRoot = (vm) => {
-        $root = vm.$root
+        $root = vm
     }
 
     Vue.prototype.$Modal = {

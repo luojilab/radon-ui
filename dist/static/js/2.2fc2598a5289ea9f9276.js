@@ -1,4 +1,4 @@
-webpackJsonp([14,22],{2:/*!********************************!*\
+webpackJsonp([2,22],{2:/*!********************************!*\
   !*** ./example/views/index.js ***!
   \********************************/
 function(e,n,t){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(n,"__esModule",{value:!0}),n.Mark=void 0;var o=t(7),i=r(o);n.Mark=i["default"]},3:/*!****************************************************************************************************************************************************************!*\
@@ -16,13 +16,13 @@ function(e,n,t){var r=t(4);"string"==typeof r&&(r=[[e.id,r,""]]),t(10)(r,{}),r.l
 function(e,n){e.exports="<div class=marked> <div> {{{mark}}} </div> <slot></slot> </div>"},7:/*!********************************!*\
   !*** ./example/views/mark.vue ***!
   \********************************/
-function(e,n,t){var r,o;t(5),r=t(3),o=t(6),e.exports=r||{},e.exports.__esModule&&(e.exports=e.exports["default"]),o&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=o)},290:/*!***********************************************************************************************************************************************************************!*\
-  !*** ./~/babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./example/views/form/slider.vue ***!
-  \***********************************************************************************************************************************************************************/
-function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r=t(2),o=t(8);n["default"]={data:function(){return{slider:{percent:66}}},components:{rdSlider:o.rdSlider,Mark:r.Mark}}},519:/*!****************************************************************************************************************!*\
-  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./example/views/form/slider.vue ***!
-  \****************************************************************************************************************/
-function(e,n){e.exports="<div class=ex-content> <div class=ex-card> <mark> <textarea class=ex-mark-text>\n# Slider 滑动输入条\n\n## 代码\n```javascript\nexport default {\n    template: '<rd-slider :value.sync=slider></rd-slider>',\n    data () {\n        return {\n            slider: 43,\n        }\n    },\n    components: {\n        rdSlider\n    }\n}\n```\n## 示例\n\n        </textarea> </mark> <p> {{slider.percent}} </p> <p> <rd-slider :value.sync=slider.percent></rd-slider> </p> </div> </div>"},545:/*!***************************************!*\
-  !*** ./example/views/form/slider.vue ***!
-  \***************************************/
-function(e,n,t){var r,o;r=t(290),o=t(519),e.exports=r||{},e.exports.__esModule&&(e.exports=e.exports["default"]),o&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=o)}});
+function(e,n,t){var r,o;t(5),r=t(3),o=t(6),e.exports=r||{},e.exports.__esModule&&(e.exports=e.exports["default"]),o&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=o)},303:/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./~/babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./example/views/presentation/timeline.vue ***!
+  \*********************************************************************************************************************************************************************************/
+function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r=t(2),o=t(8);n["default"]={data:function(){return{timeline:[{icon:"ion-alert-circled",color:"#2db7f5",text:"连接服务器 2016-06-16 20:01:12"},{color:"#2db7f5",text:"准备上传文件 2016-06-16 20:01:13"},{color:"red",text:"上传失败 2016-06-16 20:01:14"}]}},components:{rdTimeline:o.rdTimeline,Mark:r.Mark}}},533:/*!**************************************************************************************************************************!*\
+  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./example/views/presentation/timeline.vue ***!
+  \**************************************************************************************************************************/
+function(e,n){e.exports="<div class=ex-content> <div class=ex-card> <mark> <textarea class=ex-mark-text>\n# Timeline 时间轴\n\n## 代码\n```javascript\nexport default {\n    template: '<rd-timeline :timeline=timeline></rd-timeline>',\n    data () {\n        return {\n            timeline: [{\n                icon: 'ion-alert-circled',\n                color: '#2db7f5',\n                text: '连接服务器 2016-06-16 20:01:12'\n            },\n            {\n                color: '#2db7f5',\n                text: '准备上传文件 2016-06-16 20:01:13'\n            },\n            {\n                color: 'red',\n                text: '上传失败 2016-06-16 20:01:14'\n            }]\n        }\n    },\n    components: {\n        rdTimeline\n    }\n}\n```\n## 示例\n\n        </textarea> </mark> <p> <rd-timeline :timeline=timeline></rd-timeline> </p> </div> </div>"},559:/*!*************************************************!*\
+  !*** ./example/views/presentation/timeline.vue ***!
+  \*************************************************/
+function(e,n,t){var r,o;r=t(303),o=t(533),e.exports=r||{},e.exports.__esModule&&(e.exports=e.exports["default"]),o&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=o)}});

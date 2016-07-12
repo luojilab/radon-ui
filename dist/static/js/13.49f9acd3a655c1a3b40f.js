@@ -1,4 +1,4 @@
-webpackJsonp([9,22],{2:/*!********************************!*\
+webpackJsonp([13,22],{2:/*!********************************!*\
   !*** ./example/views/index.js ***!
   \********************************/
 function(e,n,t){"use strict";function o(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(n,"__esModule",{value:!0}),n.Mark=void 0;var r=t(7),i=o(r);n.Mark=i["default"]},3:/*!****************************************************************************************************************************************************************!*\
@@ -16,13 +16,13 @@ function(e,n,t){var o=t(4);"string"==typeof o&&(o=[[e.id,o,""]]),t(10)(o,{}),o.l
 function(e,n){e.exports="<div class=marked> <div> {{{mark}}} </div> <slot></slot> </div>"},7:/*!********************************!*\
   !*** ./example/views/mark.vue ***!
   \********************************/
-function(e,n,t){var o,r;t(5),o=t(3),r=t(6),e.exports=o||{},e.exports.__esModule&&(e.exports=e.exports["default"]),r&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=r)},295:/*!*************************************************************************************************************************************************************************!*\
-  !*** ./~/babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./example/views/index/install.vue ***!
-  \*************************************************************************************************************************************************************************/
-function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var o=t(2);n["default"]={components:{Mark:o.Mark}}},524:/*!******************************************************************************************************************!*\
-  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./example/views/index/install.vue ***!
-  \******************************************************************************************************************/
-function(e,n){e.exports="<div class=ex-content> <div class=ex-card> <mark> <textarea class=ex-mark-text>\n# 安装\n\n## 使用 npm 安装\n> 还未发布\n\n推荐使用 npm 的方式进行开发，不仅可在开发环境轻松调试，也可放心地在生产环境打包部署使用，享受整个生态圈和工具链带来的诸多好处。\n可以通过 npm 直接安装到项目中，使用 import 或 require 进行引用。\n\n\n```\n// install\nnpm install radon-ui\n\n\n// import \n\n// in customer.vue\nimport { rdDatePicker } from './radon-ui'\n```\n\n## 使用 git submodule\n\n```\n# install\ngit submodule add git@192.168.100.40:FE/radon-ui.git\n\n# update\ngit submodule update\n```\n        </textarea> </mark> </div> </div>"},550:/*!*****************************************!*\
-  !*** ./example/views/index/install.vue ***!
-  \*****************************************/
-function(e,n,t){var o,r;o=t(295),r=t(524),e.exports=o||{},e.exports.__esModule&&(e.exports=e.exports["default"]),r&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=r)}});
+function(e,n,t){var o,r;t(5),o=t(3),r=t(6),e.exports=o||{},e.exports.__esModule&&(e.exports=e.exports["default"]),r&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=r)},291:/*!***********************************************************************************************************************************************************************!*\
+  !*** ./~/babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./example/views/form/switch.vue ***!
+  \***********************************************************************************************************************************************************************/
+function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var o=t(2),r=t(8);n["default"]={data:function(){return{switchA:!1,switchB:!1}},components:{radonSwitch:r.radonSwitch,Mark:o.Mark}}},521:/*!****************************************************************************************************************!*\
+  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./example/views/form/switch.vue ***!
+  \****************************************************************************************************************/
+function(e,n){e.exports="<div class=ex-content> <div class=ex-card> <mark> <textarea class=ex-mark-text>\n# Switch 开关\n\n## 代码\n```javascript\nexport default { \n  template: `<radon-switch :checked.sync=switchA size=small></radon-switch>\n            <radon-switch :checked.sync=switchB></radon-switch>`,\n  data () {\n        return {\n            switchA: false,\n            switchB: false\n        }\n    },\n    components: {\n        radonSwitch\n    }\n}\n```\n## 示例\n        </textarea> </mark> <p> <radon-switch :checked.sync=switchA size=small></radon-switch> <radon-switch :checked.sync=switchB></radon-switch> </p> </div> </div>"},547:/*!***************************************!*\
+  !*** ./example/views/form/switch.vue ***!
+  \***************************************/
+function(e,n,t){var o,r;o=t(291),r=t(521),e.exports=o||{},e.exports.__esModule&&(e.exports=e.exports["default"]),r&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=r)}});

@@ -72,8 +72,7 @@ export default {
     data () {
         return {
             selectAll: {
-                checked: false,
-                text: ''
+                checked: false
             }
         }
     },

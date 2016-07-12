@@ -448,7 +448,7 @@ export default {
         }
     },
     created () {
-        this.$SetRoot(this)
+        this.$Radon.setRoot(this)
     },
     components: {
         Menu,

@@ -5,7 +5,7 @@ import VueRouter from 'vue-router'
 import router from './router/index'
 import highlight from 'highlight.js'
 import marked from 'marked'
-import { RadonInstall } from '../src/components/utils'
+import RadonInstall from '../src/components/install'
 
 Vue.use(VueResource)
 Vue.use(VueRouter)

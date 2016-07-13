@@ -41,7 +41,7 @@
                 <radon-text :textfield="form.user" :input="userInputing"></radon-text>
             </form-item>
             <form-item title="password:">
-                <radon-text :textfield="form.pass" :input="passInputing"></radon-text>
+                <radon-text :textfield="form.pass" :input="passInputing" type="password"></radon-text>
             </form-item>
             <form-item title="verify:">
                 <radon-text @click="failed(form.bio)" :textfield="form.bio"></radon-text>

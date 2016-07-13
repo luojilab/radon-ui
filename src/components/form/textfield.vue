@@ -114,7 +114,7 @@
      }"
     >
         <input 
-            type="text" 
+            :type="type" 
             class="rd-textfield-input" 
             v-model="textfield.value" 
             :placeholder="textfield.placeHolder"
@@ -132,6 +132,12 @@ export default {
         textfield: {
             type: Object,
             required: true
+        },
+        type: {
+            type: String,
+            default () {
+                return 'text'
+            }
         },
         input: Function,
         change: Function

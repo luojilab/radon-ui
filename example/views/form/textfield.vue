@@ -14,7 +14,7 @@
         <textarea class="ex-mark-text">
 ## API
 
-### textfield
+### textfield : Object
 输入框的基础对象
 ```
 <template>
@@ -31,7 +31,7 @@ user: {
     tip: '' 
 }
 ```
-### input
+### input : Function
 输入框 oninput hook
 ```
 <radon-text :textfield="obj" :input="Inputing" ></radon-text>
@@ -42,7 +42,7 @@ methods: {
     }
 }
 ```
-### change
+### change : Function
 输入框 onchange hook
 ```
 <radon-text :textfield="obj" :change="userInputed"></radon-text>
@@ -52,6 +52,12 @@ methods: {
         console.log('is changed')
     }
 }
+```
+
+### type : String
+input type
+```
+<radon-text :textfield="form.pass" :input="passInputing" type="password"></radon-text>
 ```
 
 ## 完整示例代码

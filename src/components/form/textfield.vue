@@ -1,7 +1,7 @@
 <style>
 @import '../../css/index';
 .rd-textfield-input {
-    font-size: 1rem;
+    font-size: .8rem;
     line-height: 1.7;
     color: #666;
     background-color: #fff;

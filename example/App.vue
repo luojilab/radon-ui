@@ -298,9 +298,17 @@ export default {
                 subMenu: [{
                     title: 'Basic',
                     group: [{
+                        title: 'AudioPlayer',
+                        subTitle: '音频播放器',
+                        link: 'basic/audio'
+                    }, {
                         title: 'Button',
                         subTitle: '按钮',
                         link: 'basic/button'
+                    }, {
+                        title: 'Upload',
+                        subTitle: '上传',
+                        link: 'basic/upload'
                     }]
                 }, {
                     title: 'Form',

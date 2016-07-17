@@ -9,23 +9,31 @@
 ## 特性
  * 基于 Vue 开发的高质量UI组件
  * 基于 npm + webpack + ES6 + postcss开发 
+ * 数据驱动，简单易使用
 
 ## 示例
-```
-// script
-import { rdDatePicker } from './radon-ui'
-import './radon-ui/dist/index.css'
-data () {
-    return {
-        startDate: ''
+```html
+<template>
+    <div class="customer">
+        <rd-date-picker :value="startDate"></rd-date-picker>
+    </div>
+</template>
+
+<script>
+    import 'radon-ui/dist/index.css'
+    import { rdDatePicker } from 'radon-ui'
+    export default {
+        data () {
+            return {
+                startDate: ''
+            }
+        },
+        components: {
+            rdDatePicker
+        }
     }
-}
-```
-```
-<!-- template -->
-<div class="customer">
-    <rd-date-picker :value="startDate"></rd-date-picker>
-</div>
+</script>
+
 ```
 
 ## 版本

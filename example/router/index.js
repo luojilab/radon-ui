@@ -27,6 +27,18 @@ router.map({
             require(['../views/basic/button.vue'], resolve)
         }
     },
+    '/basic/audio': {
+        name: 'audio',
+        component: (resolve) => {
+            require(['../views/basic/audio.vue'], resolve)
+        }
+    },
+    '/basic/upload': {
+        name: 'upload',
+        component: (resolve) => {
+            require(['../views/basic/upload.vue'], resolve)
+        }
+    },
 
     // Form
     'form/checkbox': {

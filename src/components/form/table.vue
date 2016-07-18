@@ -11,6 +11,9 @@
     color: rgba(0, 0, 0, 0.870588);
     height: 3rem;
     border-bottom: 1px solid #e9e9e9;
+    &:hover {
+        background: #f1f4f9;
+    }
 }
 .rd-table-td {
     font-size: .8rem;
@@ -19,6 +22,9 @@
 }
 .rd-table-td .rd-btn {
     margin-right: .5rem;
+}
+.rd-table-check-col {
+    padding-left: .5rem;
 }
 .rd-table-state {
     font-size: .8rem;
@@ -49,7 +55,7 @@
     <table class="rd-table">
         <thead class="rd-table-thead">
             <tr class="rd-table-th">
-                <td v-if="table.options.select">
+                <td v-if="table.options.select" class="rd-table-check-col">
                     <radon-checkbox @click="selectAllAction" :checkbox="selectAll"></radon-checkbox>
                 </td>
                 <td class="rd-table-td" v-for="col in table.columns" @click="touchCol($event, col)">{{col.value}}</td>
@@ -63,7 +69,7 @@
         </thead>
         <tbody>
             <tr class="rd-table-th" v-for="row in List" track-by="$index">
-                <td v-if="row.checkbox">
+                <td v-if="row.checkbox" class="rd-table-check-col">
                     <radon-checkbox :checkbox="row.checkbox"></radon-checkbox>
                 </td>
                 <td class="rd-table-td" v-for="val in row._value" track-by="$index">{{val}}</td>

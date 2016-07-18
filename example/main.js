@@ -10,7 +10,6 @@ import RadonInstall from '../src/components/install'
 
 Vue.use(VueResource)
 Vue.use(VueRouter)
-
 RadonInstall(Vue)
 
 window.highlight = highlight

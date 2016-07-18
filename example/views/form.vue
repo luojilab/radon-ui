@@ -613,6 +613,7 @@ export default {
         failed (input) {
             this.$Modal.create('网络错误', '无法连接到服务器', () => {
                 input.state = 'default'
+                console.log('confirmed')
             }, () => {
                 console.log('canceled')
             })

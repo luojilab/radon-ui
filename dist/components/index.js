@@ -28,7 +28,7 @@ import rdNumber from './form/numberInput.vue'
 import breadcrumb from './navigation/breadcrumb.vue'
 
 // global
-import radonModal from './presentation/modal.vue'
+import rdModal from './presentation/modal.vue'
 import rdTooltip from './presentation/toolTip.vue'
 import rdAlert from './presentation/alert.vue'
 import rdNotification from './presentation/notification.vue'
@@ -67,7 +67,7 @@ export {
 
     // global
     rdNotification,
-    radonModal,
+    rdModal,
     rdPreview,
     rdTooltip,
     rdAlert,

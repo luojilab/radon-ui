@@ -241,7 +241,7 @@ html,body{
                 <div class="content">
                     <router-view></router-view>
                 </div>
-                <radon-modal :modal="modal"></radon-modal>
+                <rd-modal :modal="modal"></rd-modal>
                 <rd-notification :notifications="Notifications"></rd-notification>
                 <rd-preview :preview="preview"></rd-preview>
             </div>
@@ -266,7 +266,7 @@ html,body{
 <script>
 import Menu from './components/menu.vue'
 import {
-    radonModal,
+    rdModal,
     rdNotification,
     rdPreview
 } from '../src/components/index'
@@ -460,7 +460,7 @@ export default {
     },
     components: {
         Menu,
-        radonModal,
+        rdModal,
         rdNotification,
         rdPreview
     },

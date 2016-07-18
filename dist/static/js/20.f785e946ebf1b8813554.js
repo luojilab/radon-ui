@@ -1,4 +1,4 @@
-webpackJsonp([10,22],{2:/*!********************************!*\
+webpackJsonp([20,24],{2:/*!********************************!*\
   !*** ./example/views/index.js ***!
   \********************************/
 function(e,n,t){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(n,"__esModule",{value:!0}),n.Mark=void 0;var o=t(7),a=r(o);n.Mark=a["default"]},3:/*!****************************************************************************************************************************************************************!*\
@@ -16,13 +16,13 @@ function(e,n,t){var r=t(4);"string"==typeof r&&(r=[[e.id,r,""]]),t(10)(r,{}),r.l
 function(e,n){e.exports="<div class=marked> <div> {{{mark}}} </div> <slot></slot> </div>"},7:/*!********************************!*\
   !*** ./example/views/mark.vue ***!
   \********************************/
-function(e,n,t){var r,o;t(5),r=t(3),o=t(6),e.exports=r||{},e.exports.__esModule&&(e.exports=e.exports["default"]),o&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=o)},294:/*!***********************************************************************************************************************************************************************!*\
-  !*** ./~/babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./example/views/index/index.vue ***!
-  \***********************************************************************************************************************************************************************/
-function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r=t(2);n["default"]={components:{Mark:r.Mark}}},524:/*!****************************************************************************************************************!*\
-  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./example/views/index/index.vue ***!
-  \****************************************************************************************************************/
-function(e,n){e.exports="<div class=ex-content> <div class=ex-card> <mark> <textarea class=ex-mark-text>\n# Radon UI\n > 一个用于企业级后台产品开发的简洁易用的Vue组件库\n\n## 特性\n * 基于 Vue 开发的高质量UI组件\n * 基于 npm + webpack + ES6 + postcss开发 \n\n## 示例\n```\n// script\nimport { rdDatePicker } from './radon-ui'\nimport './radon-ui/dist/index.css'\ndata () {\n    return {\n        startDate: ''\n    }\n}\n```\n```\n\n<div class=customer>\n    <rd-date-picker :value=startDate></rd-date-picker>\n</div>\n```\n\n## 版本\n * 开发中 alpha 1\n\n## 浏览器支持\n\n > chrome\n\n\n ## 如何贡献\n 我们欢迎任何形式的贡献，有任何建议或意见您可以进行 [Pull Request](http://gitlab.dev.didatrip.com/FE/radon-ui)，或者给我们[提问](http://gitlab.dev.didatrip.com/FE/radon-ui)。\n\n        </textarea> </mark> </div> </div>"},550:/*!***************************************!*\
-  !*** ./example/views/index/index.vue ***!
-  \***************************************/
-function(e,n,t){var r,o;r=t(294),o=t(524),e.exports=r||{},e.exports.__esModule&&(e.exports=e.exports["default"]),o&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=o)}});
+function(e,n,t){var r,o;t(5),r=t(3),o=t(6),e.exports=r||{},e.exports.__esModule&&(e.exports=e.exports["default"]),o&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=o)},285:/*!************************************************************************************************************************************************************************!*\
+  !*** ./~/babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./example/views/basic/upload.vue ***!
+  \************************************************************************************************************************************************************************/
+function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r=t(2),o=t(8);n["default"]={data:function(){return{}},components:{rdUpload:o.rdUpload,Mark:r.Mark}}},517:/*!*****************************************************************************************************************!*\
+  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./example/views/basic/upload.vue ***!
+  \*****************************************************************************************************************/
+function(e,n){e.exports="<div class=ex-content> <h2></h2> <div class=ex-card> <mark> <textarea class=ex-mark-text>\n# Upload 上传组件\n\n## 示例\n            </textarea> </mark> <p> <rd-upload></rd-upload> </p> <mark> <textarea class=ex-mark-text>\n## 用法\n```html\n\n<rd-upload></rd-upload>\n```\n```\n// script\nimport {\n    rdUpload\n} from 'radon-ui'\n\nexport default {\n    data () {\n        return {\n        }\n    },\n    components: {\n        rdUpload\n    }\n}\n```\n            </textarea> </mark> </div> </div>"},545:/*!****************************************!*\
+  !*** ./example/views/basic/upload.vue ***!
+  \****************************************/
+function(e,n,t){var r,o;r=t(285),o=t(517),e.exports=r||{},e.exports.__esModule&&(e.exports=e.exports["default"]),o&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=o)}});

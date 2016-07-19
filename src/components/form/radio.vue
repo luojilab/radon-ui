@@ -12,6 +12,9 @@
     border-radius: 50%;
     box-sizing: border-box;
     vertical-align: text-top;
+    &:hover {
+        border: 1px solid #03A9F4;
+    }
 }
 .rd-radio-inner::after {
     content: '';

@@ -14,9 +14,12 @@
     display: inline-block;
     height: 1rem;
     width: 1rem;
-    background: #d4d4d4;
+    background: #e6e6e6;
     border-radius: 4px;
     top: .5rem;
+    &:hover {
+        background: #d4d4d4;
+    }
 }
 .rd-checkbox-inner-icon {
     position: absolute;

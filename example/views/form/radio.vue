@@ -10,7 +10,7 @@
         </textarea>
     </mark>
         <p>
-            <radon-radio :radios="radios"></radon-radio>
+            <rd-radio :radios="radios"></rd-radio>
         </p>
     <mark>
         <textarea class="ex-mark-text">
@@ -19,7 +19,7 @@
 ## radios
 承载多个 radio 对象的数组
 ```html
-<radon-radio :radios="radios"></radon-radio>
+<rd-radio :radios="radios"></rd-radio>
 ```
 
 ```
@@ -40,7 +40,7 @@ radios: [{
 ## 示例代码
 ```javascript
 export default { 
-  template: '<radon-radio :radios="radios"></radon-radio>'
+  template: '<rd-radio :radios="radios"></rd-radio>'
   data () {
     return {
         radios: [{
@@ -60,7 +60,7 @@ export default {
     }
   },
   components: {
-    radonCheckbox
+    rdCheckbox
   }
 }
 ```
@@ -72,7 +72,7 @@ export default {
 <script>
 import { Mark } from '../index'
 import {
-    radonRadio
+    rdRadio
 } from '../../../src/components/index'
 
 export default {
@@ -95,7 +95,7 @@ export default {
         }
     },
     components: {
-        radonRadio,
+        rdRadio,
         Mark
     }
 }

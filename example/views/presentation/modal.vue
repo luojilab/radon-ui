@@ -16,7 +16,7 @@ this.$Modal.create(title:String, content:String, onConfirm:Function, onCancle:Fu
         </textarea>
     </mark>
     <p>
-        <radon-button @click="open">开启对话框</radon-button>
+        <rd-button @click="open">开启对话框</rd-button>
     </p>
     <mark>
         <textarea class="ex-mark-text">
@@ -24,7 +24,7 @@ this.$Modal.create(title:String, content:String, onConfirm:Function, onCancle:Fu
 ```javascript
 //root component
 import {
-    radonModal
+    rdModal
 } from '../src/components/index'
 
 export default {
@@ -43,15 +43,15 @@ export default {
         this.$SetRoot(this)
     },
     components: {
-        radonModal
+        rdModal
     },
 }
 
 // any vue components
 export default {
-    template: '<radon-button @click="open">开启对话框</radon-button>',
+    template: '<rd-button @click="open">开启对话框</rd-button>',
     components: {
-        radonModal
+        rdModal
     },
     methods: {
         open () {
@@ -77,7 +77,7 @@ export default {
 <script>
 import { Mark } from '../index'
 import {
-    radonButton
+    rdButton
 } from '../../../src/components/index'
 
 export default {
@@ -85,7 +85,7 @@ export default {
         return {}
     },
     components: {
-        radonButton,
+        rdButton,
         Mark
     },
     methods: {

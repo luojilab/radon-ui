@@ -17,7 +17,7 @@
 ## API
 
 ```html
-<radon-select :value.sync="selectProvince.value" :options.sync="selectProvince.options"></radon-select>
+<rd-select :value.sync="selectProvince.value" :options.sync="selectProvince.options"></rd-select>
 ```
 ```javascript
 // 获取select选择的对象
@@ -41,7 +41,7 @@ options: {
 ## 代码
 ```javascript
 export default {
-    template: '<radon-select :value.sync="selectProvince.value" :options.sync="selectProvince.options"></radon-select>',
+    template: '<rd-select :value.sync="selectProvince.value" :options.sync="selectProvince.options"></rd-select>',
     data () {
         return {
             selectProvince: {

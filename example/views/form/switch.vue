@@ -8,8 +8,8 @@
 ## 代码
 ```javascript
 export default { 
-  template: `<radon-switch :checked.sync="switchA" size="small"></radon-switch>
-            <radon-switch :checked.sync="switchB"></radon-switch>`,
+  template: `<rd-switch :checked.sync="switchA" size="small"></rd-switch>
+            <rd-switch :checked.sync="switchB"></rd-switch>`,
   data () {
         return {
             switchA: false,
@@ -17,7 +17,7 @@ export default {
         }
     },
     components: {
-        radonSwitch
+        rdSwitch
     }
 }
 ```
@@ -25,8 +25,8 @@ export default {
         </textarea>
     </mark>
         <p>
-            <radon-switch :checked.sync="switchA" size="small"></radon-switch>
-            <radon-switch :checked.sync="switchB"></radon-switch>
+            <rd-switch :checked.sync="switchA" size="small"></rd-switch>
+            <rd-switch :checked.sync="switchB"></rd-switch>
         </p>
     </div>
 </div>
@@ -34,7 +34,7 @@ export default {
 <script>
 import { Mark } from '../index'
 import {
-    radonSwitch
+    rdSwitch
 } from '../../../src/components/index'
 
 export default {
@@ -45,7 +45,7 @@ export default {
         }
     },
     components: {
-        radonSwitch,
+        rdSwitch,
         Mark
     }
 }

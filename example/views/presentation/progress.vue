@@ -14,16 +14,16 @@
         </textarea>
     </mark>
     <p>
-         <radon-progress @click="startProgress(progressCommon1)" :progress="progressCommon1"></radon-progress>
+         <rd-progress @click="startProgress(progressCommon1)" :progress="progressCommon1"></rd-progress>
     </p>
     <p>
-         <radon-progress @click="startProgress(progressCommon4)" :progress="progressCommon4"></radon-progress>
+         <rd-progress @click="startProgress(progressCommon4)" :progress="progressCommon4"></rd-progress>
     </p>
     <p>
-         <radon-progress @click="startProgress(progressCommon5)" :progress="progressCommon5"></radon-progress>
+         <rd-progress @click="startProgress(progressCommon5)" :progress="progressCommon5"></rd-progress>
     </p>
     <p>
-        <radon-progress @click="startProgress(progressSmall)" :progress="progressSmall"></radon-progress>
+        <rd-progress @click="startProgress(progressSmall)" :progress="progressSmall"></rd-progress>
     </p>
     <p>
         <randon-progress-circle @click="startProgress(progressCircle1)" :progress="progressCircle1"></randon-progress-circle>
@@ -37,7 +37,7 @@
 
 ### progressBar
 ```html
-<radon-progress @click="startProgress(progressCommon)" :progress="progressCommon"></radon-progress>
+<rd-progress @click="startProgress(progressCommon)" :progress="progressCommon"></rd-progress>
 ```
 
 ```javascript
@@ -107,7 +107,7 @@ export default {
         }
     },
     components: {
-        radonProgress,
+        rdProgress,
         randonProgressCircle,
         mark
     },
@@ -139,7 +139,7 @@ export default {
 <script>
 import { Mark } from '../index'
 import {
-    radonProgress,
+    rdProgress,
     randonProgressCircle
 } from '../../../src/components/index'
 
@@ -220,7 +220,7 @@ export default {
         }
     },
     components: {
-        radonProgress,
+        rdProgress,
         randonProgressCircle,
         Mark
     },

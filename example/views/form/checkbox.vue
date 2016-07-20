@@ -10,7 +10,7 @@
 ## 用法
 ```javascript
 export default {
-       template: ‘<radon-checkbox :checkbox="checkbox"></radon-checkbox>’
+       template: ‘<rd-checkbox :checkbox="checkbox"></rd-checkbox>’
         data () {
             return {
                 checkbox: {
@@ -20,7 +20,7 @@ export default {
             }
         },
         components: {
-           radonCheckbox
+           rdCheckbox
         }
     }
 ```
@@ -28,8 +28,8 @@ export default {
             </textarea>
         </mark>
         <p>
-            <radon-checkbox :checkbox="checkbox"></radon-checkbox>
-            <radon-checkbox :checkbox="checkA"></radon-checkbox>
+            <rd-checkbox :checkbox="checkbox"></rd-checkbox>
+            <rd-checkbox :checkbox="checkA"></rd-checkbox>
         </p>
     </div>
 </div>
@@ -37,7 +37,7 @@ export default {
 <script>
 import { Mark } from '../index'
 import {
-    radonCheckbox
+    rdCheckbox
 } from '../../../src/components/index'
 
 export default {
@@ -55,7 +55,7 @@ export default {
         }
     },
     components: {
-        radonCheckbox,
+        rdCheckbox,
         Mark
     }
 }

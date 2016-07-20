@@ -20,10 +20,10 @@ this.$Notification.success(title:String, content:String, wait:Number)
         </textarea>
     </mark>
     <p>
-        <radon-button @click="success">success</radon-button>
-        <radon-button @click="failed">failed</radon-button>
-        <radon-button @click="warning">warning</radon-button>
-        <radon-button @click="info">info</radon-button>
+        <rd-button @click="success">success</rd-button>
+        <rd-button @click="failed">failed</rd-button>
+        <rd-button @click="warning">warning</rd-button>
+        <rd-button @click="info">info</rd-button>
     </p>
     <mark>
         <textarea class="ex-mark-text">
@@ -34,7 +34,7 @@ this.$Notification.success(title:String, content:String, wait:Number)
 ```javascript
 //root component
 import {
-    radonModal
+    rdModal
 } from '../src/components/index'
 
 export default {
@@ -67,7 +67,7 @@ methods: {
 <script>
 import { Mark } from '../index'
 import {
-    radonButton
+    rdButton
 } from '../../../src/components/index'
 
 export default {
@@ -75,7 +75,7 @@ export default {
         return {}
     },
     components: {
-        radonButton,
+        rdButton,
         Mark
     },
     methods: {

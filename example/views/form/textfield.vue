@@ -8,7 +8,7 @@
         </textarea>
     </mark>
     <p>
-        <radon-text :textfield="form.user" :input="userInputing" :change="userInputed"></radon-text>
+        <rd-text :textfield="form.user" :input="userInputing" :change="userInputed"></rd-text>
     </p>
     <mark>
         <textarea class="ex-mark-text">
@@ -18,7 +18,7 @@
 输入框的基础对象
 ```
 <template>
-    <radon-text :textfield="user"></radon-text>   
+    <rd-text :textfield="user"></rd-text>   
 </template>
 user: {
     // value 值 :String
@@ -34,7 +34,7 @@ user: {
 ### input : Function
 输入框 oninput hook
 ```
-<radon-text :textfield="obj" :input="Inputing" ></radon-text>
+<rd-text :textfield="obj" :input="Inputing" ></rd-text>
 
 methods: {
     Inputing () {
@@ -45,7 +45,7 @@ methods: {
 ### change : Function
 输入框 onchange hook
 ```
-<radon-text :textfield="obj" :change="userInputed"></radon-text>
+<rd-text :textfield="obj" :change="userInputed"></rd-text>
 
 methods: {
     userInputed () {
@@ -57,13 +57,13 @@ methods: {
 ### type : String
 input type
 ```
-<radon-text :textfield="form.pass" :input="passInputing" type="password"></radon-text>
+<rd-text :textfield="form.pass" :input="passInputing" type="password"></rd-text>
 ```
 
 ## 完整示例代码
 ```javascript
 export default {
-    template: '<radon-text :textfield="form.user" :input="userInputing"></radon-text>'
+    template: '<rd-text :textfield="form.user" :input="userInputing"></rd-text>'
     data () {
         return {
             form: {
@@ -78,7 +78,7 @@ export default {
         }
     },
     components: {
-        radonText,
+        rdText,
     },
     methods: {
         userInputing () {
@@ -101,7 +101,7 @@ export default {
 <script>
 import { Mark } from '../index'
 import {
-    radonText
+    rdText
 } from '../../../src/components/index'
 
 const MAP = {
@@ -142,7 +142,7 @@ export default {
         }
     },
     components: {
-        radonText,
+        rdText,
         Mark
     },
     methods: {

@@ -14,7 +14,7 @@
         </textarea>
     </mark>
         <p>
-            <radon-cascader :cascader="cascader"></radon-cascader>
+            <rd-cascader :cascader="cascader"></rd-cascader>
         </p>
     <mark>
         <textarea class="ex-mark-text">
@@ -28,7 +28,7 @@ cascader: {
     valueArr: []
 }
 
-<radon-cascader :cascader="cascader"></radon-cascader>
+<rd-cascader :cascader="cascader"></rd-cascader>
 ```
 ## options
 options 带选取的级联数据
@@ -118,7 +118,7 @@ const options = [{
 }]
 
 export default {
-    template: '<radon-cascader :cascader="cascader"></radon-cascader>',
+    template: '<rd-cascader :cascader="cascader"></rd-cascader>',
     data () {
         return {
             cascader: {
@@ -128,7 +128,7 @@ export default {
         }
     },
     components: {
-        radonCascader
+        rdCascader
     }
 }
 ```
@@ -141,7 +141,7 @@ export default {
 <script>
 import { Mark } from '../index'
 import {
-    radonCascader
+    rdCascader
 } from '../../../src/components/index'
 
 const options = [{
@@ -261,7 +261,7 @@ export default {
         }
     },
     components: {
-        radonCascader,
+        rdCascader,
         Mark
     }
 }

@@ -37,14 +37,14 @@ RadonInstall(Vue)
 <template>
     <div class="container">
         <router-view></router-view>
-        <radon-modal :modal="modal"></radon-modal>
+        <rd-modal :modal="modal"></rd-modal>
         <rd-notification :notifications="Notifications"></rd-notification>
         <rd-preview :preview="preview"></rd-preview>
     </div>
 </template>
 <script>
 import {
-    radonModal,
+    rdModal,
     rdNotification
 } from '../src/components/index'
 
@@ -65,7 +65,7 @@ export default {
         this.$Radon.setRoot(this)
     },
     components: {
-        radonModal,
+        rdModal,
         rdNotification
     }
 }

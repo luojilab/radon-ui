@@ -10,7 +10,7 @@
         </textarea>
     </mark>
     <p>
-        <radon-button type="primary"><rd-tooltip>这里是tooltip</rd-tooltip>鼠标移上来就会出现提示 按钮</radon-button>
+        <rd-button type="primary"><rd-tooltip>这里是tooltip</rd-tooltip>鼠标移上来就会出现提示 按钮</rd-button>
         <span>鼠标移上来就会出现提示<rd-tooltip>这里是tooltip</rd-tooltip></span>
     </p>
     <mark>
@@ -19,7 +19,7 @@
 ```html
 <!-- template -->
 <p>
-    <radon-button type="primary"><rd-tooltip>这里是tooltip</rd-tooltip>鼠标移上来就会出现提示 按钮</radon-button>
+    <rd-button type="primary"><rd-tooltip>这里是tooltip</rd-tooltip>鼠标移上来就会出现提示 按钮</rd-button>
     <span>鼠标移上来就会出现提示<rd-tooltip>这里是tooltip</rd-tooltip></span>
 </p>
 ```
@@ -44,12 +44,12 @@ export default {
 import { Mark } from '../index'
 import {
     rdTooltip,
-    radonButton
+    rdButton
 } from '../../../src/components/index'
 
 export default {
     components: {
-        radonButton,
+        rdButton,
         rdTooltip,
         Mark
     }

@@ -8,18 +8,18 @@
 
 ### 按钮类型
 ```html
-<radon-button>默认按钮</radon-button>
-<radon-button type="primary">推荐按钮</radon-button>
-<radon-button type="ghost">幽灵按钮</radon-button>
+<rd-button>默认按钮</rd-button>
+<rd-button type="primary">推荐按钮</rd-button>
+<rd-button type="ghost">幽灵按钮</rd-button>
 
 ```
         </textarea>
     </mark>
         <p>
-            <radon-button>默认按钮</radon-button>
-            <radon-button type="primary">推荐按钮</radon-button>
-            <radon-button type="ghost">幽灵按钮</radon-button>
-            <radon-button type="ghost" :disabled="true">幽灵按钮(失效)</radon-button>
+            <rd-button>默认按钮</rd-button>
+            <rd-button type="primary">推荐按钮</rd-button>
+            <rd-button type="ghost">幽灵按钮</rd-button>
+            <rd-button type="ghost" :disabled="true">幽灵按钮(失效)</rd-button>
         </p>
     </div>
     <div class="ex-card">
@@ -27,17 +27,17 @@
             <textarea class="ex-mark-text">
 ### 按钮尺寸
 ```html
-<radon-button type="primary" size="large">large</radon-button>
-<radon-button type="primary">common</radon-button>
-<radon-button type="primary" size="small">small</radon-button>
+<rd-button type="primary" size="large">large</rd-button>
+<rd-button type="primary">common</rd-button>
+<rd-button type="primary" size="small">small</rd-button>
 
 ```
             </textarea>
         </mark>
         <p>
-            <radon-button type="primary" size="large">Large</radon-button>
-            <radon-button type="primary">Common</radon-button>
-            <radon-button type="primary" size="small">Small</radon-button>
+            <rd-button type="primary" size="large">Large</rd-button>
+            <rd-button type="primary">Common</rd-button>
+            <rd-button type="primary" size="small">Small</rd-button>
         </p>
     </div>
     <div class="ex-card">
@@ -45,19 +45,19 @@
         <textarea class="ex-mark-text">
 ### 图标
 ```html
-<radon-button icon="ion-upload"></radon-button>
-<radon-button type="primary" icon="ion-ios-search-strong"></radon-button>
-<radon-button icon="ion-ios-search-strong"></radon-button>
-<radon-button><i class="ion-upload"></i>上传</radon-button>
+<rd-button icon="ion-upload"></rd-button>
+<rd-button type="primary" icon="ion-ios-search-strong"></rd-button>
+<rd-button icon="ion-ios-search-strong"></rd-button>
+<rd-button><i class="ion-upload"></i>上传</rd-button>
 
 ```
         </textarea>
     </mark>
         <p>
-            <radon-button icon="ion-upload"></radon-button>
-            <radon-button type="primary" icon="ion-ios-search-strong"></radon-button>
-            <radon-button icon="ion-ios-search-strong"></radon-button>
-            <radon-button><i class="ion-upload"></i>上传</radon-button>
+            <rd-button icon="ion-upload"></rd-button>
+            <rd-button type="primary" icon="ion-ios-search-strong"></rd-button>
+            <rd-button icon="ion-ios-search-strong"></rd-button>
+            <rd-button><i class="ion-upload"></i>上传</rd-button>
         </p>
     </div>
     <div class="ex-card">
@@ -65,21 +65,21 @@
             <textarea class="ex-mark-text">
 ### 按钮组合
 ```html
-<radon-button-group>
-    <radon-button type="ghost">common</radon-button>
-    <radon-button type="ghost">common</radon-button>
-    <radon-button type="ghost">common</radon-button>
-</radon-button-group>
+<rd-button-group>
+    <rd-button type="ghost">common</rd-button>
+    <rd-button type="ghost">common</rd-button>
+    <rd-button type="ghost">common</rd-button>
+</rd-button-group>
 
 ```
             </textarea>
         </mark>
         <p>
-            <radon-button-group>
-                <radon-button type="ghost">common</radon-button>
-                <radon-button type="ghost">common</radon-button>
-                <radon-button type="ghost">common</radon-button>
-            </radon-button-group>
+            <rd-button-group>
+                <rd-button type="ghost">common</rd-button>
+                <rd-button type="ghost">common</rd-button>
+                <rd-button type="ghost">common</rd-button>
+            </rd-button-group>
         </p>
     </div>
     <div class="ex-card">
@@ -87,13 +87,13 @@
             <textarea class="ex-mark-text">
 ### loading
 ```html
-<radon-button type="ghost" :loading="true">保存</radon-button>
+<rd-button type="ghost" :loading="true">保存</rd-button>
 
 ```
             </textarea>
         </mark>
         <p>
-            <radon-button type="ghost" :loading="true">保存</radon-button>
+            <rd-button type="ghost" :loading="true">保存</rd-button>
         </p>
     </div>
 </div>
@@ -102,8 +102,8 @@
 import { Mark } from '../index'
 import {
     formItem,
-    radonButton,
-    radonButtonGroup
+    rdButton,
+    rdButtonGroup
 } from '../../../src/components/index'
 
 export default {
@@ -116,8 +116,8 @@ export default {
     },
     components: {
         formItem,
-        radonButton,
-        radonButtonGroup,
+        rdButton,
+        rdButtonGroup,
         Mark
     }
 }

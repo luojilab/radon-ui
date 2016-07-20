@@ -8,21 +8,21 @@
 </style>
 <template>
     <div>
-        <radon-button @click="notificationAction"><rd-tooltip>点我触发notification</rd-tooltip>默认按钮</radon-button>
-        <radon-button type="primary">按钮</radon-button>
-        <radon-button type="ghost" size="large">large</radon-button>
-        <radon-button type="ghost">common</radon-button>
-        <radon-button type="ghost" size="small">small</radon-button>
-        <radon-button type="ghost" :loading="true">save</radon-button>
-        <radon-button type="icon"><i class="ion-upload"></i></radon-button>
-        <radon-button-group>
-            <radon-button type="ghost">common</radon-button>
-            <radon-button type="ghost">common</radon-button>
-            <radon-button type="ghost">common</radon-button>
-        </radon-button-group>
+        <rd-button @click="notificationAction"><rd-tooltip>点我触发notification</rd-tooltip>默认按钮</rd-button>
+        <rd-button type="primary">按钮</rd-button>
+        <rd-button type="ghost" size="large">large</rd-button>
+        <rd-button type="ghost">common</rd-button>
+        <rd-button type="ghost" size="small">small</rd-button>
+        <rd-button type="ghost" :loading="true">save</rd-button>
+        <rd-button type="icon"><i class="ion-upload"></i></rd-button>
+        <rd-button-group>
+            <rd-button type="ghost">common</rd-button>
+            <rd-button type="ghost">common</rd-button>
+            <rd-button type="ghost">common</rd-button>
+        </rd-button-group>
         <rd-drop-button>
-            <radon-button type="ghost" @click="notificationAction">common</radon-button>
-            <radon-button type="ghost" @click="notificationAction">common</radon-button>
+            <rd-button type="ghost" @click="notificationAction">common</rd-button>
+            <rd-button type="ghost" @click="notificationAction">common</rd-button>
         </rd-drop-button>
         <p>
             <rd-upload></rd-upload>
@@ -35,32 +35,32 @@
         </p>
         <form class="form">
             <form-item title="2333:">
-                <radon-text :textfield="form.user"></radon-text>
+                <rd-text :textfield="form.user"></rd-text>
             </form-item>
             <form-item title="username:">
-                <radon-text :textfield="form.user" :input="userInputing"></radon-text>
+                <rd-text :textfield="form.user" :input="userInputing"></rd-text>
             </form-item>
             <form-item title="password:">
-                <radon-text :textfield="form.pass" :input="passInputing" type="password"></radon-text>
+                <rd-text :textfield="form.pass" :input="passInputing" type="password"></rd-text>
             </form-item>
             <form-item title="verify:">
-                <radon-text @click="failed(form.bio)" :textfield="form.bio"></radon-text>
+                <rd-text @click="failed(form.bio)" :textfield="form.bio"></rd-text>
             </form-item>
             <form-item title="agree:">
-                <radon-checkbox :checkbox="checkbox"></radon-checkbox>
-                <radon-checkbox :checkbox="checkbox"></radon-checkbox>
+                <rd-checkbox :checkbox="checkbox"></rd-checkbox>
+                <rd-checkbox :checkbox="checkbox"></rd-checkbox>
             </form-item>
             <form-item title="sex:">
-                <radon-radio :radios="radios"></radon-radio>
+                <rd-radio :radios="radios"></rd-radio>
             </form-item>
             <form-item title="load:">
-                <radon-progress @click="startProgress(progressCommon)" :progress="progressCommon"></radon-progress>
+                <rd-progress @click="startProgress(progressCommon)" :progress="progressCommon"></rd-progress>
             </form-item>
             <form-item title="sex:">
-                <radon-progress @click="startProgress(progressSmall)" :progress="progressSmall"></radon-progress>
+                <rd-progress @click="startProgress(progressSmall)" :progress="progressSmall"></rd-progress>
             </form-item>
             <div>
-                <randon-progress-circle @click="startProgress(progressCircle)" :progress="progressCircle"></randon-progress-circle>
+                <rd-progress-circle @click="startProgress(progressCircle)" :progress="progressCircle"></rd-progress-circle>
             </div>
             <div>
                 <rd-select :value.sync="selectProvince.value" :options.sync="selectProvince.options"></rd-select>
@@ -68,11 +68,11 @@
                 
             </div>
             <form-item title="address:">
-                <radon-cascader :cascader="cascader"></radon-cascader>
+                <rd-cascader :cascader="cascader"></rd-cascader>
             </form-item>
             <form-item title="address:">
-                <radon-switch :checked.sync="switchA" size="small"></radon-switch>
-                <radon-switch :checked.sync="switchA"></radon-switch>
+                <rd-switch :checked.sync="switchA" size="small"></rd-switch>
+                <rd-switch :checked.sync="switchA"></rd-switch>
             </form-item>
             <form-item title="price:">
                 <rd-slider :value.sync="slider"></rd-slider>
@@ -119,19 +119,19 @@
 import {
     rdSelect,
     formItem,
-    radonButton,
-    radonButtonGroup,
+    rdButton,
+    rdButtonGroup,
     rdDropButton,
     rdUpload,
-    radonCheckbox,
-    radonText,
+    rdCheckbox,
+    rdText,
     rdEditText,
     rdTextSelect,
-    radonRadio,
-    radonProgress,
-    randonProgressCircle,
-    radonCascader,
-    radonSwitch,
+    rdRadio,
+    rdProgress,
+    rdProgressCircle,
+    rdCascader,
+    rdSwitch,
     rdSlider,
     rdDatePicker,
     rdTooltip,
@@ -418,7 +418,7 @@ export default {
                     size: 'small',
                     state: '',
                     format: function (percent) {
-                        return percent + '% off'
+                        return percent + '% '
                     }
                 }
             },
@@ -531,19 +531,19 @@ export default {
     components: {
         formItem,
         rdSelect,
-        radonButton,
-        radonButtonGroup,
+        rdButton,
+        rdButtonGroup,
         rdDropButton,
         rdUpload,
-        radonCheckbox,
-        radonText,
+        rdCheckbox,
+        rdText,
         rdEditText,
         rdTextSelect,
-        radonRadio,
-        radonProgress,
-        randonProgressCircle,
-        radonCascader,
-        radonSwitch,
+        rdRadio,
+        rdProgress,
+        rdProgressCircle,
+        rdCascader,
+        rdSwitch,
         rdSlider,
         rdDatePicker,
         rdTooltip,

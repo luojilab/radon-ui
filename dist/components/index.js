@@ -1,21 +1,22 @@
 // basic
-import radonButton from './basic/button.vue'
-import radonButtonGroup from './basic/buttonGroup.vue'
+import rdButton from './basic/button.vue'
+import rdButtonGroup from './basic/buttonGroup.vue'
 import rdDropButton from './basic/dropButton.vue'
 import rdAudio from './basic/audio.vue'
 import rdUpload from './basic/upload.vue'
+import rdTag from './basic/tag.vue'
 
 // form
 import formItem from './form/formItem.vue'
-import radonCheckbox from './form/checkbox.vue'
-import radonText from './form/textfield.vue'
+import rdCheckbox from './form/checkbox.vue'
+import rdText from './form/textfield.vue'
 import rdEditText from './form/editable.vue'
 import rdTextSelect from './form/rdTextSelect.vue'
-import radonRadio from './form/radio.vue'
-import radonProgress from './basic/progress.vue'
-import randonProgressCircle from './basic/progressCircle.vue'
-import radonCascader from './form/cascader.vue'
-import radonSwitch from './form/switch.vue'
+import rdRadio from './form/radio.vue'
+import rdProgress from './basic/progress.vue'
+import rdProgressCircle from './basic/progressCircle.vue'
+import rdCascader from './form/cascader.vue'
+import rdSwitch from './form/switch.vue'
 import rdSlider from './form/slider.vue'
 import rdDatePicker from './form/datePicker.vue'
 import rdTimeline from './form/timeline.vue'
@@ -38,23 +39,24 @@ import rdPreview from './presentation/preview.vue'
 export {
     // basic
     rdAudio,
-    radonButton,
-    radonButtonGroup,
+    rdButton,
+    rdButtonGroup,
     rdDropButton,
     rdUpload,
+    rdTag,
 
     // form
     rdSelect,
     formItem,
-    radonCheckbox,
-    radonText,
+    rdCheckbox,
+    rdText,
     rdEditText,
     rdTextSelect,
-    radonRadio,
-    radonProgress,
-    randonProgressCircle,
-    radonCascader,
-    radonSwitch,
+    rdRadio,
+    rdProgress,
+    rdProgressCircle,
+    rdCascader,
+    rdSwitch,
     rdSlider,
     rdDatePicker,
     rdTimeline,

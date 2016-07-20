@@ -1,4 +1,4 @@
-webpackJsonp([14,24],{2:/*!********************************!*\
+webpackJsonp([13,24],{2:/*!********************************!*\
   !*** ./example/views/index.js ***!
   \********************************/
 function(e,n,t){"use strict";function r(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(n,"__esModule",{value:!0}),n.Mark=void 0;var o=t(7),i=r(o);n.Mark=i["default"]},3:/*!****************************************************************************************************************************************************************!*\
@@ -16,13 +16,13 @@ function(e,n,t){var r=t(4);"string"==typeof r&&(r=[[e.id,r,""]]),t(10)(r,{}),r.l
 function(e,n){e.exports="<div class=marked> <div> {{{mark}}} </div> <slot></slot> </div>"},7:/*!********************************!*\
   !*** ./example/views/mark.vue ***!
   \********************************/
-function(e,n,t){var r,o;t(5),r=t(3),o=t(6),e.exports=r||{},e.exports.__esModule&&(e.exports=e.exports["default"]),o&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=o)},292:/*!***********************************************************************************************************************************************************************!*\
-  !*** ./~/babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./example/views/form/slider.vue ***!
+function(e,n,t){var r,o;t(5),r=t(3),o=t(6),e.exports=r||{},e.exports.__esModule&&(e.exports=e.exports["default"]),o&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=o)},297:/*!***********************************************************************************************************************************************************************!*\
+  !*** ./~/babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./example/views/form/switch.vue ***!
   \***********************************************************************************************************************************************************************/
-function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r=t(2),o=t(8);n["default"]={data:function(){return{slider:{percent:66}}},components:{rdSlider:o.rdSlider,Mark:r.Mark}}},524:/*!****************************************************************************************************************!*\
-  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./example/views/form/slider.vue ***!
+function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r=t(2),o=t(8);n["default"]={data:function(){return{switchA:!1,switchB:!1}},components:{rdSwitch:o.rdSwitch,Mark:r.Mark}}},529:/*!****************************************************************************************************************!*\
+  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./example/views/form/switch.vue ***!
   \****************************************************************************************************************/
-function(e,n){e.exports="<div class=ex-content> <div class=ex-card> <mark> <textarea class=ex-mark-text>\n# Slider 滑动输入条\n\n## 代码\n```javascript\nexport default {\n    template: '<rd-slider :value.sync=slider></rd-slider>',\n    data () {\n        return {\n            slider: 43,\n        }\n    },\n    components: {\n        rdSlider\n    }\n}\n```\n## 示例\n\n        </textarea> </mark> <p> {{slider.percent}} </p> <p> <rd-slider :value.sync=slider.percent></rd-slider> </p> </div> </div>"},552:/*!***************************************!*\
-  !*** ./example/views/form/slider.vue ***!
+function(e,n){e.exports="<div class=ex-content> <div class=ex-card> <mark> <textarea class=ex-mark-text>\n# Switch 开关\n\n## 代码\n```javascript\nexport default { \n  template: `<rd-switch :checked.sync=switchA size=small></rd-switch>\n            <rd-switch :checked.sync=switchB></rd-switch>`,\n  data () {\n        return {\n            switchA: false,\n            switchB: false\n        }\n    },\n    components: {\n        rdSwitch\n    }\n}\n```\n## 示例\n        </textarea> </mark> <p> <rd-switch :checked.sync=switchA size=small></rd-switch> <rd-switch :checked.sync=switchB></rd-switch> </p> </div> </div>"},557:/*!***************************************!*\
+  !*** ./example/views/form/switch.vue ***!
   \***************************************/
-function(e,n,t){var r,o;r=t(292),o=t(524),e.exports=r||{},e.exports.__esModule&&(e.exports=e.exports["default"]),o&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=o)}});
+function(e,n,t){var r,o;r=t(297),o=t(529),e.exports=r||{},e.exports.__esModule&&(e.exports=e.exports["default"]),o&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=o)}});

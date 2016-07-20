@@ -52,7 +52,10 @@
         </textarea>
     </mark>
         <p>
-            <radon-button type="icon"><i class="ion-upload"></i></radon-button>
+            <radon-button icon="ion-upload"></radon-button>
+            <radon-button type="primary" icon="ion-ios-search-strong"></radon-button>
+            <radon-button icon="ion-ios-search-strong"></radon-button>
+
             <radon-button><i class="ion-upload"></i>上传</radon-button>
         </p>
     </div>

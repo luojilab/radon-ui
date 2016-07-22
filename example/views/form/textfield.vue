@@ -10,6 +10,15 @@
     <p>
         <rd-text :textfield="form.user" :input="userInputing" :change="userInputed"></rd-text>
     </p>
+    <p>
+        <rd-textarea 
+            :value.sync="textArea.value" 
+            :auto-resize="true" 
+            :input="textArea.input" 
+            :change="textArea.change" 
+            :min-height="textArea.minHeight"
+        ></rd-textarea>
+    </p>
     <mark>
         <textarea class="ex-mark-text">
 ## API
@@ -92,7 +101,34 @@ export default {
     }
 }
 ```
-## 示例
+## textarea
+
+```html
+<rd-textarea 
+    :value.sync="textArea.value" 
+    :auto-resize="true" 
+    :input="textArea.input" 
+    :change="textArea.change" 
+    :line-height="textArea.lineHeight"
+    :min-height="textArea.minHeight"
+></rd-textarea>
+
+```
+```javascript
+ textArea: {
+    value: '',
+    minHeight: 100,
+    autoResize: true,
+    lineHeight: 14,
+    input () {
+        console.log('textarea is inputing')
+    },
+    change () {
+        console.log('textarea is changed')
+    }
+},
+
+```
         </textarea>
     </mark>
     </div>
@@ -101,7 +137,8 @@ export default {
 <script>
 import { Mark } from '../index'
 import {
-    rdText
+    rdText,
+    rdTextarea
 } from '../../../src/components/index'
 
 const MAP = {
@@ -130,6 +167,18 @@ const MAP = {
 export default {
     data () {
         return {
+            textArea: {
+                value: '',
+                minHeight: 100,
+                autoResize: true,
+                lineHeight: 14,
+                input () {
+                    console.log('textarea is inputing')
+                },
+                change () {
+                    console.log('textarea is changed')
+                }
+            },
             form: {
                 user: {
                     value: '',
@@ -143,6 +192,7 @@ export default {
     },
     components: {
         rdText,
+        rdTextarea,
         Mark
     },
     methods: {

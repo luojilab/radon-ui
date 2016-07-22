@@ -20,6 +20,7 @@ html, body {
 
 body {
   font-family: $font-family;
+  -webkit-font-smoothing: antialiased;
   line-height: $line-height-base;
   color: $text-color;
   background-color: $body-background;

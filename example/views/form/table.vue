@@ -299,9 +299,22 @@ export default {
         rdTable,
         Mark
     },
+    ready () {
+        this.loop()
+    },
     methods: {
+        loop () {
+            setInterval(() => {
+                this.TableData.tableData.map(row => {
+                    row.age++
+                    if (row.age > 80) {
+                        row.age = 0
+                    }
+                })
+            }, 1000)
+        },
         editTable (row) {
-            this.$Notification.success('正在编辑' + row._value[0], '', 5000)
+            this.$Notification.success('正在编辑' + row._value[1], '', 3000)
         },
         removeTableItem (row) {
             this.TableData.tableData.forEach(item => {
@@ -309,7 +322,7 @@ export default {
                     this.TableData.tableData.$remove(item)
                 }
             })
-            this.$Notification.success('删除' + row._value[0] + '成功', '', 5000)
+            this.$Notification.success('删除' + row._value[1] + '成功', '', 3000)
         },
         sortBy (col) {
             if (col.key === 'age') {

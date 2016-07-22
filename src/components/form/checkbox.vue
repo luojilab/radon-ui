@@ -14,11 +14,11 @@
     display: inline-block;
     height: 1rem;
     width: 1rem;
-    background: #e6e6e6;
+    border: 1px solid #e6e6e6;
     border-radius: 4px;
     top: .5rem;
     &:hover {
-        background: #d4d4d4;
+        border: 1px solid #2db7f5;
     }
 }
 .rd-checkbox-inner-icon {
@@ -38,6 +38,10 @@
 }
 .rd-checkbox-inner.selected {
     background: #2db7f5;
+    border: 1px solid #2db7f5;
+    &:hover {
+        opacity: 0.8;
+    }
 }
 .rd-checkbox-inner.selected .rd-checkbox-inner-icon{
     opacity: 1;

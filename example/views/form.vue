@@ -20,7 +20,15 @@
             <rd-button type="ghost">common</rd-button>
             <rd-button type="ghost">common</rd-button>
         </rd-button-group>
-        <rd-drop-button>
+        <rd-drop-button text="2333">
+            <rd-button type="ghost" @click="notificationAction">common</rd-button>
+            <rd-button type="ghost" @click="notificationAction">common</rd-button>
+        </rd-drop-button>
+        <rd-drop-button text="2333">
+            <rd-button type="ghost" @click="notificationAction">common</rd-button>
+            <rd-button type="ghost" @click="notificationAction">common</rd-button>
+        </rd-drop-button>
+        <rd-drop-button text="2333" type="primary">
             <rd-button type="ghost" @click="notificationAction">common</rd-button>
             <rd-button type="ghost" @click="notificationAction">common</rd-button>
         </rd-drop-button>

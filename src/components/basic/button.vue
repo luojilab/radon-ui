@@ -17,7 +17,7 @@
     transition: background 0.2s;
     outline: none;
     color: #666;
-    background-color: #f7f7f7;
+    background-color: #fff;
     border-color: #d9d9d9;
     i,
     .rd-btn-loading {

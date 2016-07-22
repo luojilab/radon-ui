@@ -36,6 +36,7 @@ export default {
                 return 'text'
             }
         },
+        bind: String,
         input: Function,
         change: Function
     },
@@ -59,6 +60,10 @@ export default {
             }
         },
         inputing () {
+            console.log(typeof this.bind)
+            if (typeof this.bind !== undefined) {
+                this.bind = this.textfield.value
+            }
             if (this.input) {
                 this.input(this.textfield)
             }

@@ -108,6 +108,15 @@
             <rd-audio :audio="audio"></rd-audio>
         </p>
         <p>
+            <rd-textarea 
+                :value.sync="textArea.value" 
+                :auto-resize="true" 
+                :input="textArea.input" 
+                :change="textArea.change" 
+                :min-height="textArea.minHeight"
+            ></rd-textarea>
+        </p>
+        <p>
             <img class="img-min" v-preview="'http:\/\/covteam.u.qiniudn.com/ka2.jpg'" src="http://covteam.u.qiniudn.com/ka2.jpg" alt="">
         </p>
         <p>
@@ -125,6 +134,7 @@ import {
     rdUpload,
     rdCheckbox,
     rdText,
+    rdTextarea,
     rdEditText,
     rdTextSelect,
     rdRadio,
@@ -255,6 +265,18 @@ const options = [{
 export default {
     data () {
         return {
+            textArea: {
+                value: '',
+                minHeight: 100,
+                autoResize: true,
+                lineHeight: 14,
+                input () {
+                    console.log('textarea is inputing')
+                },
+                change () {
+                    console.log('textarea is changed')
+                }
+            },
             number: {
                 value: 0,
                 step: 0.1,
@@ -537,6 +559,7 @@ export default {
         rdUpload,
         rdCheckbox,
         rdText,
+        rdTextarea,
         rdEditText,
         rdTextSelect,
         rdRadio,

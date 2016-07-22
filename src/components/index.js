@@ -10,6 +10,7 @@ import rdTag from './basic/tag.vue'
 import formItem from './form/formItem.vue'
 import rdCheckbox from './form/checkbox.vue'
 import rdText from './form/textfield.vue'
+import rdTextarea from './form/textarea.vue'
 import rdEditText from './form/editable.vue'
 import rdTextSelect from './form/rdTextSelect.vue'
 import rdRadio from './form/radio.vue'
@@ -50,6 +51,7 @@ export {
     formItem,
     rdCheckbox,
     rdText,
+    rdTextarea,
     rdEditText,
     rdTextSelect,
     rdRadio,

@@ -39,25 +39,28 @@
     }
 }
 .rd-slider-handle-tip {
-    display: none;
-    opcity: 0;
-    height: 0;
+    display: block;
+    opacity: 1;
     position: absolute;
-    bottom: 1rem;
-    left: -.6rem;
+    bottom: 2rem;
+    left: -.45rem;
     width: 2rem;
-    background-color: #5e6061;
+    background-color: rgba(0, 0, 0, 0.5);
     color: #fff;
     text-align: center;
     padding: .5rem;
     border-radius: .5rem;
     transition: all .2s;
-    transform: translateX(-1rem);
-}
-.rd-slider-handle.move .rd-slider-handle-tip {
-    display: block;
-    opacity: 1;
-    height: initial;
+    &::before {
+        content: '';
+        position: absolute;
+        background: transparent;
+        border: .4rem solid transparent;
+        border-top-color: rgba(0, 0, 0, 0.5);
+        bottom: -.7rem;
+        left: 50%;
+        margin-left: -.4rem;
+    }
 }
 </style>
 <template>

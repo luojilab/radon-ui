@@ -5,13 +5,43 @@
         <textarea class="ex-mark-text">
 # Slider 滑动输入条
 
+## 示例
+        </textarea>
+    </mark>
+    <p>
+        {{slider.percent}}
+    </p>
+    <p>
+        <rd-slider 
+            :value.sync="slider.percent"
+            :step="slider.step"
+            :min="slider.min"
+            :max="slider.max"
+            :show-tip="true"
+        ></rd-slider>
+    </p>
+    <mark>
+        <textarea class="ex-mark-text">
 ## 代码
 ```javascript
 export default {
-    template: '<rd-slider :value.sync="slider"></rd-slider>',
+    template: `
+    <rd-slider 
+                :value.sync="slider.percent"
+                :step="slider.step"
+                :min="slider.min"
+                :max="slider.max"
+                :show-tip="true"
+            ></rd-slider>
+    `,
     data () {
         return {
-            slider: 43,
+            slider: {
+                percent: 66,
+                min: 10,
+                max: 100,
+                step: 5
+            }
         }
     },
     components: {
@@ -19,16 +49,8 @@ export default {
     }
 }
 ```
-## 示例
-
         </textarea>
     </mark>
-        <p>
-            {{slider.percent}}
-        </p>
-        <p>
-            <rd-slider :value.sync="slider.percent"></rd-slider>
-        </p>
     </div>
 </div>
 </template>
@@ -42,7 +64,10 @@ export default {
     data () {
         return {
             slider: {
-                percent: 66
+                percent: 66,
+                min: 10,
+                max: 100,
+                step: 5
             }
         }
     },

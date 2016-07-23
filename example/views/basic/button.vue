@@ -12,6 +12,10 @@
 <rd-button type="primary">推荐按钮</rd-button>
 <rd-button type="ghost">幽灵按钮</rd-button>
 <rd-button type="ghost" :disabled="true">幽灵按钮(失效)</rd-button>
+<rd-button type="success">Success</rd-button>
+<rd-button type="info">Info</rd-button>
+<rd-button type="warning">Warning</rd-button>
+<rd-button type="danger">Danger</rd-button>
 
 ```
         </textarea>
@@ -21,10 +25,10 @@
             <rd-button type="primary">推荐按钮</rd-button>
             <rd-button type="ghost">幽灵按钮</rd-button>
             <rd-button type="ghost" :disabled="true">幽灵按钮(失效)</rd-button>
-            <rd-button type="success">幽灵按钮</rd-button>
-            <rd-button type="info">幽灵按钮</rd-button>
-            <rd-button type="warning">幽灵按钮</rd-button>
-            <rd-button type="failed">幽灵按钮</rd-button>
+            <rd-button type="success">Success</rd-button>
+            <rd-button type="info">Info</rd-button>
+            <rd-button type="warning">Warning</rd-button>
+            <rd-button type="danger">Danger</rd-button>
         </p>
     </div>
     <div class="ex-card">
@@ -55,13 +59,16 @@
 <rd-button icon="ion-ios-search-strong"></rd-button>
 <rd-button><i class="ion-upload"></i>上传</rd-button>
 
+
 ```
         </textarea>
     </mark>
         <p>
             <rd-button icon="ion-upload"></rd-button>
+            <rd-button icon="ion-social-github"></rd-button>
             <rd-button type="primary" icon="ion-ios-search-strong"></rd-button>
             <rd-button icon="ion-ios-search-strong"></rd-button>
+            <rd-button><i class="ion-social-github"></i>Github</rd-button>
             <rd-button><i class="ion-upload"></i>上传</rd-button>
         </p>
     </div>

@@ -55,7 +55,7 @@
         border-color: #fa0;
     }
 }
-.rd-btn.failed {
+.rd-btn.danger {
     color: #fff;
     background-color: #f50;
     border-color: #f50;
@@ -249,8 +249,8 @@ export default {
             case 'warning':
                 list.push('warning')
                 break
-            case 'failed':
-                list.push('failed')
+            case 'danger':
+                list.push('danger')
                 break
             }
 

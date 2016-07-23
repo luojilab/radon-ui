@@ -24,37 +24,84 @@
         margin-right: .3rem;
     }
 }
-.rd-btn-default {
+.rd-btn.default {
     color: #666;
     background-color: #fff;
     border-color: #d9d9d9;
 }
-.rd-btn-primary {
+.rd-btn.primary {
     color: #fff;
     background-color: #57c5f7;
     border-color: #57c5f7;
+    &:hover,
+    &:focus {
+        background-color: #81d8ff;
+        color: #fff;
+    }
 }
-.rd-btn-ghost {
+.rd-btn.ghost {
     color: #666;
     background-color: #f7f7f7;
     border-color: #d9d9d9;
+}
+.rd-btn.warning {
+    color: #fff;
+    background-color: #fa0;
+    border-color: #fa0;
+    &:hover,
+    &:focus {
+        color: #fff;
+        background-color: rgba(255, 170, 0, 0.7);
+        border-color: #fa0;
+    }
+}
+.rd-btn.failed {
+    color: #fff;
+    background-color: #f50;
+    border-color: #f50;
+    &:hover,
+    &:focus {
+        color: #fff;
+        border-color: #f50;
+        background-color: rgba(255, 85, 0, 0.7);
+    }
+}
+.rd-btn.success {
+    background-color: #87d068;
+    border-color: #87d068;
+    color: #fff;
+    &:hover,
+    &:focus {
+        color: #fff;
+        border-color: #87d068;
+        background-color: rgba(135, 208, 104, 0.7);
+    }
+}
+.rd-btn.info {
+    color: #fff;
+    border-color:#2db7f5;
+    background-color: #2db7f5;
+    &:hover,
+    &:focus {
+        color: #fff;
+        border-color: #2db7f5;
+        background-color: rgba(45, 183, 245, 0.7);
+    }
 }
 .rd-btn:focus, .rd-btn:hover {
     color: #57c5f7;
     background-color: #fff;
     border-color: #57c5f7;
 }
-.rd-btn.rd-btn-primary:hover,
-.rd-btn.rd-btn-primary:focus {
-    background-color: #81d8ff;
-    color: #fff;
-}
 .rd-btn.rd-btn-small {
-    padding: .2em .4rem;
+    padding: .2rem .3rem;
+    min-width: initial;
+    font-size: .8rem;
+    line-height: 1rem;
     min-width: initial;
 }
 .rd-btn.rd-btn-large {
-    padding: .3rem 1.5rem;
+    padding: .2rem 1.5rem;
     font-size: 1.4rem;
 }
 .rd-btn.rd-btn-icon {
@@ -118,15 +165,7 @@
 <template>
     <button 
         class="rd-btn"
-        :class="{
-            'rd-btn-primary' : type === 'primary',
-            'rd-btn-default' : type === 'default',
-            'rd-btn-ghost'   : type === 'ghost',
-            'rd-btn-icon'    : icon,
-            'rd-btn-small'   : size === 'small',
-            'rd-btn-large'   : size === 'large',
-            'rd-btn-disabled': disabled
-        }"
+        :class="btnClass"
         :style="styleList"
     >
         <i class="rd-btn-icon-only" :class="iconClass" v-if="icon"></i>
@@ -184,9 +223,51 @@ export default {
     },
     computed: {
         iconClass () {
-            let list = {}
+            let list = []
+            if (!this.icon) return list
+            list.push(this.icon)
+            return list
+        },
+        btnClass () {
+            let list = []
+            switch (this.type) {
+            case 'primary':
+                list.push('primary')
+                break
+            case 'default':
+                list.push('default')
+                break
+            case 'ghost':
+                list.push('ghost')
+                break
+            case 'success':
+                list.push('success')
+                break
+            case 'info':
+                list.push('info')
+                break
+            case 'warning':
+                list.push('warning')
+                break
+            case 'failed':
+                list.push('failed')
+                break
+            }
+
+            switch (this.size) {
+            case 'small':
+                list.push('rd-btn-small')
+                break
+            case 'large':
+                list.push('rd-btn-large')
+                break
+            }
+
             if (this.icon) {
-                list[this.icon] = true
+                list.push('rd-btn-icon')
+            }
+            if (this.disabled) {
+                list.push('rd-btn-disabled')
             }
             return list
         },

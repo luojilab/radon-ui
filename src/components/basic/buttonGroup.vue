@@ -9,6 +9,10 @@
 }
 .rd-btn-group>.rd-btn {
 	margin: 0 -2.5px;
+    &:hover,
+    &:focus {
+        position: relative;
+    }
 }
 .rd-btn-group>.rd-btn:first-child:not(:last-child) {
 	border-bottom-right-radius: 0;

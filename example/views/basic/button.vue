@@ -11,6 +11,7 @@
 <rd-button>默认按钮</rd-button>
 <rd-button type="primary">推荐按钮</rd-button>
 <rd-button type="ghost">幽灵按钮</rd-button>
+<rd-button type="ghost" :disabled="true">幽灵按钮(失效)</rd-button>
 
 ```
         </textarea>
@@ -20,6 +21,10 @@
             <rd-button type="primary">推荐按钮</rd-button>
             <rd-button type="ghost">幽灵按钮</rd-button>
             <rd-button type="ghost" :disabled="true">幽灵按钮(失效)</rd-button>
+            <rd-button type="success">幽灵按钮</rd-button>
+            <rd-button type="info">幽灵按钮</rd-button>
+            <rd-button type="warning">幽灵按钮</rd-button>
+            <rd-button type="failed">幽灵按钮</rd-button>
         </p>
     </div>
     <div class="ex-card">
@@ -66,9 +71,9 @@
 ### 按钮组合
 ```html
 <rd-button-group>
-    <rd-button type="ghost">common</rd-button>
-    <rd-button type="ghost">common</rd-button>
-    <rd-button type="ghost">common</rd-button>
+    <rd-button>common</rd-button>
+    <rd-button>common</rd-button>
+    <rd-button>common</rd-button>
 </rd-button-group>
 
 ```
@@ -76,9 +81,9 @@
         </mark>
         <p>
             <rd-button-group>
-                <rd-button type="ghost">common</rd-button>
-                <rd-button type="ghost">common</rd-button>
-                <rd-button type="ghost">common</rd-button>
+                <rd-button>common</rd-button>
+                <rd-button>common</rd-button>
+                <rd-button>common</rd-button>
             </rd-button-group>
         </p>
     </div>
@@ -87,13 +92,13 @@
             <textarea class="ex-mark-text">
 ### loading
 ```html
-<rd-button type="ghost" :loading="true">保存</rd-button>
+<rd-button :loading="true">保存</rd-button>
 
 ```
             </textarea>
         </mark>
         <p>
-            <rd-button type="ghost" :loading="true">保存</rd-button>
+            <rd-button :loading="true">保存</rd-button>
         </p>
     </div>
 </div>

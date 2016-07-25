@@ -2,15 +2,7 @@
 <template>
     <button 
         class="rd-btn"
-        :class="{
-            'rd-btn-primary' : type === 'primary',
-            'rd-btn-default' : type === 'default',
-            'rd-btn-ghost'   : type === 'ghost',
-            'rd-btn-icon'    : icon,
-            'rd-btn-small'   : size === 'small',
-            'rd-btn-large'   : size === 'large',
-            'rd-btn-disabled': disabled
-        }"
+        :class="btnClass"
         :style="styleList"
     >
         <i class="rd-btn-icon-only" :class="iconClass" v-if="icon"></i>
@@ -68,9 +60,51 @@ export default {
     },
     computed: {
         iconClass () {
-            let list = {}
+            let list = []
+            if (!this.icon) return list
+            list.push(this.icon)
+            return list
+        },
+        btnClass () {
+            let list = []
+            switch (this.type) {
+            case 'primary':
+                list.push('primary')
+                break
+            case 'default':
+                list.push('default')
+                break
+            case 'ghost':
+                list.push('ghost')
+                break
+            case 'success':
+                list.push('success')
+                break
+            case 'info':
+                list.push('info')
+                break
+            case 'warning':
+                list.push('warning')
+                break
+            case 'danger':
+                list.push('danger')
+                break
+            }
+
+            switch (this.size) {
+            case 'small':
+                list.push('rd-btn-small')
+                break
+            case 'large':
+                list.push('rd-btn-large')
+                break
+            }
+
             if (this.icon) {
-                list[this.icon] = true
+                list.push('rd-btn-icon')
+            }
+            if (this.disabled) {
+                list.push('rd-btn-disabled')
             }
             return list
         },

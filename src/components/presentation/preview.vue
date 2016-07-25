@@ -50,25 +50,33 @@
 </template>
 
 <script>
-    export default {
-        props: {
-            preview: Object
-        },
-        ready () {
-            window.document.body.addEventListener('click', this.leave, false)
-        },
-        beforeDestroy () {
-            window.removeEventListener('click', this.leave)
-        },
-        methods: {
-            leave (e) {
-                if (e.path.indexOf(this.$el) === -1) {
-                    this.close()
-                }
-            },
-            close () {
-                this.preview.show = false
+import { catIn } from '../utils'
+
+export default {
+    props: {
+        preview: Object
+    },
+    data () {
+        return {
+            $box: null
+        }
+    },
+    ready () {
+        this.$box = this.$el.getElementsByClassName('rd-preview-wrapper')[0]
+        window.addEventListener('click', this.leave, false)
+    },
+    beforeDestroy () {
+        window.removeEventListener('click', this.leave)
+    },
+    methods: {
+        leave (e) {
+            if (!catIn(e.target, this.$box)) {
+                this.close()
             }
+        },
+        close () {
+            this.preview.show = false
         }
     }
+}
 </script>

@@ -10,14 +10,15 @@
     height: 100%;
 }
 .rd-preview-wrapper {
-    position: relative;
-    display: inline-block;
+    position: fixed;
+    width: 60rem;
+    left: 50%;
+    top: 0;
+    margin-left: -30rem;
     background: #fff;
-    padding: 2rem;
-    border-radius: .5rem;
-    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
-    height: 60%;
-    max-width: 60%;
+    padding: .25rem;
+    height: 100%;
+    box-sizing: border-box;
 }
 .rd-preview-close {
     position: absolute;
@@ -26,25 +27,79 @@
 }
 .rd-preview-img {
     height: 100%;
+    width: 100%;
     max-width: 100%;
 }
 .rd-preview-close {
     position: absolute;
     right: .6rem;
     top: .5rem;
-    line-height: 1rem;
     font-size: 1rem;
+    background: rgba(0, 0, 0, 0.54);
+    color: #fff;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    line-height: 1.5rem;
+    text-align: center;
+}
+.rd-preview-nav-left,
+.rd-preview-nav-right {
+    position: absolute;
+    height: 100%;
+    margin: .25rem;
+    background: rgba(0, 0, 0, 0.36);
+    width: 10rem;
+    top: 0;
+    color: #fff;
+    opacity: 0;
+    transition: opacity .2s;
+    .rd-preview-nav-arrow {
+        opacity: 0;
+        transition: opacity .3s;
+    }
+    &:hover {
+        opacity: 1;
+        transition: opacity .2s;
+        .rd-preview-nav-arrow {
+            opacity: 1;
+        }
+    }
+}
+.rd-preview-nav-left {
+    left: 0;
+    .rd-preview-nav-arrow {
+        left: 0;
+        margin-left: 2rem;
+    }
+}
+.rd-preview-nav-right {
+    right: 0;
+    .rd-preview-nav-arrow {
+        right: 0;
+        margin-right: 2rem;
+    }
+}
+.rd-preview-nav-arrow {
+    font-size: 5rem;
+    position: absolute;
+    top: 50%;
+    margin-top: -2.5rem;
 }
 </style>
 
 <template>
-    <div class="rd-preview-container" v-show="preview.show">
-        <div class="rd-preview-wrapper">
-            <i class="ion-close-round rd-preview-close" @click="close"></i>
-            <img class="rd-preview-img" v-if="preview.current.src" :src="preview.current.src" :alt="preview.current.title">
-            <div class="rd-preview-title">
-                {{preview.current.title}}
-            </div>
+    <div class="rd-preview-wrapper" v-show="preview.show">
+        <i class="ion-close-round rd-preview-close" @click="close"></i>
+        <img class="rd-preview-img" v-if="preview.current.src" :src="preview.current.src" :alt="preview.current.title">
+        <div class="rd-preview-title">
+            {{preview.current.title}}
+        </div>
+        <div class="rd-preview-nav-left">
+            <i class="ion-ios-arrow-left rd-preview-nav-arrow"></i>
+        </div>
+        <div class="rd-preview-nav-right">
+            <i class="ion-ios-arrow-right rd-preview-nav-arrow"></i>
         </div>
     </div>
 </template>
@@ -62,7 +117,6 @@ export default {
         }
     },
     ready () {
-        this.$box = this.$el.getElementsByClassName('rd-preview-wrapper')[0]
         window.addEventListener('click', this.leave, false)
     },
     beforeDestroy () {
@@ -70,7 +124,7 @@ export default {
     },
     methods: {
         leave (e) {
-            if (!catIn(e.target, this.$box)) {
+            if (!catIn(e.target, this.$el)) {
                 this.close()
             }
         },

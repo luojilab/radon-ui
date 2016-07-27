@@ -12,11 +12,7 @@
     </p>
     <p>
         <rd-textarea 
-            :value.sync="textArea.value" 
-            :auto-resize="true" 
-            @input="textArea.input" 
-            @change="textArea.change" 
-            :min-height="textArea.minHeight"
+            :textfield="form.user"
         ></rd-textarea>
     </p>
     <mark>
@@ -186,7 +182,10 @@ export default {
                     title: '用户名:',
                     key: 'user',
                     state: 'default',
-                    tip: ''
+                    tip: '',
+                    minHeight: 100,
+                    autoResize: true,
+                    lineHeight: 14
                 }
             }
         }

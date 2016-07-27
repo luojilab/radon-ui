@@ -117,11 +117,7 @@
         </p>
         <p>
             <rd-textarea 
-                :value.sync="textArea.value" 
-                :auto-resize="true" 
-                :input="textArea.input" 
-                :change="textArea.change" 
-                :min-height="textArea.minHeight"
+                :textfield="textArea"
             ></rd-textarea>
         </p>
         <p>

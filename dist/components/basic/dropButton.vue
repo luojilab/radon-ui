@@ -3,12 +3,7 @@
     <button 
         class="rd-dropbtn"
         @click="toggle"
-        :class="{
-            'rd-dropbtn-primary' : type === 'primary',
-            'rd-dropbtn-default' : type === 'default',
-            'rd-dropbtn-ghost'   : type === 'ghost',
-            'rd-dropbtn-disabled': disabled
-        }"
+        :class="classList"
     >
         <span class="rd-dropbtn-text">{{text}}</span>
         <i class="ion-ios-arrow-down rd-dropbtn-icon"></i>
@@ -44,6 +39,26 @@ export default {
             state: {
                 show: false
             }
+        }
+    },
+    computed: {
+        classList () {
+            let list = []
+            switch (this.type) {
+            case 'primary':
+                list.push('rd-dropbtn-primary')
+                break
+            case 'ghost':
+                list.push('rd-dropbtn-ghost')
+                break
+            default:
+                list.push('rd-dropbtn-primary')
+            }
+
+            if (this.disabled) {
+                list.push('rd-dropbtn-disabled')
+            }
+            return list
         }
     },
     ready () {

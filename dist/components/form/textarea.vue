@@ -3,10 +3,9 @@
 <template>
     <div class="rd-textfield-wrapper">
         <textarea 
-            v-model="value"
+            v-model="inputValue"
             class="rd-textfield-input"
             @input="inputAction"
-            @change="changeAction"
             @keyup.delete="delSize"
             :style="{ 'height': text.height + 'px' }"
         ></textarea>
@@ -16,34 +15,27 @@
 <script>
 export default {
     props: {
-        value: String,
-        bind: String,
-        input: Function,
-        change: Function,
-        minHeight: {
-            type: Number,
-            default () {
-                return 80
-            }
-        },
-        lineHeight: {
-            type: Number,
-            default () {
-                return 14
-            }
-        },
-        autoResize: {
-            type: Boolean,
-            default () {
-                return true
-            }
+        textfield: {
+            type: Object
         }
     },
     data () {
         return {
             text: {
                 $el: null,
-                height: this.minHeight
+                height: this.textfield.minHeight || 80,
+                lineHeight: this.textfield.lineHeight || 14,
+                minHeight: this.textfield.minHeight || 80
+            }
+        }
+    },
+    computed: {
+        inputValue: {
+            get () {
+                return this.textfield.value
+            },
+            set (newVal) {
+                this.textfield.value = newVal
             }
         }
     },
@@ -52,27 +44,20 @@ export default {
     },
     methods: {
         inputAction () {
-            if (this.input) {
-                this.input(this)
-            }
             this.resize()
         },
-        changeAction () {
-            if (this.change) {
-                this.change(this)
-            }
-        },
         delSize () {
-            if (this.text.height + this.lineHeight > this.minHeight) {
-                this.text.height = this.text.height - this.lineHeight
-                this.resize()
+            if (this.text.height + this.text.lineHeight > this.text.minHeight) {
+                this.text.height = this.text.height - this.text.lineHeight
+                this.$nextTick(() => {
+                    this.resize()
+                })
             }
         },
         resize () {
-            if (this.autoResize) {
-                if (this.text.$el.scrollHeight > this.text.$el.offsetHeight) {
-                    this.text.height = this.text.$el.scrollHeight + this.lineHeight
-                }
+            if (this.textfield.autoResize !== undefined &&
+                this.text.$el.scrollHeight > this.text.$el.offsetHeight) {
+                this.text.height = this.text.$el.scrollHeight + this.text.lineHeight
             }
         }
     }

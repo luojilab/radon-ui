@@ -2,13 +2,7 @@
 <template>
     <div 
         class="rd-textfield-wrapper"
-        :class="{
-        'loading': textState === 'loading',
-        'warning': textState === 'warning',
-        'failed': textState === 'failed',
-        'info': textState === 'info',
-        'success': textState === 'success'
-     }"
+        :class="stateClass"
     >
         <input 
             :type="type" 
@@ -24,6 +18,7 @@
 </template>
 <script>
 import { ICON_MAP } from '../utils'
+
 export default {
     props: {
         textfield: {
@@ -36,9 +31,7 @@ export default {
                 return 'text'
             }
         },
-        bind: String,
-        input: Function,
-        change: Function
+        sync: Function
     },
     computed: {
         textState () {
@@ -48,25 +41,26 @@ export default {
             return 'default'
         },
         textIcon () {
-            let classList = {}
-            classList[ICON_MAP[this.textState]] = true
+            if (!ICON_MAP[this.textState]) return []
+
+            let classList = []
+            classList.push(ICON_MAP[this.textState])
+
             return classList
+        },
+        stateClass () {
+            if (!this.textState) return []
+            return [this.textState]
         }
     },
     methods: {
-        changing () {
-            if (this.change) {
-                this.change(this.textfield)
-            }
+        changing (e) {
+            this.$emit('changing', this.textfield.value, this)
         },
-        inputing () {
-            console.log(typeof this.bind)
-            if (typeof this.bind !== undefined) {
-                this.bind = this.textfield.value
-            }
-            if (this.input) {
-                this.input(this.textfield)
-            }
+        inputing (e) {
+            this.$emit('inputing', this.textfield.value, this)
+            if (!this.sync) return
+            this.sync(this.textfield)
         }
     }
 }

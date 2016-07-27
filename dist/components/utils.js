@@ -27,8 +27,19 @@ const ICON_MAP = {
     'loading': 'ion-load-a'
 }
 
+const catIn = function (target, parent) {
+    let path = []
+    let parentNode = target
+    while (parentNode !== document.body) {
+        path.push(parentNode)
+        parentNode = parentNode.parentNode
+    }
+    return path.indexOf(parent) !== -1
+}
+
 export {
     ICON_MAP,
     throttle,
-    pad
+    pad,
+    catIn
 }

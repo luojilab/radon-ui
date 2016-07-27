@@ -8,14 +8,14 @@
         </textarea>
     </mark>
     <p>
-        <rd-text :textfield="form.user" :input="userInputing" :change="userInputed"></rd-text>
+        <rd-text :textfield="form.user" @inputing="userInputing" @changing="userInputed"></rd-text>
     </p>
     <p>
         <rd-textarea 
             :value.sync="textArea.value" 
             :auto-resize="true" 
-            :input="textArea.input" 
-            :change="textArea.change" 
+            @input="textArea.input" 
+            @change="textArea.change" 
             :min-height="textArea.minHeight"
         ></rd-textarea>
     </p>
@@ -184,6 +184,7 @@ export default {
                     value: '',
                     placeHolder: 'input here',
                     title: '用户名:',
+                    key: 'user',
                     state: 'default',
                     tip: ''
                 }
@@ -196,7 +197,7 @@ export default {
         Mark
     },
     methods: {
-        userInputing () {
+        userInputing (text) {
             this.form.user.state = 'loading'
             setTimeout(() => {
                 let i = Math.floor(Math.random() * 4.9)

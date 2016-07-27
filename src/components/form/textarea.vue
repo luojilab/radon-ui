@@ -8,7 +8,6 @@
             v-model="value"
             class="rd-textfield-input"
             @input="inputAction"
-            @change="changeAction"
             @keyup.delete="delSize"
             :style="{ 'height': text.height + 'px' }"
         ></textarea>
@@ -20,8 +19,6 @@ export default {
     props: {
         value: String,
         bind: String,
-        input: Function,
-        change: Function,
         minHeight: {
             type: Number,
             default () {
@@ -54,20 +51,14 @@ export default {
     },
     methods: {
         inputAction () {
-            if (this.input) {
-                this.input(this)
-            }
             this.resize()
-        },
-        changeAction () {
-            if (this.change) {
-                this.change(this)
-            }
         },
         delSize () {
             if (this.text.height + this.lineHeight > this.minHeight) {
                 this.text.height = this.text.height - this.lineHeight
-                this.resize()
+                this.$nextTick(() => {
+                    this.resize()
+                })
             }
         },
         resize () {

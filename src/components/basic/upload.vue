@@ -130,7 +130,7 @@ export default {
             }
         },
         changeFile (e) {
-            console.log(e)
+            console.log(this.$file.files)
             let previewUrl = ''
             for (let i = 0, len = this.$file.files.length; i < len; i++) {
                 previewUrl = ''

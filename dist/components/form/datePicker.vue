@@ -9,7 +9,7 @@
     >
         <div class="rd-datepicker-value" @click.stop="togglePicker">
             <div class="rd-datepicker-value-input">
-                {{valueDisplay(value)}}
+                {{valueDisplay(value.str)}}
             </div>
             <i 
                 @click.stop="clearValue" 
@@ -71,7 +71,10 @@
 </template>
 <script>
 import moment from 'moment'
-import { pad } from '../utils'
+import {
+    pad,
+    catIn
+} from '../utils'
 import rdButton from '../basic/button.vue'
 import rdTimePicker from './timePicker.vue'
 
@@ -146,7 +149,7 @@ const weekLimit = (list, availables) => {
 export default {
     props: {
         value: {
-            type: String,
+            type: Object,
             required: true
         },
         options: {
@@ -203,7 +206,7 @@ export default {
     },
     methods: {
         hide (e) {
-            if (e.path.indexOf(this.$el) === -1) {
+            if (!catIn(e.target, this.$el)) {
                 this.state.pickerShow = false
             }
         },
@@ -330,7 +333,10 @@ export default {
             })
         },
         clearValue (e) {
-            this.value = ''
+            this.value = {
+                str: '',
+                date: {}
+            }
             this.clearDay()
         },
         touchDay (e, day) {
@@ -349,25 +355,27 @@ export default {
             this.dayList.forEach(day => {
                 if (day.selected) {
                     let tmp = moment(day.time).format('YYYY-MM-DD')
-                    this.value = moment(tmp + ' ' + this.timeTmp.time).format('YYYY-MM-DD HH:mm:ss')
+                    this.value.str = moment(tmp + ' ' + this.timeTmp.time).format('YYYY-MM-DD HH:mm:ss')
                 }
             })
         },
-        valueDisplay (value) {
-            if (!value) {
+        valueDisplay (str) {
+            if (!str) {
                 return '请选择时间'
             }
             if (this.state.timePickerShow) {
-                return moment(value).format('YYYY-MM-DD')
+                return moment(str).format(this.options.format)
             }
-            return value
+            return str
         },
         output (day) {
             if (!this.state.timePickerShow) {
-                this.value = moment(day.time).format('YYYY-MM-DD')
+                this.value.str = moment(day.time).format(this.options.format)
+                this.value.date = moment(day.time)
             } else {
-                let tmp = moment(day.time).format('YYYY-MM-DD')
-                this.value = moment(tmp + ' ' + this.timeTmp.time).format('YYYY-MM-DD HH:mm:ss')
+                let tmp = moment(day.time).format(this.options.format)
+                this.value.str = moment(tmp + ' ' + this.timeTmp.time).format(this.options.format)
+                this.value.date = moment(tmp + ' ' + this.timeTmp.time)
             }
         }
     }

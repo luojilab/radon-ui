@@ -1,5 +1,6 @@
 var path = require('path')
 var express = require('express')
+var multer  = require('multer')
 var webpack = require('webpack')
 var config = require('../config')
 var proxyMiddleware = require('http-proxy-middleware')
@@ -53,6 +54,13 @@ app.route('/mock/page').get(function(req, res, next){
   res.send({data: arry, total: 122});
 })
 
+var upload = multer({ dest: 'uploads/' })
+app.post('/profile', upload.single('avatar'), function (req, res, next) {
+  // req.file is the `avatar` file
+  // req.body will hold the text fields, if there were any
+  console.log(req.file)
+  res.send({ a: true })
+})
 // handle fallback for HTML5 history API
 app.use(require('connect-history-api-fallback')())
 

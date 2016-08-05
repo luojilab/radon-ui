@@ -275,7 +275,6 @@ export default {
     data () {
         return {
             sliderShow: document.body.offsetWidth > 1000,
-            Notifications: [],
             preview: {
                 show: false,
                 current: {
@@ -455,7 +454,7 @@ export default {
             }
         }
     },
-    created () {
+    init () {
         this.$Radon.setRoot(this)
     },
     components: {

@@ -8,11 +8,26 @@
         </textarea>
     </mark>
     <p>
-        <rd-text :textfield="form.user" @inputing="userInputing" @changing="userInputed"></rd-text>
+        <rd-text :textfield="form.username" @inputing="userInputing" @changing="userInputed"></rd-text>
+    </p>
+    <p>
+        <rd-text :textfield="form.info"></rd-text>
+    </p>
+    <p>
+        <rd-text :textfield="form.warning"></rd-text>
+    </p>
+    <p>
+        <rd-text :textfield="form.success"></rd-text>
+    </p>
+    <p>
+        <rd-text :textfield="form.failed"></rd-text>
+    </p>
+    <p>
+        <rd-text :textfield="form.password" type="password"></rd-text>
     </p>
     <p>
         <rd-textarea 
-            :textfield="form.user"
+            :textfield="form.username"
         ></rd-textarea>
     </p>
     <mark>
@@ -176,7 +191,7 @@ export default {
                 }
             },
             form: {
-                user: {
+                username: {
                     value: '',
                     placeHolder: 'input here',
                     title: '用户名:',
@@ -186,6 +201,36 @@ export default {
                     minHeight: 100,
                     autoResize: true,
                     lineHeight: 14
+                },
+                password: {
+                    value: '',
+                    placeHolder: '',
+                    state: 'default',
+                    tip: ''
+                },
+                info: {
+                    value: '',
+                    placeHolder: 'info',
+                    state: 'info',
+                    tip: 'info'
+                },
+                warning: {
+                    value: '',
+                    placeHolder: 'warning',
+                    state: 'warning',
+                    tip: ''
+                },
+                failed: {
+                    value: '',
+                    placeHolder: 'failed',
+                    state: 'failed',
+                    tip: ''
+                },
+                success: {
+                    value: '',
+                    placeHolder: 'success',
+                    state: 'success',
+                    tip: ''
                 }
             }
         }
@@ -197,16 +242,16 @@ export default {
     },
     methods: {
         userInputing (text) {
-            this.form.user.state = 'loading'
+            this.form.username.state = 'loading'
             setTimeout(() => {
                 let i = Math.floor(Math.random() * 4.9)
-                this.form.user.state = MAP[i].state
-                this.form.user.tip = MAP[i].tip
+                this.form.username.state = MAP[i].state
+                this.form.username.tip = MAP[i].tip
             }, 500)
         },
         userInputed () {
             console.log('?')
-            this.$Notification.success('你输入了' + this.form.user.value, '', 5000)
+            this.$Notification.success('你输入了' + this.form.username.value, '', 5000)
         }
     }
 }

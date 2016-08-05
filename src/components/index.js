@@ -19,11 +19,11 @@ import rdProgressCircle from './basic/progressCircle.vue'
 import rdCascader from './form/cascader.vue'
 import rdSwitch from './form/switch.vue'
 import rdSlider from './form/slider.vue'
-import rdDatePicker from './form/datePicker.vue'
+import rdDatepicker from './form/datePicker.vue'
 import rdTimeline from './form/timeline.vue'
 import rdSelect from './form/select.vue'
 import rdTable from './form/table.vue'
-import rdTimePicker from './form/timePicker.vue'
+import rdTimepicker from './form/timePicker.vue'
 import rdNumber from './form/numberInput.vue'
 
 // layout
@@ -60,10 +60,10 @@ export {
     rdCascader,
     rdSwitch,
     rdSlider,
-    rdDatePicker,
+    rdDatepicker,
     rdTimeline,
     rdTable,
-    rdTimePicker,
+    rdTimepicker,
     rdNumber,
 
     // layout

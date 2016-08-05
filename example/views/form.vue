@@ -87,8 +87,8 @@
                 <rd-timeline :timeline="timeline"></rd-timeline>
             </form-item>
             <form-item title="出发时间:">
-                <rd-date-picker :value.sync="datePicker.value" :options="datePicker.options"></rd-date-picker>
-                <rd-time-picker value="timePicker"></rd-time-picker>
+                <rd-datepicker :value.sync="datePicker.value" :options="datePicker.options"></rd-datepicker>
+                <rd-timepicker value="timePicker"></rd-timepicker>
                 <rd-alert></rd-alert>
             </form-item>
             <div>
@@ -147,7 +147,7 @@ import {
     rdCascader,
     rdSwitch,
     rdSlider,
-    rdDatePicker,
+    rdDatepicker,
     rdTooltip,
     rdTimeline,
     rdAlert,
@@ -572,7 +572,7 @@ export default {
         rdCascader,
         rdSwitch,
         rdSlider,
-        rdDatePicker,
+        rdDatepicker,
         rdTooltip,
         rdTimeline,
         rdAlert,

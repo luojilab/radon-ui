@@ -9,14 +9,14 @@
         </textarea>
     </mark>
     <p>
-        <rd-date-picker :value.sync="datePicker.value" :options="datePicker.options"></rd-date-picker>
+        <rd-datepicker :value="datePicker.value" :options="datePicker.options"></rd-datepicker>
     </p>
     <mark>
         <textarea class="ex-mark-text">
 
 ## API
 ```html
-<rd-date-picker :value.sync="datePicker.value" :options="datePicker.options"></rd-date-picker>
+<rd-datepicker :value="datePicker.value" :options="datePicker.options"></rd-datepicker>
 ```
 ```
 datePicker: {
@@ -36,13 +36,13 @@ datePicker: {
 ## 代码
 ```javascript
 export default { 
-  template: '<rd-date-picker :value.sync="datePicker.value" :options="datePicker.options"></rd-date-picker>',
+  template: '<rd-datepicker :value="datePicker.value" :options="datePicker.options"></rd-datepicker>',
   data () {
         return {
             datePicker: {
                 value: '',
                 options: {
-                    format: 'YYYY-MM-DD',
+                    format: 'YYYY/MM/DD',
                     monthList: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
                     weekList: ['一', '二', '三', '四', '五', '六', '日']
                 }
@@ -62,7 +62,7 @@ export default {
 <script>
 import { Mark } from '../index'
 import {
-    rdDatePicker
+    rdDatepicker
 } from '../../../src/components/index'
 
 export default {
@@ -83,7 +83,7 @@ export default {
         }
     },
     components: {
-        rdDatePicker,
+        rdDatepicker,
         Mark
     }
 }

@@ -16,7 +16,7 @@
                 class="rd-datepicker-clear ion-close-circled"
                 v-show="state.pickerShow"
             ></i>
-            <rd-time-picker v-if="state.timePickerShow" placeholder="" :value.sync="timeTmp.time" :change="timeChange"></rd-time-picker>
+            <rd-timepicker v-if="state.timePickerShow" placeholder="" :value.sync="timeTmp.time" :change="timeChange"></rd-timepicker>
         </div>
         <div class="rd-datepicker-content" v-show="state.pickerShow">
             <div class="rd-datepicker-contrl">
@@ -76,7 +76,7 @@ import {
     catIn
 } from '../utils'
 import rdButton from '../basic/button.vue'
-import rdTimePicker from './timePicker.vue'
+import rdTimepicker from './timePicker.vue'
 
 const getNearMonth = (time) => {
     return {
@@ -201,7 +201,7 @@ export default {
         window.removeEventListener('click', this.hide)
     },
     components: {
-        rdTimePicker,
+        rdTimepicker,
         rdButton
     },
     methods: {

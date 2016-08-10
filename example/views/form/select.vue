@@ -86,28 +86,33 @@ export default {
         return {
             selectProvince: {
                 value: {},
-                options: [{
-                    selected: false,
-                    disabled: false,
-                    value: '四川',
-                    id: 1
-                }, {
-                    selected: false,
-                    disabled: false,
-                    value: '北京',
-                    id: 2
-                }, {
-                    selected: false,
-                    disabled: false,
-                    value: '广东',
-                    id: 3
-                }]
+                options: []
             }
         }
     },
     components: {
         rdSelect,
         Mark
+    },
+    ready () {
+        setTimeout(() => {
+            this.selectProvince.options = [{
+                selected: false,
+                disabled: false,
+                value: '四川',
+                id: 1
+            }, {
+                selected: false,
+                disabled: false,
+                value: '北京',
+                id: 2
+            }, {
+                selected: false,
+                disabled: false,
+                value: '广东',
+                id: 3
+            }]
+        }, 1000)
     }
 }
 </script>

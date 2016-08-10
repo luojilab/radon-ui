@@ -445,6 +445,7 @@ export default {
                     }]
                 }]
             },
+            Notifications: [],
             modal: {
                 show: false,
                 title: '',

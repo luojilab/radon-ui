@@ -26,8 +26,20 @@
         <rd-text :textfield="form.password" type="password"></rd-text>
     </p>
     <p>
+        <rd-text :textfield="form.bio" :limit="limits.length"></rd-text>
+    </p>
+    <p>
+        <rd-text :textfield="form.email" :limit="limits.email"></rd-text>
+    </p>
+    <p>
+        <rd-text :textfield="form.phone" :limit="limits.phone"></rd-text>
+    </p>
+     <p>
+        <rd-text :textfield="form.number" :limit="limits.number"></rd-text>
+    </p>
+    <p>
         <rd-textarea 
-            :textfield="form.username"
+            :textfield="form.textArea"
         ></rd-textarea>
     </p>
     <mark>
@@ -190,17 +202,61 @@ export default {
                     console.log('textarea is changed')
                 }
             },
+            limits: {
+                length: {
+                    type: 'Length',
+                    min: 6,
+                    max: 12
+                },
+                email: {
+                    type: 'Email'
+                },
+                phone: {
+                    type: 'Phone'
+                },
+                number: {
+                    type: 'Number'
+                }
+            },
             form: {
+                bio: {
+                    value: '',
+                    placeHolder: 'length < 6',
+                    title: '用户名:',
+                    key: 'user',
+                    state: 'default',
+                    tip: ''
+                },
+                email: {
+                    value: '',
+                    placeHolder: 'Email',
+                    title: '用户名:',
+                    key: 'user',
+                    state: 'default',
+                    tip: ''
+                },
+                phone: {
+                    value: '',
+                    placeHolder: 'Phone Number',
+                    title: '用户名:',
+                    key: 'user',
+                    state: 'default',
+                    tip: ''
+                },
+                number: {
+                    value: '',
+                    placeHolder: 'Number',
+                    key: 'user',
+                    state: 'default',
+                    tip: ''
+                },
                 username: {
                     value: '',
                     placeHolder: 'input here',
                     title: '用户名:',
                     key: 'user',
                     state: 'default',
-                    tip: '',
-                    minHeight: 100,
-                    autoResize: true,
-                    lineHeight: 14
+                    tip: ''
                 },
                 password: {
                     value: '',
@@ -231,6 +287,14 @@ export default {
                     placeHolder: 'success',
                     state: 'success',
                     tip: ''
+                },
+                textArea: {
+                    value: '',
+                    title: '用户名:',
+                    state: 'default',
+                    minHeight: 100,
+                    autoResize: true,
+                    lineHeight: 14
                 }
             }
         }

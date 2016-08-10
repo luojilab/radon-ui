@@ -1,5 +1,4 @@
 <style>
-@import '../../css/index';
 .rd-textfield-input {
     font-size: .9rem;
     line-height: 1.7rem;
@@ -122,6 +121,24 @@
 <script>
 import { ICON_MAP } from '../utils'
 
+const TYPE_MAP = {
+    Email: {
+        reg: /^([\w-_]+(?:\.[\w-_]+)*)@((?:[a-z0-9]+(?:-[a-zA-Z0-9]+)*)+\.[a-z]{2,6})$/i,
+        state: 'warning',
+        tip: '请输入正确的邮箱地址'
+    },
+    Phone: {
+        reg: /1[3-9][0-9]{9}$/,
+        state: 'warning',
+        tip: '请输入正确的手机号码'
+    },
+    Number: {
+        reg: /^[0-9]*$/,
+        state: 'warning',
+        tip: '请输入数字'
+    }
+}
+
 export default {
     props: {
         textfield: {
@@ -134,7 +151,16 @@ export default {
                 return 'text'
             }
         },
-        sync: Function
+        sync: Function,
+        limit: {
+            type: Object,
+            default () {
+                return {
+                    length: 0,
+                    type: null
+                }
+            }
+        }
     },
     computed: {
         textState () {
@@ -162,8 +188,47 @@ export default {
         },
         inputing (e) {
             this.$emit('inputing', this.textfield.value, this)
+            this.limitLen()
+            this.limitType()
             if (!this.sync) return
             this.sync(this.textfield)
+        },
+        setState (state, tip) {
+            this.textfield.state = state
+            this.textfield.tip = tip
+        },
+        cleanState () {
+            this.textfield.tip = ''
+            this.textfield.state = 'default'
+        },
+        limitLen () {
+            if (this.limit.max) {
+                if (this.textfield.value.length > this.limit.max) {
+                    return this.setState('warning', '输入最多' + this.limit.max + '字符')
+                } else {
+                    this.cleanState()
+                }
+            }
+            if (this.limit.min) {
+                if (this.textfield.value.length < this.limit.min) {
+                    return this.setState('warning', '输入至少' + this.limit.min + '字符')
+                } else {
+                    this.cleanState()
+                }
+            }
+        },
+        limitType () {
+            if (!this.limit.type) return
+            if (!this.limit.type === 'Length') return this.limitLen()
+            if (!TYPE_MAP[this.limit.type]) return
+
+            let TypeLimit = TYPE_MAP[this.limit.type]
+
+            if (!TypeLimit.reg.test(this.textfield.value)) {
+                this.setState(TypeLimit.state, TypeLimit.tip)
+            } else {
+                this.cleanState()
+            }
         }
     }
 }

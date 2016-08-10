@@ -92,6 +92,11 @@
 </template>
 <script>
 import rdButton from '../basic/button.vue'
+
+import {
+    catIn
+} from '../utils'
+
 export default {
     props: {
         modal: Object
@@ -101,7 +106,7 @@ export default {
     },
     methods: {
         touchClose (e) {
-            if (e.target.classList[0] === 'rd-modal-wrapper') {
+            if (!catIn(e.target, this.$el)) {
                 this.cancel()
             }
         },

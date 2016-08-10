@@ -162,6 +162,9 @@ html,body{
 .ex-footer-nav-link-description {
     color: #fff;
 }
+.demo-content {
+    width: 20rem;
+}
 @media screen and (max-width: 1000px) {
     .ex-header {
         padding: 0 1rem;

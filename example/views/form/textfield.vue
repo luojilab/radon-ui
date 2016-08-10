@@ -91,6 +91,42 @@ input type
 ```
 <rd-text :textfield="form.pass" :input="passInputing" type="password"></rd-text>
 ```
+## 验证
+
+```
+
+<rd-text :textfield="form.bio" :limit="limits.length"></rd-text>
+
+
+<rd-text :textfield="form.email" :limit="limits.email"></rd-text>
+
+
+<rd-text :textfield="form.phone" :limit="limits.phone"></rd-text>
+
+
+<rd-text :textfield="form.number" :limit="limits.number"></rd-text>
+
+
+```
+
+```
+limits: {
+    length: {
+        type: 'Length',
+        min: 6,
+        max: 12
+    },
+    email: {
+        type: 'Email'
+    },
+    phone: {
+        type: 'Phone'
+    },
+    number: {
+        type: 'Number'
+    }
+}
+```
 
 ## 完整示例代码
 ```javascript

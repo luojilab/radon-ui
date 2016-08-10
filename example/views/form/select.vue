@@ -9,65 +9,80 @@
 ## 示例
         </textarea>
     </mark>
-    <p>
+    <p class="demo-content">
         <rd-select :select="form.selectProvince" @change="changeAction"></rd-select>
+    </p>
+    <p class="demo-content">
         <rd-select :select="form.selectCity" @change="changeAction"></rd-select>
     </p>
     <mark>
         <textarea class="ex-mark-text">
 ## API
 
+### select
 ```html
-<rd-select :value.sync="selectProvince.value" :options.sync="selectProvince.options"></rd-select>
+<rd-select :select="form.selectProvince" ></rd-select>
 ```
 ```javascript
-// 获取select选择的对象
-value   :Object
 
-// 提供待选对象集合
-options :Array
+selectProvince: {
+    // 获取select选择的对象
+    value   :Object,
 
-options: {
-    // 选中状态 :Boolean
-    selected: false,
-    // 可用状态 : Boolean
-    disabled: false,
-    // 展示值 : String
-    value: '四川',
+    // 提供待选对象集合
+    options :Array
 
-    // 其他自定义属性
-    id: 1 
+    options: [{
+        // 选中状态 :Boolean
+        selected: false,
+        // 可用状态 : Boolean
+        disabled: false,
+        // 展示值 : String
+        value: '四川',
+
+        // 其他自定义属性
+        id: 1 
+    }]
 }
 ```
 ## 代码
 ```javascript
 export default {
-    template: '<rd-select :value.sync="selectProvince.value" :options.sync="selectProvince.options"></rd-select>',
+    template: '<rd-select :select="form.selectProvince" @change="changeAction"></rd-select>',
     data () {
         return {
-            selectProvince: {
-                value: {},
-                options: [{
-                    selected: false,
-                    disabled: false,
-                    value: '四川',
-                    id: 1
-                }, {
-                    selected: false,
-                    disabled: false,
-                    value: '北京',
-                    id: 2
-                }, {
-                    selected: false,
-                    disabled: false,
-                    value: '广东',
-                    id: 3
-                }]
+            form: {
+                selectProvince: {
+                    key: 'selectProvince',
+                    value: {},
+                    options: [{
+                        selected: false,
+                        disabled: false,
+                        value: '成都',
+                        id: 1
+                    }, {
+                        selected: false,
+                        disabled: false,
+                        value: '北京',
+                        id: 2
+                    }, {
+                        selected: false,
+                        disabled: false,
+                        value: '深圳',
+                        id: 3
+                    }]
+                }
             }
         }
     },
     components: {
         rdSelect
+    },
+    methods: {
+        changeAction (select, value) {
+            console.log(this.form.selectProvince.value.value)
+            console.log(select.value.value === this.form.selectProvince.value.value) // true
+        }
     }
 }
 ```
@@ -141,7 +156,7 @@ export default {
     methods: {
         changeAction (select, value) {
             console.log(this.form.selectProvince.value.value)
-            console.log(select.value.value)
+            console.log(select.value.value === this.form.selectProvince.value.value)
         }
     }
 }

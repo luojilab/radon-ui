@@ -221,7 +221,7 @@ export default {
             form: {
                 bio: {
                     value: '',
-                    placeHolder: 'length < 6',
+                    placeHolder: ' 6 < length < 12',
                     title: '用户名:',
                     key: 'user',
                     state: 'default',

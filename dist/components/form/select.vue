@@ -6,11 +6,19 @@
         :class="{ 
             'active': show,
             'rd-select-top': position === 'top'
-    }">
+        }"
+    >
         <div class="rd-select-selected-value">
             <span v-show="valueShow">{{value.value}}</span>
             <div class="rd-select-search-wrapper" v-show="show">
-                <input @focus="focusInput" @click="touchInput" @blur="leaveInput" type="text" v-model="search" class="rd-select-search-input">
+                <input 
+                    @focus="focusInput" 
+                    @click="touchInput" 
+                    @blur="leaveInput" 
+                    type="text" 
+                    v-model="search" 
+                    class="rd-select-search-input"
+                >
             </div>
         </div>
         <span class="rd-select-arrow ion-chevron-down"></span>
@@ -20,14 +28,16 @@
                 @click="setValue(option)" 
                 v-for="option in list" 
                 :class="{
-                'selected': option.selected,
-                'disabled': option.disabled
+                    'selected': option.selected,
+                    'disabled': option.disabled
                 }"
             >{{option.value}}</div>
         </div>
     </div>
 </template>
 <script>
+import { catIn } from '../utils'
+
 export default {
     props: {
         value: {
@@ -76,7 +86,7 @@ export default {
     },
     methods: {
         hide (e) {
-            if (e.path.indexOf(this.$el) === -1) {
+            if (!catIn(e.target, this.$el)) {
                 this.show = false
                 this.search = ''
             }

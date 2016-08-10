@@ -10,7 +10,8 @@
         </textarea>
     </mark>
     <p>
-        <rd-select :value.sync="selectProvince.value" :options.sync="selectProvince.options"></rd-select>
+        <rd-select :select="form.selectProvince" @change="changeAction"></rd-select>
+        <rd-select :select="form.selectCity" @change="changeAction"></rd-select>
     </p>
     <mark>
         <textarea class="ex-mark-text">
@@ -84,9 +85,32 @@ import {
 export default {
     data () {
         return {
-            selectProvince: {
-                value: {},
-                options: []
+            form: {
+                selectProvince: {
+                    key: 'selectProvince',
+                    value: {},
+                    options: []
+                },
+                selectCity: {
+                    key: 'selectCity',
+                    value: {},
+                    options: [{
+                        selected: false,
+                        disabled: false,
+                        value: '成都',
+                        id: 1
+                    }, {
+                        selected: false,
+                        disabled: false,
+                        value: '北京',
+                        id: 2
+                    }, {
+                        selected: false,
+                        disabled: false,
+                        value: '深圳',
+                        id: 3
+                    }]
+                }
             }
         }
     },
@@ -96,7 +120,7 @@ export default {
     },
     ready () {
         setTimeout(() => {
-            this.selectProvince.options = [{
+            this.form.selectProvince.options = [{
                 selected: false,
                 disabled: false,
                 value: '四川',
@@ -113,6 +137,12 @@ export default {
                 id: 3
             }]
         }, 1000)
+    },
+    methods: {
+        changeAction (select, value) {
+            console.log(this.form.selectProvince.value.value)
+            console.log(select.value.value)
+        }
     }
 }
 </script>

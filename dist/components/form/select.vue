@@ -9,7 +9,7 @@
         }"
     >
         <div class="rd-select-selected-value">
-            <span v-show="valueShow">{{value.value}}</span>
+            <span v-show="valueShow">{{select.value.value}}</span>
             <div class="rd-select-search-wrapper" v-show="show">
                 <input 
                     @focus="focusInput" 
@@ -40,12 +40,8 @@ import { catIn } from '../utils'
 
 export default {
     props: {
-        value: {
+        select: {
             type: Object,
-            required: true
-        },
-        options: {
-            type: Array,
             required: true
         }
     },
@@ -62,7 +58,7 @@ export default {
         list () {
             if (this.search) {
                 const reg = new RegExp(this.search, 'g')
-                let list = this.options.filter(item => {
+                let list = this.select.options.filter(item => {
                     return reg.test(item.value)
                 })
                 if (list.length === 0) {
@@ -75,7 +71,7 @@ export default {
                 }
                 return list
             }
-            return this.options
+            return this.select.options
         }
     },
     ready () {
@@ -104,11 +100,12 @@ export default {
         setValue (option) {
             this.search = ''
             if (option.disabled) return
-            this.options.forEach(op => {
+            this.select.options.forEach(op => {
                 op.selected = false
             })
             option.selected = true
-            this.value = option
+            this.select.value = option
+            this.$emit('change', this.select, option)
         },
         showOption (e) {
             e.stopPropagation()

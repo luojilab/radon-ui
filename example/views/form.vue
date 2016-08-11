@@ -36,7 +36,7 @@
             <rd-upload></rd-upload>
         </p>
         <p>
-            <rd-text-select></rd-text-select>
+            <!-- <rd-text-select></rd-text-select> -->
         </p>
         <p>
             相信大多数前端开发人员，都使用过Angular、<rd-edit-text value="React" :tip="false"></rd-edit-text>或者<rd-edit-text value="Vue.js" :tip="true"></rd-edit-text>。他们都通过数据绑定的方法，提升了开发效率。
@@ -71,8 +71,8 @@
                 <rd-progress-circle @click="startProgress(progressCircle)" :progress="progressCircle"></rd-progress-circle>
             </div>
             <div>
-                <rd-select :value.sync="selectProvince.value" :options.sync="selectProvince.options"></rd-select>
-                <rd-select :value.sync="selectCity.value" :options.sync="selectCityOptions"></rd-select>
+                <rd-select :select="selectProvince"></rd-select>
+                <rd-select :select="selectCity"></rd-select>
                 
             </div>
             <form-item title="address:">
@@ -87,8 +87,8 @@
                 <rd-timeline :timeline="timeline"></rd-timeline>
             </form-item>
             <form-item title="出发时间:">
-                <rd-datepicker :value.sync="datePicker.value" :options="datePicker.options"></rd-datepicker>
-                <rd-timepicker value="timePicker"></rd-timepicker>
+                <rd-datepicker :date="datePicker"></rd-datepicker>
+                <rd-timepicker :time-picker="timePicker"></rd-timepicker>
                 <rd-alert></rd-alert>
             </form-item>
             <div>
@@ -152,7 +152,7 @@ import {
     rdTimeline,
     rdAlert,
     rdTable,
-    rdTimePicker,
+    rdTimepicker,
     rdSpin,
     breadcrumb,
     rdAudio,
@@ -401,7 +401,9 @@ export default {
                 color: 'red',
                 text: '创建服务现场 2015-09-01'
             }],
-            timePicker: '',
+            timePicker: {
+                value: ''
+            },
             datePicker: {
                 value: '',
                 options: {
@@ -577,7 +579,7 @@ export default {
         rdTimeline,
         rdAlert,
         rdTable,
-        rdTimePicker,
+        rdTimepicker,
         rdSpin,
         breadcrumb,
         rdAudio,

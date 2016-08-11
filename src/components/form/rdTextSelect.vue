@@ -20,7 +20,7 @@
 <template>
     <div class="rd-text-select-container">
         <rd-text :textfield="value"></rd-text>
-        <rd-select :value.sync="value.select.value" :options.sync="value.select.options"></rd-select>
+        <rd-select :value="value.select"></rd-select>
     </div>
 </template>
 

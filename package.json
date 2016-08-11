@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A Vue.js components lib",
   "author": "Awe <hilongjw@gmail.com>",
-  "private": true,
+  "main": "dist/components/index.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/component.js && node build/build.js",

@@ -9,14 +9,18 @@
     >
         <div class="rd-datepicker-value" @click.stop="togglePicker">
             <div class="rd-datepicker-value-input">
-                {{valueDisplay(value.str)}}
+                {{valueDisplay}}
             </div>
             <i 
                 @click.stop="clearValue" 
                 class="rd-datepicker-clear ion-close-circled"
                 v-show="state.pickerShow"
             ></i>
-            <rd-timepicker v-if="state.timePickerShow" placeholder="" :value.sync="timeTmp.time" :change="timeChange"></rd-timepicker>
+            <rd-timepicker 
+                v-if="state.timePickerShow" 
+                :time-picker="timeTmp.time" 
+                @change="timeChange"
+            ></rd-timepicker>
         </div>
         <div class="rd-datepicker-content" v-show="state.pickerShow">
             <div class="rd-datepicker-contrl">
@@ -148,20 +152,8 @@ const weekLimit = (list, availables) => {
 
 export default {
     props: {
-        value: {
-            type: Object,
-            required: true
-        },
-        options: {
-            type: Object,
-            default () {
-                return {
-                    timePicker: false,
-                    format: 'YYYY-MM-DD',
-                    monthList: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
-                    weekList: ['一', '二', '三', '四', '五', '六', '日']
-                }
-            }
+        date: {
+            type: Object
         },
         limit: {
             type: Object,
@@ -182,15 +174,37 @@ export default {
                 position: 'bottom'
             },
             timeTmp: {
-                time: '',
+                time: {
+                    value: '',
+                    placeHolder: ''
+                },
                 current: null,
                 year: '2016',
                 month: '06'
+            },
+            options: {
+                placeHolder: '请选择时间',
+                timePicker: false,
+                format: 'YYYY-MM-DD',
+                monthList: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                weekList: ['一', '二', '三', '四', '五', '六', '日']
             },
             weekList: [],
             dayList: [],
             monthList: [],
             yearList: []
+        }
+    },
+    computed: {
+        valueDisplay () {
+            let str = this.date.value
+            if (!str) {
+                return this.options.placeHolder
+            }
+            if (this.state.timePickerShow) {
+                return moment(Date.parse(str)).format(this.options.format)
+            }
+            return str
         }
     },
     ready () {
@@ -211,13 +225,18 @@ export default {
             }
         },
         init (current) {
-            this.state.timePickerShow = this.options.timePicker || false
-            this.weekList = this.options.weekList || ['一', '二', '三', '四', '五', '六', '日']
-            this.monthList = this.options.monthList || ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+            if (this.date.options) {
+                for (let key in this.date.options) {
+                    this.options[key] = this.date.options[key]
+                }
+            }
+            this.state.timePickerShow = this.options.timePicker
+            this.weekList = this.options.weekList
+            this.monthList = this.options.monthList
         },
         parse (value, format = 'YYYY-MM-DD') {
-            let current = moment(value)
-            if (moment(value).format(format) === 'Invalid date') {
+            let current = moment(Date.parse(value))
+            if (moment(Date.parse(value)).format(format) === 'Invalid date') {
                 current = moment()
             }
             this.timeTmp.current = current
@@ -318,12 +337,12 @@ export default {
         },
         togglePicker (e) {
             e.preventDefault()
-            if (e.clientY + document.body.scrollTop + 320 > document.body.offsetHeight) {
-                this.state.position = 'top'
-            } else {
+            if (this.$el.getBoundingClientRect().top < 320) {
                 this.state.position = 'bottom'
+            } else {
+                this.state.position = 'top'
             }
-            this.parse(this.value, this.options.format)
+            this.parse(this.date.value, this.options.format)
             this.state.pickerShow = !this.state.pickerShow
         },
         clearDay () {
@@ -333,10 +352,8 @@ export default {
             })
         },
         clearValue (e) {
-            this.value = {
-                str: '',
-                date: {}
-            }
+            this.date.value = ''
+            this.date.rawDate = {}
             this.clearDay()
         },
         touchDay (e, day) {
@@ -344,38 +361,29 @@ export default {
             this.clearDay()
             day.selected = true
             if (this.state.timePickerShow) {
-                if (!this.timeTmp.time) {
+                if (!this.timeTmp.time.value) {
                     let now = new Date()
-                    this.timeTmp.time = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds())
+                    this.timeTmp.time.value = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds())
                 }
             }
             this.output(day)
         },
-        timeChange () {
+        timeChange (time) {
             this.dayList.forEach(day => {
                 if (day.selected) {
                     let tmp = moment(day.time).format('YYYY-MM-DD')
-                    this.value.str = moment(tmp + ' ' + this.timeTmp.time).format('YYYY-MM-DD HH:mm:ss')
+                    this.date.value = moment(Date.parse(tmp + ' ' + time.value)).format('YYYY-MM-DD HH:mm:ss')
                 }
             })
         },
-        valueDisplay (str) {
-            if (!str) {
-                return '请选择时间'
-            }
-            if (this.state.timePickerShow) {
-                return moment(str).format(this.options.format)
-            }
-            return str
-        },
         output (day) {
             if (!this.state.timePickerShow) {
-                this.value.str = moment(day.time).format(this.options.format)
-                this.value.date = moment(day.time)
+                this.date.rawDate = moment(day.time)
+                this.date.value = this.date.rawDate.format(this.options.format)
             } else {
-                let tmp = moment(day.time).format(this.options.format)
-                this.value.str = moment(tmp + ' ' + this.timeTmp.time).format(this.options.format)
-                this.value.date = moment(tmp + ' ' + this.timeTmp.time)
+                const tmp = moment(day.time).format(this.options.format)
+                this.date.rawDate = moment(Date.parse(tmp + ' ' + this.timeTmp.time.value))
+                this.date.value = this.date.rawDate.format(this.options.format)
             }
         }
     }

@@ -9,7 +9,10 @@
         </textarea>
     </mark>
     <p>
-        <rd-datepicker :value="datePicker.value" :options="datePicker.options"></rd-datepicker>
+        <rd-datepicker :date="datePicker"></rd-datepicker>
+    </p>
+    <p>
+        <rd-datepicker :date="datetimePicker"></rd-datepicker>
     </p>
     <mark>
         <textarea class="ex-mark-text">
@@ -69,15 +72,20 @@ export default {
     data () {
         return {
             datePicker: {
-                value: {
-                    str: '',
-                    date: {}
-                },
+                value: '',
+                rawDate: {},
                 options: {
                     format: 'YYYY/MM/DD',
                     monthList: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'
                     ],
                     weekList: ['一', '二', '三', '四', '五', '六', '日']
+                }
+            },
+            datetimePicker: {
+                value: '',
+                rawDate: {},
+                options: {
+                    timePicker: true
                 }
             }
         }

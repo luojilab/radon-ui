@@ -60,7 +60,7 @@
         :class="{ 'top': state.position === 'top' }"
     >
         <div class="rd-timepicker-value">
-            <input type="text" class="rd-timepicker-value-input" :placeholder="placeholder" v-model="value">
+            <input type="text" class="rd-timepicker-value-input" :placeholder="timePicker.placeholder" v-model="timePicker.value">
             <i 
                 @click.stop="clearValue" 
                 class="rd-datepicker-clear ion-close-circled"
@@ -119,19 +119,11 @@ const timeValueParser = (value) => {
     let now = new Date()
     return [pad(now.getHours()), pad(now.getMinutes()), pad(now.getSeconds())]
 }
+
 export default {
     props: {
-        value: String,
-        placeholder: {
-            type: String,
-            default () {
-                return ''
-            }
-        },
-        change: {
-            type: Function,
-            default () {
-            }
+        timePicker: {
+            type: Object
         }
     },
     data () {
@@ -156,7 +148,7 @@ export default {
     },
     methods: {
         parse () {
-            this.tmp = timeValueParser(this.value)
+            this.tmp = timeValueParser(this.timePicker.value)
             this.selectByValue('hour', this.tmp[0])
             this.selectByValue('min', this.tmp[1])
             this.selectByValue('sec', this.tmp[2])
@@ -192,10 +184,10 @@ export default {
             }
         },
         togglePicker (e) {
-            if (e.clientY + document.body.scrollTop + 320 > document.body.offsetHeight) {
-                this.state.position = 'top'
-            } else {
+            if (this.$el.getBoundingClientRect().top < 320) {
                 this.state.position = 'bottom'
+            } else {
+                this.state.position = 'top'
             }
             this.parse()
             this.state.pickerShow = !this.state.pickerShow
@@ -221,7 +213,7 @@ export default {
             this.scrollByItem(type, obj.value)
             obj.selected = true
             this.updateValue()
-            this.change()
+            this.$emit('change', this.timePicker)
         },
         scrollByItem (type, val) {
             try {
@@ -232,7 +224,7 @@ export default {
             }
         },
         updateValue () {
-            this.value = this.tmp.join(':')
+            this.timePicker.value = this.tmp.join(':')
         },
         clearByType (type) {
             switch (type) {
@@ -257,7 +249,7 @@ export default {
             this.clearByType('hour')
             this.clearByType('min')
             this.clearByType('sec')
-            this.value = ''
+            this.timePicker.value = ''
         }
     }
 }

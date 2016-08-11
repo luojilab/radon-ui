@@ -6,20 +6,19 @@ import App from './App'
 import router from './router/index'
 import highlight from 'highlight.js'
 import marked from 'marked'
-import RadonInstall from '../src/components/install'
+import RadonUI from '../src/components/install'
 
 Vue.use(VueResource)
 Vue.use(VueRouter)
-RadonInstall(Vue)
+Vue.use(RadonUI)
 
 window.highlight = highlight
+window.marked = marked
 
 marked.setOptions({
     highlight: function (code) {
         return window.highlight.highlightAuto(code).value
     }
 })
-
-window.marked = marked
 
 router.start(App, 'app')

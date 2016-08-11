@@ -14,28 +14,107 @@
     <p>
         <rd-datepicker :date="datetimePicker"></rd-datepicker>
     </p>
+    <p>
+        <rd-datepicker :date="datePickerWeekdayLimit"></rd-datepicker>
+    </p>
+    <p>
+        <rd-datepicker :date="datePickerCustomerLimit"></rd-datepicker>
+    </p>
+    
     <mark>
         <textarea class="ex-mark-text">
 
 ## API
 ```html
-<rd-datepicker :value="datePicker.value" :options="datePicker.options"></rd-datepicker>
+<rd-datepicker :date="datePicker"></rd-datepicker>
 ```
 ```
 datePicker: {
-    // 返回选取值
     value: '',
-    // 配置
+    rawDate: {},
     options: {
-        // 格式化 :String (建议参考 moment文档)
-        format: 'YYYY-MM-DD',
-        // 月份 文字集合 默认为中文
-        monthList: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-        // 周 文字集合 默认为中文
+        format: 'YYYY/MM/DD',
+        monthList: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'
+        ],
+        weekList: ['一', '二', '三', '四', '五', '六', '日'],
+        limit: {
+            weekDay: {
+                availables: [0, 1, 2, 3, 4]
+            },
+            customerLimit (day) {
+                if (day.value % 5 === 0) {
+                    return false
+                }
+                return true
+            }
+        }
+    }
+}
+```
+
+### 基本
+
+```
+datePicker: {
+    value: ''
+}
+```
+
+## 自定义格式
+
+```
+datePicker: {
+    value: '',
+    options: {
+        format: 'YYYY/MM/DD'
+    }
+}
+```
+
+## 自定义文字
+
+```
+datePicker: {
+    value: '',
+    options: {
+        monthList: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'
+        ],
         weekList: ['一', '二', '三', '四', '五', '六', '日']
     }
 }
 ```
+
+## 限制规则
+
+```
+datePicker: {
+    value: '',
+    rawDate: {},
+    options: {
+        limit: {
+            // 周一 ☞ 周五 可选
+            weekDay: {
+                availables: [0, 1, 2, 3, 4] 
+            },
+
+            // 自定义函数
+            // day: {
+            //    inMonth: false, // Boolean
+            //    time: Moment, // Moment 对象
+            //    value: 12 // Number 当前日期 天 
+            // }
+            customerLimit (day) {
+                if (day.value % 5 === 0) {
+                    return false
+                }
+                return true
+            }
+        }
+    }
+}
+```
+
+
 ## 代码
 ```javascript
 export default { 
@@ -75,17 +154,42 @@ export default {
                 value: '',
                 rawDate: {},
                 options: {
-                    format: 'YYYY/MM/DD',
-                    monthList: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'
-                    ],
-                    weekList: ['一', '二', '三', '四', '五', '六', '日']
+                    format: 'YYYY/MM/DD'
                 }
             },
             datetimePicker: {
                 value: '',
                 rawDate: {},
                 options: {
+                    placeHolder: '请选择时间（time)',
                     timePicker: true
+                }
+            },
+            datePickerWeekdayLimit: {
+                value: '',
+                rawDate: {},
+                options: {
+                    placeHolder: '请选择时间（weekDay)',
+                    limit: {
+                        weekDay: {
+                            availables: [1, 2, 3, 4]
+                        }
+                    }
+                }
+            },
+            datePickerCustomerLimit: {
+                value: '',
+                rawDate: {},
+                options: {
+                    placeHolder: '请选择时间（customerLimit)',
+                    limit: {
+                        customerLimit (day) {
+                            if (day.value % 5 === 0) {
+                                return false
+                            }
+                            return true
+                        }
+                    }
                 }
             }
         }

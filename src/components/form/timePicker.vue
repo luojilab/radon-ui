@@ -24,6 +24,7 @@
     width: 9rem;
     background-color: #fff;
     text-align: center;
+    z-index: 2;
 }
 .rd-timepicker-hour,
 .rd-timepicker-min,

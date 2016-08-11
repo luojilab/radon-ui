@@ -147,7 +147,7 @@
     >
         <div class="rd-datepicker-value" @click.stop="togglePicker">
             <div class="rd-datepicker-value-input">
-                {{valueDisplay(date.value)}}
+                {{valueDisplay}}
             </div>
             <i 
                 @click.stop="clearValue" 
@@ -321,6 +321,7 @@ export default {
                 month: '06'
             },
             options: {
+                placeHolder: '请选择时间',
                 timePicker: false,
                 format: 'YYYY-MM-DD',
                 monthList: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
@@ -330,6 +331,18 @@ export default {
             dayList: [],
             monthList: [],
             yearList: []
+        }
+    },
+    computed: {
+        valueDisplay () {
+            let str = this.date.value
+            if (!str) {
+                return this.options.placeHolder
+            }
+            if (this.state.timePickerShow) {
+                return moment(Date.parse(str)).format(this.options.format)
+            }
+            return str
         }
     },
     ready () {
@@ -477,10 +490,8 @@ export default {
             })
         },
         clearValue (e) {
-            this.date.value = {
-                str: '',
-                date: {}
-            }
+            this.date.value = ''
+            this.date.rawDate = {}
             this.clearDay()
         },
         touchDay (e, day) {
@@ -502,15 +513,6 @@ export default {
                     this.date.value = moment(Date.parse(tmp + ' ' + time.value)).format('YYYY-MM-DD HH:mm:ss')
                 }
             })
-        },
-        valueDisplay (str) {
-            if (!str) {
-                return '请选择时间'
-            }
-            if (this.state.timePickerShow) {
-                return moment(Date.parse(str)).format(this.options.format)
-            }
-            return str
         },
         output (day) {
             if (!this.state.timePickerShow) {

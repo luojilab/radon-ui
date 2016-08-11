@@ -1,5 +1,6 @@
 <style>
 @import '../../css/index';
+@import '../../css/ionicicon';
 .rd-btn {
     display: inline-block;
     text-align: center;

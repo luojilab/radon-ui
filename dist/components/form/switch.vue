@@ -3,9 +3,9 @@
     <div 
         class="rd-switch-container"
         :class="{
-            'open': checked,
-            'close': !checked,
-            'small': size === 'small'
+            'open': value.checked,
+            'close': !value.checked,
+            'small': value.size === 'small'
         }"
         @click="toggle"
     >
@@ -15,15 +15,14 @@
 <script>
 export default {
     props: {
-        checked: Boolean,
-        size: {
-            type: String,
-            default: 'common'
+        value: {
+            type: Object
         }
     },
     methods: {
         toggle () {
-            this.checked = !this.checked
+            this.value.checked = !this.value.checked
+            this.$emit('change', this.value)
         }
     }
 }

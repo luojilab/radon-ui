@@ -18,24 +18,28 @@
 
 <script>
 export default {
+    data () {
+        return {
+            min: this.number.min || 0,
+            max: this.number.max || 100,
+            step: this.number.step || 1,
+            format: this.number.format || 0
+        }
+    },
     props: {
         number: Object
     },
     methods: {
         plus () {
-            const step = this.number.step || 1
-            const format = this.number.format || 0
-            let count = this.number.value - 0 + step
-            if (count >= this.number.min && count <= this.number.max) {
-                this.number.value = count.toFixed(format)
+            let count = this.number.value - 0 + this.step
+            if (count >= this.min && count <= this.max) {
+                this.number.value = count.toFixed(this.format)
             }
         },
         minus () {
-            const step = this.number.step || 1
-            const format = this.number.format || 0
-            let count = this.number.value - step
-            if (count >= this.number.min && count <= this.number.max) {
-                this.number.value = count.toFixed(format)
+            let count = this.number.value - this.step
+            if (count >= this.min && count <= this.max) {
+                this.number.value = count.toFixed(this.format)
             }
         }
     }

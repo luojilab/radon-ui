@@ -10,29 +10,37 @@
             </textarea>
         </mark>
         <p>
-            <rd-upload></rd-upload>
+            <rd-upload @add="addFileAction" @remove="removeFileAction"></rd-upload>
         </p>
         <mark>
             <textarea class="ex-mark-text">
-## 用法
-```html
-<!-- template -->
-<rd-upload></rd-upload>
-```
-```
-// script
-import {
-    rdUpload
-} from 'radon-ui'
+## API
 
-export default {
-    data () {
-        return {
-        }
-    },
-    components: {
-        rdUpload
-    }
+### add
+> Event: Function
+
+```html
+<rd-upload @add="addFileAction"></rd-upload>
+```
+```javascript
+addFileAction (list) {
+    console.log(list) 
+    // [{
+    //     file: File, // File Object
+    //     src: 'blob:http://127.0.0.1:9090/23565ed3-fbb8-4252-848f-24518022cbb2' // preview src
+    // }]
+}
+```
+
+### remove
+> Event: Function
+
+```html
+<rd-upload @remove="removeFileAction"></rd-upload>
+```
+```
+removeFileAction (item) {
+    console.log(item) // will remove file 
 }
 ```
             </textarea>
@@ -54,6 +62,14 @@ export default {
     components: {
         rdUpload,
         Mark
+    },
+    methods: {
+        addFileAction (list) {
+            console.log(list)
+        },
+        removeFileAction (item) {
+            console.log(item)
+        }
     }
 }
 </script>

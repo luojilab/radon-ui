@@ -46,6 +46,9 @@
     display: inline-block;
     vertical-align: top;
     font-size: .8rem;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
 }
 .rd-upload-preview-info-title,
 .rd-upload-preview-info-size {
@@ -124,27 +127,28 @@ export default {
             return Math.round(size / 10.24) / 100 + 'Kb'
         },
         touchUp (e) {
-            console.log(e)
             if (this.$file) {
                 this.$file.click()
             }
         },
         changeFile (e) {
-            console.log(this.$file.files)
             let previewUrl = ''
+            let newItem = {}
             for (let i = 0, len = this.$file.files.length; i < len; i++) {
                 previewUrl = ''
                 if (imageType.test(this.$file.files[i].type)) {
                     previewUrl = window.URL.createObjectURL(this.$file.files[i])
                 }
-                this.fileList.push({
+                newItem = {
                     src: previewUrl,
                     file: this.$file.files[i]
-                })
+                }
+                this.fileList.push(newItem)
+                this.$emit('add', this.fileList)
             }
-            console.log(this.fileList)
         },
         delFile (item) {
+            this.$emit('remove', item)
             this.fileList.$remove(item)
         }
     }

@@ -30,7 +30,7 @@ const ICON_MAP = {
 const catIn = function (target, parent) {
     let path = []
     let parentNode = target
-    while (parentNode !== document.body) {
+    while (parentNode && parentNode !== document.body) {
         path.push(parentNode)
         parentNode = parentNode.parentNode
     }

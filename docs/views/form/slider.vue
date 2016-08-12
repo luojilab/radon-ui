@@ -12,18 +12,53 @@
         {{slider | json}}
     </p>
     <p>
-        <rd-slider :slider="slider"></rd-slider>
+        <rd-slider :slider="slider" @change="changeAction"></rd-slider>
     </p>
     <mark>
         <textarea class="ex-mark-text">
+## API
+
+### slider 
+
+> props: Obejct 
+
+```
+slider: {
+    value: 66,// 必选 default 0
+    min: 10,  // 可选 default 0
+    max: 100, // 可选 default 100
+    step: 5   // 可选 default 1
+}
+```
+```
+<rd-slider :slider="slider"></rd-slider>
+```
+
+### change 
+
+> Event: Function
+
+```
+<rd-slider :slider="slider" @change="changeAction"></rd-slider>
+```
+
+```
+methods: {
+    changeAction (percent) {
+        console.log(percent) // 当前百分比值 Number
+    }
+}
+```
+
+
 ## 代码
 ```javascript
 export default {
-    template: '<rd-slider :slider="slider"></rd-slider>',
+    template: '<rd-slider :slider="slider" @change="changeAction"></rd-slider>',
     data () {
         return {
             slider: {
-                percent: 66,
+                value: 66,
                 min: 10,
                 max: 100,
                 step: 5
@@ -60,6 +95,11 @@ export default {
     components: {
         rdSlider,
         Mark
+    },
+    methods: {
+        changeAction (percent) {
+            console.log(percent)
+        }
     }
 }
 </script>

@@ -92,26 +92,18 @@ const calcPercent = function (x, width) {
 
 export default {
     props: {
-        value: Number,
-        step: {
-            type: Number,
-            default: 1
-        },
-        min: {
-            type: Number,
-            default: 0
-        },
-        max: {
-            type: Number,
-            default: 100
-        },
-        showTip: {
-            type: Boolean,
-            default: false
+        slider: {
+            type: Object,
+            required: true
         }
     },
     data () {
         return {
+            value: 0,
+            step: 1,
+            min: 0,
+            max: 100,
+            showTip: false,
             startX: 0,
             width: 0,
             handleWidth: 0,
@@ -138,6 +130,10 @@ export default {
     },
     methods: {
         init () {
+            let keys = ['step', 'min', 'max', 'showTip', 'value']
+            keys.map(key => {
+                this[key] = this.slider[key]
+            })
             this.handle.$el = this.$el.getElementsByClassName('rd-slider-handle')[0]
             this.handleWidth = this.handle.$el.getBoundingClientRect().width
             this.startX = this.$el.getBoundingClientRect().left
@@ -163,6 +159,8 @@ export default {
                     this.handle.percent = percent
                     this.value = percent
                     this.handle.currentX = x
+                    this.slider.value = percent
+                    this.$emit('change', percent)
                 }
             }
         },

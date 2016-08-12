@@ -9,31 +9,17 @@
         </textarea>
     </mark>
     <p>
-        {{slider.percent}}
+        {{slider | json}}
     </p>
     <p>
-        <rd-slider 
-            :value.sync="slider.percent"
-            :step="slider.step"
-            :min="slider.min"
-            :max="slider.max"
-            :show-tip="true"
-        ></rd-slider>
+        <rd-slider :slider="slider"></rd-slider>
     </p>
     <mark>
         <textarea class="ex-mark-text">
 ## 代码
 ```javascript
 export default {
-    template: `
-    <rd-slider 
-                :value.sync="slider.percent"
-                :step="slider.step"
-                :min="slider.min"
-                :max="slider.max"
-                :show-tip="true"
-            ></rd-slider>
-    `,
+    template: '<rd-slider :slider="slider"></rd-slider>',
     data () {
         return {
             slider: {
@@ -64,7 +50,7 @@ export default {
     data () {
         return {
             slider: {
-                percent: 66,
+                value: 66,
                 min: 10,
                 max: 100,
                 step: 5

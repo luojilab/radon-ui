@@ -1,27 +1,50 @@
-# radon-ui
+# Radon UI
 
-> A Vue.js project
+> 一个用于企业级后台产品开发的简洁易用的Vue组件库
 
-## Build Setup
+## 特性
 
-``` bash
-# install dependencies
-npm install
+- 基于 Vue 开发的高质量UI组件
+- 基于 npm + webpack + ES6 + postcss开发
+- 数据驱动，简单易使用
 
-# serve with hot reload at localhost:8080
-npm run dev
+## 示例
 
-# build for production with minification
-npm run build
+```html
+<template>
+    <div class=customer>
+        <rd-date-picker :date=startDate></rd-date-picker>
+    </div>
+</template>
 
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
+<script>
+    import 'radon-ui/dist/index.css'
+    import { rdDatePicker } from 'radon-ui'
+    export default {
+        data () {
+            return {
+                startDate: {
+                    value: ''
+                }
+            }
+        },
+        components: {
+            rdDatePicker
+        }
+    }
+</script>
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## 版本
+
+> 开发中 alpha 1
+
+
+## 浏览器支持
+
+chrome
+
+
+## 如何贡献
+
+ 我们欢迎任何形式的贡献，有任何建议或意见您可以进行 [Pull Request](https://github.com/luojilab/radon-ui/pulls)，或者给我们[提问](https://github.com/luojilab/radon-ui/issues)。

@@ -77,6 +77,12 @@ router.map({
             require(['../views/form/textfield.vue'], resolve)
         }
     },
+    'form/number': {
+        name: 'number',
+        component: (resolve) => {
+            require(['../views/form/number.vue'], resolve)
+        }
+    },
     'form/cascader': {
         name: 'cascader',
         component: (resolve) => {

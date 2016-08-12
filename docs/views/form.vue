@@ -424,7 +424,9 @@ export default {
             slider: {
                 value: 43
             },
-            switchA: false,
+            switchA: {
+                checked: false
+            },
             progressCommon: {
                 percent: 50,
                 options: {

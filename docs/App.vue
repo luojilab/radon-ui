@@ -327,6 +327,10 @@ export default {
                         subTitle: '输入框',
                         link: 'form/textfield'
                     }, {
+                        title: 'Number',
+                        subTitle: '数字输入框',
+                        link: 'form/number'
+                    }, {
                         title: 'Table',
                         subTitle: '表格',
                         link: 'form/table'

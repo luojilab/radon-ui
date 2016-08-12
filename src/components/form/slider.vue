@@ -132,7 +132,9 @@ export default {
         init () {
             let keys = ['step', 'min', 'max', 'showTip', 'value']
             keys.map(key => {
-                this[key] = this.slider[key]
+                if (this.slider[key] !== undefined) {
+                    this[key] = this.slider[key]
+                }
             })
             this.handle.$el = this.$el.getElementsByClassName('rd-slider-handle')[0]
             this.handleWidth = this.handle.$el.getBoundingClientRect().width

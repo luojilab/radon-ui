@@ -89,6 +89,9 @@ export default {
                 min: 10,
                 max: 100,
                 step: 5
+            },
+            sliderB: {
+                value: 66
             }
         }
     },

@@ -83,7 +83,7 @@
                 <rd-switch :checked.sync="switchA"></rd-switch>
             </form-item>
             <form-item title="price:">
-                <rd-slider :value.sync="slider"></rd-slider>
+                <rd-slider :slider="slider"></rd-slider>
                 <rd-timeline :timeline="timeline"></rd-timeline>
             </form-item>
             <form-item title="出发时间:">
@@ -421,7 +421,9 @@ export default {
                     }
                 }
             },
-            slider: 43,
+            slider: {
+                value: 43
+            },
             switchA: false,
             progressCommon: {
                 percent: 50,

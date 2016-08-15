@@ -1,7 +1,7 @@
-webpackJsonp([3,25],{2:/*!*****************************!*\
+webpackJsonp([17,25],{2:/*!*****************************!*\
   !*** ./docs/views/index.js ***!
   \*****************************/
-function(e,n,r){"use strict";function t(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(n,"__esModule",{value:!0}),n.Mark=void 0;var o=r(7),i=t(o);n.Mark=i["default"]},3:/*!*************************************************************************************************************************************************************!*\
+function(e,n,r){"use strict";function t(e){return e&&e.__esModule?e:{"default":e}}Object.defineProperty(n,"__esModule",{value:!0}),n.Mark=void 0;var o=r(7),a=t(o);n.Mark=a["default"]},3:/*!*************************************************************************************************************************************************************!*\
   !*** ./~/babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./docs/views/mark.vue ***!
   \*************************************************************************************************************************************************************/
 function(e,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r=function(e){var n=document.createElement("div");return n.innerHTML=e,n.innerText||n.textContent};n["default"]={data:function(){return{mark:""}},ready:function(){this.mark=window.marked(r(this.$el.getElementsByClassName("ex-mark-text")[0].innerHTML))}}},4:/*!*********************************************************************************************************************************************!*\
@@ -16,13 +16,13 @@ function(e,n,r){var t=r(4);"string"==typeof t&&(t=[[e.id,t,""]]),r(10)(t,{}),t.l
 function(e,n){e.exports="<div class=marked> <div> {{{mark}}} </div> <slot></slot> </div>"},7:/*!*****************************!*\
   !*** ./docs/views/mark.vue ***!
   \*****************************/
-function(e,n,r){var t,o;r(5),t=r(3),o=r(6),e.exports=t||{},e.exports.__esModule&&(e.exports=e.exports["default"]),o&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=o)},309:/*!**************************************************************************************************************************************************************************!*\
-  !*** ./~/babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./docs/views/presentation/spin.vue ***!
-  \**************************************************************************************************************************************************************************/
-function(e,n,r){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var t=r(2),o=r(8);n["default"]={components:{rdSpin:o.rdSpin,Mark:t.Mark}}},542:/*!*******************************************************************************************************************!*\
-  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./docs/views/presentation/spin.vue ***!
-  \*******************************************************************************************************************/
-function(e,n){e.exports="<div class=ex-content> <div class=ex-card> <mark> <textarea class=ex-mark-text>\n# Spin 加载中\n用于页面和区块的加载中状态。\n### 何时使用\n\n页面局部处于等待异步数据或正在渲染过程时，合适的加载动效会有效缓解用户的焦虑。\n\n### 示例\n        </textarea> </mark> <p> <rd-spin></rd-spin> <rd-spin color=red></rd-spin> <rd-spin color=blue></rd-spin> </p> <mark> <textarea class=ex-mark-text>\n### 代码\n```html\n<rd-spin></rd-spin>\n<rd-spin color=red></rd-spin>\n<rd-spin color=blue></rd-spin>\n```\n\n        </textarea> </mark> </div> </div>"},571:/*!******************************************!*\
-  !*** ./docs/views/presentation/spin.vue ***!
-  \******************************************/
-function(e,n,r){var t,o;t=r(309),o=r(542),e.exports=t||{},e.exports.__esModule&&(e.exports=e.exports["default"]),o&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=o)}});
+function(e,n,r){var t,o;r(5),t=r(3),o=r(6),e.exports=t||{},e.exports.__esModule&&(e.exports=e.exports["default"]),o&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=o)},298:/*!********************************************************************************************************************************************************************!*\
+  !*** ./~/babel-loader?presets[]=es2015&plugins[]=transform-runtime&comments=false!./~/vue-loader/lib/selector.js?type=script&index=0!./docs/views/form/number.vue ***!
+  \********************************************************************************************************************************************************************/
+function(e,n,r){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var t=r(2),o=r(8);n["default"]={data:function(){return{number:{value:0,step:.1,format:2,min:-5,max:10},numberA:{value:0}}},components:{rdNumber:o.rdNumber,Mark:t.Mark},methods:{changeAction:function(e){console.log(e)}}}},530:/*!*************************************************************************************************************!*\
+  !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./docs/views/form/number.vue ***!
+  \*************************************************************************************************************/
+function(e,n){e.exports="<div class=ex-content> <div class=ex-card> <mark> <textarea class=ex-mark-text>\n# NumberTextfield 数字输入框\n用于简单的数字输入\n        </textarea> </mark> <p> <rd-number :number=number></rd-number> </p> <p> <rd-number :number=numberA></rd-number> </p> <mark> <textarea class=ex-mark-text>\n## API\n\n### number\n> props: Object\n\n```\nnumber: {\n    value: 0,  // 必选 Number \n    step: 0.1, // 可选\n    format: 2, // 可选\n    min: -5,   // 可选\n    max: 10    // 可选\n}\n```\n\n```\n<rd-number :number=number></rd-number>\n```\n        </textarea> </mark> </div> </div>"},559:/*!************************************!*\
+  !*** ./docs/views/form/number.vue ***!
+  \************************************/
+function(e,n,r){var t,o;t=r(298),o=r(530),e.exports=t||{},e.exports.__esModule&&(e.exports=e.exports["default"]),o&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=o)}});

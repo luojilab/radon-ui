@@ -39,7 +39,7 @@
             <!-- <rd-text-select></rd-text-select> -->
         </p>
         <p>
-            相信大多数前端开发人员，都使用过Angular、<rd-edit-text value="React" :tip="false"></rd-edit-text>或者<rd-edit-text value="Vue.js" :tip="true"></rd-edit-text>。他们都通过数据绑定的方法，提升了开发效率。
+            相信大多数前端开发人员，都使用过Angular、<rd-edit-text :value="textEditReact"></rd-edit-text>或者<rd-edit-text :value="textEditVue"></rd-edit-text>。他们都通过数据绑定的方法，提升了开发效率。
         </p>
         <form class="form">
             <form-item title="2333:">
@@ -59,7 +59,7 @@
                 <rd-checkbox :checkbox="checkbox"></rd-checkbox>
             </form-item>
             <form-item title="sex:">
-                <rd-radio :radios="radios"></rd-radio>
+                <rd-radio-group :radios="radios"></rd-radio-group>
             </form-item>
             <form-item title="load:">
                 <rd-progress @click="startProgress(progressCommon)" :progress="progressCommon"></rd-progress>
@@ -79,8 +79,8 @@
                 <rd-cascader :cascader="cascader"></rd-cascader>
             </form-item>
             <form-item title="address:">
-                <rd-switch :checked.sync="switchA" size="small"></rd-switch>
-                <rd-switch :checked.sync="switchA"></rd-switch>
+                <rd-switch :value="switchA"></rd-switch>
+                <rd-switch :value="switchB"></rd-switch>
             </form-item>
             <form-item title="price:">
                 <rd-slider :slider="slider"></rd-slider>
@@ -92,7 +92,7 @@
                 <rd-alert></rd-alert>
             </form-item>
             <div>
-                <rd-table :table="TableData"></rd-table>
+                <!-- <rd-table :table="TableData"></rd-table> -->
             </div>
             <p>
                 <rd-spin></rd-spin>
@@ -141,7 +141,7 @@ import {
     rdTextarea,
     rdEditText,
     rdTextSelect,
-    rdRadio,
+    rdRadioGroup,
     rdProgress,
     rdProgressCircle,
     rdCascader,
@@ -269,6 +269,14 @@ const options = [{
 export default {
     data () {
         return {
+            textEditVue: {
+                value: 'Vuejs',
+                tip: true
+            },
+            textEditReact: {
+                value: 'React',
+                tip: false
+            },
             textArea: {
                 value: '',
                 minHeight: 100,
@@ -323,28 +331,40 @@ export default {
             },
             TableData: {
                 options: {
-                    select: true
+                    select: true,
+                    state: true,
+                    editable: true
                 },
                 columns: [{
+                    index: 0,
+                    key: 'id',
+                    value: 'ID',
+                    sort: {
+                        state: false,
+                        func: (e, col) => {
+                            this.sortBy(col)
+                        }
+                    }
+                }, {
                     index: 1,
                     key: 'name',
                     value: '姓名'
                 }, {
                     index: 2,
                     key: 'age',
-                    value: '年龄'
+                    value: '年龄',
+                    sort: {
+                        state: false,
+                        func: (e, col) => {
+                            this.sortBy(col)
+                        }
+                    }
                 }, {
                     index: 3,
                     key: 'wechat',
                     value: '微信'
                 }],
                 actions: [{
-                    type: 'button',
-                    text: '编辑',
-                    func: (e, row) => {
-                        this.editTable(row)
-                    }
-                }, {
                     type: 'button',
                     text: '删除',
                     func: (e, row) => {
@@ -353,30 +373,90 @@ export default {
                     }
                 }],
                 tableData: [{
-                    id: 1,
-                    name: '王尼玛',
-                    age: '33',
-                    wechat: 'wangnima',
+                    id: {
+                        value: 1,
+                        type: 'number',
+                        editable: false
+                    },
+                    name: {
+                        value: '王尼玛',
+                        type: 'text',
+                        editable: true
+                    },
+                    age: {
+                        value: '26',
+                        type: 'number',
+                        editable: true
+                    },
+                    wechat: {
+                        value: 'wangnima',
+                        type: 'text',
+                        editable: true
+                    },
+                    state: {
+                        type: 'success',
+                        value: '批准'
+                    },
                     checkbox: {
                         disabled: false,
                         checked: false,
                         text: ''
                     }
                 }, {
-                    id: 2,
-                    name: '赵铁柱',
-                    age: '26',
-                    wechat: 'Iron-column-zhao',
+                    id: {
+                        value: 2,
+                        type: 'number',
+                        editable: false
+                    },
+                    name: {
+                        value: '赵铁柱',
+                        type: 'text',
+                        editable: true
+                    },
+                    age: {
+                        value: '26',
+                        type: 'number',
+                        editable: true
+                    },
+                    wechat: {
+                        value: 'Iron-column-zhao',
+                        type: 'text',
+                        editable: true
+                    },
+                    state: {
+                        type: 'info',
+                        value: '待审'
+                    },
                     checkbox: {
                         disabled: false,
                         checked: false,
                         text: ''
                     }
                 }, {
-                    id: 3,
-                    name: '张全蛋',
-                    age: '27',
-                    wechat: 'Michael Jack',
+                    id: {
+                        value: 3,
+                        type: 'number',
+                        editable: false
+                    },
+                    name: {
+                        value: '张全蛋',
+                        type: 'text',
+                        editable: true
+                    },
+                    age: {
+                        value: '27',
+                        type: 'number',
+                        editable: true
+                    },
+                    wechat: {
+                        value: 'Michael Jack',
+                        type: 'text',
+                        editable: true
+                    },
+                    state: {
+                        type: 'failed',
+                        value: '拒绝'
+                    },
                     checkbox: {
                         disabled: false,
                         checked: false,
@@ -426,6 +506,10 @@ export default {
             },
             switchA: {
                 checked: false
+            },
+            switchB: {
+                checked: false,
+                size: 'small'
             },
             progressCommon: {
                 percent: 50,
@@ -572,7 +656,7 @@ export default {
         rdTextarea,
         rdEditText,
         rdTextSelect,
-        rdRadio,
+        rdRadioGroup,
         rdProgress,
         rdProgressCircle,
         rdCascader,

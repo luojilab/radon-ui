@@ -14,6 +14,7 @@ import rdTextarea from './form/textarea.vue'
 import rdEditText from './form/editable.vue'
 import rdTextSelect from './form/rdTextSelect.vue'
 import rdRadio from './form/radio.vue'
+import rdRadioGroup from './form/radioGroup.vue'
 import rdProgress from './basic/progress.vue'
 import rdProgressCircle from './basic/progressCircle.vue'
 import rdCascader from './form/cascader.vue'
@@ -55,6 +56,7 @@ export {
     rdEditText,
     rdTextSelect,
     rdRadio,
+    rdRadioGroup,
     rdProgress,
     rdProgressCircle,
     rdCascader,

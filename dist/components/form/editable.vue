@@ -1,14 +1,14 @@
 
 <template>
-    <div class="rd-editable-container">
+    <div class="rd-editable-container" :class="{ 'editing': state.edit }">
         <div class="rd-editable-value" @click="startEdit" v-show="!state.edit">
-            <span><rd-tooltip>点击编辑</rd-tooltip>{{value}}</span>
+            <span><rd-tooltip>点击编辑</rd-tooltip>{{value.value}}</span>
             <span v-if="tip" class="rd-editable-edit">编辑</span>
         </div>
         <div class="rd-editable-inner" v-show="state.edit">
             <radon-text :textfield="editor"></radon-text>
-            <radon-button type="primary" @click="compeleteEdit">确定</radon-button>
-            <radon-button @click="toggleEdit">取消</radon-button>
+            <radon-button type="primary" @click="compeleteEdit" icon="ion-checkmark-round"></radon-button>
+            <radon-button @click="toggleEdit" icon="ion-close-round"></radon-button>
         </div>
     </div>
 </template>
@@ -19,8 +19,9 @@ import rdTooltip from '../presentation/toolTip.vue'
 
 export default {
     props: {
-        value: String,
-        tip: Boolean
+        value: {
+            type: Object
+        }
     },
     data () {
         return {
@@ -42,12 +43,13 @@ export default {
             this.state.edit = !this.state.edit
         },
         startEdit () {
-            this.editor.value = this.value
+            this.editor.value = this.value.value
             this.toggleEdit()
         },
         compeleteEdit () {
-            this.value = this.editor.value
+            this.value.value = this.editor.value
             this.toggleEdit()
+            this.$emit('save', this.value.value)
         }
     }
 }

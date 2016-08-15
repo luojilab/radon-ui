@@ -29,12 +29,6 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.optimize.DedupePlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: 'dev.html',
-      template: 'dev.html',
-      chunks: ['dev'],
-      inject: true
-    }),
-    new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
       chunks: ['app'],

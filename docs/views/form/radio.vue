@@ -10,13 +10,45 @@
         </textarea>
     </mark>
         <p>
-            <rd-radio :radios="radios"></rd-radio>
+            radio集合： <rd-radio-group :radios="radios"></rd-radio-group>
+        </p>
+        <p>
+            单个radio： <rd-radio :radio="radio"></rd-radio>
         </p>
     <mark>
         <textarea class="ex-mark-text">
 # API
 
-## radios
+## rdRadio
+
+## radio
+
+> props Object
+
+```
+radio: {
+    disabled: true, // 可选
+    checked: false, // 必填
+    value: '王宝强'  // 必填
+},
+```
+
+```
+ <rd-radio :radio="radio"></rd-radio>
+```
+
+## change
+
+> Event: Function 
+  params: radio
+
+```
+<rd-radio :radio="radio" @change="checkAction"></rd-radio>
+```
+回调参数为 radio 对象
+
+## rdRadioGroup radios
+
 承载多个 radio 对象的数组
 ```html
 <rd-radio :radios="radios"></rd-radio>
@@ -72,12 +104,17 @@ export default {
 <script>
 import { Mark } from '../index'
 import {
-    rdRadio
+    rdRadio,
+    rdRadioGroup
 } from '../../../src/components/index'
 
 export default {
     data () {
         return {
+            radio: {
+                checked: false,
+                value: '王宝强'
+            },
             radios: [{
                 disabled: true,
                 checked: false,
@@ -96,7 +133,13 @@ export default {
     },
     components: {
         rdRadio,
+        rdRadioGroup,
         Mark
+    },
+    methods: {
+        checkAction (radio) {
+            console.log(radio)
+        }
     }
 }
 </script>

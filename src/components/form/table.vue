@@ -73,8 +73,9 @@
                     <radon-checkbox :checkbox="row.checkbox"></radon-checkbox>
                 </td>
                 <td class="rd-table-td" v-for="field in row | isColumnData columns" track-by="$index" @click.self="toggleEditStatus(field)">
-                    <span v-if="!field.editing">{{field.value}}</span>
-                    <rd-input v-if="field.editing" :textfield="field" :type="field.type"></rd-input>
+                    <span v-if="!field.editable">{{field.value}}</span>
+                    <rd-edit-text v-if="field.editable" :value="field" @save="editSaveAction"></rd-edit-text>
+                    <!-- <rd-input v-if="field.editing" :textfield="field" :type="field.type"></rd-input> -->
                 </td>
                 <td class="rd-table-td" v-if="row.state">
                     <span :class="stateTagClass(row.state)" class="rd-table-state">{{row.state.value}}</span>
@@ -90,6 +91,7 @@
 import radonCheckbox from '../form/checkbox.vue'
 import rdButton from '../basic/button.vue'
 import rdInput from '../form/textfield.vue'
+import rdEditText from '../form/editable.vue'
 
 const sortColumn = (columns) => {
     return columns.sort((a, b) => {
@@ -156,7 +158,8 @@ export default {
     components: {
         radonCheckbox,
         rdButton,
-        rdInput
+        rdInput,
+        rdEditText
     },
     filters: {
         isColumnData (row, columns) {
@@ -172,6 +175,11 @@ export default {
         }
     },
     methods: {
+        editSaveAction (field) {
+            console.log('saved', field)
+            // To do
+            // save to parent's table data
+        },
         toggleEditStatus (field) {
             if (this.options.editable && field.editable) {
                 field.editing = !field.editing

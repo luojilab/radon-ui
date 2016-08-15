@@ -125,11 +125,14 @@ html,body{
     display: none;
     position: fixed;
     font-size: 2rem;
-    right: 1rem;
-    top: 1rem;
-    line-height: 2rem;
     z-index: 3;
     color: #666;
+    width: 4rem;
+    text-align: center;
+    height: 4rem;
+    line-height: 4rem;
+    top: 0;
+    right: 0;
 }
 .ex-footer {
     display: flex;
@@ -165,6 +168,14 @@ html,body{
 .demo-content {
     width: 20rem;
 }
+.slide-left-transition {
+  transition: transform .3s ease;
+  transform: translateX(0)
+}
+.slide-left-enter,
+.slide-left-leave {
+    transform: translateX(-100%)
+}
 @media screen and (max-width: 1000px) {
     .ex-header {
         padding: 0 1rem;
@@ -183,6 +194,12 @@ html,body{
     }
     .show-slider {
         display: inline-block;
+        width: 4rem;
+        text-align: center;
+        height: 4rem;
+        line-height: 4rem;
+        top: 0;
+        right: 0;
     }
     .sidebar {
         position: fixed;
@@ -236,7 +253,7 @@ html,body{
         </header>
         <div class="page-wrapper">
             <div class="container">
-                <div class="sidebar" v-show="sliderShow">
+                <div class="sidebar" v-show="sliderShow" transition="slide-left">
                     <div class="ex-menu-container">
                         <menu :menu="menu" @click="mobileClick"></menu>
                     </div>      
@@ -459,11 +476,17 @@ export default {
                 content: '',
                 cancel: () => {},
                 confirm: () => {}
+            },
+            state: {
+                timer: null
             }
         }
     },
     init () {
         this.$Radon.setRoot(this)
+    },
+    ready () {
+        window.addEventListener('resize', this.resizeCheck)
     },
     components: {
         Menu,
@@ -472,6 +495,16 @@ export default {
         rdPreview
     },
     methods: {
+        resizeCheck () {
+            if (this.state.timer) {
+                clearTimeout(this.state.timer)
+            }
+            this.state.timer = setTimeout(() => {
+                if (document.body.offsetWidth > 768) {
+                    this.sliderShow = true
+                }
+            }, 200)
+        },
         mobileClick () {
             if (document.body.offsetWidth < 768) {
                 this.sliderShow = false

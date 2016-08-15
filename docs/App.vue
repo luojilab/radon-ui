@@ -443,8 +443,8 @@ export default {
                     title: '源码',
                     links: [{
                         title: '仓库',
-                        link: 'http://gitlab.dev.didatrip.com/FE/radon-ui',
-                        sub: '- Gitlab'
+                        link: 'https://github.com/luojilab/radon-ui',
+                        sub: '- Github'
                     }]
                 }, {
                     title: '相关链接',
@@ -462,10 +462,13 @@ export default {
                     title: '联系我们',
                     links: [{
                         title: '反馈和建议',
-                        link: 'http://gitlab.dev.didatrip.com/FE/radon-ui'
+                        link: 'https://github.com/luojilab/radon-ui/issues'
                     }, {
                         title: '报告bug',
-                        link: 'http://gitlab.dev.didatrip.com/FE/radon-ui'
+                        link: 'https://github.com/luojilab/radon-ui/issues'
+                    }, {
+                        title: '贡献代码',
+                        link: 'https://github.com/luojilab/radon-ui/pulls'
                     }]
                 }]
             },

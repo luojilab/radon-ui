@@ -79,7 +79,14 @@ const generateList = (columns, tableData) => {
 export default {
     props: {
         options: {
-            type: Object
+            type: Object,
+            default () {
+                return {
+                    select: false,
+                    state: false,
+                    editable: false
+                }
+            }
         },
         columns: {
             type: Array

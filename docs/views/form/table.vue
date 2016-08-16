@@ -8,7 +8,12 @@
         </textarea>
     </mark>
     <p>
-        <rd-table :options="TableData.options" :columns="TableData.columns" :actions="TableData.actions" :data.sync="TableData.tableData"></rd-table>
+        <rd-table 
+            :options="TableData.options" 
+            :columns="TableData.columns" 
+            :actions="TableData.actions" 
+            :data.sync="TableData.tableData"
+        ></rd-table>
     </p>
     <mark>
         <textarea class="ex-mark-text">
@@ -287,9 +292,9 @@ export default {
         return {
             TableData: {
                 options: {
-                    select: true,
-                    state: true,
-                    editable: true
+                    // select: true,
+                    // state: true,
+                    // editable: true
                 },
                 columns: [{
                     index: 0,

@@ -334,15 +334,15 @@ export default {
                     }
                 }],
                 tableData: [{
-                    id: {
-                        value: 1,
-                        type: 'number',
-                        editable: false
-                    },
                     name: {
                         value: '王尼玛',
                         type: 'text',
                         editable: true
+                    },
+                    id: {
+                        value: 1,
+                        type: 'number',
+                        editable: false
                     },
                     age: {
                         value: '26',
@@ -431,7 +431,20 @@ export default {
         rdTable,
         Mark
     },
+    ready () {
+        this.loop()
+    },
     methods: {
+        loop () {
+            setInterval(() => {
+                this.TableData.tableData.map(row => {
+                    row.age.value++
+                    if (row.age.value > 80) {
+                        row.age.value = 0
+                    }
+                })
+            }, 1000)
+        },
         removeTableItem (row) {
             this.TableData.tableData.forEach(item => {
                 if (item.id === row.id) {

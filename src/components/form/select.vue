@@ -110,7 +110,7 @@
         }"
     >
         <div class="rd-select-selected-value">
-            <span v-show="valueShow">{{select.value.value}}</span>
+            <span v-show="valueShow">{{displayValue}}</span>
             <div class="rd-select-search-wrapper" v-show="show">
                 <input 
                     @focus="focusInput" 
@@ -174,13 +174,34 @@ export default {
                 return list
             }
             return this.select.options
+        },
+        displayValue () {
+            if (this.select.multiple) {
+                let list = []
+                this.select.value.forEach(item => {
+                    list.push(item.value)
+                })
+                return list.length === 1 ? list[0] : list.join(',')
+            } else {
+                return this.select.value.value
+            }
         }
     },
     ready () {
+        this.select.multiple = this.select.multiple || false
         window.addEventListener('click', this.hide, false)
+        this.setDisplayValue(this.select.options)
     },
     beforeDestroy () {
         window.removeEventListener('click', this.hide)
+    },
+    watch: {
+        'select.options': {
+            handler (options) {
+                this.setDisplayValue(options)
+            },
+            deep: true
+        }
     },
     methods: {
         hide (e) {
@@ -205,12 +226,23 @@ export default {
         setValue (option) {
             this.search = ''
             if (option.disabled) return
-            this.select.options.forEach(op => {
-                op.selected = false
-            })
-            option.selected = true
-            this.select.value = option
+            if (!this.select.multiple) {
+                this.select.options.forEach(op => {
+                    op.selected = false
+                })
+                option.selected = true
+                this.select.value = option
+            } else {
+                option.selected ? this.select.value.$remove(option) : this.select.value.push(option)
+                option.selected = !option.selected
+            }
             this.$emit('change', this.select, option)
+        },
+        setDisplayValue (options) {
+            const selected = options.filter(option => {
+                return option.selected
+            })
+            this.select.value = this.select.multiple ? selected : selected[0] || {}
         },
         showOption (e) {
             if (e.clientY + document.body.scrollTop + 320 > document.body.offsetHeight) {

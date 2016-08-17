@@ -26,18 +26,20 @@
 ```javascript
 
 selectProvince: {
-    // 获取select选择的对象
-    value   :Object,
+    // 获取select选择的对象, 多选时为Array, 单选时为Object
+    value   :Object || :Array,
 
     // 提供待选对象集合
     options :Array
 
     options: [{
+        // 是否为多选 :Boolean, 默认为false
+        multiple: false,
         // 选中状态 :Boolean
         selected: false,
-        // 可用状态 : Boolean
+        // 可用状态 :Boolean
         disabled: false,
-        // 展示值 : String
+        // 展示值 :String
         value: '四川',
 
         // 其他自定义属性
@@ -53,10 +55,11 @@ export default {
         return {
             form: {
                 selectProvince: {
+                    multiple: false,
                     key: 'selectProvince',
                     value: {},
                     options: [{
-                        selected: false,
+                        selected: true,
                         disabled: false,
                         value: '成都',
                         id: 1
@@ -107,15 +110,16 @@ export default {
                     options: []
                 },
                 selectCity: {
+                    multiple: true,
                     key: 'selectCity',
-                    value: {},
+                    value: [],
                     options: [{
-                        selected: false,
+                        selected: true,
                         disabled: false,
                         value: '成都',
                         id: 1
                     }, {
-                        selected: false,
+                        selected: true,
                         disabled: false,
                         value: '北京',
                         id: 2
@@ -136,7 +140,7 @@ export default {
     ready () {
         setTimeout(() => {
             this.form.selectProvince.options = [{
-                selected: false,
+                selected: true,
                 disabled: false,
                 value: '四川',
                 id: 1
@@ -149,6 +153,7 @@ export default {
                 selected: false,
                 disabled: false,
                 value: '广东',
+                text: '广东',
                 id: 3
             }]
         }, 1000)

@@ -4,21 +4,11 @@
     <mark>
         <textarea class="ex-mark-text">
 # Table 表格
-展示行列数据，点击空白处可编辑/保存。
+展示行列数据。
         </textarea>
     </mark>
-    <!-- <p>
-        <rd-table 
-            :options="TableData.options" 
-            :columns="TableData.columns" 
-            :actions="TableData.actions" 
-            :data.sync="TableData.tableData"
-        ></rd-table>
-    </p> -->
     <p>
-        <rd-table
-            :table="TableData"
-        ></rd-table>
+        <rd-table :table="TableData"></rd-table>
     </p>
     <mark>
         <textarea class="ex-mark-text">
@@ -32,31 +22,16 @@ TableData: {
     options: {
         // 是否展示选择 :Boolean
         select: true
-        // 内容是否可编辑 :Boolean
-        editable: true
     },
     // 列描述数据对象
     columns: [{
-        // 可通过index自定义列的排序
-        index: 1,
-        // 定义列的key值，应唯一且与数据key值匹配
-        key: 'name',
-        // 展示列名
-        value: '姓名'
-    }, {
         index: 1,
         key: 'name',
         value: '姓名'
     }, {
         index: 2,
         key: 'age',
-        value: '年龄',
-        sort: {
-            state: false,
-            func: (e, col) => {
-                this.sortBy(col)
-            }
-        }
+        value: '年龄'
     }, {
         index: 3,
         key: 'wechat',
@@ -64,6 +39,12 @@ TableData: {
     }],
     // 行操作对象:Array
     actions: [{
+        type: 'button',
+        text: '编辑',
+        func: (e, row) => {
+            this.editTable(row)
+        }
+    }, {
         type: 'button',
         text: '删除',
         func: (e, row) => {
@@ -74,35 +55,10 @@ TableData: {
     // 展示数据 :Array
     tableData: [{
         // 行列对象属性
-        id: {
-            // 值
-            value: 1,
-            // 值的类型（支持input标签type属性中的所有类型），默认为text
-            type: 'number',
-            // 此字段是否可编辑，默认为true（只有当前字段的editable与全局options中的editable均为true时才可编辑）
-            editable: false
-        },
-        name: {
-            value: '王尼玛',
-            type: 'text',
-            editable: true
-        },
-        age: {
-            value: '26',
-            type: 'number',
-            editable: true
-        },
-        wechat: {
-            value: 'wangnima',
-            type: 'text',
-            editable: true
-        },
-
-        // 添加后可启用当前列的状态标签，可选类型请参考Button文档
-        state: {
-            type: 'success',
-            value: '批准'
-        },
+        id: 1,
+        name: '王尼玛',
+        age: '33',
+        wechat: 'wangnima',
 
         // 开启选择时应该有checkbox属性
         checkbox: {
@@ -110,8 +66,27 @@ TableData: {
             checked: false,
             text: ''
         }
-    }
-    ...
+    }, {
+        id: 2,
+        name: '赵铁柱',
+        age: '26',
+        wechat: 'Iron-column-zhao',
+        checkbox: {
+            disabled: false,
+            checked: false,
+            text: ''
+        }
+    }, {
+        id: 3,
+        name: '张全蛋',
+        age: '27',
+        wechat: 'Michael Jack',
+        checkbox: {
+            disabled: false,
+            checked: false,
+            text: ''
+        }
+    }]
 }
 ```
         </textarea>
@@ -128,39 +103,28 @@ export default {
         return {
             TableData: {
                 options: {
-                    select: true,
-                    state: true
+                    select: true
                 },
                 columns: [{
-                    index: 0,
-                    key: 'id',
-                    value: 'ID',
-                    sort: {
-                        state: false,
-                        func: (e, col) => {
-                            this.sortBy(col)
-                        }
-                    }
-                }, {
                     index: 1,
                     key: 'name',
                     value: '姓名'
                 }, {
                     index: 2,
                     key: 'age',
-                    value: '年龄',
-                    sort: {
-                        state: false,
-                        func: (e, col) => {
-                            this.sortBy(col)
-                        }
-                    }
+                    value: '年龄'
                 }, {
                     index: 3,
                     key: 'wechat',
                     value: '微信'
                 }],
                 actions: [{
+                    type: 'button',
+                    text: '编辑',
+                    func: (e, row) => {
+                        this.editTable(row)
+                    }
+                }, {
                     type: 'button',
                     text: '删除',
                     func: (e, row) => {
@@ -173,10 +137,6 @@ export default {
                     name: '王尼玛',
                     age: '33',
                     wechat: 'wangnima',
-                    state: {
-                        type: 'success',
-                        value: '批准'
-                    },
                     checkbox: {
                         disabled: false,
                         checked: false,
@@ -187,10 +147,6 @@ export default {
                     name: '赵铁柱',
                     age: '26',
                     wechat: 'Iron-column-zhao',
-                    state: {
-                        type: 'info',
-                        value: '待审'
-                    },
                     checkbox: {
                         disabled: false,
                         checked: false,
@@ -201,10 +157,6 @@ export default {
                     name: '张全蛋',
                     age: '27',
                     wechat: 'Michael Jack',
-                    state: {
-                        type: 'failed',
-                        value: '拒绝'
-                    },
                     checkbox: {
                         disabled: false,
                         checked: false,
@@ -219,13 +171,16 @@ export default {
         mark
     },
     methods: {
+        editTable (row) {
+            this.$Notification.success('正在编辑' + row._value[0], '', 5000)
+        },
         removeTableItem (row) {
             this.TableData.tableData.forEach(item => {
                 if (item.id === row.id) {
                     this.TableData.tableData.$remove(item)
                 }
             })
-            this.$Notification.success('删除' + row.name.value + '成功', '', 5000)
+            this.$Notification.success('删除' + row._value[0] + '成功', '', 5000)
         }
     }
 }
@@ -281,6 +236,12 @@ export default {
                     value: '微信'
                 }],
                 actions: [{
+                    type: 'button',
+                    text: '编辑',
+                    func: (e, row) => {
+                        this.editTable(row)
+                    }
+                }, {
                     type: 'button',
                     text: '删除',
                     func: (e, row) => {
@@ -352,13 +313,16 @@ export default {
                 })
             }, 1000)
         },
+        editTable (row) {
+            this.$Notification.success('正在编辑' + row._value[1], '', 3000)
+        },
         removeTableItem (row) {
             this.TableData.tableData.forEach(item => {
                 if (item.id === row.id) {
                     this.TableData.tableData.$remove(item)
                 }
             })
-            this.$Notification.success('删除' + row.name.value + '成功', '', 3000)
+            this.$Notification.success('删除' + row._value[1] + '成功', '', 3000)
         },
         sortBy (col) {
             if (col.key === 'age') {

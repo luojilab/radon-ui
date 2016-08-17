@@ -380,6 +380,10 @@ export default {
                         subTitle: '通知',
                         link: 'presentation/notification'
                     }, {
+                        title: 'Preview',
+                        subTitle: '图片预览',
+                        link: 'presentation/preview'
+                    }, {
                         title: 'Progress',
                         subTitle: '进度条',
                         link: 'presentation/progress'

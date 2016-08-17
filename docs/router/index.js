@@ -133,6 +133,12 @@ router.map({
             require(['../views/presentation/modal.vue'], resolve)
         }
     },
+    'presentation/preview': {
+        name: 'preview',
+        component: (resolve) => {
+            require(['../views/presentation/preview.vue'], resolve)
+        }
+    },
     'presentation/alert': {
         name: 'alert',
         component: (resolve) => {

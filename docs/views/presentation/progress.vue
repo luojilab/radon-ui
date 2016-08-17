@@ -26,10 +26,10 @@
         <rd-progress @click="startProgress(progressSmall)" :progress="progressSmall"></rd-progress>
     </p>
     <p>
-        <randon-progress-circle @click="startProgress(progressCircle1)" :progress="progressCircle1"></randon-progress-circle>
-        <randon-progress-circle @click="startProgress(progressCircle2)" :progress="progressCircle2"></randon-progress-circle>
-        <randon-progress-circle @click="startProgress(progressCircle3)" :progress="progressCircle3"></randon-progress-circle>
-        <randon-progress-circle @click="startProgress(progressCircle4)" :progress="progressCircle4"></randon-progress-circle>
+        <rd-progress-circle @click="startProgress(progressCircle1)" :progress="progressCircle1"></rd-progress-circle>
+        <rd-progress-circle @click="startProgress(progressCircle2)" :progress="progressCircle2"></rd-progress-circle>
+        <rd-progress-circle @click="startProgress(progressCircle3)" :progress="progressCircle3"></rd-progress-circle>
+        <rd-progress-circle @click="startProgress(progressCircle4)" :progress="progressCircle4"></rd-progress-circle>
     </p>
     <mark>
         <textarea class="ex-mark-text">
@@ -52,7 +52,7 @@ progressCommon: {
 ```
 ### progressCircle
 ```
-<randon-progress-circle @click="startProgress(progressCircle)" :progress="progressCircle"></randon-progress-circle>
+<rd-progress-circle @click="startProgress(progressCircle)" :progress="progressCircle"></rd-progress-circle>
 ```
 ```
 progressCircle: {
@@ -140,7 +140,7 @@ export default {
 import { Mark } from '../index'
 import {
     rdProgress,
-    randonProgressCircle
+    rdProgressCircle
 } from '../../../src/components/index'
 
 export default {
@@ -221,7 +221,7 @@ export default {
     },
     components: {
         rdProgress,
-        randonProgressCircle,
+        rdProgressCircle,
         Mark
     },
     methods: {

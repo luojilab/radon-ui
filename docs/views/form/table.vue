@@ -7,12 +7,17 @@
 展示行列数据，点击空白处可编辑/保存。
         </textarea>
     </mark>
-    <p>
+    <!-- <p>
         <rd-table 
             :options="TableData.options" 
             :columns="TableData.columns" 
             :actions="TableData.actions" 
             :data.sync="TableData.tableData"
+        ></rd-table>
+    </p> -->
+    <p>
+        <rd-table
+            :table="TableData"
         ></rd-table>
     </p>
     <mark>
@@ -124,8 +129,7 @@ export default {
             TableData: {
                 options: {
                     select: true,
-                    state: true,
-                    editable: true
+                    state: true
                 },
                 columns: [{
                     index: 0,
@@ -165,26 +169,10 @@ export default {
                     }
                 }],
                 tableData: [{
-                    id: {
-                        value: 1,
-                        type: 'number',
-                        editable: false
-                    },
-                    name: {
-                        value: '王尼玛',
-                        type: 'text',
-                        editable: true
-                    },
-                    age: {
-                        value: '26',
-                        type: 'number',
-                        editable: true
-                    },
-                    wechat: {
-                        value: 'wangnima',
-                        type: 'text',
-                        editable: true
-                    },
+                    id: 1,
+                    name: '王尼玛',
+                    age: '33',
+                    wechat: 'wangnima',
                     state: {
                         type: 'success',
                         value: '批准'
@@ -195,26 +183,10 @@ export default {
                         text: ''
                     }
                 }, {
-                    id: {
-                        value: 2,
-                        type: 'number',
-                        editable: false
-                    },
-                    name: {
-                        value: '赵铁柱',
-                        type: 'text',
-                        editable: true
-                    },
-                    age: {
-                        value: '26',
-                        type: 'number',
-                        editable: true
-                    },
-                    wechat: {
-                        value: 'Iron-column-zhao',
-                        type: 'text',
-                        editable: true
-                    },
+                    id: 2,
+                    name: '赵铁柱',
+                    age: '26',
+                    wechat: 'Iron-column-zhao',
                     state: {
                         type: 'info',
                         value: '待审'
@@ -225,26 +197,10 @@ export default {
                         text: ''
                     }
                 }, {
-                    id: {
-                        value: 3,
-                        type: 'number',
-                        editable: false
-                    },
-                    name: {
-                        value: '张全蛋',
-                        type: 'text',
-                        editable: true
-                    },
-                    age: {
-                        value: '27',
-                        type: 'number',
-                        editable: true
-                    },
-                    wechat: {
-                        value: 'Michael Jack',
-                        type: 'text',
-                        editable: true
-                    },
+                    id: 3,
+                    name: '张全蛋',
+                    age: '27',
+                    wechat: 'Michael Jack',
                     state: {
                         type: 'failed',
                         value: '拒绝'
@@ -292,9 +248,8 @@ export default {
         return {
             TableData: {
                 options: {
-                    // select: true,
-                    // state: true,
-                    // editable: true
+                    select: true,
+                    state: true
                 },
                 columns: [{
                     index: 0,
@@ -334,26 +289,10 @@ export default {
                     }
                 }],
                 tableData: [{
-                    name: {
-                        value: '王尼玛',
-                        type: 'text',
-                        editable: true
-                    },
-                    id: {
-                        value: 1,
-                        type: 'number',
-                        editable: false
-                    },
-                    age: {
-                        value: '26',
-                        type: 'number',
-                        editable: true
-                    },
-                    wechat: {
-                        value: 'wangnima',
-                        type: 'text',
-                        editable: true
-                    },
+                    id: 1,
+                    name: '王尼玛',
+                    age: '33',
+                    wechat: 'wangnima',
                     state: {
                         type: 'success',
                         value: '批准'
@@ -364,26 +303,10 @@ export default {
                         text: ''
                     }
                 }, {
-                    id: {
-                        value: 2,
-                        type: 'number',
-                        editable: false
-                    },
-                    name: {
-                        value: '赵铁柱',
-                        type: 'text',
-                        editable: true
-                    },
-                    age: {
-                        value: '26',
-                        type: 'number',
-                        editable: true
-                    },
-                    wechat: {
-                        value: 'Iron-column-zhao',
-                        type: 'text',
-                        editable: true
-                    },
+                    id: 2,
+                    name: '赵铁柱',
+                    age: '26',
+                    wechat: 'Iron-column-zhao',
                     state: {
                         type: 'info',
                         value: '待审'
@@ -394,26 +317,10 @@ export default {
                         text: ''
                     }
                 }, {
-                    id: {
-                        value: 3,
-                        type: 'number',
-                        editable: false
-                    },
-                    name: {
-                        value: '张全蛋',
-                        type: 'text',
-                        editable: true
-                    },
-                    age: {
-                        value: '27',
-                        type: 'number',
-                        editable: true
-                    },
-                    wechat: {
-                        value: 'Michael Jack',
-                        type: 'text',
-                        editable: true
-                    },
+                    id: 3,
+                    name: '张全蛋',
+                    age: '27',
+                    wechat: 'Michael Jack',
                     state: {
                         type: 'failed',
                         value: '拒绝'
@@ -438,9 +345,9 @@ export default {
         loop () {
             setInterval(() => {
                 this.TableData.tableData.map(row => {
-                    row.age.value++
-                    if (row.age.value > 80) {
-                        row.age.value = 0
+                    row.age++
+                    if (row.age > 80) {
+                        row.age = 0
                     }
                 })
             }, 1000)

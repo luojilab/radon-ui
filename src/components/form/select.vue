@@ -115,7 +115,8 @@
                 <input 
                     @focus="focusInput" 
                     @click="touchInput" 
-                    @blur="leaveInput" 
+                    @blur="leaveInput"
+                    @change="changeInput"
                     type="text" 
                     v-model="search" 
                     class="rd-select-search-input"
@@ -197,6 +198,9 @@ export default {
         focusInput () {
             this.search = ''
             this.valueShow = false
+        },
+        changeInput (e) {
+            e.stopPropagation()
         },
         setValue (option) {
             this.search = ''

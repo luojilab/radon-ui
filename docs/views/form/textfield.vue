@@ -245,13 +245,15 @@ export default {
                     max: 12
                 },
                 email: {
-                    type: 'Email'
+                    type: 'Email',
+                    tip: 'please input avavilable E-mail address'
                 },
                 phone: {
                     type: 'Phone'
                 },
                 number: {
-                    type: 'Number'
+                    type: 'Number',
+                    decimal: 2
                 }
             },
             form: {

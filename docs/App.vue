@@ -179,6 +179,7 @@ html,body{
 @media screen and (max-width: 1000px) {
     .ex-header {
         padding: 0 1rem;
+        position: fixed;
     }
     .page-wrapper {
         padding: 0;
@@ -203,7 +204,7 @@ html,body{
     }
     .sidebar {
         position: fixed;
-        z-index: 2;
+        z-index: 1000;
         top: 0;
         overflow-y: auto;
     }

@@ -217,15 +217,29 @@ export default {
                 }
             }
         },
+        numberCheck (val) {
+            if (!val) return true
+            let num = Number(val)
+            return !Number.isNaN(num)
+        },
         limitType () {
             if (!this.limit.type) return
             if (!this.limit.type === 'Length') return this.limitLen()
             if (!TYPE_MAP[this.limit.type]) return
 
             let TypeLimit = TYPE_MAP[this.limit.type]
+            let tip = TypeLimit.tip
+            let check = TypeLimit.reg.test(this.textfield.value)
 
-            if (!TypeLimit.reg.test(this.textfield.value)) {
-                this.setState(TypeLimit.state, TypeLimit.tip)
+            if (this.limit.type === 'Number') {
+                check = this.numberCheck(this.textfield.value)
+            }
+
+            if (this.limit.tip) {
+                tip = this.limit.tip
+            }
+            if (!check) {
+                this.setState(TypeLimit.state, tip)
             } else {
                 this.cleanState()
             }

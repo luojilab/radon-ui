@@ -23,6 +23,7 @@
     font-size: .9rem;
     line-height: 1.8;
     color: #666;
+    max-width: 40rem;
 }
 .marked h1 {
     font-size: 1.6rem;

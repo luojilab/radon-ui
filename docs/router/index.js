@@ -19,6 +19,12 @@ router.map({
             require(['../views/index/install.vue'], resolve)
         }
     },
+    '/resource': {
+        name: 'resource',
+        component: (resolve) => {
+            require(['../views/index/resource.vue'], resolve)
+        }
+    },
 
     // Basic
     '/basic/button': {
@@ -167,6 +173,11 @@ router.map({
             require(['../views/form.vue'], resolve)
         }
     }
+})
+
+router.beforeEach((transition, next) => {
+    window.scrollTo(0, 0)
+    transition.next()
 })
 
 export default router

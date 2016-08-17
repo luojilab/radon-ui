@@ -1,4 +1,4 @@
-<style src="./lib/highlight/styles/github-gist.css"></style>
+<style src="./lib/highlight/styles/atom-one-light.css"></style>
 <style>
 html,body{
     height: 100%;
@@ -244,7 +244,7 @@ html,body{
                 <span class="ion-navicon"></span>   
             </div>
             <nav class="ex-header-nav">
-                <a v-for="item in header.nav" v-link="{ path: item.link }">
+                <a v-for="item in header.nav" v-link="item.route">
                     <div class="ex-header-nav-item" :class="{ 'active': item.active }">
                         <span class="ex-header-nav-text">{{item.title}}</span>
                     </div>
@@ -418,15 +418,21 @@ export default {
             header: {
                 nav: [{
                     title: '首页',
-                    link: '',
+                    route: {
+                        name: 'index'
+                    },
                     active: true
                 }, {
                     title: '组件',
-                    link: 'basic/button',
+                    route: {
+                        name: 'button'
+                    },
                     active: false
                 }, {
                     title: '资源',
-                    link: '/',
+                    route: {
+                        name: 'resource'
+                    },
                     active: false
                 }]
             },

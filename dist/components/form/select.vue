@@ -108,7 +108,6 @@ export default {
             this.$emit('change', this.select, option)
         },
         showOption (e) {
-            e.stopPropagation()
             if (e.clientY + document.body.scrollTop + 320 > document.body.offsetHeight) {
                 this.position = 'top'
             } else {

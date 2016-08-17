@@ -154,6 +154,7 @@ export default {
                 value: '',
                 rawDate: {},
                 options: {
+                    quickClose: true,
                     format: 'YYYY/MM/DD'
                 }
             },

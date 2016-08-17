@@ -65,7 +65,7 @@ user: {
 ```
 ### input : Function
 输入框 oninput hook
-```
+```html
 <rd-text :textfield="obj" :input="Inputing" ></rd-text>
 
 methods: {

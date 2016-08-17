@@ -15,21 +15,21 @@
 npm install radon-ui
 ```
 
-> Use basic component
+### Use basic component
 
 ```
 // in customer.vue
 import { rdDatePicker } from 'radon-ui'
 ```
 
-> User global method
+### User global method
 
 ```javascript
 // main.js
 import Vue from 'vue'
 import { RadonInstall } from 'radon-ui'
 
-RadonInstall(Vue)
+Vue.use(RadonInstall)
 ```
 
 ```html
@@ -71,16 +71,6 @@ export default {
 }
 </script>
 
-```
-
-## 使用 git submodule
-
-```
-# install
-git submodule add git@192.168.100.40:FE/radon-ui.git
-
-# update
-git submodule update
 ```
         </textarea>
     </mark>

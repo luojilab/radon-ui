@@ -4,24 +4,32 @@
     <mark>
         <textarea class="ex-mark-text">
 # Radio 单选框
-> 简单的radio
+
+简单的radio
  * 用于在多个备选项中选中单个状态。
  * 和 Select 的区别是，Radio 所有选项默认可见，方便用户在比较中选择，因此选项不宜过多。
+
+
         </textarea>
     </mark>
         <p>
-            radio集合： <rd-radio-group :radios="radios"></rd-radio-group>
+            radio集合： 
         </p>
         <p>
-            单个radio： <rd-radio :radio="radio"></rd-radio>
+            <rd-radio-group :radios="radios"></rd-radio-group>
+        </p>
+        <p>
+            单个radio： 
+        </p>
+        <p>
+             <rd-radio :radio="radio"></rd-radio>
         </p>
     <mark>
         <textarea class="ex-mark-text">
-# API
 
 ## rdRadio
 
-## radio
+### radio
 
 > props Object
 
@@ -37,7 +45,7 @@ radio: {
  <rd-radio :radio="radio"></rd-radio>
 ```
 
-## change
+### change
 
 > Event: Function 
   params: radio
@@ -47,9 +55,16 @@ radio: {
 ```
 回调参数为 radio 对象
 
-## rdRadioGroup radios
 
-承载多个 radio 对象的数组
+
+## rdRadioGroup
+
+多个radio 对象的数组
+
+### radios
+
+> props Array
+
 ```html
 <rd-radio :radios="radios"></rd-radio>
 ```
@@ -72,7 +87,7 @@ radios: [{
 ## 示例代码
 ```javascript
 export default { 
-  template: '<rd-radio :radios="radios"></rd-radio>'
+  template: '<rd-radio :radios="radios"></rd-radio>',
   data () {
     return {
         radios: [{

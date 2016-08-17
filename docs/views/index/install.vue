@@ -29,7 +29,11 @@ import { rdDatePicker } from 'radon-ui'
 import Vue from 'vue'
 import { RadonInstall } from 'radon-ui'
 
-Vue.use(RadonInstall)
+Vue.use(RadonInstall, {
+    Modal: true,
+    Notification: true,
+    Preview: true
+})
 ```
 
 ```html
@@ -37,36 +41,26 @@ Vue.use(RadonInstall)
 <template>
     <div class="container">
         <router-view></router-view>
-        <rd-modal :modal="modal"></rd-modal>
-        <rd-notification :notifications="Notifications"></rd-notification>
-        <rd-preview :preview="preview"></rd-preview>
+        <rd-modal></rd-modal>
+        <rd-notification></rd-notification>
+        <rd-preview></rd-preview>
     </div>
 </template>
 <script>
 import {
     rdModal,
-    rdNotification
+    rdNotification,
+    rdPreview
 } from '../src/components/index'
 
 export default {
-    data () {
-        return {
-            Notifications: [],
-            modal: {
-                show: false,
-                title: '',
-                content: '',
-                cancel: () => {},
-                confirm: () => {}
-            }
-        }
-    },
     created () {
         this.$Radon.setRoot(this)
     },
     components: {
         rdModal,
-        rdNotification
+        rdNotification,
+        rdPreview
     }
 }
 </script>

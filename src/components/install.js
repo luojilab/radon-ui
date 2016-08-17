@@ -131,7 +131,6 @@
                     return item.el === this.el
                 })
                 if (!previewItem) return
-                console.log(newValue)
                 previewItem.src = newValue
             },
             unbind: function () {

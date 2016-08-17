@@ -321,6 +321,7 @@ export default {
                 month: '06'
             },
             options: {
+                quickClose: false,
                 placeHolder: '请选择时间',
                 timePicker: false,
                 format: 'YYYY-MM-DD',
@@ -474,7 +475,6 @@ export default {
             this.monthDisplay()
         },
         togglePicker (e) {
-            e.preventDefault()
             if (this.$el.getBoundingClientRect().top < 320) {
                 this.state.position = 'bottom'
             } else {
@@ -505,6 +505,9 @@ export default {
                 }
             }
             this.output(day)
+            if (this.options.quickClose) {
+                this.togglePicker()
+            }
         },
         timeChange (time) {
             this.dayList.forEach(day => {

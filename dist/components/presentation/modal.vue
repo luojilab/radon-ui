@@ -32,8 +32,10 @@ import {
 } from '../utils'
 
 export default {
-    props: {
-        modal: Object
+    computed: {
+        modal () {
+            return this.$root.RADON_MODAL
+        }
     },
     components: {
         rdButton

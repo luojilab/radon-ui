@@ -17,8 +17,10 @@
 <script>
 import { ICON_MAP } from '../utils'
 export default {
-    props: {
-        notifications: Array
+    computed: {
+        notifications () {
+            return this.$root.RADON_NOTIFICATION
+        }
     },
     methods: {
         typeClass (item) {

@@ -261,9 +261,9 @@ html,body{
                 <div class="content">
                     <router-view></router-view>
                 </div>
-                <rd-modal :modal="modal"></rd-modal>
-                <rd-notification :notifications="Notifications"></rd-notification>
-                <rd-preview :preview="preview"></rd-preview>
+                <rd-modal></rd-modal>
+                <rd-notification></rd-notification>
+                <rd-preview></rd-preview>
             </div>
         </div>
         <footer class="ex-footer">
@@ -295,14 +295,6 @@ export default {
     data () {
         return {
             sliderShow: document.body.offsetWidth > 1000,
-            preview: {
-                show: false,
-                current: {
-                    title: '在实际传输数据之前，需要完成几个步骤',
-                    src: 'http://covteam.u.qiniudn.com/poster.png'
-                },
-                list: []
-            },
             menu: [{
                 title: '快速上手',
                 link: '/'
@@ -472,20 +464,12 @@ export default {
                     }]
                 }]
             },
-            Notifications: [],
-            modal: {
-                show: false,
-                title: '',
-                content: '',
-                cancel: () => {},
-                confirm: () => {}
-            },
             state: {
                 timer: null
             }
         }
     },
-    init () {
+    created () {
         this.$Radon.setRoot(this)
     },
     ready () {

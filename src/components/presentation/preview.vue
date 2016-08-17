@@ -42,6 +42,7 @@
     border-radius: 50%;
     line-height: 1.5rem;
     text-align: center;
+    z-index: 2;
 }
 .rd-preview-nav-left,
 .rd-preview-nav-right {
@@ -90,15 +91,17 @@
 
 <template>
     <div class="rd-preview-wrapper" v-show="preview.show">
-        <i class="ion-close-round rd-preview-close" @click="close"></i>
+        <div class="rd-preview-close" @click="close">
+            <i class="ion-close-round rd-preview-close-icon" ></i>
+        </div>
         <img class="rd-preview-img" v-if="preview.current.src" :src="preview.current.src" :alt="preview.current.title">
         <div class="rd-preview-title">
             {{preview.current.title}}
         </div>
-        <div class="rd-preview-nav-left">
+        <div class="rd-preview-nav-left" @click="preAction">
             <i class="ion-ios-arrow-left rd-preview-nav-arrow"></i>
         </div>
-        <div class="rd-preview-nav-right">
+        <div class="rd-preview-nav-right" @click="nextAction">
             <i class="ion-ios-arrow-right rd-preview-nav-arrow"></i>
         </div>
     </div>
@@ -108,8 +111,10 @@
 import { catIn } from '../utils'
 
 export default {
-    props: {
-        preview: Object
+    computed: {
+        preview () {
+            return this.$root.RADON_PREVIEW
+        }
     },
     data () {
         return {
@@ -130,6 +135,18 @@ export default {
         },
         close () {
             this.preview.show = false
+        },
+        preAction () {
+            let index = this.preview.list.indexOf(this.preview.current)
+            if (index === 0) return
+            index--
+            this.preview.current = this.preview.list[index]
+        },
+        nextAction () {
+            let index = this.preview.list.indexOf(this.preview.current)
+            if (index === this.preview.list.length - 1) return
+            index++
+            this.preview.current = this.preview.list[index]
         }
     }
 }

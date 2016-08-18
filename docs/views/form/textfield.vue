@@ -43,6 +43,10 @@
     <p>
         <rd-text :textfield="form.number" :limit="limits.number"></rd-text>
     </p>
+    <h4>行内输入框</h4>
+    <p>
+        <rd-text :textfield="form.inline"></rd-text>
+    </p>
     <h4>多行输入框</h4>
     <p>
         <rd-textarea 
@@ -327,6 +331,13 @@ export default {
                     placeHolder: 'success',
                     state: 'success',
                     tip: ''
+                },
+                inline: {
+                    value: '',
+                    placeHolder: '我是inline的input',
+                    state: '',
+                    tip: '',
+                    inline: true
                 },
                 textArea: {
                     value: '',

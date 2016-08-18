@@ -128,6 +128,11 @@ export default {
                         disabled: false,
                         value: '深圳',
                         id: 3
+                    }, {
+                        selected: false,
+                        disabled: true,
+                        value: '上海',
+                        id: 4
                     }]
                 }
             }

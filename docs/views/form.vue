@@ -552,7 +552,8 @@ export default {
                 value: 'aa'
             }],
             selectCity: {
-                value: {}
+                value: {},
+                options: []
             },
             selectProvince: {
                 value: {},

@@ -41,15 +41,14 @@
 .rd-select-options-container {
     display: none;
     position: absolute;
-    background: #fff;
     min-width: 6rem;
-    border-radius: $border-radius-base;
     padding: 0;
-    border: 1px solid #ccc;
     top: 2.2rem;
     left: -1px;
     background-color: #fff;
     z-index: 2;
+    box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+    border-radius: 2px;
 }
 
 .rd-select-option {
@@ -64,16 +63,18 @@
 }
 
 .rd-select-option.selected {
-    background: #e6e6e6;
+    background: #67cdfb;
+    color: #fff;
 }
 
 .rd-select-option.disabled {
-    color: #ccc;
+    background: #efefef;
+    color: #b7b7b7;
     cursor: not-allowed;
 }
 
 .rd-select-option:hover {
-    background: #f7f7f7;
+    opacity: .7;
 }
 
 .rd-select-top .rd-select-options-container{

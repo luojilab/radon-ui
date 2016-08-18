@@ -48,7 +48,7 @@
     position: relative;
     font-size: 90%;
     color: #404040;
-    border-left: 4px solid #00BCD4;
+    border-left: 4px solid #67cdfb;
     padding-left: .8em;
     margin: 1em 0;
     background: #f8f8f8;
@@ -61,7 +61,7 @@
     position: absolute;
     top: 14px;
     left: -12px;
-    background-color: #00BCD4;
+    background-color: #67cdfb;
     color: #fff;
     content: "!";
     width: 20px;

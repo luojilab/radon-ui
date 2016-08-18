@@ -116,7 +116,7 @@
                 let previewItem = {
                     title: '',
                     el: this.el,
-                    src: this.el.src
+                    src: 'data:img/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEXs7Oxc9QatAAAACklEQVQI12NgAAAAAgAB4iG8MwAAAABJRU5ErkJggg=='
                 }
                 $root.RADON_PREVIEW.list.push(previewItem)
 
@@ -127,7 +127,11 @@
                 })
             },
             update: function (newValue, oldValue) {
-
+                let previewItem = $root.RADON_PREVIEW.list.find(item => {
+                    return item.el === this.el
+                })
+                if (!previewItem) return
+                previewItem.src = newValue
             },
             unbind: function () {
                 if (this.el) {

@@ -17,8 +17,15 @@
         <textarea class="ex-mark-text">
 ## API
 
+| API            | Type         | data   |params |
+| :------------- |:-------------| :------|:------|
+| number         | Props        | Object |       |
+| change         | Event        |        |number |
+
+
+## 实例：
+
 ### number
-> props: Object
 
 ```
 number: {

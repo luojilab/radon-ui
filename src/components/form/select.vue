@@ -169,7 +169,7 @@ export default {
                         selected: false,
                         disabled: true,
                         value: '无法找到',
-                        id: null
+                        id: ''
                     }]
                 }
                 return list

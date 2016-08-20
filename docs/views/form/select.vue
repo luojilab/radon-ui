@@ -191,7 +191,8 @@ export default {
                 value: '上海',
                 id: 4
             }]
-            this.form.selectArriveCity.value = this.form.selectArriveCity.options[1]
+            // this.form.selectArriveCity.value = this.form.selectArriveCity.options[2]
+            // this.form.selectArriveCity.value = this.form.selectArriveCity.options[2]
         }, 0)
     },
     methods: {

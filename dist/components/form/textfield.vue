@@ -2,7 +2,7 @@
 <template>
     <div 
         class="rd-textfield-wrapper"
-        :class="stateClass"
+        :class="[textState, {inline: textfield.inline}]"
     >
         <input 
             :type="type" 
@@ -74,10 +74,6 @@ export default {
             classList.push(ICON_MAP[this.textState])
 
             return classList
-        },
-        stateClass () {
-            if (!this.textState) return []
-            return [this.textState]
         }
     },
     methods: {

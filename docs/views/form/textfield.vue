@@ -4,12 +4,16 @@
     <mark>
         <textarea class="ex-mark-text">
 # Textfield 输入框
-## 示例
+
+最常用的表单内容输入框，内置了多种状态的设置和数据类型验证功能。
+### 示例
         </textarea>
     </mark>
+    <h4>输入测试</h4>
     <p>
         <rd-text :textfield="form.username" @inputing="userInputing" @changing="userInputed"></rd-text>
     </p>
+    <h4>状态</h4>
     <p>
         <rd-text :textfield="form.info"></rd-text>
     </p>
@@ -22,9 +26,11 @@
     <p>
         <rd-text :textfield="form.failed"></rd-text>
     </p>
+    <h4>密码类型</h4>
     <p>
         <rd-text :textfield="form.password" type="password"></rd-text>
     </p>
+    <h4>数据验证</h4>
     <p>
         <rd-text :textfield="form.bio" :limit="limits.length"></rd-text>
     </p>
@@ -34,9 +40,14 @@
     <p>
         <rd-text :textfield="form.phone" :limit="limits.phone"></rd-text>
     </p>
-     <p>
+    <p>
         <rd-text :textfield="form.number" :limit="limits.number"></rd-text>
     </p>
+    <h4>行内输入框</h4>
+    <p>
+        <rd-text :textfield="form.inline"></rd-text>
+    </p>
+    <h4>多行输入框</h4>
     <p>
         <rd-textarea 
             :textfield="form.textArea"
@@ -164,12 +175,7 @@ export default {
 
 ```html
 <rd-textarea 
-    :value.sync="textArea.value" 
-    :auto-resize="true" 
-    :input="textArea.input" 
-    :change="textArea.change" 
-    :line-height="textArea.lineHeight"
-    :min-height="textArea.minHeight"
+    :textfield="form.textArea"
 ></rd-textarea>
 
 ```
@@ -306,7 +312,7 @@ export default {
                     value: '',
                     placeHolder: 'info',
                     state: 'info',
-                    tip: 'info'
+                    tip: ''
                 },
                 warning: {
                     value: '',
@@ -325,6 +331,13 @@ export default {
                     placeHolder: 'success',
                     state: 'success',
                     tip: ''
+                },
+                inline: {
+                    value: '',
+                    placeHolder: '我是inline的input',
+                    state: '',
+                    tip: '',
+                    inline: true
                 },
                 textArea: {
                     value: '',

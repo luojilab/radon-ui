@@ -25,9 +25,9 @@
     box-sizing: border-box;
 }
 .rd-number-icon {
-    font-size: 1.5rem;
+    font-size: 1rem;
     line-height: 2rem;
-    margin: 0 .2rem;
+    margin: 0 .5rem;
 }
 </style>
 
@@ -35,13 +35,13 @@
     <div class="rd-number-container">
         <div class="rd-number-wrapper">
             <div class="rd-number-action" @click="minus">
-                <i class="rd-number-icon ion-minus-circled"></i>
+                <i class="rd-number-icon ion-minus-round"></i>
             </div>
             <div class="rd-number-input-wrapper">
                 <input type="text" v-model="number.value" class="rd-number-input">
             </div>
              <div class="rd-number-action" @click="plus">
-                <i class="rd-number-icon ion-plus-circled"></i>
+                <i class="rd-number-icon ion-plus-round"></i>
             </div>
         </div>
     </div>

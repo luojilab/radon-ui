@@ -133,6 +133,12 @@ router.map({
             require(['../views/presentation/modal.vue'], resolve)
         }
     },
+    'presentation/preview': {
+        name: 'preview',
+        component: (resolve) => {
+            require(['../views/presentation/preview.vue'], resolve)
+        }
+    },
     'presentation/alert': {
         name: 'alert',
         component: (resolve) => {
@@ -162,7 +168,7 @@ router.map({
     'navigation/pagination': {
         name: 'pagination',
         component: (resolve) => {
-            require(['../views/presentation/pagination.vue'], resolve)
+            require(['../views/navigation/pagination.vue'], resolve)
         }
     },
 

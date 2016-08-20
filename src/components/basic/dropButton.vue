@@ -46,13 +46,23 @@
 }
 .rd-dropbtn-list {
     position: absolute;
-    top: 2rem;
-    left: 0;
+    top: 2.5rem;
+    left: 50%;
     display: flex;
     flex-wrap: wrap;
     background: #fff;
     padding: 0 .5rem;
-    box-shadow: 0 0 .8rem rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 .5rem #dedede;
+    transform: translateX(-50%);
+    border-radius: .2rem;
+}
+.rd-dropbtn-list>.rd-box-arrow-icon {
+    position: absolute;
+    color: #fff;
+    top: -.9rem;
+    margin-left: -.5rem;
+    font-size: 1rem;
+    left: 50%;
 }
 .rd-dropbtn-list .rd-btn {
     background: #fff;
@@ -74,11 +84,16 @@
         <span class="rd-dropbtn-text">{{text}}</span>
         <i class="ion-ios-arrow-down rd-dropbtn-icon"></i>
         <div class="rd-dropbtn-list" v-show="state.show">
+            <span class="ion-arrow-up-b rd-box-arrow-icon"></span>
             <slot></slot>
         </div>
     </button>
 </template>
 <script>
+import {
+    catIn
+} from '../utils'
+
 export default {
     props: {
         text: {
@@ -136,14 +151,12 @@ export default {
     methods: {
         leaveClose (e) {
             if (!this.state.show) return
-            if (e.path.indexOf(this.$el) === -1) {
+            if (!catIn(e.target, this.$el)) {
                 this.state.show = false
             }
         },
         toggle (e) {
             if (this.disabled) return
-            e.stopPropagation()
-            e.preventDefault()
             this.state.show = !this.state.show
         }
     }

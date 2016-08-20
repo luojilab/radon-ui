@@ -137,7 +137,7 @@ html,body{
 .ex-footer {
     display: flex;
     padding: 2rem 4rem 5rem 4rem;
-    background-color: #30abd5;
+    background-color: #67cdfb;
 }
 .ex-footer-nav {
     display: flex;
@@ -379,6 +379,10 @@ export default {
                         title: 'Notification',
                         subTitle: '通知',
                         link: 'presentation/notification'
+                    }, {
+                        title: 'Preview',
+                        subTitle: '图片预览',
+                        link: 'presentation/preview'
                     }, {
                         title: 'Progress',
                         subTitle: '进度条',

@@ -151,18 +151,18 @@ router.map({
             require(['../views/presentation/tooltip.vue'], resolve)
         }
     },
-    'presentation/pagination': {
-        name: 'pagination',
-        component: (resolve) => {
-            require(['../views/presentation/pagination.vue'], resolve)
-        }
-    },
 
     // Navigation
     'navigation/breadcrumb': {
         name: 'breadcrumb',
         component: (resolve) => {
             require(['../views/navigation/breadcrumb.vue'], resolve)
+        }
+    },
+    'navigation/pagination': {
+        name: 'pagination',
+        component: (resolve) => {
+            require(['../views/presentation/pagination.vue'], resolve)
         }
     },
 

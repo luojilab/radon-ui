@@ -48,7 +48,7 @@
     position: relative;
     font-size: 90%;
     color: #404040;
-    border-left: 4px solid #00BCD4;
+    border-left: 4px solid #67cdfb;
     padding-left: .8em;
     margin: 1em 0;
     background: #f8f8f8;
@@ -61,7 +61,7 @@
     position: absolute;
     top: 14px;
     left: -12px;
-    background-color: #00BCD4;
+    background-color: #67cdfb;
     color: #fff;
     content: "!";
     width: 20px;
@@ -76,6 +76,33 @@
 .marked ul, ol {
     padding: 0 2rem;
     list-style: inherit;
+}
+.marked table {
+    width: 100%;
+    max-width: 100%;
+    text-align: left;
+    border-radius: 6px;
+}
+.marked thead {
+    background: #e0f5ff;
+}
+.marked th {
+    color: rgba(0,0,0,.870588);
+    height: 3rem;
+    border-bottom: 1px solid #e9e9e9;
+}
+.marked tr > td:first-child,
+.marked tr > th:first-child {
+    padding-left: .5rem
+}
+.marked tr > td:last-child,
+.marked tr > th:last-child {
+    padding-right: .5rem
+}
+.marked tr > td {
+    height: 2rem;
+    line-height: 1rem;
+    border-bottom: 1px solid #ececec;
 }
 @media screen and (max-width: 768px) {
     .ex-card {

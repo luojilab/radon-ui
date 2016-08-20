@@ -8,11 +8,16 @@
         <span class="rd-dropbtn-text">{{text}}</span>
         <i class="ion-ios-arrow-down rd-dropbtn-icon"></i>
         <div class="rd-dropbtn-list" v-show="state.show">
+            <span class="ion-arrow-up-b rd-box-arrow-icon"></span>
             <slot></slot>
         </div>
     </button>
 </template>
 <script>
+import {
+    catIn
+} from '../utils'
+
 export default {
     props: {
         text: {
@@ -70,14 +75,12 @@ export default {
     methods: {
         leaveClose (e) {
             if (!this.state.show) return
-            if (e.path.indexOf(this.$el) === -1) {
+            if (!catIn(e.target, this.$el)) {
                 this.state.show = false
             }
         },
         toggle (e) {
             if (this.disabled) return
-            e.stopPropagation()
-            e.preventDefault()
             this.state.show = !this.state.show
         }
     }

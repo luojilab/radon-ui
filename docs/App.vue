@@ -137,7 +137,7 @@ html,body{
 .ex-footer {
     display: flex;
     padding: 2rem 4rem 5rem 4rem;
-    background-color: #30abd5;
+    background-color: #67cdfb;
 }
 .ex-footer-nav {
     display: flex;

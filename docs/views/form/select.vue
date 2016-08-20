@@ -15,6 +15,9 @@
     <p class="demo-content">
         <rd-select :select="form.selectCity" @change="changeAction"></rd-select>
     </p>
+    <p>
+        <rd-select :select="form.selectArriveCity" @change="changeAction"></rd-select> 
+    </p>
     <mark>
         <textarea class="ex-mark-text">
 ## API
@@ -134,6 +137,11 @@ export default {
                         value: '上海',
                         id: 4
                     }]
+                },
+                selectArriveCity: {
+                    key: 'selectCity',
+                    value: {},
+                    options: []
                 }
             }
         }
@@ -143,25 +151,48 @@ export default {
         Mark
     },
     ready () {
+        this.form.selectProvince.options = [{
+            selected: true,
+            disabled: false,
+            value: '四川',
+            id: 1
+        }, {
+            selected: false,
+            disabled: false,
+            value: '北京',
+            id: 2
+        }, {
+            selected: false,
+            disabled: false,
+            value: '广东',
+            text: '广东',
+            id: 3
+        }]
+
         setTimeout(() => {
-            this.form.selectProvince.options = [{
-                selected: true,
+            this.form.selectArriveCity.options = [{
+                selected: false,
                 disabled: false,
-                value: '四川',
+                value: '成都',
                 id: 1
             }, {
-                selected: false,
+                selected: true,
                 disabled: false,
                 value: '北京',
                 id: 2
             }, {
                 selected: false,
                 disabled: false,
-                value: '广东',
-                text: '广东',
+                value: '深圳',
                 id: 3
+            }, {
+                selected: false,
+                disabled: true,
+                value: '上海',
+                id: 4
             }]
-        }, 1000)
+            this.form.selectArriveCity.value = this.form.selectArriveCity.options[1]
+        }, 0)
     },
     methods: {
         changeAction (select, value) {

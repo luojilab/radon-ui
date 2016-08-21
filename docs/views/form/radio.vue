@@ -31,24 +31,21 @@
 
 ### radio
 
-> props Object
+radio: Object
 
-```
-radio: {
-    disabled: true, // 可选
-    checked: false, // 必填
-    value: '王宝强'  // 必填
-},
-```
+** radio **
 
-```
- <rd-radio :radio="radio"></rd-radio>
-```
+| 参数            | 类型         | 说明           |
+| :------------- |:-------------|:--------------|
+| checked        | Bolean       | 选中状态       |
+| disabled       | Bolean       | 可用状态 (可选) |
+| value          | String       | 选中值         |
+
 
 ### change
 
-> Event: Function 
-  params: radio
+Event: Function 
+params: radio
 
 ```
 <rd-radio :radio="radio" @change="checkAction"></rd-radio>

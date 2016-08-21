@@ -83,6 +83,7 @@
 }
 .rd-audio-slider-time {
     font-size: .75rem;
+    line-height: .75rem;
     flex-shrink: 0;
     margin-left: .5rem;
 }
@@ -134,7 +135,7 @@
                     <div class="rd-audio-slider-rail">
                         <div class="rd-audio-slider-dot" @mousedown="touchDot" :style="{ 'left': slider.progress + '%' }"></div>
                     </div>
-                    <div class="rd-audio-slider-time">{{timer}}</div>
+                    <div class="rd-audio-slider-time">{{mu.state.lastTimeFormat}}</div>
                 </div>
             </div>
         </div>
@@ -167,7 +168,8 @@
             return {
                 mu: {
                     state: {
-                        progress: 0
+                        progress: 0,
+                        lastTimeFormat: ''
                     }
                 },
                 state: {
@@ -203,11 +205,13 @@
         beforeDestroy () {
             window.document.body.removeEventListener('mousemove', this.movement)
             window.document.body.removeEventListener('mouseup', this.leaveMove)
+            if (this.mu.destroyed) {
+                this.mu.destroyed()
+            }
         },
         methods: {
             init () {
                 this.mu = new VueAudio(this.audio.src, this.audio.options)
-                this.mu.progress(this.progress)
             },
             progress (count) {
                 if (!this.state.moving) {

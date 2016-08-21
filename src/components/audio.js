@@ -139,6 +139,7 @@ class VueAudio {
     }
 
     destroyed () {
+        if (!this.$Audio) return
         this.$Audio.pause()
         Cov.off(this.$Audio, 'timeupdate', this.updatePlayState)
         Cov.off(this.$Audio, 'progress', this.updateLoadState)

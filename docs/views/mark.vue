@@ -17,7 +17,6 @@
     font-size: .8rem;
     line-height: 1.2;
     overflow-x: auto;
-    min-height: 3rem;
 }
 .marked pre {
     line-height: 1.5em;

@@ -5,6 +5,17 @@
         <textarea class="ex-mark-text">
 # Alert 警告提示框
 
+警告提示框，是一个简单的数据视图组件，它可以以数组接收并生成多个alert。
+对象中 `content` 属性是辅助性文字，如果 content 为空或者没有该属性，alert 会是一个 small 状态。
+        </textarea>
+    </mark>
+
+        <p>
+            <rd-alert :alerts="alerts"></rd-alert>
+        </p>
+
+    <mark>
+        <textarea class="ex-mark-text">
 ## 代码
 ```javascript
 export default {
@@ -38,13 +49,18 @@ export default {
     }
 }
 ```
-## 示例
+## API
+
+| 参数            | 类型         | 说明           |
+| :------------- |:-------------|:--------------|
+| show           | Bolean       | 显示           |
+| state          | String       | 状态 （info, warning, success, failed）  |
+| title          | String       | 主文字          |
+| content        | String       | 辅助文字        |
+
 
         </textarea>
     </mark>
-        <p>
-            <rd-alert :alerts="alerts"></rd-alert>
-        </p>
     </div>
 </div>
 </template>

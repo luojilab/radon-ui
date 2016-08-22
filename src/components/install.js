@@ -72,9 +72,9 @@ import preview from './directive/preview'
                     $root.RADON_NOTIFICATION.$remove(item)
                 }, duration)
             },
-            success (title, content, duration) {
+            create (type, title, content, duration) {
                 let item = {
-                    type: 'success',
+                    type: type,
                     title: title,
                     content: content
                 }
@@ -82,39 +82,18 @@ import preview from './directive/preview'
                 if (duration) {
                     this.remove(item, duration)
                 }
+            },
+            success (title, content, duration) {
+                this.create('success', title, content, duration)
             },
             info (title, content, duration) {
-                let item = {
-                    type: 'info',
-                    title: title,
-                    content: content
-                }
-                $root.RADON_NOTIFICATION.push(item)
-                if (duration) {
-                    this.remove(item, duration)
-                }
+                this.create('info', title, content, duration)
             },
             warning (title, content, duration) {
-                let item = {
-                    type: 'warning',
-                    title: title,
-                    content: content
-                }
-                $root.RADON_NOTIFICATION.push(item)
-                if (duration) {
-                    this.remove(item, duration)
-                }
+                this.create('warning', title, content, duration)
             },
             failed (title, content, duration) {
-                let item = {
-                    type: 'failed',
-                    title: title,
-                    content: content
-                }
-                $root.RADON_NOTIFICATION.push(item)
-                if (duration) {
-                    this.remove(item, duration)
-                }
+                this.create('failed', title, content, duration)
             }
         }
 

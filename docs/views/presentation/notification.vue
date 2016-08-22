@@ -11,46 +11,48 @@
     带有交互的通知，给出用户下一步的行动点。
     系统主动推送。
 
-```
-this.$Notification.success(title:String, content:String, wait:Number)  
-```
+
+`this.$Notification.success(title:String, content:String, wait:Number)`
+
 ## 示例
 
 点击下面四个按钮试试
         </textarea>
     </mark>
     <p>
-        <rd-button @click="success">success</rd-button>
-        <rd-button @click="failed">failed</rd-button>
-        <rd-button @click="warning">warning</rd-button>
-        <rd-button @click="info">info</rd-button>
+        <rd-button type="success" @click="success">success</rd-button>
+        <rd-button type="danger" @click="danger">danger</rd-button>
+        <rd-button type="warning" @click="warning">warning</rd-button>
+        <rd-button type="info" @click="info">info</rd-button>
     </p>
     <mark>
         <textarea class="ex-mark-text">
-## 示例代码
-```
-<rd-notification :notifications="Notifications"></rd-notification>
-```
+## 代码
+
+首先在项目的入口文件中引入 RadonUI, 调用 `Vue.use` 安装。
+
 ```javascript
-//root component
-import {
-    rdModal
-} from '../src/components/index'
+// main.js
+import RadonUI from 'radon-ui/install'
 
-export default {
-    data () {
-        return {
-            Notifications: []
-        }
-    },
-    created () {
-        this.$SetRoot(this)
-    },
-    components: {
-        rdNotification
-    },
-}
+Vue.use(RadonUI, {
+    Notification: true
+})
+```
 
+在根组件添加 `rd-notification` 组件的位置
+
+```
+<!-- Vue root compoment template -->
+<div id="app">
+    <router-view></router-view>
+    <rd-notification></rd-notification>
+</div>
+```
+
+可以在任何组件中调用 `vm.$Notification.success(title, content, delay)` 来创建一个对话框了
+
+```javascript
 // any vue components
 methods: {
     someAction () {
@@ -59,6 +61,17 @@ methods: {
 }
 
 ```
+
+## API
+
+`this.$Notification.create(type, title, content, delay)`
+
+| 参数            | 类型         | 说明           |
+| :------------- |:-------------|:--------------|
+| type           | String       | 消息类型 （info, warning, success, failed）|
+| title          | String       | 消息标题    |
+| content        | String       | 消息正文    |
+| delay          | Number       | 等待时间，为空不会自动移除 |
         </textarea>
     </mark>
     </div>
@@ -88,7 +101,7 @@ export default {
         warning () {
             this.$Notification.warning('warning', '', 5000)
         },
-        failed () {
+        danger () {
             this.$Notification.failed('failed', '', 5000)
         }
     }

@@ -189,7 +189,7 @@ html,body{
     }
     .content {
         min-width: initial;
-        padding: 1rem;
+        padding: 4rem 1rem;
         box-sizing: border-box;
         overflow: hidden;
     }
@@ -214,8 +214,6 @@ html,body{
     .ex-footer {
         padding: .5rem 1rem;
         font-size: .8rem;
-    }
-    .ex-footer {
         flex-wrap: wrap;
     }
     .ex-footer-nav {

@@ -43,7 +43,7 @@
                     <div class="rd-audio-slider-rail">
                         <div class="rd-audio-slider-dot" @mousedown="touchDot" :style="{ 'left': slider.progress + '%' }"></div>
                     </div>
-                    <div class="rd-audio-slider-time">{{timer}}</div>
+                    <div class="rd-audio-slider-time">{{mu.state.lastTimeFormat}}</div>
                 </div>
             </div>
         </div>
@@ -51,22 +51,7 @@
 </template>
 
 <script>
-    import VueAudio from '../audio.js'
-
-    const pad = (val) => {
-        val = Math.floor(val)
-        if (val < 10) {
-            return '0' + val
-        }
-        return val + ''
-    }
-
-    const timeParse = (sec) => {
-        let min = 0
-        min = Math.floor(sec / 60)
-        sec = sec - min * 60
-        return pad(min) + ':' + pad(sec)
-    }
+    import VueAudio from '../lib/audio.js'
 
     export default {
         props: {
@@ -76,7 +61,8 @@
             return {
                 mu: {
                     state: {
-                        progress: 0
+                        progress: 0,
+                        lastTimeFormat: ''
                     }
                 },
                 state: {
@@ -99,11 +85,6 @@
                 }
             }
         },
-        computed: {
-            timer () {
-                return timeParse(this.mu.state.duration - this.mu.state.currentTime)
-            }
-        },
         ready () {
             this.init()
             window.document.body.addEventListener('mousemove', this.movement, false)
@@ -112,11 +93,13 @@
         beforeDestroy () {
             window.document.body.removeEventListener('mousemove', this.movement)
             window.document.body.removeEventListener('mouseup', this.leaveMove)
+            if (this.mu.destroyed) {
+                this.mu.destroyed()
+            }
         },
         methods: {
             init () {
                 this.mu = new VueAudio(this.audio.src, this.audio.options)
-                this.mu.progress(this.progress)
             },
             progress (count) {
                 if (!this.state.moving) {

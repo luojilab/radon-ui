@@ -8,12 +8,13 @@
         <img class="rd-preview-img" v-if="preview.current.src" :src="preview.current.src" :alt="preview.current.title">
         <div class="rd-preview-title">
             {{preview.current.title}}
+            {{preview.current.index + '/' + preview.list.length}}
         </div>
         <div class="rd-preview-nav-left" @click="preAction">
-            <i class="ion-ios-arrow-left rd-preview-nav-arrow"></i>
+            <span class="ion-ios-arrow-left rd-preview-nav-arrow"></span>
         </div>
         <div class="rd-preview-nav-right" @click="nextAction">
-            <i class="ion-ios-arrow-right rd-preview-nav-arrow"></i>
+            <span class="ion-ios-arrow-right rd-preview-nav-arrow"></span>
         </div>
     </div>
 </template>

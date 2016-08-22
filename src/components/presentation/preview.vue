@@ -16,7 +16,6 @@
     top: 0;
     margin-left: -30rem;
     background: #fff;
-    padding: .25rem;
     height: 100%;
     box-sizing: border-box;
 }
@@ -49,7 +48,6 @@
     position: absolute;
     height: 100%;
     margin: .25rem;
-    background: rgba(0, 0, 0, 0.36);
     width: 10rem;
     top: 0;
     color: #fff;
@@ -86,6 +84,20 @@
     position: absolute;
     top: 50%;
     margin-top: -2.5rem;
+    padding: 0 .5rem;
+    background: rgba(0, 0, 0, 0.53);
+    line-height: 2rem;
+    border-radius: .2rem;
+}
+.rd-preview-title {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    background: rgba(0,0,0,.5);
+    box-sizing: border-box;
+    font-size: 2rem;
 }
 </style>
 
@@ -97,12 +109,13 @@
         <img class="rd-preview-img" v-if="preview.current.src" :src="preview.current.src" :alt="preview.current.title">
         <div class="rd-preview-title">
             {{preview.current.title}}
+            {{preview.current.index + '/' + preview.list.length}}
         </div>
         <div class="rd-preview-nav-left" @click="preAction">
-            <i class="ion-ios-arrow-left rd-preview-nav-arrow"></i>
+            <span class="ion-ios-arrow-left rd-preview-nav-arrow"></span>
         </div>
         <div class="rd-preview-nav-right" @click="nextAction">
-            <i class="ion-ios-arrow-right rd-preview-nav-arrow"></i>
+            <span class="ion-ios-arrow-right rd-preview-nav-arrow"></span>
         </div>
     </div>
 </template>
@@ -118,7 +131,8 @@ export default {
     },
     data () {
         return {
-            $box: null
+            $box: null,
+            currentIndex: 1
         }
     },
     ready () {
@@ -141,12 +155,14 @@ export default {
             if (index === 0) return
             index--
             this.preview.current = this.preview.list[index]
+            this.currentIndex = index + 1
         },
         nextAction () {
             let index = this.preview.list.indexOf(this.preview.current)
             if (index === this.preview.list.length - 1) return
             index++
             this.preview.current = this.preview.list[index]
+            this.currentIndex = index + 1
         }
     }
 }

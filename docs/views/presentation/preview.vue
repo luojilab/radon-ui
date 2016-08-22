@@ -11,10 +11,43 @@
         <textarea class="ex-mark-text">
 # Preview 图片预览
 
-### 代码
+### 示例
+
+可以尝试点击下面的图片
+        </textarea>
+    </mark>
+    <p>
+        <img class="img-min"  v-for="img in imgs" v-preview="img" :src="img">
+    </p>
+    <mark>
+        <textarea class="ex-mark-text">
+### 安装
+
+首先在项目的入口文件中引入 RadonUI, 调用 `Vue.use` 安装。
+
+```javascript
+// main.js
+import RadonUI from 'radon-ui/install'
+
+Vue.use(RadonUI, {
+    Preview: true
+})
+```
+
+在根组件添加 `rd-preview` 组件的位置
+
+```
+<!-- Vue root compoment template -->
+<div id="app">
+    <router-view></router-view>
+    <rd-preview></rd-preview>
+</div>
+```
+
+对于所有图片都可以使用 `v-preview` 指令来绑定他们的预览功能
 
 ```html
-<img v-for="img in imgs" v-preview="img" :src="img">
+<!-- <img v-for="img in imgs" v-preview="img" :src="img"> -->
 ```
 
 ```javascript
@@ -26,13 +59,10 @@ export default {
     }
 }
 ```
-## 示例
+
 
         </textarea>
     </mark>
-        <p>
-            <img class="img-min"  v-for="img in imgs" v-preview="img" :src="img">
-        </p>
     </div>
 </div>
 </template>

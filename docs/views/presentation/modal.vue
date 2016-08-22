@@ -20,55 +20,64 @@ this.$Modal.create(title:String, content:String, onConfirm:Function, onCancle:Fu
     </p>
     <mark>
         <textarea class="ex-mark-text">
-## 示例代码
+## 代码
+
+
+首先在项目的入口文件中引入 RadonUI, 调用 `Vue.use` 安装。
+
 ```javascript
-//root component
-import {
-    rdModal
-} from '../src/components/index'
+// main.js
+import RadonUI from 'radon-ui/install'
 
-export default {
-    data () {
-        return {
-            modal: {
-                show: false,
-                title: '',
-                content: '',
-                cancel: () => {},
-                confirm: () => {}
-            }
-        }
-    },
-    created () {
-        this.$SetRoot(this)
-    },
-    components: {
-        rdModal
-    },
-}
+Vue.use(RadonUI, {
+    Modal: true
+})
+```
 
+在根组件添加 `rd-modal` 组件的位置
+
+```
+<!-- Vue root compoment template -->
+<div id="app">
+    <router-view></router-view>
+    <rd-modal></rd-modal>
+</div>
+```
+
+上面的准备工作完成之后，就可以在任何组件中调用 `vm.$Modal.create` 来创建一个对话框了
+
+```javascript
 // any vue components
 export default {
-    template: '<rd-button @click="open">开启对话框</rd-button>',
-    components: {
-        rdModal
-    },
     methods: {
         open () {
-            this.createModal(
+            this.$Modal.create(
                 '这里是标题',
                 '这里应该说点什么',
                 () => {
-                    window.alert('你点击了确认')
+                    this.$Notification.success('你点击了确认', '你点击了确认你点击了确认你点击了确认你点击了确认你点击了确认', 5000)
                 },
                 () => {
-                    window.alert('点点击了取消')
+                    this.$Notification.success('你点击了取消', '', 5000)
                 }
             )
         }
     }
 }
+
 ```
+
+## API
+
+`this.$Modal.create(title, content, confirm, cancel)`
+
+| 参数            | 类型         | 说明           |
+| :------------- |:-------------|:--------------|
+| title          | String       | 窗口标题       |
+| content        | String       | 正文描述文字    |
+| confirm        | Function     | 确认回调函数     |
+| cancel         | Function     | 取消或者关闭回调函数 |
+
         </textarea>
     </mark>
     </div>

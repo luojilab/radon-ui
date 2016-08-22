@@ -3,7 +3,7 @@
 		<slot></slot>
 	</div>
 </template>
-<style lang="scss">
+<style>
 .rd-btn-group {
 	display: inline-block;
 }

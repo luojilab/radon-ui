@@ -6,6 +6,10 @@
     max-width: 40rem;
 }
 .marked code {
+    background: #f7f7f7;
+    color: #FF5722;
+}
+.marked pre code {
     display: block;
     background: #f7f7f7;
     padding: 1rem;
@@ -13,7 +17,6 @@
     font-size: .8rem;
     line-height: 1.2;
     overflow-x: auto;
-    min-height: 3rem;
 }
 .marked pre {
     line-height: 1.5em;

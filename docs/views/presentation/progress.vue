@@ -50,6 +50,15 @@ progressCommon: {
     }
 }
 ```
+
+| 参数            | 类型         | 说明           |
+| :------------- |:-------------|:--------------|
+| percent        | Number       | 进度百分比     |
+| options.color  | String       | 颜色值         |
+| options.size   | String       | 尺寸 'common' , 'small'|
+| options.state  | String       | 进度状态 'info', 'sucess', 'loading', 'warning', 'failed'|
+
+
 ### progressCircle
 ```
 <rd-progress-circle @click="startProgress(progressCircle)" :progress="progressCircle"></rd-progress-circle>
@@ -72,65 +81,14 @@ progressCircle: {
     }
 }
 ```
-## 代码
-```javascript
-export default {
-    data () {
-        return {
-            progressCommon: {
-                percent: 50,
-                options: {
-                    color: '#2db7f5',
-                    size: 'common',
-                    state: 'loading'
-                }
-            },
-            progressSmall: {
-                percent: 50,
-                options: {
-                    color: '#2db7f5',
-                    size: 'small',
-                    state: 'loading'
-                }
-            },
-            progressCircle: {
-                percent: 50,
-                options: {
-                    color: '#2db7f5',
-                    size: 'small',
-                    state: '',
-                    format: function (percent) {
-                        return percent + '%'
-                    }
-                }
-            }
-        }
-    },
-    components: {
-        rdProgress,
-        randonProgressCircle,
-        mark
-    },
-    methods: {
-        startProgress (progress) {
-            progress.percent = 0
-            progress.options.state = ''
-            let timer = setInterval(() => {
-                if (progress.percent &lt; 100) {
-                    progress.percent++
-                } else {
-                    if (Math.random() * 2 &lt; 1) {
-                        progress.options.state = 'failed'
-                    } else {
-                        progress.options.state = 'success'
-                    }
-                    clearInterval(timer)
-                }
-            }, 50)
-        }
-    }
-}
-```
+
+| 参数            | 类型         | 说明           |
+| :------------- |:-------------|:--------------|
+| percent        | Number       | 进度百分比     |
+| options.color  | String       | 颜色值         |
+| options.size   | String       | 尺寸 'common' , 'small'|
+| options.state  | String       | 进度状态 'info', 'sucess', 'loading', 'warning', 'failed'|
+| options.format | Function     | 进度格式化，入参为当前百分度|
         </textarea>
     </mark>
     </div>

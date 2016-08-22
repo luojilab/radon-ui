@@ -131,8 +131,7 @@ export default {
     },
     data () {
         return {
-            $box: null,
-            currentIndex: 1
+            $box: null
         }
     },
     ready () {
@@ -155,14 +154,12 @@ export default {
             if (index === 0) return
             index--
             this.preview.current = this.preview.list[index]
-            this.currentIndex = index + 1
         },
         nextAction () {
             let index = this.preview.list.indexOf(this.preview.current)
             if (index === this.preview.list.length - 1) return
             index++
             this.preview.current = this.preview.list[index]
-            this.currentIndex = index + 1
         }
     }
 }

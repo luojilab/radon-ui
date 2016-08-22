@@ -145,21 +145,6 @@
 <script>
     import VueAudio from '../lib/audio.js'
 
-    const pad = (val) => {
-        val = Math.floor(val)
-        if (val < 10) {
-            return '0' + val
-        }
-        return val + ''
-    }
-
-    const timeParse = (sec) => {
-        let min = 0
-        min = Math.floor(sec / 60)
-        sec = sec - min * 60
-        return pad(min) + ':' + pad(sec)
-    }
-
     export default {
         props: {
             audio: Object
@@ -190,11 +175,6 @@
                         x: 0
                     }
                 }
-            }
-        },
-        computed: {
-            timer () {
-                return timeParse(this.mu.state.duration - this.mu.state.currentTime)
             }
         },
         ready () {

@@ -143,7 +143,7 @@
 </template>
 
 <script>
-    import VueAudio from '../audio.js'
+    import VueAudio from '../lib/audio.js'
 
     const pad = (val) => {
         val = Math.floor(val)

@@ -286,11 +286,6 @@ html,body{
 </template>
 <script>
 import Menu from './components/menu.vue'
-import {
-    rdModal,
-    rdNotification,
-    rdPreview
-} from '../src/components/index'
 
 export default {
     data () {
@@ -480,17 +475,11 @@ export default {
             }
         }
     },
-    created () {
-        this.$Radon.setRoot(this)
-    },
     ready () {
         window.addEventListener('resize', this.resizeCheck)
     },
     components: {
-        Menu,
-        rdModal,
-        rdNotification,
-        rdPreview
+        Menu
     },
     methods: {
         resizeCheck () {

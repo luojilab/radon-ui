@@ -21,6 +21,14 @@ this.$Modal.create(title:String, content:String, onConfirm:Function, onCancle:Fu
     <mark>
         <textarea class="ex-mark-text">
 ## 示例代码
+
+Vue root compoment template
+```
+<div id="app">
+    <router-view></router-view>
+    <rd-modal></rd-modal>
+</div>
+```
 ```javascript
 //root component
 import {
@@ -28,17 +36,6 @@ import {
 } from '../src/components/index'
 
 export default {
-    data () {
-        return {
-            modal: {
-                show: false,
-                title: '',
-                content: '',
-                cancel: () => {},
-                confirm: () => {}
-            }
-        }
-    },
     created () {
         this.$SetRoot(this)
     },
@@ -46,7 +43,9 @@ export default {
         rdModal
     },
 }
+```
 
+```javascript
 // any vue components
 export default {
     template: '<rd-button @click="open">开启对话框</rd-button>',

@@ -12,8 +12,8 @@
 
 ```html
 <template>
-    <div class=customer>
-        <rd-date-picker :date=startDate></rd-date-picker>
+    <div class="customer">
+        <rd-date-picker :date="startDate"></rd-date-picker>
     </div>
 </template>
 

@@ -65,7 +65,7 @@ import { Mark } from '../index'
 import {
     rdButton,
     rdDropButton
-} from '../../../src/components/index'
+} from 'radon-ui'
 
 export default {
     components: {

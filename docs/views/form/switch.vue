@@ -77,7 +77,7 @@ export default {
 import { Mark } from '../index'
 import {
     rdSwitch
-} from '../../../src/components/index'
+} from 'radon-ui'
 
 export default {
     data () {

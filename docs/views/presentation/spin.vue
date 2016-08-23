@@ -35,7 +35,7 @@
 import { Mark } from '../index'
 import {
     rdSpin
-} from '../../../src/components/index'
+} from 'radon-ui'
 
 export default {
     components: {

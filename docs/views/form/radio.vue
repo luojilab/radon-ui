@@ -118,7 +118,7 @@ import { Mark } from '../index'
 import {
     rdRadio,
     rdRadioGroup
-} from '../../../src/components/index'
+} from 'radon-ui'
 
 export default {
     data () {

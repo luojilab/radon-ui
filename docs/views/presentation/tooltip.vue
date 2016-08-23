@@ -45,7 +45,7 @@ import { Mark } from '../index'
 import {
     rdTooltip,
     rdButton
-} from '../../../src/components/index'
+} from 'radon-ui'
 
 export default {
     components: {

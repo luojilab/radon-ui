@@ -68,7 +68,7 @@ export default {
 import { Mark } from '../index'
 import {
     rdAlert
-} from '../../../src/components/index'
+} from 'radon-ui'
 
 export default {
     data () {

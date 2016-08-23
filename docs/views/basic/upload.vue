@@ -53,7 +53,7 @@ removeFileAction (item) {
 import { Mark } from '../index'
 import {
     rdUpload
-} from '../../../src/components/index'
+} from 'radon-ui'
 
 export default {
     data () {

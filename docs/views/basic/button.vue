@@ -116,7 +116,7 @@ import {
     formItem,
     rdButton,
     rdButtonGroup
-} from '../../../src/components/index'
+} from 'radon-ui'
 
 export default {
     data () {

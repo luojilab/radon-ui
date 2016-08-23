@@ -54,7 +54,7 @@ breadcrumb: {
 import { Mark } from '../index'
 import {
     breadcrumb
-} from '../../../src/components/index'
+} from 'radon-ui'
 
 export default {
     data () {

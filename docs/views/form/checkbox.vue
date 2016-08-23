@@ -58,7 +58,7 @@ export default {
 import { Mark } from '../index'
 import {
     rdCheckbox
-} from '../../../src/components/index'
+} from 'radon-ui'
 
 export default {
     data () {

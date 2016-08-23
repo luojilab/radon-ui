@@ -196,7 +196,7 @@ export default {
 import { Mark } from '../index'
 import {
     rdTable
-} from '../../../src/components/index'
+} from 'radon-ui'
 
 export default {
     data () {

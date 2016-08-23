@@ -99,7 +99,7 @@ import { Mark } from '../index'
 import {
     rdProgress,
     rdProgressCircle
-} from '../../../src/components/index'
+} from 'radon-ui'
 
 export default {
     data () {

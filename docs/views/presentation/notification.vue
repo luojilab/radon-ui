@@ -81,7 +81,7 @@ methods: {
 import { Mark } from '../index'
 import {
     rdButton
-} from '../../../src/components/index'
+} from 'radon-ui'
 
 export default {
     data () {

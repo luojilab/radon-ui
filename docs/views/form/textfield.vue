@@ -204,7 +204,7 @@ import { Mark } from '../index'
 import {
     rdText,
     rdTextarea
-} from '../../../src/components/index'
+} from 'radon-ui'
 
 const MAP = {
     0: {

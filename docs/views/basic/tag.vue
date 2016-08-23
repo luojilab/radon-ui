@@ -47,7 +47,7 @@
 import { Mark } from '../index'
 import {
     rdTag
-} from '../../../src/components/index'
+} from 'radon-ui'
 
 export default {
     components: {

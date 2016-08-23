@@ -45,6 +45,12 @@ router.map({
             require(['../views/basic/audio.vue'], resolve)
         }
     },
+    '/basic/tag': {
+        name: 'tag',
+        component: (resolve) => {
+            require(['../views/basic/tag.vue'], resolve)
+        }
+    },
     '/basic/upload': {
         name: 'upload',
         component: (resolve) => {

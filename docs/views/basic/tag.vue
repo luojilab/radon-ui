@@ -13,18 +13,32 @@
         </textarea>
     </mark>
     <p>
-        <rd-spin></rd-spin>
-        <rd-spin color="red"></rd-spin>
-        <rd-spin color="blue"></rd-spin>
+        <rd-tag value="simple tag"></rd-tag>
+        <rd-tag type="info" value="simple tag"></rd-tag>
+        <rd-tag type="warning" value="simple tag"></rd-tag>
+        <rd-tag type="success" value="simple tag"></rd-tag>
+        <rd-tag type="danger" value="simple tag" icon="ion-close-circled"></rd-tag>
     </p>
     <mark>
         <textarea class="ex-mark-text">
 ### 代码
 ```html
-<rd-spin></rd-spin>
-<rd-spin color="red"></rd-spin>
-<rd-spin color="blue"></rd-spin>
+<rd-tag value="simple tag"></rd-tag>
+<rd-tag type="info" value="simple tag"></rd-tag>
+<rd-tag type="warning" value="simple tag"></rd-tag>
+<rd-tag type="success" value="simple tag"></rd-tag>
+<rd-tag type="danger" value="simple tag"></rd-tag>
 ```
+
+### API
+
+`props`：
+
+| 参数            | 类型         | 说明           |
+| :------------- |:-------------|:--------------|
+| value          | String       | 显示文字       |
+| type           | String       | 状态 （primary， info, warning, success, danger）|
+| icon           | String       | 图标         |
 
         </textarea>
     </mark>
@@ -34,12 +48,12 @@
 <script>
 import { Mark } from '../index'
 import {
-    rdSpin
+    rdTag
 } from '../../../src/components/index'
 
 export default {
     components: {
-        rdSpin,
+        rdTag,
         Mark
     }
 }

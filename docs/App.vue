@@ -28,7 +28,7 @@ html,body{
 }
 .ex-header-logo-text {
     color: #fff;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: 100;
     line-height: 3rem;
 }
@@ -263,6 +263,7 @@ html,body{
                 <rd-modal></rd-modal>
                 <rd-notification></rd-notification>
                 <rd-preview></rd-preview>
+                <rd-loadingbar></rd-loadingbar>
             </div>
         </div>
         <footer class="ex-footer">

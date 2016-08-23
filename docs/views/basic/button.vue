@@ -1,5 +1,10 @@
+<style>
+    .button-doc p .rd-btn{
+        margin-top: .5rem;
+    }
+</style>
 <template>
-<div class="ex-content">
+<div class="ex-content button-doc">
     <div class="ex-card">
     <mark>
         <textarea class="ex-mark-text">

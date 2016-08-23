@@ -193,9 +193,13 @@ router.map({
     }
 })
 
-router.beforeEach((transition, next) => {
-    window.scrollTo(0, 0)
+router.beforeEach(function (transition) {
+    transition.to.router.app.$Progress.start()
     transition.next()
+})
+
+router.afterEach((transition) => {
+    transition.to.router.app.$Progress.finish()
 })
 
 export default router

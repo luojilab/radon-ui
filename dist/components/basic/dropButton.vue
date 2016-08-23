@@ -1,7 +1,7 @@
 
 <template>
     <button 
-        class="rd-dropbtn"
+        class="rd-dropbtn rd-btn"
         @click="toggle"
         :class="classList"
     >
@@ -49,19 +49,12 @@ export default {
     computed: {
         classList () {
             let list = []
-            switch (this.type) {
-            case 'primary':
-                list.push('rd-dropbtn-primary')
-                break
-            case 'ghost':
-                list.push('rd-dropbtn-ghost')
-                break
-            default:
-                list.push('rd-dropbtn-primary')
+            if (this.type) {
+                list.push(this.type)
             }
 
             if (this.disabled) {
-                list.push('rd-dropbtn-disabled')
+                list.push('rd-btn-disabled')
             }
             return list
         }

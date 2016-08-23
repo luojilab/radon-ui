@@ -70,12 +70,12 @@ export default {
                     file: this.$file.files[i]
                 }
                 this.fileList.push(newItem)
-                this.$emit('add', this.fileList)
+                this.$emit('add', newItem, this.fileList)
             }
         },
         delFile (item) {
-            this.$emit('remove', item)
             this.fileList.$remove(item)
+            this.$emit('remove', item)
         }
     }
 }

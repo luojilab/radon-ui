@@ -1,7 +1,8 @@
 import {
     rdModal,
     rdNotification,
-    rdPreview
+    rdPreview,
+    rdLoadingbar
 } from './index'
 
 import preview from './directive/preview'
@@ -17,7 +18,8 @@ import preview from './directive/preview'
     function install (Vue, options = {
         Modal: true,
         Notification: true,
-        Preview: true
+        Preview: true,
+        Progress: true
     }) {
         Vue.use(require('vue-animated-list'))
 
@@ -50,6 +52,20 @@ import preview from './directive/preview'
             if (options.Notification) {
                 Vue.set(vm, 'RADON_NOTIFICATION', [])
                 Vue.component('rd-notification', rdNotification)
+            }
+
+            if (options.Progress) {
+                Vue.set(vm, 'RADON_LOADING_BAR', {
+                    percent: 0,
+                    options: {
+                        canSuccess: true,
+                        color: 'rgb(143, 255, 199)',
+                        failedColor: 'red',
+                        show: false,
+                        height: '2px'
+                    }
+                })
+                Vue.component('rd-loadingbar', rdLoadingbar)
             }
 
             if (options.Preview) {
@@ -115,6 +131,50 @@ import preview from './directive/preview'
                     cancel: () => {},
                     confirm: () => {}
                 }
+            }
+        }
+
+        Vue.prototype.$Progress = {
+            start (time) {
+                if (!time) time = 3000
+                $root.RADON_LOADING_BAR.percent = 0
+                $root.RADON_LOADING_BAR.options.show = true
+                $root.RADON_LOADING_BAR.options.canSuccess = true
+                let cut = 10000 / Math.floor(time)
+                let timer = setInterval(() => {
+                    this.increase(cut * Math.random())
+                    if ($root.RADON_LOADING_BAR.percent > 95) {
+                        this.finish()
+                        clearInterval(timer)
+                    }
+                }, 100)
+            },
+            set (num) {
+                $root.RADON_LOADING_BAR.options.show = true
+                $root.RADON_LOADING_BAR.options.canSuccess = true
+                $root.RADON_LOADING_BAR.percent = Math.floor(num)
+            },
+            get (num) {
+                return Math.floor($root.RADON_LOADING_BAR.percent)
+            },
+            increase (num) {
+                $root.RADON_LOADING_BAR.percent = $root.RADON_LOADING_BAR.percent + Math.floor(num)
+            },
+            decrease (num) {
+                $root.RADON_LOADING_BAR.percent = $root.RADON_LOADING_BAR.percent - Math.floor(num)
+            },
+            finish () {
+                $root.RADON_LOADING_BAR.percent = 100
+                setTimeout(() => {
+                    $root.RADON_LOADING_BAR.options.show = false
+                }, 800)
+            },
+            failed () {
+                $root.RADON_LOADING_BAR.options.canSuccess = false
+                $root.RADON_LOADING_BAR.percent = 100
+                setTimeout(() => {
+                    $root.RADON_LOADING_BAR.options.show = false
+                }, 800)
             }
         }
     }

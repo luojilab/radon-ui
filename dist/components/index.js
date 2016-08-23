@@ -37,6 +37,7 @@ import rdAlert from './presentation/alert.vue'
 import rdNotification from './presentation/notification.vue'
 import rdSpin from './presentation/spin.vue'
 import rdPreview from './presentation/preview.vue'
+import rdLoadingbar from './presentation/loadingbar.vue'
 
 export {
     // basic
@@ -75,6 +76,7 @@ export {
     rdNotification,
     rdModal,
     rdPreview,
+    rdLoadingbar,
     rdTooltip,
     rdAlert,
     rdSpin

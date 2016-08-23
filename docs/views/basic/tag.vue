@@ -3,11 +3,9 @@
     <div class="ex-card">
     <mark>
         <textarea class="ex-mark-text">
-# Spin 加载中
-用于页面和区块的加载中状态。
-### 何时使用
+# Tag 标签
 
-页面局部处于等待异步数据或正在渲染过程时，合适的加载动效会有效缓解用户的焦虑。
+用于一些突出展示事物的状态、属性
 
 ### 示例
         </textarea>

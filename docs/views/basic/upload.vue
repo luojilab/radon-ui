@@ -14,35 +14,36 @@
         </p>
         <mark>
             <textarea class="ex-mark-text">
-## API
 
-### add
-> Event: Function
-
-```html
-<rd-upload @add="addFileAction"></rd-upload>
 ```
-```javascript
-addFileAction (list) {
-    console.log(list) 
-    // [{
-    //     file: File, // File Object
-    //     src: 'blob:http://127.0.0.1:9090/23565ed3-fbb8-4252-848f-24518022cbb2' // preview src
-    // }]
-}
+<rd-upload @add="addFileAction" @remove="removeFileAction"></rd-upload>
 ```
 
-### remove
-> Event: Function
-
-```html
-<rd-upload @remove="removeFileAction"></rd-upload>
 ```
-```
+addFileAction (file, list) {
+    console.log('add', file)
+},
 removeFileAction (item) {
-    console.log(item) // will remove file 
+    console.log('remove', item)
 }
 ```
+### API
+
+`Event`：
+
+| 参数            | 类型   | 参数             | 说明          |
+| :------------- |:-------|:----------------|:--------------|
+| add            | Event  | file, fileList  | *1            |
+| remove         | Event  | file            | 移除的文件对象  |
+
+ *1. 第一个参数为新的文件对象，包含 file 和 src 属性，第二个为当前所有选择文件列表
+
+ ```
+{
+    file: File, // File Object, 
+    src: 'blob:http://127.0.0.1:9090/23565ed3-fbb8-4252-848f-24518022cbb2' // preview src
+}
+ ```
             </textarea>
         </mark>
     </div>
@@ -64,11 +65,11 @@ export default {
         Mark
     },
     methods: {
-        addFileAction (list) {
-            console.log(list)
+        addFileAction (file, list) {
+            console.log('add', file)
         },
         removeFileAction (item) {
-            console.log(item)
+            console.log('remove', item)
         }
     }
 }

@@ -37,9 +37,9 @@ export default {
     },
     computed: {
         iconClass () {
-            let list = {}
+            let list = []
             if (this.icon) {
-                list[this.icon] = true
+                list.push(this.icon)
             }
             return list
         },
@@ -49,7 +49,7 @@ export default {
                 list['color'] = this.color
             }
             if (this.bgcolor) {
-                list['background'] = this.bgcolor
+                list['background-color'] = this.bgcolor
             }
             return list
         }

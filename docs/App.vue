@@ -311,6 +311,14 @@ export default {
                         subTitle: '按钮',
                         link: 'basic/button'
                     }, {
+                        title: 'dropButton',
+                        subTitle: '下拉按钮',
+                        link: 'basic/drop-button'
+                    }, {
+                        title: 'Tag',
+                        subTitle: '标签',
+                        link: 'basic/tag'
+                    }, {
                         title: 'Upload',
                         subTitle: '上传',
                         link: 'basic/upload'

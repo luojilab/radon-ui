@@ -33,6 +33,12 @@ router.map({
             require(['../views/basic/button.vue'], resolve)
         }
     },
+    '/basic/drop-button': {
+        name: 'drop-button',
+        component: (resolve) => {
+            require(['../views/basic/dropButton.vue'], resolve)
+        }
+    },
     '/basic/audio': {
         name: 'audio',
         component: (resolve) => {

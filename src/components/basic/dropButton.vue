@@ -3,46 +3,9 @@
 .rd-dropbtn {
     position: relative;
     display: inline-block;
-    text-align: center;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    border: 1px solid transparent;
-    white-space: nowrap;
-    padding: .3rem;
-    font-size: .8rem;
-    line-height: 1.5;
-    min-width: 5rem;
-    border-radius: 4px;
-    transition: background 0.2s;
-    outline: none;
-    color: #666;
-    background-color: #fff;
-    border-color: #d9d9d9;
     .rd-dropbtn-icon {
         margin-left: .3rem;
     }
-}
-.rd-dropbtn-primary {
-    color: #fff;
-    background-color: #57c5f7;
-    border-color: #57c5f7;
-}
-.rd-dropbtn-ghost {
-    color: #666;
-    background-color: #f7f7f7;
-    border-color: #d9d9d9;
-}
-.rd-dropbtn:focus, .rd-dropbtn:hover {
-    color: #57c5f7;
-    background-color: #fff;
-    border-color: #57c5f7;
-}
-.rd-dropbtn.rd-dropbtn-primary:hover,
-.rd-dropbtn.rd-dropbtn-primary:focus {
-    background-color: #81d8ff;
-    color: #fff;
 }
 .rd-dropbtn-list {
     position: absolute;
@@ -55,6 +18,7 @@
     box-shadow: 0 0 .5rem #dedede;
     transform: translateX(-50%);
     border-radius: .2rem;
+    z-index: 2;
 }
 .rd-dropbtn-list>.rd-box-arrow-icon {
     position: absolute;
@@ -77,7 +41,7 @@
 </style>
 <template>
     <button 
-        class="rd-dropbtn"
+        class="rd-dropbtn rd-btn"
         @click="toggle"
         :class="classList"
     >
@@ -125,19 +89,12 @@ export default {
     computed: {
         classList () {
             let list = []
-            switch (this.type) {
-            case 'primary':
-                list.push('rd-dropbtn-primary')
-                break
-            case 'ghost':
-                list.push('rd-dropbtn-ghost')
-                break
-            default:
-                list.push('rd-dropbtn-primary')
+            if (this.type) {
+                list.push(this.type)
             }
 
             if (this.disabled) {
-                list.push('rd-dropbtn-disabled')
+                list.push('rd-btn-disabled')
             }
             return list
         }

@@ -96,6 +96,30 @@
     box-sizing: border-box;
     font-size: 2rem;
 }
+
+@media all and (max-width: 768px) {
+    .rd-preview-wrapper {
+        top: 0;
+        z-index: 10000;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        left: 0;
+    }
+    .rd-preview-nav-left,
+    .rd-preview-nav-right {
+        width: 5rem;
+    }
+    .rd-preview-nav-arrow {
+        font-size: 2.5rem;
+    }
+    .rd-preview-nav-left .rd-preview-nav-arrow {
+        margin-left: 0;
+    }
+    .rd-preview-nav-right .rd-preview-nav-arrow {
+        margin-right: 0;
+    }
+}
 </style>
 
 <template>

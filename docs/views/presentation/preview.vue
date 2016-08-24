@@ -59,7 +59,17 @@ Vue.use(RadonUI, {
 对于所有图片都可以使用 `v-preview` 指令来绑定他们的预览功能
 
 ```html
-<!-- <img v-for="img in imgs" v-preview="img" :src="img"> -->
+<img v-for="img in imgs" v-preview="img" :src="img">
+
+or
+
+<div 
+    v-for="img in imgs"
+    v-preview="img" 
+    class="doc-preview-imgbox" 
+    :style="{ 'background-image':  'url(' + img + ')'}"
+>
+</div>
 ```
 
 ```javascript

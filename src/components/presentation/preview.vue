@@ -15,9 +15,10 @@
     left: 50%;
     top: 0;
     margin-left: -30rem;
-    background: #fff;
+    background: #000;
     height: 100%;
     box-sizing: border-box;
+    text-align: center;
 }
 .rd-preview-close {
     position: absolute;
@@ -25,8 +26,6 @@
     top: .5rem;
 }
 .rd-preview-img {
-    height: 100%;
-    width: 100%;
     max-width: 100%;
 }
 .rd-preview-close {
@@ -51,17 +50,15 @@
     width: 10rem;
     top: 0;
     color: #fff;
-    opacity: 0;
     transition: opacity .2s;
     .rd-preview-nav-arrow {
-        opacity: 0;
-        transition: opacity .3s;
+        transition: background .3s;
     }
     &:hover {
         opacity: 1;
         transition: opacity .2s;
         .rd-preview-nav-arrow {
-            opacity: 1;
+            background: rgba(0, 0, 0, 0.53);
         }
     }
 }
@@ -85,7 +82,7 @@
     top: 50%;
     margin-top: -2.5rem;
     padding: 0 .5rem;
-    background: rgba(0, 0, 0, 0.53);
+    background: rgba(0, 0, 0, 0);
     line-height: 2rem;
     border-radius: .2rem;
 }
@@ -106,7 +103,16 @@
         <div class="rd-preview-close" @click="close">
             <i class="ion-close-round rd-preview-close-icon" ></i>
         </div>
-        <img class="rd-preview-img" v-if="preview.current.src" :src="preview.current.src" :alt="preview.current.title">
+        <img 
+            v-el:preview-img
+            class="rd-preview-img" 
+            v-if="preview.current.src" 
+            :style="{
+                'margin-top': marginTop + 'px'
+            }"
+            :src="preview.current.src" 
+            :alt="preview.current.title"
+        >
         <div class="rd-preview-title">
             {{preview.current.title}}
             {{preview.current.index + '/' + preview.list.length}}
@@ -131,7 +137,8 @@ export default {
     },
     data () {
         return {
-            $box: null
+            $box: null,
+            marginTop: 50
         }
     },
     ready () {
@@ -149,17 +156,25 @@ export default {
         close () {
             this.preview.show = false
         },
+        imgPosition () {
+            if (!this.$els.previewImg || !this.$el) return
+            this.$nextTick(() => {
+                this.marginTop = 0.5 * (this.$el.offsetHeight - this.$els.previewImg.offsetHeight)
+            })
+        },
         preAction () {
             let index = this.preview.list.indexOf(this.preview.current)
             if (index === 0) return
             index--
             this.preview.current = this.preview.list[index]
+            this.imgPosition()
         },
         nextAction () {
             let index = this.preview.list.indexOf(this.preview.current)
             if (index === this.preview.list.length - 1) return
             index++
             this.preview.current = this.preview.list[index]
+            this.imgPosition()
         }
     }
 }

@@ -1,6 +1,12 @@
 <style>
-    .img-min {
+    .doc-preview-imglist {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .doc-preview-imgbox {
         width: 10rem;
+        height: 10rem;
+        background-size: cover;
     }
 </style>
 
@@ -16,9 +22,15 @@
 可以尝试点击下面的图片
         </textarea>
     </mark>
-    <p>
-        <img class="img-min"  v-for="img in imgs" v-preview="img" :src="img">
-    </p>
+    <div class="doc-preview-imglist">
+        <div 
+            v-for="img in imgs"
+            v-preview="img" 
+            class="doc-preview-imgbox" 
+            :style="{ 'background-image':  'url(' + img + ')'}"
+        >
+        </div>
+    </div>
     <mark>
         <textarea class="ex-mark-text">
 ### 安装
@@ -73,7 +85,16 @@ import { Mark } from '../index'
 export default {
     data () {
         return {
-            imgs: ['http://covteam.u.qiniudn.com/ka2.jpg', 'http://covteam.u.qiniudn.com/poster.png']
+            imgs: [
+                'http://covteam.u.qiniudn.com/test14.jpg',
+                'http://covteam.u.qiniudn.com/test15.jpg',
+                'http://covteam.u.qiniudn.com/test16.jpg',
+                'http://covteam.u.qiniudn.com/test17.jpg',
+                'http://covteam.u.qiniudn.com/test18.jpg',
+                'http://covteam.u.qiniudn.com/test19.jpg',
+                'http://covteam.u.qiniudn.com/test20.jpg',
+                'http://covteam.u.qiniudn.com/test21.jpg'
+            ]
         }
     },
     components: {

@@ -304,10 +304,6 @@ export default {
                 subMenu: [{
                     title: 'Basic',
                     group: [{
-                        title: 'AudioPlayer',
-                        subTitle: '音频播放器',
-                        link: 'basic/audio'
-                    }, {
                         title: 'Button',
                         subTitle: '按钮',
                         link: 'basic/button'
@@ -320,9 +316,9 @@ export default {
                         subTitle: '标签',
                         link: 'basic/tag'
                     }, {
-                        title: 'Upload',
-                        subTitle: '上传',
-                        link: 'basic/upload'
+                        title: 'Table',
+                        subTitle: '表格',
+                        link: 'basic/table'
                     }]
                 }, {
                     title: 'Form',
@@ -342,10 +338,6 @@ export default {
                         title: 'Number',
                         subTitle: '数字输入框',
                         link: 'form/number'
-                    }, {
-                        title: 'Table',
-                        subTitle: '表格',
-                        link: 'form/table'
                     }, {
                         title: 'Switch',
                         subTitle: '开关',
@@ -368,39 +360,50 @@ export default {
                         link: 'form/cascader'
                     }]
                 }, {
-                    title: 'Presentation',
+                    title: 'Common',
                     group: [{
                         title: 'Alert',
                         subTitle: '警告提示',
-                        link: 'presentation/alert'
-                    }, {
-                        title: 'Modal',
-                        subTitle: '对话框',
-                        link: 'presentation/modal'
-                    }, {
-                        title: 'Notification',
-                        subTitle: '通知',
-                        link: 'presentation/notification'
-                    }, {
-                        title: 'Preview',
-                        subTitle: '图片预览',
-                        link: 'presentation/preview'
-                    }, {
-                        title: 'Progress',
-                        subTitle: '进度条',
-                        link: 'presentation/progress'
+                        link: 'common/alert'
                     }, {
                         title: 'Timeline',
                         subTitle: '时间线',
-                        link: 'presentation/timeline'
+                        link: 'common/timeline'
                     }, {
                         title: 'Tooltip',
                         subTitle: '对话框',
-                        link: 'presentation/tooltip'
+                        link: 'common/tooltip'
                     }, {
                         title: 'Spin',
                         subTitle: '加载中',
-                        link: 'presentation/spin'
+                        link: 'common/spin'
+                    }, {
+                        title: 'Upload',
+                        subTitle: '上传',
+                        link: 'common/upload'
+                    }, {
+                        title: 'AudioPlayer',
+                        subTitle: '音频播放器',
+                        link: 'common/audio'
+                    }]
+                }, {
+                    title: 'Global',
+                    group: [{
+                        title: 'Modal',
+                        subTitle: '对话框',
+                        link: 'global/modal'
+                    }, {
+                        title: 'Notification',
+                        subTitle: '通知',
+                        link: 'global/notification'
+                    }, {
+                        title: 'Preview',
+                        subTitle: '图片预览',
+                        link: 'global/preview'
+                    }, {
+                        title: 'Progress',
+                        subTitle: '进度条',
+                        link: 'global/progress'
                     }]
                 }, {
                     title: 'Navigation',
@@ -412,13 +415,6 @@ export default {
                         title: 'Pagination',
                         subTitle: '分页',
                         link: 'navigation/pagination'
-                    }]
-                }, {
-                    title: 'demo',
-                    group: [{
-                        title: 'Demo',
-                        subTitle: 'playground',
-                        link: 'form'
                     }]
                 }]
             }],
@@ -492,6 +488,7 @@ export default {
         resizeCheck () {
             if (this.state.timer) {
                 clearTimeout(this.state.timer)
+                this.state.timer = null
             }
             this.state.timer = setTimeout(() => {
                 if (document.body.offsetWidth > 768) {

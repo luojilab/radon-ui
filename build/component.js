@@ -15,7 +15,8 @@ const vueSort = [
     'basic',
     'form',
     'navigation',
-    'presentation'
+    'common',
+    'global'
 ]
 const copyDir = ['directive', 'lib']
 

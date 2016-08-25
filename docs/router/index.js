@@ -39,22 +39,16 @@ router.map({
             require(['../views/basic/dropButton.vue'], resolve)
         }
     },
-    '/basic/audio': {
-        name: 'audio',
-        component: (resolve) => {
-            require(['../views/basic/audio.vue'], resolve)
-        }
-    },
     '/basic/tag': {
         name: 'tag',
         component: (resolve) => {
             require(['../views/basic/tag.vue'], resolve)
         }
     },
-    '/basic/upload': {
-        name: 'upload',
+    'basic/table': {
+        name: 'table',
         component: (resolve) => {
-            require(['../views/basic/upload.vue'], resolve)
+            require(['../views/basic/table.vue'], resolve)
         }
     },
 
@@ -113,60 +107,74 @@ router.map({
             require(['../views/form/select.vue'], resolve)
         }
     },
-    'form/table': {
-        name: 'table',
+
+    // Common
+    'common/timeline': {
+        name: 'timeline',
         component: (resolve) => {
-            require(['../views/form/table.vue'], resolve)
+            require(['../views/common/timeline.vue'], resolve)
+        }
+    },
+    'common/alert': {
+        name: 'alert',
+        component: (resolve) => {
+            require(['../views/common/alert.vue'], resolve)
+        }
+    },
+    'common/spin': {
+        name: 'spin',
+        component: (resolve) => {
+            require(['../views/common/spin.vue'], resolve)
+        }
+    },
+    'common/tooltip': {
+        name: 'tooltip',
+        component: (resolve) => {
+            require(['../views/common/tooltip.vue'], resolve)
+        }
+    },
+    '/common/upload': {
+        name: 'upload',
+        component: (resolve) => {
+            require(['../views/common/upload.vue'], resolve)
+        }
+    },
+    '/common/audio': {
+        name: 'audio',
+        component: (resolve) => {
+            require(['../views/common/audio.vue'], resolve)
+        }
+    },
+    'global/progress': {
+        name: 'progress',
+        component: (resolve) => {
+            require(['../views/common/progress.vue'], resolve)
         }
     },
 
-    // Presentation
-    'presentation/progress': {
-        name: 'progress',
+    // Global
+    'global/loadingbar': {
+        name: 'loadingbar',
         component: (resolve) => {
-            require(['../views/presentation/progress.vue'], resolve)
+            require(['../views/global/loadingbar.vue'], resolve)
         }
     },
-    'presentation/timeline': {
-        name: 'timeline',
-        component: (resolve) => {
-            require(['../views/presentation/timeline.vue'], resolve)
-        }
-    },
-    'presentation/notification': {
+    'global/notification': {
         name: 'notification',
         component: (resolve) => {
-            require(['../views/presentation/notification.vue'], resolve)
+            require(['../views/global/notification.vue'], resolve)
         }
     },
-    'presentation/modal': {
+    'global/modal': {
         name: 'modal',
         component: (resolve) => {
-            require(['../views/presentation/modal.vue'], resolve)
+            require(['../views/global/modal.vue'], resolve)
         }
     },
-    'presentation/preview': {
+    'global/preview': {
         name: 'preview',
         component: (resolve) => {
-            require(['../views/presentation/preview.vue'], resolve)
-        }
-    },
-    'presentation/alert': {
-        name: 'alert',
-        component: (resolve) => {
-            require(['../views/presentation/alert.vue'], resolve)
-        }
-    },
-    'presentation/spin': {
-        name: 'spin',
-        component: (resolve) => {
-            require(['../views/presentation/spin.vue'], resolve)
-        }
-    },
-    'presentation/tooltip': {
-        name: 'tooltip',
-        component: (resolve) => {
-            require(['../views/presentation/tooltip.vue'], resolve)
+            require(['../views/global/preview.vue'], resolve)
         }
     },
 

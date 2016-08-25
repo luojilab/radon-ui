@@ -11,12 +11,12 @@
     <div class="list" style="margin-bottom: 10px;">
         <span v-for="item in list" style="background: #ccc; margin-right: 10px;">{{item}}</span>
     </div>
-    <pagination :page-data.sync="list" url="/mock/page" data-key='data'></pagination>
+    <rd-pagination :page-data.sync="list" url="/mock/page" data-key='data'></rd-pagination>
     <mark>
         <textarea class="ex-mark-text">
 ### 代码
 ```html
- <pagination :page-data.sync="list" url="/mock/page" data-key='data'></pagination>
+ <rd-pagination :page-data.sync="list" url="/mock/page" data-key='data'></rd-pagination>
 ```
 ```
 list: [1, 2, 3]  
@@ -31,7 +31,7 @@ list: [1, 2, 3]
 </template>
 <script>
 import { Mark } from '../index'
-import Pagination from 'src/components/navigation/pagination.vue'
+import { rdPagination } from 'radon-ui'
 
 export default {
     data () {
@@ -40,7 +40,7 @@ export default {
         }
     },
     components: {
-        Pagination,
+        rdPagination,
         Mark
     }
 }

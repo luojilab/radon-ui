@@ -13,13 +13,20 @@
         </textarea>
     </mark>
     <p>
-        <breadcrumb :breadcrumb="breadcrumb.list" separator="/"></breadcrumb>
+        <rd-breadcrumb :breadcrumb="breadcrumb.list" separator="/"></rd-breadcrumb>
     </p>
     <mark>
         <textarea class="ex-mark-text">
 ### 代码
+
+```javascript
+import {
+    rdBreadcrumb
+} from 'radon-ui'
+
+```
 ```html
-<breadcrumb :breadcrumb="breadcrumb.list" separator="/"></breadcrumb>
+<rd-breadcrumb :breadcrumb="breadcrumb.list" separator="/"></rd-breadcrumb>
 ```
 ```
 breadcrumb: {
@@ -53,7 +60,7 @@ breadcrumb: {
 <script>
 import { Mark } from '../index'
 import {
-    breadcrumb
+    rdBreadcrumb
 } from 'radon-ui'
 
 export default {
@@ -83,7 +90,7 @@ export default {
         }
     },
     components: {
-        breadcrumb,
+        rdBreadcrumb,
         Mark
     }
 }

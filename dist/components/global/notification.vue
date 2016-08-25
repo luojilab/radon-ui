@@ -1,6 +1,6 @@
 
 <template>
-    <div class="rd-notification-container">
+    <div class="rd-notification-container" v-show="notifications.length">
         <div 
             class="rd-notification" 
             v-for="item in notifications"

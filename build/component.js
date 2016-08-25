@@ -141,6 +141,11 @@ const getComponents = () => {
 }
 
 const removeStyle = (str) => {
+    let style = str.match(/<style.*>((.|\n)*?)<\/style>/)
+    if (style && style.length > 2) {
+        console.log(style[1])
+        console.log(require('precss')({}).process(style[1], { parser: require('postcss-scss') }))
+    }
     return str.replace(/<style.*>(.|\n)*?<\/style>/, "")
 }
 

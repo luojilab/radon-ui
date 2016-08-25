@@ -19,7 +19,7 @@ import preview from './directive/preview'
         Modal: true,
         Notification: true,
         Preview: true,
-        Progress: true
+        LoadingBar: true
     }) {
         Vue.use(require('vue-animated-list'))
 
@@ -54,7 +54,7 @@ import preview from './directive/preview'
                 Vue.component('rd-notification', rdNotification)
             }
 
-            if (options.Progress) {
+            if (options.LoadingBar) {
                 Vue.set(vm, 'RADON_LOADING_BAR', {
                     percent: 0,
                     options: {
@@ -135,17 +135,18 @@ import preview from './directive/preview'
         }
 
         Vue.prototype.$Progress = {
+            timer: null,
+            cut: 0,
             start (time) {
                 if (!time) time = 3000
                 $root.RADON_LOADING_BAR.percent = 0
                 $root.RADON_LOADING_BAR.options.show = true
                 $root.RADON_LOADING_BAR.options.canSuccess = true
-                let cut = 10000 / Math.floor(time)
-                let timer = setInterval(() => {
-                    this.increase(cut * Math.random())
+                this.cut = 10000 / Math.floor(time)
+                this.timer = setInterval(() => {
+                    this.increase(this.cut * Math.random())
                     if ($root.RADON_LOADING_BAR.percent > 95) {
                         this.finish()
-                        clearInterval(timer)
                     }
                 }, 100)
             },
@@ -154,7 +155,7 @@ import preview from './directive/preview'
                 $root.RADON_LOADING_BAR.options.canSuccess = true
                 $root.RADON_LOADING_BAR.percent = Math.floor(num)
             },
-            get (num) {
+            get () {
                 return Math.floor($root.RADON_LOADING_BAR.percent)
             },
             increase (num) {
@@ -163,18 +164,26 @@ import preview from './directive/preview'
             decrease (num) {
                 $root.RADON_LOADING_BAR.percent = $root.RADON_LOADING_BAR.percent - Math.floor(num)
             },
-            finish () {
-                $root.RADON_LOADING_BAR.percent = 100
+            hide () {
+                clearInterval(this.timer)
+                this.timer = null
                 setTimeout(() => {
                     $root.RADON_LOADING_BAR.options.show = false
+                    Vue.nextTick(() => {
+                        setTimeout(() => {
+                            $root.RADON_LOADING_BAR.percent = 0
+                        }, 100)
+                    })
                 }, 800)
+            },
+            finish () {
+                $root.RADON_LOADING_BAR.percent = 100
+                this.hide()
             },
             failed () {
                 $root.RADON_LOADING_BAR.options.canSuccess = false
                 $root.RADON_LOADING_BAR.percent = 100
-                setTimeout(() => {
-                    $root.RADON_LOADING_BAR.options.show = false
-                }, 800)
+                this.hide()
             }
         }
     }

@@ -75,8 +75,6 @@ router.afterEach((transition) => {
 })
 
 ```
-
-
         </textarea>
     </mark>
     </div>
@@ -88,20 +86,6 @@ import { Mark } from '../index'
 import { rdButton } from 'radon-ui'
 
 export default {
-    data () {
-        return {
-            imgs: [
-                'http://covteam.u.qiniudn.com/test14.jpg',
-                'http://covteam.u.qiniudn.com/test15.jpg',
-                'http://covteam.u.qiniudn.com/test16.jpg',
-                'http://covteam.u.qiniudn.com/test17.jpg',
-                'http://covteam.u.qiniudn.com/test18.jpg',
-                'http://covteam.u.qiniudn.com/test19.jpg',
-                'http://covteam.u.qiniudn.com/test20.jpg',
-                'http://covteam.u.qiniudn.com/test21.jpg'
-            ]
-        }
-    },
     components: {
         Mark,
         rdButton

@@ -2,9 +2,8 @@
 import rdButton from './basic/button.vue'
 import rdButtonGroup from './basic/buttonGroup.vue'
 import rdDropButton from './basic/dropButton.vue'
-import rdAudio from './basic/audio.vue'
-import rdUpload from './basic/upload.vue'
 import rdTag from './basic/tag.vue'
+import rdTable from './basic/table.vue'
 
 // form
 import formItem from './form/formItem.vue'
@@ -15,38 +14,41 @@ import rdEditText from './form/editable.vue'
 import rdTextSelect from './form/rdTextSelect.vue'
 import rdRadio from './form/radio.vue'
 import rdRadioGroup from './form/radioGroup.vue'
-import rdProgress from './basic/progress.vue'
-import rdProgressCircle from './basic/progressCircle.vue'
 import rdCascader from './form/cascader.vue'
 import rdSwitch from './form/switch.vue'
 import rdSlider from './form/slider.vue'
 import rdDatepicker from './form/datePicker.vue'
-import rdTimeline from './form/timeline.vue'
 import rdSelect from './form/select.vue'
-import rdTable from './form/table.vue'
 import rdTimepicker from './form/timePicker.vue'
 import rdNumber from './form/numberInput.vue'
 
-// layout
-import breadcrumb from './navigation/breadcrumb.vue'
+// common
+import rdTooltip from './common/toolTip.vue'
+import rdAlert from './common/alert.vue'
+import rdSpin from './common/spin.vue'
+import rdTimeline from './common/timeline.vue'
+import rdProgress from './common/progress.vue'
+import rdProgressCircle from './common/progressCircle.vue'
+import rdAudio from './common/audio.vue'
+import rdUpload from './common/upload.vue'
 
 // global
-import rdModal from './presentation/modal.vue'
-import rdTooltip from './presentation/toolTip.vue'
-import rdAlert from './presentation/alert.vue'
-import rdNotification from './presentation/notification.vue'
-import rdSpin from './presentation/spin.vue'
-import rdPreview from './presentation/preview.vue'
-import rdLoadingbar from './presentation/loadingbar.vue'
+import rdModal from './global/modal.vue'
+import rdNotification from './global/notification.vue'
+import rdPreview from './global/preview.vue'
+import rdLoadingbar from './global/loadingbar.vue'
+
+// Navigation
+import rdBreadcrumb from './navigation/breadcrumb.vue'
+import rdPagination from './navigation/pagination.vue'
 
 export {
     // basic
-    rdAudio,
     rdButton,
     rdButtonGroup,
     rdDropButton,
-    rdUpload,
     rdTag,
+    rdTable,
 
     // form
     rdSelect,
@@ -58,26 +60,30 @@ export {
     rdTextSelect,
     rdRadio,
     rdRadioGroup,
-    rdProgress,
-    rdProgressCircle,
     rdCascader,
     rdSwitch,
     rdSlider,
     rdDatepicker,
-    rdTimeline,
-    rdTable,
     rdTimepicker,
     rdNumber,
 
-    // layout
-    breadcrumb,
+    // common
+    rdTooltip,
+    rdAlert,
+    rdSpin,
+    rdTimeline,
+    rdUpload,
+    rdAudio,
+    rdProgress,
+    rdProgressCircle,
 
     // global
     rdNotification,
     rdModal,
     rdPreview,
     rdLoadingbar,
-    rdTooltip,
-    rdAlert,
-    rdSpin
+
+    // Navigation
+    rdBreadcrumb,
+    rdPagination
 }

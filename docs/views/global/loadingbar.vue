@@ -1,36 +1,25 @@
-<style>
-    .doc-preview-imglist {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .doc-preview-imgbox {
-        width: 10rem;
-        height: 10rem;
-        background-size: cover;
-    }
-</style>
-
 <template>
 <div class="ex-content">
     <div class="ex-card">
     <mark>
         <textarea class="ex-mark-text">
-# Preview 图片预览
+# LoadingBar
 
 ### 示例
 
-可以尝试点击下面的图片
+点击 Start 开始进入 loading
         </textarea>
     </mark>
-    <div class="doc-preview-imglist">
-        <div 
-            v-for="img in imgs"
-            v-preview="img" 
-            class="doc-preview-imgbox" 
-            :style="{ 'background-image':  'url(' + img + ')'}"
-        >
-        </div>
-    </div>
+
+    <p>
+        <rd-button type="primary" @click="$Progress.start()">Start</rd-button>
+    </p>
+    <p>
+        <rd-button type="success" @click="$Progress.finish()">Finish</rd-button>
+    </p>
+    <p>
+        <rd-button type="danger" @click="$Progress.failed()">Failed</rd-button>
+    </p>
     <mark>
         <textarea class="ex-mark-text">
 ### 安装
@@ -42,44 +31,49 @@
 import RadonUI from 'radon-ui/install'
 
 Vue.use(RadonUI, {
-    Preview: true
+    LoadingBar: true
 })
 ```
 
-在根组件添加 `rd-preview` 组件的位置
+在根组件添加 `rd-loadingbar` 组件的位置
+
 
 ```
 <!-- Vue root compoment template -->
 <div id="app">
     <router-view></router-view>
-    <rd-preview></rd-preview>
+    <rd-loadingbar></rd-loadingbar>
 </div>
 ```
 
-对于所有图片都可以使用 `v-preview` 指令来绑定他们的预览功能
-
-```html
-<img v-for="img in imgs" v-preview="img" :src="img">
-
-or
-
-<div 
-    v-for="img in imgs"
-    v-preview="img" 
-    class="doc-preview-imgbox" 
-    :style="{ 'background-image':  'url(' + img + ')'}"
->
-</div>
-```
+在异步请求代码中使用
 
 ```javascript
-export default {
-    data () {
-        return {
-            imgs: ['http://covteam.u.qiniudn.com/ka2.jpg', 'http://covteam.u.qiniudn.com/poster.png']
-        }
-    }
+loadData () {
+    this.$Progress.start()
+    this.$http.get('/api/api/contracts/')
+        .then(data => {
+            this.$Progress.finish()
+            console.log(data)
+        })
+        .catch(err => {
+            this.$Progress.failed()
+        })
 }
+```
+
+
+在 Vue Router 中使用
+```
+router.beforeEach(function (transition) {
+    transition.to.router.app.$Progress.start()
+    transition.next()
+})
+
+router.afterEach((transition) => {
+    transition.to.router.app.$Progress.finish()
+})
+
 ```
 
 
@@ -91,6 +85,7 @@ export default {
 
 <script>
 import { Mark } from '../index'
+import { rdButton } from 'radon-ui'
 
 export default {
     data () {
@@ -108,7 +103,8 @@ export default {
         }
     },
     components: {
-        Mark
+        Mark,
+        rdButton
     }
 }
 </script>

@@ -145,7 +145,7 @@ router.map({
             require(['../views/common/audio.vue'], resolve)
         }
     },
-    'global/progress': {
+    'common/progress': {
         name: 'progress',
         component: (resolve) => {
             require(['../views/common/progress.vue'], resolve)

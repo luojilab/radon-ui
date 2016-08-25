@@ -63,6 +63,7 @@ html,body{
     height: 100%;
     margin-bottom: 5rem;
     background-color: #fff;
+    flex-shrink: 0;
 }
 .content{
     min-width: 40rem;
@@ -385,6 +386,10 @@ export default {
                         title: 'AudioPlayer',
                         subTitle: '音频播放器',
                         link: 'common/audio'
+                    }, {
+                        title: 'Progress',
+                        subTitle: '进度条',
+                        link: 'common/progress'
                     }]
                 }, {
                     title: 'Global',
@@ -401,9 +406,9 @@ export default {
                         subTitle: '图片预览',
                         link: 'global/preview'
                     }, {
-                        title: 'Progress',
-                        subTitle: '进度条',
-                        link: 'global/progress'
+                        title: 'LoadingBar',
+                        subTitle: '加载进度条',
+                        link: 'global/loadingbar'
                     }]
                 }, {
                     title: 'Navigation',

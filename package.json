@@ -1,6 +1,6 @@
 {
   "name": "radon-ui",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A Vue.js components lib",
   "author": "Awe <hilongjw@gmail.com>",
   "main": "dist/components/index.js",

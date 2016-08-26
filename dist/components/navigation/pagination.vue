@@ -45,14 +45,12 @@ let optionsDefault = {
     showJump: false,
     listNumber: 5
 }
-let vueObj = {
-    length: 0
-}
 
-let pagination = {
-    replace: true,
-    inherit: false,
-    props: ['pageData', 'url', 'name', 'dataKey', 'options'],
+export default {
+    props: {
+        options: Object,
+        total: Number
+    },
     data () {
         return {
             showJump: false,
@@ -74,14 +72,13 @@ let pagination = {
         if (this.url) {
             this.$optionsDefault.remote.url = this.url
         }
-        if (this.name) {
-            vueObj[this.name] = this
-            vueObj.length++
-        } else {
-            vueObj[vueObj.length] = this
-            vueObj.length++
-        }
+        this.initPageList()
         this.getData(1)
+    },
+    watch: {
+        total (val) {
+            this.initPageList(val)
+        }
     },
     methods: {
         pagePath (pageNumber) {
@@ -121,28 +118,24 @@ let pagination = {
             }
             this.getData()
         },
+        initPageList (total) {
+            if (total % this.$optionsDefault.pageSize === 0) {
+                this.pageLimit.max = Math.floor(total / this.$optionsDefault.pageSize) || 5
+            } else {
+                this.pageLimit.max = Math.floor(total / this.$optionsDefault.pageSize + 1) || 5
+            }
+            this.pageListRefresh()
+        },
         getData () {
             let params = {
                 [this.$optionsDefault.remote.pageIndexName]: this.pageStart + this.$optionsDefault.remote.offset,
                 [this.$optionsDefault.remote.pageSizeName]: this.$optionsDefault.pageSize
             }
             Object.assign(params, this.$optionsDefault.remote.params)
-            let ajax = this.$ajax || this.$http
-            ajax.get(this.$optionsDefault.remote.url, params).then((res) => {
-                var resData = res.data
-                this.pageData = this.dataKey ? resData[this.dataKey] : resData
-                this.pageLimit.total = resData[this.$optionsDefault.remote.totalName]
-                if (this.pageLimit.total % this.$optionsDefault.pageSize === 0) {
-                    this.pageLimit.max = Math.floor(this.pageLimit.total / this.$optionsDefault.pageSize) || 5
-                } else {
-                    this.pageLimit.max = Math.floor(this.pageLimit.total / this.$optionsDefault.pageSize + 1) || 5
-                }
-                this.pageListInit()
-            }, function (error) {
-                console.error(error)
-            })
+            this.$emit('change', params)
+            this.pageListRefresh()
         },
-        pageListInit () {
+        pageListRefresh () {
             let arr = []
             for (let i = 2; i <= this.pageLimit.max - 1; i++) {
                 arr.push(i)
@@ -162,6 +155,4 @@ let pagination = {
         }
     }
 }
-
-export default pagination
 </script>

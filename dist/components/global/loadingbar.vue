@@ -1,6 +1,6 @@
 
 <template>
-    <div class="rd-progress" :style="{
+    <div class="rd-loading-bar" :style="{
       'width': loadingBar.percent+'%',
       'height': loadingBar.options.height,
       'background-color': loadingBar.options.canSuccess? loadingBar.options.color : loadingBar.options.failedColor,

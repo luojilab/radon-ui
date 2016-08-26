@@ -1,5 +1,5 @@
-<style scoped>
-.rd-progress {
+<style>
+.rd-loading-bar {
     position: fixed;
     top: 0px;
     left: 0px;
@@ -13,7 +13,7 @@
 }
 </style>
 <template>
-    <div class="rd-progress" :style="{
+    <div class="rd-loading-bar" :style="{
       'width': loadingBar.percent+'%',
       'height': loadingBar.options.height,
       'background-color': loadingBar.options.canSuccess? loadingBar.options.color : loadingBar.options.failedColor,

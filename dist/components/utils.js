@@ -1,45 +1,48 @@
-function throttle (callback, limit) {
-    var wait = false
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+function throttle(callback, limit) {
+    var wait = false;
     return function () {
         if (!wait) {
-            callback.call()
-            wait = true
+            callback.call();
+            wait = true;
             setTimeout(function () {
-                wait = false
-            }, limit)
+                wait = false;
+            }, limit);
         }
-    }
+    };
 }
 
-const pad = (val) => {
-    val = Math.floor(val)
+var pad = function pad(val) {
+    val = Math.floor(val);
     if (val < 10) {
-        return '0' + val
+        return '0' + val;
     }
-    return val + ''
-}
+    return val + '';
+};
 
-const ICON_MAP = {
+var ICON_MAP = {
     'success': 'ion-checkmark-circled',
     'failed': 'ion-close-circled',
     'warning': 'ion-alert-circled',
     'info': 'ion-information-circled',
     'loading': 'ion-load-a'
-}
+};
 
-const catIn = function (target, parent) {
-    let path = []
-    let parentNode = target
+var catIn = function catIn(target, parent) {
+    var path = [];
+    var parentNode = target;
     while (parentNode && parentNode !== document.body) {
-        path.push(parentNode)
-        parentNode = parentNode.parentNode
+        path.push(parentNode);
+        parentNode = parentNode.parentNode;
     }
-    return path.indexOf(parent) !== -1
-}
+    return path.indexOf(parent) !== -1;
+};
 
-export {
-    ICON_MAP,
-    throttle,
-    pad,
-    catIn
-}
+exports.ICON_MAP = ICON_MAP;
+exports.throttle = throttle;
+exports.pad = pad;
+exports.catIn = catIn;

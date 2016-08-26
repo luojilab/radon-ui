@@ -1,5 +1,6 @@
 require('shelljs/global')
 
+const babel     = require("babel-core")
 const fs        = require('fs')
 const path      = require('path')
 const ora       = require('ora')
@@ -55,7 +56,12 @@ const copyFile = (originPath, originFileName, newPath, newFileName) => {
     return new Promise((resolve, reject) => {
         fs.readFile(path.join(originPath, originFileName), (err, data) => {
             if (!err) {
-                fs.writeFile(path.join(newPath, newFileName), data.toString(), (err) => {
+                let res = babel.transform(data.toString(), {
+                    comments: false,
+                    presets: ["es2015", "stage-2"],
+                    plugins: ["transform-runtime"]
+                })
+                fs.writeFile(path.join(newPath, newFileName), res.code, (err) => {
                     if (err) {
                         reject(err)
                     } else {

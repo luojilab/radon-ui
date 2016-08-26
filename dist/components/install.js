@@ -1,57 +1,61 @@
-import {
-    rdModal,
-    rdNotification,
-    rdPreview,
-    rdLoadingbar
-} from './index'
+'use strict';
 
-import preview from './directive/preview'
+var _typeof2 = require('babel-runtime/helpers/typeof');
 
-/*eslint-disable*/
+var _typeof3 = _interopRequireDefault(_typeof2);
+
+var _index = require('./index');
+
+var _preview = require('./directive/preview');
+
+var _preview2 = _interopRequireDefault(_preview);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-    typeof define === 'function' && define.amd ? define(factory) :
-    (global.RadonUI = factory())
-}(this, function () {
-/*eslint-enable*/
-    'use strict'
-    function install (Vue, options = {
-        Modal: true,
-        Notification: true,
-        Preview: true,
-        LoadingBar: true
-    }) {
-        Vue.use(require('vue-animated-list'))
+    (typeof exports === 'undefined' ? 'undefined' : (0, _typeof3.default)(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : global.RadonUI = factory();
+})(undefined, function () {
+    'use strict';
 
-        let $root = null
+    function install(Vue) {
+        var options = arguments.length <= 1 || arguments[1] === undefined ? {
+            Modal: true,
+            Notification: true,
+            Preview: true,
+            LoadingBar: true
+        } : arguments[1];
+
+        Vue.use(require('vue-animated-list'));
+
+        var $root = null;
 
         Vue.mixin({
-            created () {
+            created: function created() {
                 if (!$root) {
                     if (this === this.$root) {
-                        RadonInit(this)
+                        RadonInit(this);
                     }
                 }
             }
-        })
+        });
 
-        const RadonInit = (vm) => {
-            $root = vm
+        var RadonInit = function RadonInit(vm) {
+            $root = vm;
 
             if (options.Modal) {
                 Vue.set(vm, 'RADON_MODAL', {
                     show: false,
                     title: '',
                     content: '',
-                    cancel: () => {},
-                    confirm: () => {}
-                })
-                Vue.component('rd-modal', rdModal)
+                    cancel: function cancel() {},
+                    confirm: function confirm() {}
+                });
+                Vue.component('rd-modal', _index.rdModal);
             }
 
             if (options.Notification) {
-                Vue.set(vm, 'RADON_NOTIFICATION', [])
-                Vue.component('rd-notification', rdNotification)
+                Vue.set(vm, 'RADON_NOTIFICATION', []);
+                Vue.component('rd-notification', _index.rdNotification);
             }
 
             if (options.LoadingBar) {
@@ -64,8 +68,8 @@ import preview from './directive/preview'
                         show: false,
                         height: '2px'
                     }
-                })
-                Vue.component('rd-loadingbar', rdLoadingbar)
+                });
+                Vue.component('rd-loadingbar', _index.rdLoadingbar);
             }
 
             if (options.Preview) {
@@ -76,116 +80,118 @@ import preview from './directive/preview'
                         src: 'http://covteam.u.qiniudn.com/poster.png'
                     },
                     list: []
-                })
-                Vue.component('rd-preview', rdPreview)
-                preview(Vue, $root)
+                });
+                Vue.component('rd-preview', _index.rdPreview);
+                (0, _preview2.default)(Vue, $root);
             }
-        }
+        };
 
         Vue.prototype.$Notification = {
-            remove (item, duration) {
-                setTimeout(() => {
-                    $root.RADON_NOTIFICATION.$remove(item)
-                }, duration)
+            remove: function remove(item, duration) {
+                setTimeout(function () {
+                    $root.RADON_NOTIFICATION.$remove(item);
+                }, duration);
             },
-            create (type, title, content, duration) {
-                let item = {
+            create: function create(type, title, content, duration) {
+                var item = {
                     type: type,
                     title: title,
                     content: content
-                }
-                $root.RADON_NOTIFICATION.push(item)
+                };
+                $root.RADON_NOTIFICATION.push(item);
                 if (duration) {
-                    this.remove(item, duration)
+                    this.remove(item, duration);
                 }
             },
-            success (title, content, duration) {
-                this.create('success', title, content, duration)
+            success: function success(title, content, duration) {
+                this.create('success', title, content, duration);
             },
-            info (title, content, duration) {
-                this.create('info', title, content, duration)
+            info: function info(title, content, duration) {
+                this.create('info', title, content, duration);
             },
-            warning (title, content, duration) {
-                this.create('warning', title, content, duration)
+            warning: function warning(title, content, duration) {
+                this.create('warning', title, content, duration);
             },
-            failed (title, content, duration) {
-                this.create('failed', title, content, duration)
+            failed: function failed(title, content, duration) {
+                this.create('failed', title, content, duration);
             }
-        }
+        };
 
         Vue.prototype.$Modal = {
-            create (title, text, confirm, cancel) {
+            create: function create(title, text, confirm, cancel) {
                 $root.RADON_MODAL = {
                     show: true,
                     title: title,
                     content: text,
                     cancel: cancel,
                     confirm: confirm
-                }
+                };
             },
-            clear () {
+            clear: function clear() {
                 $root.RADON_MODAL = {
                     show: false,
                     title: '',
                     content: '',
-                    cancel: () => {},
-                    confirm: () => {}
-                }
+                    cancel: function cancel() {},
+                    confirm: function confirm() {}
+                };
             }
-        }
+        };
 
         Vue.prototype.$Progress = {
             timer: null,
             cut: 0,
-            start (time) {
-                if (!time) time = 3000
-                $root.RADON_LOADING_BAR.percent = 0
-                $root.RADON_LOADING_BAR.options.show = true
-                $root.RADON_LOADING_BAR.options.canSuccess = true
-                this.cut = 10000 / Math.floor(time)
-                this.timer = setInterval(() => {
-                    this.increase(this.cut * Math.random())
+            start: function start(time) {
+                var _this = this;
+
+                if (!time) time = 3000;
+                $root.RADON_LOADING_BAR.percent = 0;
+                $root.RADON_LOADING_BAR.options.show = true;
+                $root.RADON_LOADING_BAR.options.canSuccess = true;
+                this.cut = 10000 / Math.floor(time);
+                this.timer = setInterval(function () {
+                    _this.increase(_this.cut * Math.random());
                     if ($root.RADON_LOADING_BAR.percent > 95) {
-                        this.finish()
+                        _this.finish();
                     }
-                }, 100)
+                }, 100);
             },
-            set (num) {
-                $root.RADON_LOADING_BAR.options.show = true
-                $root.RADON_LOADING_BAR.options.canSuccess = true
-                $root.RADON_LOADING_BAR.percent = Math.floor(num)
+            set: function set(num) {
+                $root.RADON_LOADING_BAR.options.show = true;
+                $root.RADON_LOADING_BAR.options.canSuccess = true;
+                $root.RADON_LOADING_BAR.percent = Math.floor(num);
             },
-            get () {
-                return Math.floor($root.RADON_LOADING_BAR.percent)
+            get: function get() {
+                return Math.floor($root.RADON_LOADING_BAR.percent);
             },
-            increase (num) {
-                $root.RADON_LOADING_BAR.percent = $root.RADON_LOADING_BAR.percent + Math.floor(num)
+            increase: function increase(num) {
+                $root.RADON_LOADING_BAR.percent = $root.RADON_LOADING_BAR.percent + Math.floor(num);
             },
-            decrease (num) {
-                $root.RADON_LOADING_BAR.percent = $root.RADON_LOADING_BAR.percent - Math.floor(num)
+            decrease: function decrease(num) {
+                $root.RADON_LOADING_BAR.percent = $root.RADON_LOADING_BAR.percent - Math.floor(num);
             },
-            hide () {
-                clearInterval(this.timer)
-                this.timer = null
-                setTimeout(() => {
-                    $root.RADON_LOADING_BAR.options.show = false
-                    Vue.nextTick(() => {
-                        setTimeout(() => {
-                            $root.RADON_LOADING_BAR.percent = 0
-                        }, 100)
-                    })
-                }, 800)
+            hide: function hide() {
+                clearInterval(this.timer);
+                this.timer = null;
+                setTimeout(function () {
+                    $root.RADON_LOADING_BAR.options.show = false;
+                    Vue.nextTick(function () {
+                        setTimeout(function () {
+                            $root.RADON_LOADING_BAR.percent = 0;
+                        }, 100);
+                    });
+                }, 800);
             },
-            finish () {
-                $root.RADON_LOADING_BAR.percent = 100
-                this.hide()
+            finish: function finish() {
+                $root.RADON_LOADING_BAR.percent = 100;
+                this.hide();
             },
-            failed () {
-                $root.RADON_LOADING_BAR.options.canSuccess = false
-                $root.RADON_LOADING_BAR.percent = 100
-                this.hide()
+            failed: function failed() {
+                $root.RADON_LOADING_BAR.options.canSuccess = false;
+                $root.RADON_LOADING_BAR.percent = 100;
+                this.hide();
             }
-        }
+        };
     }
-    return install
-}))
+    return install;
+});

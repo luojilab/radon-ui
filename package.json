@@ -1,6 +1,6 @@
 {
   "name": "radon-ui",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A Vue.js components lib",
   "author": "Awe <hilongjw@gmail.com>",
   "main": "dist/components/index.js",
@@ -11,13 +11,11 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
     "start": "node app"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "vue": "^1.0.26",
     "babel-runtime": "^6.0.0",
     "marked": "^0.3.5",
-    "multer": "^1.1.0",
-    "vue": "^1.0.21"
-  },
-  "devDependencies": {
     "autoprefixer": "^6.3.6",
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",

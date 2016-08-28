@@ -202,12 +202,12 @@ router.map({
 })
 
 router.beforeEach(function (transition) {
-    transition.to.router.app.$Progress.start()
+    transition.to.router.app.$Loading.start()
     transition.next()
 })
 
 router.afterEach((transition) => {
-    transition.to.router.app.$Progress.finish()
+    transition.to.router.app.$Loading.finish()
 })
 
 export default router

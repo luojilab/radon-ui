@@ -19,7 +19,7 @@ const vueSort = [
     'common',
     'global'
 ]
-const copyDir = ['directive', 'lib']
+const copyDir = ['directive', 'lib', 'plugin']
 
 rm('-rf', basePath)
 mkdir('-p', basePath)

@@ -12,13 +12,13 @@
     </mark>
 
     <p>
-        <rd-button type="primary" @click="$Progress.start()">Start</rd-button>
+        <rd-button type="primary" @click="$Loading.start()">Start</rd-button>
     </p>
     <p>
-        <rd-button type="success" @click="$Progress.finish()">Finish</rd-button>
+        <rd-button type="success" @click="$Loading.finish()">Finish</rd-button>
     </p>
     <p>
-        <rd-button type="danger" @click="$Progress.failed()">Failed</rd-button>
+        <rd-button type="danger" @click="$Loading.failed()">Failed</rd-button>
     </p>
     <mark>
         <textarea class="ex-mark-text">
@@ -50,14 +50,14 @@ Vue.use(RadonUI, {
 
 ```javascript
 loadData () {
-    this.$Progress.start()
+    this.$Loading.start()
     this.$http.get('/api/api/contracts/')
         .then(data => {
-            this.$Progress.finish()
+            this.$Loading.finish()
             console.log(data)
         })
         .catch(err => {
-            this.$Progress.failed()
+            this.$Loading.failed()
         })
 }
 ```
@@ -66,12 +66,12 @@ loadData () {
 在 Vue Router 中使用
 ```
 router.beforeEach(function (transition) {
-    transition.to.router.app.$Progress.start()
+    transition.to.router.app.$Loading.start()
     transition.next()
 })
 
 router.afterEach((transition) => {
-    transition.to.router.app.$Progress.finish()
+    transition.to.router.app.$Loading.finish()
 })
 
 ```

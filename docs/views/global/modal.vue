@@ -27,9 +27,9 @@ this.$Modal.create(title:String, content:String, onConfirm:Function, onCancle:Fu
 
 ```javascript
 // main.js
-import RadonUI from 'radon-ui/install'
+import { RadonInstall } from 'radon-ui'
 
-Vue.use(RadonUI, {
+Vue.use(RadonInstall, {
     Modal: true
 })
 ```

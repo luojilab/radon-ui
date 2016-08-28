@@ -28,9 +28,9 @@
 
 ```javascript
 // main.js
-import RadonUI from 'radon-ui/install'
+import { RadonInstall } from 'radon-ui'
 
-Vue.use(RadonUI, {
+Vue.use(RadonInstall, {
     LoadingBar: true
 })
 ```

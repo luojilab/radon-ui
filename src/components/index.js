@@ -42,6 +42,9 @@ import rdLoadingbar from './global/loadingbar.vue'
 import rdBreadcrumb from './navigation/breadcrumb.vue'
 import rdPagination from './navigation/pagination.vue'
 
+// Install
+import RadonInstall from './install'
+
 export {
     // basic
     rdButton,
@@ -85,5 +88,8 @@ export {
 
     // Navigation
     rdBreadcrumb,
-    rdPagination
+    rdPagination,
+
+    // install
+    RadonInstall
 }

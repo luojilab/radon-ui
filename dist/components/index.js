@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.rdPagination = exports.rdBreadcrumb = exports.rdLoadingbar = exports.rdPreview = exports.rdModal = exports.rdNotification = exports.rdProgressCircle = exports.rdProgress = exports.rdAudio = exports.rdUpload = exports.rdTimeline = exports.rdSpin = exports.rdAlert = exports.rdTooltip = exports.rdNumber = exports.rdTimepicker = exports.rdDatepicker = exports.rdSlider = exports.rdSwitch = exports.rdCascader = exports.rdRadioGroup = exports.rdRadio = exports.rdTextSelect = exports.rdEditText = exports.rdTextarea = exports.rdText = exports.rdCheckbox = exports.formItem = exports.rdSelect = exports.rdTable = exports.rdTag = exports.rdDropButton = exports.rdButtonGroup = exports.rdButton = undefined;
+exports.RadonInstall = exports.rdPagination = exports.rdBreadcrumb = exports.rdLoadingbar = exports.rdPreview = exports.rdModal = exports.rdNotification = exports.rdProgressCircle = exports.rdProgress = exports.rdAudio = exports.rdUpload = exports.rdTimeline = exports.rdSpin = exports.rdAlert = exports.rdTooltip = exports.rdNumber = exports.rdTimepicker = exports.rdDatepicker = exports.rdSlider = exports.rdSwitch = exports.rdCascader = exports.rdRadioGroup = exports.rdRadio = exports.rdTextSelect = exports.rdEditText = exports.rdTextarea = exports.rdText = exports.rdCheckbox = exports.formItem = exports.rdSelect = exports.rdTable = exports.rdTag = exports.rdDropButton = exports.rdButtonGroup = exports.rdButton = undefined;
 
 var _button = require('./basic/button.vue');
 
@@ -141,6 +141,10 @@ var _pagination = require('./navigation/pagination.vue');
 
 var _pagination2 = _interopRequireDefault(_pagination);
 
+var _install = require('./install');
+
+var _install2 = _interopRequireDefault(_install);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.rdButton = _button2.default;
@@ -177,3 +181,4 @@ exports.rdPreview = _preview2.default;
 exports.rdLoadingbar = _loadingbar2.default;
 exports.rdBreadcrumb = _breadcrumb2.default;
 exports.rdPagination = _pagination2.default;
+exports.RadonInstall = _install2.default;

@@ -6,11 +6,11 @@ import App from './App'
 import router from './router/index'
 import highlight from 'highlight.js'
 import marked from 'marked'
-import RadonUI from '../src/components/install'
+import { RadonInstall } from 'radon-ui'
 
 Vue.use(VueResource)
 Vue.use(VueRouter)
-Vue.use(RadonUI)
+Vue.use(RadonInstall)
 
 marked.setOptions({
     highlight: function (code) {

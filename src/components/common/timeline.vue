@@ -33,7 +33,6 @@
 .rd-timeline-icon-circle {
     background: rgba(255, 255, 255, 0.92);
     border: .15rem solid #2db7f5;
-    left: 0;
 }
 .rd-timeline-item-tail {
     position: absolute;

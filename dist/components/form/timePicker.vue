@@ -6,7 +6,9 @@
         :class="{ 'top': state.position === 'top' }"
     >
         <div class="rd-timepicker-value">
-            <input type="text" class="rd-timepicker-value-input" :placeholder="timePicker.placeholder" v-model="timePicker.value">
+            <div class="rd-timepicker-value-input">
+                {{timePicker.value ? timePicker.value : timePicker.placeholder}}
+            </div>
             <i 
                 @click.stop="clearValue" 
                 class="rd-datepicker-clear ion-close-circled"

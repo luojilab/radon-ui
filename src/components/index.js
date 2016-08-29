@@ -4,6 +4,8 @@ import rdButtonGroup from './basic/buttonGroup.vue'
 import rdDropButton from './basic/dropButton.vue'
 import rdTag from './basic/tag.vue'
 import rdTable from './basic/table.vue'
+import rdCard from './basic/card.vue'
+import rdCardGroup from './basic/cardGroup.vue'
 
 // form
 import formItem from './form/formItem.vue'
@@ -52,6 +54,8 @@ export {
     rdDropButton,
     rdTag,
     rdTable,
+    rdCard,
+    rdCardGroup,
 
     // form
     rdSelect,

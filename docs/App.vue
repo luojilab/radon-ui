@@ -320,6 +320,10 @@ export default {
                         title: 'Table',
                         subTitle: '表格',
                         link: 'basic/table'
+                    }, {
+                        title: 'Card',
+                        subTitle: '卡片',
+                        link: 'basic/card'
                     }]
                 }, {
                     title: 'Form',

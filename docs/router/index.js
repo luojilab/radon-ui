@@ -51,6 +51,12 @@ router.map({
             require(['../views/basic/table.vue'], resolve)
         }
     },
+    'basic/card': {
+        name: 'card',
+        component: (resolve) => {
+            require(['../views/basic/card.vue'], resolve)
+        }
+    },
 
     // Form
     'form/checkbox': {

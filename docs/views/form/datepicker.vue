@@ -162,6 +162,7 @@ export default {
                 value: '',
                 rawDate: {},
                 options: {
+                    format: 'YYYY/MM/DD HH:mm:ss',
                     placeHolder: '请选择时间（time)',
                     timePicker: true
                 }

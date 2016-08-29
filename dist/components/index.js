@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.RadonInstall = exports.rdPagination = exports.rdBreadcrumb = exports.rdLoadingbar = exports.rdPreview = exports.rdModal = exports.rdNotification = exports.rdProgressCircle = exports.rdProgress = exports.rdAudio = exports.rdUpload = exports.rdTimeline = exports.rdSpin = exports.rdAlert = exports.rdTooltip = exports.rdNumber = exports.rdTimepicker = exports.rdDatepicker = exports.rdSlider = exports.rdSwitch = exports.rdCascader = exports.rdRadioGroup = exports.rdRadio = exports.rdTextSelect = exports.rdEditText = exports.rdTextarea = exports.rdText = exports.rdCheckbox = exports.formItem = exports.rdSelect = exports.rdTable = exports.rdTag = exports.rdDropButton = exports.rdButtonGroup = exports.rdButton = undefined;
+exports.RadonInstall = exports.rdPagination = exports.rdBreadcrumb = exports.rdLoadingbar = exports.rdPreview = exports.rdModal = exports.rdNotification = exports.rdProgressCircle = exports.rdProgress = exports.rdAudio = exports.rdUpload = exports.rdTimeline = exports.rdSpin = exports.rdAlert = exports.rdTooltip = exports.rdNumber = exports.rdTimepicker = exports.rdDatepicker = exports.rdSlider = exports.rdSwitch = exports.rdCascader = exports.rdRadioGroup = exports.rdRadio = exports.rdTextSelect = exports.rdEditText = exports.rdTextarea = exports.rdText = exports.rdCheckbox = exports.formItem = exports.rdSelect = exports.rdCardGroup = exports.rdCard = exports.rdTable = exports.rdTag = exports.rdDropButton = exports.rdButtonGroup = exports.rdButton = undefined;
 
 var _button = require('./basic/button.vue');
 
@@ -24,6 +24,14 @@ var _tag2 = _interopRequireDefault(_tag);
 var _table = require('./basic/table.vue');
 
 var _table2 = _interopRequireDefault(_table);
+
+var _card = require('./basic/card.vue');
+
+var _card2 = _interopRequireDefault(_card);
+
+var _cardGroup = require('./basic/cardGroup.vue');
+
+var _cardGroup2 = _interopRequireDefault(_cardGroup);
 
 var _formItem = require('./form/formItem.vue');
 
@@ -152,6 +160,8 @@ exports.rdButtonGroup = _buttonGroup2.default;
 exports.rdDropButton = _dropButton2.default;
 exports.rdTag = _tag2.default;
 exports.rdTable = _table2.default;
+exports.rdCard = _card2.default;
+exports.rdCardGroup = _cardGroup2.default;
 exports.rdSelect = _select2.default;
 exports.formItem = _formItem2.default;
 exports.rdCheckbox = _checkbox2.default;

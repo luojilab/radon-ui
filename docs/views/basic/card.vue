@@ -11,7 +11,7 @@
         <textarea class="ex-mark-text">
 # Card 卡片
 
-简单的
+简单的布局卡片
 
 ### 示例
         </textarea>

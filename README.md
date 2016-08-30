@@ -21,6 +21,8 @@ npm install radon-ui
 
 ## 使用
 
+[RadonUI 在线文档](https://luojilab.github.io/radon-ui/)
+
 ### 基本组件的使用
 
 
@@ -114,8 +116,6 @@ methods: {
 }
 
 ```
-
-[在线文档](https://luojilab.github.io/radon-ui/)
 
 ## 版本
 

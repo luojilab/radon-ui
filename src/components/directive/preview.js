@@ -1,13 +1,20 @@
+const updateIndex = (list) => {
+    list.forEach((item, index) => {
+        item.index = index + 1
+    })
+}
+
 const preview = (Vue, $root) => {
     Vue.directive('preview', {
         bind: function () {
             let previewItem = {
                 title: '',
                 el: this.el,
+                index: 0,
                 src: 'data:img/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEXs7Oxc9QatAAAACklEQVQI12NgAAAAAgAB4iG8MwAAAABJRU5ErkJggg=='
             }
             $root.RADON_PREVIEW.list.push(previewItem)
-
+            updateIndex($root.RADON_PREVIEW.list)
             this.el.addEventListener('click', (e) => {
                 e.stopPropagation()
                 $root.RADON_PREVIEW.show = true
@@ -29,6 +36,7 @@ const preview = (Vue, $root) => {
                     }
                 })
             }
+            updateIndex($root.RADON_PREVIEW.list)
         }
     })
     return Vue

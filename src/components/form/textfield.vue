@@ -115,8 +115,9 @@
             class="rd-textfield-input" 
             v-model="textfield.value" 
             :placeholder="textfield.placeHolder"
-            @change="changing"
-            @input="inputing"
+            @change="changAction"
+            @input="inputAction"
+            @blur="blurAction"
         >
         <span class="rd-textfield-tip" v-if="textfield.tip">{{textfield.tip}}</span>
         <i class="rd-textfield-icon" :class="textIcon"></i>
@@ -183,10 +184,13 @@ export default {
         }
     },
     methods: {
-        changing (e) {
+        blurAction () {
+            this.$emit('blur', this.textfield.value, this)
+        },
+        changAction (e) {
             this.$emit('changing', this.textfield.value, this)
         },
-        inputing (e) {
+        inputAction (e) {
             this.$emit('inputing', this.textfield.value, this)
             this.limitLen()
             this.limitType()

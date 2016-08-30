@@ -101,7 +101,7 @@ export default {
 import { Mark } from '../index'
 import {
     rdSelect
-} from '../../../src/components/index'
+} from 'radon-ui'
 
 export default {
     data () {

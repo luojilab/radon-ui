@@ -8,7 +8,7 @@
     border-radius: $border-radius-base;
     height: 2rem;
     line-height: 2rem;
-    padding: 0 2rem 0 .5rem;
+    padding: 0 .5rem;
     vertical-align: bottom;
     &.top .rd-timepicker-content {
         top: initial;
@@ -61,7 +61,9 @@
         :class="{ 'top': state.position === 'top' }"
     >
         <div class="rd-timepicker-value">
-            <input type="text" class="rd-timepicker-value-input" :placeholder="timePicker.placeholder" v-model="timePicker.value">
+            <div class="rd-timepicker-value-input">
+                {{timePicker.value ? timePicker.value : timePicker.placeholder}}
+            </div>
             <i 
                 @click.stop="clearValue" 
                 class="rd-datepicker-clear ion-close-circled"

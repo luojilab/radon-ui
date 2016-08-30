@@ -1,41 +1,108 @@
 require('shelljs/global')
-var fs = require('fs')
-var ora = require('ora')
-env.NODE_ENV = 'production'
-var spinner = ora('building components for production...')
+
+const babel     = require("babel-core")
+const fs        = require('fs')
+const path      = require('path')
+const ora       = require('ora')
+env.NODE_ENV    = 'production'
+const spinner   = ora('building components for production...')
+
 spinner.start()
 
-var basePath = __dirname + '/../dist/components/'
-var componentsDir = __dirname + '/../src/components/'
-var vueSort = [
-        'basic',
-        'form',
-        'navigation',
-        'presentation'
-    ]
+const isJS = /.js$/
+const basePath = __dirname + '/../dist/components/'
+const componentsDir = __dirname + '/../src/components/'
+const vueSort = [
+    'basic',
+    'form',
+    'navigation',
+    'common',
+    'global'
+]
+const copyDir = ['directive', 'lib', 'plugin']
 
 rm('-rf', basePath)
 mkdir('-p', basePath)
 
-var copyIndex = function () {
-    var isJS = /.js$/
-    fs.readdir(componentsDir, function (err, files) {
-        files.forEach(function (file) {
-            if (isJS.test(file)) {
-                fs.readFile(componentsDir + file, function (err, data) {
-                    if (!err) {
-                        fs.writeFile(basePath + file, data.toString(), function (err) {
-                            if (err) {
-                                console.log(err)
-                            }
-                        })
-                    } else {
-                        console.log(err)
-                    }
-                })
+const initFloder = (base, subDirs) => {
+    let queue = []
+    subDirs.forEach(dir => {
+        queue.push(new Promise((resolve, reject) => {
+            fs.mkdir(base + dir, (err) => {
+                if (err) {
+                    reject(err)
+                } else {
+                    resolve()
+                }
+            })
+        }))
+    })
+    return Promise.all(queue)
+}
+
+const readDir = (dir) => {
+    return new Promise((resolve, reject) => {
+        fs.readdir(dir, (err, files) => {
+            if (err) {
+                reject(err)
+            } else {
+                resolve(files)
             }
         })
     })
+}
+
+const copyFile = (originPath, originFileName, newPath, newFileName) => {
+    return new Promise((resolve, reject) => {
+        fs.readFile(path.join(originPath, originFileName), (err, data) => {
+            if (!err) {
+                let res = babel.transform(data.toString(), {
+                    comments: false,
+                    presets: ["es2015", "stage-2"],
+                    plugins: ["transform-runtime"]
+                })
+                fs.writeFile(path.join(newPath, newFileName), res.code, (err) => {
+                    if (err) {
+                        reject(err)
+                    } else {
+                        resolve()
+                    }
+                })
+            } else {
+                reject(err)
+            }
+        })
+    })
+}
+
+const copyIndex = function () {
+    return readDir(componentsDir)
+        .then(files => {
+            let queue = []
+            files.forEach((fileName) => {
+                if (isJS.test(fileName)) {
+                    queue.push(copyFile(componentsDir, fileName, basePath, fileName))
+                }
+            })
+            return Promise.all(queue)
+        })
+        .then(() => {
+            return initFloder(basePath, copyDir)
+        })
+        .then(() => {
+            let queue = []
+            copyDir.forEach(dir => {
+                readDir(path.join(componentsDir, dir))
+                    .then(files => {
+                        files.forEach((fileName) => {
+                            if (isJS.test(fileName)) {
+                                queue.push(copyFile(path.join(componentsDir, dir), fileName, path.join(basePath, dir), fileName))
+                            }
+                        })
+                    })
+            })
+            return Promise.all(queue)
+        })
 }
 
 var getVueWithDir = function (dirArr) {
@@ -64,27 +131,27 @@ var getVueWithDir = function (dirArr) {
     return promise
 }
 
-var getComponents = function () {
-    var componentslist = []
-    var queue = []
-    vueSort.forEach(function (dir) {
+const getComponents = () => {
+    let componentslist = []
+    let queue = []
+    vueSort.forEach((dir) => {
         queue.push(getVueWithDir([componentsDir, dir]))
     })
     return Promise.all(queue)
-        .then(function (results) {
-            results.forEach(function (list) {
+        .then((results) => {
+            results.forEach((list) => {
                 componentslist = componentslist.concat(list)
             })
             return Promise.resolve(componentslist)
         })
 }
 
-var removeStyle = function (str) {
+const removeStyle = (str) => {
     return str.replace(/<style.*>(.|\n)*?<\/style>/, "")
 }
 
-var convertVue = function (path) {
-    var promise = new Promise(function (resolve, reject) {
+const convertVue = (path) => {
+    return new Promise(function (resolve, reject) {
         fs.readFile(path, function (err, data) {
             if (!err) {
                 var content = removeStyle(data.toString())
@@ -94,42 +161,26 @@ var convertVue = function (path) {
             }
         })
     })
-    return promise
 }
 
-var initFloder = function () {
-    var queue = []
-    vueSort.forEach(function (dir) {
-        queue.push(new Promise(function (resolve, reject) {
-            fs.mkdir(basePath + dir, function (err) {
-                if (err) {
-                    reject('flo err?')
-                } else {
-                    resolve()
-                }
-            })
-        }))
-    })
-    
-    return Promise.all(queue)
-}
-
-var saveVue = function (list) {
-    initFloder().then(function () {
-        list.forEach(function (item) {
-            fs.writeFile(basePath + item.dir + '/' + item.filename, item.content, function (err) {
-                if (err) {
-                    console.log(err)
-                }
+const saveVue = (list) => {
+    initFloder(basePath, vueSort)
+        .then(() => {
+            list.forEach((item) => {
+                fs.writeFile(basePath + item.dir + '/' + item.filename, item.content, function (err) {
+                    if (err) {
+                        console.log(err)
+                    }
+                })
             })
         })
-    })
 }
 
 copyIndex()
-
-getComponents()
-    .then(function (list) {
+    .then(() => {
+        return getComponents()
+    })
+    .then((list) => {
         let queue = []
         list.forEach(function (item) {
             queue.push(new Promise(function (resolve , reject) {
@@ -142,7 +193,7 @@ getComponents()
         })
         return Promise.all(queue)
     })
-    .then(function (list) {
+    .then((list) => {
         saveVue(list)
         spinner.stop()
     })

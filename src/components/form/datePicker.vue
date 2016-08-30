@@ -8,7 +8,7 @@
     border-radius: $border-radius-base;
     height: 2rem;
     line-height: 2rem;
-    padding: 0 2rem 0 .5rem;
+    padding: 0 .5rem 0 .5rem;
     vertical-align: bottom;
     width: 100%;
     box-sizing: border-box;
@@ -128,7 +128,7 @@
 }
 .rd-datepicker-footer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: .5rem;
     border-top: 1px solid #e9e9e9;
     background-color: #fff;
@@ -154,11 +154,6 @@
                 class="rd-datepicker-clear ion-close-circled"
                 v-show="state.pickerShow"
             ></i>
-            <rd-timepicker 
-                v-if="state.timePickerShow" 
-                :time-picker="timeTmp.time" 
-                @change="timeChange"
-            ></rd-timepicker>
         </div>
         <div class="rd-datepicker-content" v-show="state.pickerShow">
             <div class="rd-datepicker-contrl">
@@ -206,7 +201,16 @@
                 </div>
             </div>
             <div class="rd-datepicker-footer">
-                <rd-button @click.stop="togglePicker" size="small" type="primary">确认</rd-button>
+                <div>
+                    <rd-timepicker 
+                        v-if="state.timePickerShow" 
+                        :time-picker="timeTmp.time" 
+                        @change="timeChange"
+                    ></rd-timepicker>
+                </div>
+                <div>
+                    <rd-button @click="confirm" size="small" type="primary">确认</rd-button>
+                </div>
             </div>
         </div>
     </div>
@@ -321,7 +325,7 @@ export default {
                 month: '06'
             },
             options: {
-                quickClose: false,
+                quickClose: true,
                 placeHolder: '请选择时间',
                 timePicker: false,
                 format: 'YYYY-MM-DD',
@@ -339,9 +343,6 @@ export default {
             let str = this.date.value
             if (!str) {
                 return this.options.placeHolder
-            }
-            if (this.state.timePickerShow) {
-                return moment(Date.parse(str)).format(this.options.format)
             }
             return str
         }
@@ -503,10 +504,8 @@ export default {
                     let now = new Date()
                     this.timeTmp.time.value = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds())
                 }
-            }
-            this.output(day)
-            if (this.options.quickClose) {
-                this.togglePicker()
+            } else {
+                this.output(day)
             }
         },
         timeChange (time) {
@@ -521,11 +520,22 @@ export default {
             if (!this.state.timePickerShow) {
                 this.date.rawDate = moment(day.time)
                 this.date.value = this.date.rawDate.format(this.options.format)
+                if (this.options.quickClose) {
+                    this.togglePicker()
+                }
             } else {
-                const tmp = moment(day.time).format(this.options.format)
+                const tmp = moment(day.time).format('YYYY-MM-DD')
                 this.date.rawDate = moment(Date.parse(tmp + ' ' + this.timeTmp.time.value))
                 this.date.value = this.date.rawDate.format(this.options.format)
             }
+        },
+        confirm () {
+            this.dayList.forEach(day => {
+                if (day.selected) {
+                    this.output(day)
+                }
+            })
+            this.togglePicker()
         }
     }
 }

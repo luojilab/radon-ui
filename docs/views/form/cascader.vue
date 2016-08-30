@@ -142,7 +142,7 @@ export default {
 import { Mark } from '../index'
 import {
     rdCascader
-} from '../../../src/components/index'
+} from 'radon-ui'
 
 const options = [{
     value: 'china',

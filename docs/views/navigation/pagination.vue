@@ -11,19 +11,46 @@
     <div class="list" style="margin-bottom: 10px;">
         <span v-for="item in list" style="background: #ccc; margin-right: 10px;">{{item}}</span>
     </div>
-    <pagination :page-data.sync="list" url="/mock/page" data-key='data'></pagination>
+    <rd-pagination @change="changePage" :total="pagination.total" :options="pagination.options"></rd-pagination>
     <mark>
         <textarea class="ex-mark-text">
 ### 代码
 ```html
- <pagination :page-data.sync="list" url="/mock/page" data-key='data'></pagination>
+ <rd-pagination @change="changePage" :total="pagination.total" :options="pagination.options"></rd-pagination>
 ```
+
+```javascript
+changePage (params) {
+    this.$http.get('/mock/page', params)
+        .then((res) => {
+            let resData = res.data
+            this.list = resData
+            this.pagination.total = resData.total
+        }, (error) => {
+            console.error(error)
+        })
+}
+
 ```
-list: [1, 2, 3]  
-* 这里的list和 page-data对应起来。 
-* url表示你要请求的服务接口。 
-* data-key 是返回json数据的关键字
+
+### API 
+
+total: Number
+
+
+options: Object
+
 ```
+options: {
+    pageSize: 10,
+    remote: {
+        pageIndexName: 'pageIndex',
+        pageSizeName: 'pageSize',
+        offset: 0
+    }
+}
+```
+
 
         </textarea>
     </mark>
@@ -31,17 +58,40 @@ list: [1, 2, 3]
 </template>
 <script>
 import { Mark } from '../index'
-import Pagination from 'src/components/navigation/pagination.vue'
+import { rdPagination } from 'radon-ui'
 
 export default {
     data () {
         return {
-            list: [1, 2, 3]
+            list: [1, 2, 3],
+            pagination: {
+                total: 10,
+                options: {
+                    pageSize: 10,
+                    remote: {
+                        pageIndexName: 'pageIndex',
+                        pageSizeName: 'pageSize',
+                        offset: 0
+                    }
+                }
+            }
         }
     },
     components: {
-        Pagination,
+        rdPagination,
         Mark
+    },
+    methods: {
+        changePage (params) {
+            this.$http.get('/mock/page', params)
+                .then((res) => {
+                    let resData = res.data
+                    this.list = resData
+                    this.pagination.total = resData.total
+                }, (error) => {
+                    console.error(error)
+                })
+        }
     }
 }
 </script>

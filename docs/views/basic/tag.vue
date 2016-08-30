@@ -3,28 +3,40 @@
     <div class="ex-card">
     <mark>
         <textarea class="ex-mark-text">
-# Spin 加载中
-用于页面和区块的加载中状态。
-### 何时使用
+# Tag 标签
 
-页面局部处于等待异步数据或正在渲染过程时，合适的加载动效会有效缓解用户的焦虑。
+用于一些突出展示事物的状态、属性
 
 ### 示例
         </textarea>
     </mark>
     <p>
-        <rd-spin></rd-spin>
-        <rd-spin color="red"></rd-spin>
-        <rd-spin color="blue"></rd-spin>
+        <rd-tag value="simple tag"></rd-tag>
+        <rd-tag type="info" value="simple tag"></rd-tag>
+        <rd-tag type="warning" value="simple tag"></rd-tag>
+        <rd-tag type="success" value="simple tag"></rd-tag>
+        <rd-tag type="danger" value="simple tag" icon="ion-close-circled"></rd-tag>
     </p>
     <mark>
         <textarea class="ex-mark-text">
 ### 代码
 ```html
-<rd-spin></rd-spin>
-<rd-spin color="red"></rd-spin>
-<rd-spin color="blue"></rd-spin>
+<rd-tag value="simple tag"></rd-tag>
+<rd-tag type="info" value="simple tag"></rd-tag>
+<rd-tag type="warning" value="simple tag"></rd-tag>
+<rd-tag type="success" value="simple tag"></rd-tag>
+<rd-tag type="danger" value="simple tag"></rd-tag>
 ```
+
+### API
+
+`props`：
+
+| 参数            | 类型         | 说明           |
+| :------------- |:-------------|:--------------|
+| value          | String       | 显示文字       |
+| type           | String       | 状态 （primary， info, warning, success, danger）|
+| icon           | String       | 图标         |
 
         </textarea>
     </mark>
@@ -34,12 +46,12 @@
 <script>
 import { Mark } from '../index'
 import {
-    rdSpin
-} from '../../../src/components/index'
+    rdTag
+} from 'radon-ui'
 
 export default {
     components: {
-        rdSpin,
+        rdTag,
         Mark
     }
 }

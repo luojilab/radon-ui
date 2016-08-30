@@ -79,7 +79,7 @@ export default {
 import { Mark } from '../index'
 import {
     rdSlider
-} from '../../../src/components/index'
+} from 'radon-ui'
 
 export default {
     data () {

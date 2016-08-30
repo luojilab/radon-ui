@@ -28,7 +28,7 @@ html,body{
 }
 .ex-header-logo-text {
     color: #fff;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: 100;
     line-height: 3rem;
 }
@@ -63,6 +63,7 @@ html,body{
     height: 100%;
     margin-bottom: 5rem;
     background-color: #fff;
+    flex-shrink: 0;
 }
 .content{
     min-width: 40rem;
@@ -189,7 +190,7 @@ html,body{
     }
     .content {
         min-width: initial;
-        padding: 1rem;
+        padding: 4rem 1rem;
         box-sizing: border-box;
         overflow: hidden;
     }
@@ -214,8 +215,6 @@ html,body{
     .ex-footer {
         padding: .5rem 1rem;
         font-size: .8rem;
-    }
-    .ex-footer {
         flex-wrap: wrap;
     }
     .ex-footer-nav {
@@ -265,6 +264,7 @@ html,body{
                 <rd-modal></rd-modal>
                 <rd-notification></rd-notification>
                 <rd-preview></rd-preview>
+                <rd-loadingbar></rd-loadingbar>
             </div>
         </div>
         <footer class="ex-footer">
@@ -305,17 +305,25 @@ export default {
                 subMenu: [{
                     title: 'Basic',
                     group: [{
-                        title: 'AudioPlayer',
-                        subTitle: '音频播放器',
-                        link: 'basic/audio'
-                    }, {
                         title: 'Button',
                         subTitle: '按钮',
                         link: 'basic/button'
                     }, {
-                        title: 'Upload',
-                        subTitle: '上传',
-                        link: 'basic/upload'
+                        title: 'dropButton',
+                        subTitle: '下拉按钮',
+                        link: 'basic/drop-button'
+                    }, {
+                        title: 'Tag',
+                        subTitle: '标签',
+                        link: 'basic/tag'
+                    }, {
+                        title: 'Table',
+                        subTitle: '表格',
+                        link: 'basic/table'
+                    }, {
+                        title: 'Card',
+                        subTitle: '卡片',
+                        link: 'basic/card'
                     }]
                 }, {
                     title: 'Form',
@@ -335,10 +343,6 @@ export default {
                         title: 'Number',
                         subTitle: '数字输入框',
                         link: 'form/number'
-                    }, {
-                        title: 'Table',
-                        subTitle: '表格',
-                        link: 'form/table'
                     }, {
                         title: 'Switch',
                         subTitle: '开关',
@@ -361,39 +365,54 @@ export default {
                         link: 'form/cascader'
                     }]
                 }, {
-                    title: 'Presentation',
+                    title: 'Common',
                     group: [{
                         title: 'Alert',
                         subTitle: '警告提示',
-                        link: 'presentation/alert'
-                    }, {
-                        title: 'Modal',
-                        subTitle: '对话框',
-                        link: 'presentation/modal'
-                    }, {
-                        title: 'Notification',
-                        subTitle: '通知',
-                        link: 'presentation/notification'
-                    }, {
-                        title: 'Preview',
-                        subTitle: '图片预览',
-                        link: 'presentation/preview'
-                    }, {
-                        title: 'Progress',
-                        subTitle: '进度条',
-                        link: 'presentation/progress'
+                        link: 'common/alert'
                     }, {
                         title: 'Timeline',
                         subTitle: '时间线',
-                        link: 'presentation/timeline'
+                        link: 'common/timeline'
                     }, {
                         title: 'Tooltip',
                         subTitle: '对话框',
-                        link: 'presentation/tooltip'
+                        link: 'common/tooltip'
                     }, {
                         title: 'Spin',
                         subTitle: '加载中',
-                        link: 'presentation/spin'
+                        link: 'common/spin'
+                    }, {
+                        title: 'Upload',
+                        subTitle: '上传',
+                        link: 'common/upload'
+                    }, {
+                        title: 'AudioPlayer',
+                        subTitle: '音频播放器',
+                        link: 'common/audio'
+                    }, {
+                        title: 'Progress',
+                        subTitle: '进度条',
+                        link: 'common/progress'
+                    }]
+                }, {
+                    title: 'Global',
+                    group: [{
+                        title: 'Modal',
+                        subTitle: '对话框',
+                        link: 'global/modal'
+                    }, {
+                        title: 'Notification',
+                        subTitle: '通知',
+                        link: 'global/notification'
+                    }, {
+                        title: 'Preview',
+                        subTitle: '图片预览',
+                        link: 'global/preview'
+                    }, {
+                        title: 'LoadingBar',
+                        subTitle: '加载进度条',
+                        link: 'global/loadingbar'
                     }]
                 }, {
                     title: 'Navigation',
@@ -405,13 +424,6 @@ export default {
                         title: 'Pagination',
                         subTitle: '分页',
                         link: 'navigation/pagination'
-                    }]
-                }, {
-                    title: 'demo',
-                    group: [{
-                        title: 'Demo',
-                        subTitle: 'playground',
-                        link: 'form'
                     }]
                 }]
             }],
@@ -485,6 +497,7 @@ export default {
         resizeCheck () {
             if (this.state.timer) {
                 clearTimeout(this.state.timer)
+                this.state.timer = null
             }
             this.state.timer = setTimeout(() => {
                 if (document.body.offsetWidth > 768) {

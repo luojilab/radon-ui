@@ -1,9 +1,9 @@
 
 
 <template>
-    <div class="rd-tag-wrapper" :style="tagStyle">
+    <div class="rd-tag-wrapper" :style="tagStyle" :class="classList">
         <div class="rd-tag-value">{{value}}</div>
-        <i class="ion-close-circled" :class="iconClass" v-if="icon" @click="iconAction"></i>
+        <span class="rd-tag-icon" :class="iconClass" v-if="icon" @click="iconAction"></span>
     </div>
 </template>
 
@@ -11,6 +11,7 @@
 export default {
     props: {
         value: String,
+        type: String,
         bgcolor: String,
         color: String,
         icon: String,
@@ -20,9 +21,16 @@ export default {
     },
     computed: {
         iconClass () {
-            let list = {}
+            let list = []
             if (this.icon) {
-                list[this.icon] = true
+                list.push(this.icon)
+            }
+            return list
+        },
+        classList () {
+            let list = []
+            if (this.type) {
+                list.push(this.type)
             }
             return list
         },
@@ -32,7 +40,7 @@ export default {
                 list['color'] = this.color
             }
             if (this.bgcolor) {
-                list['background'] = this.bgcolor
+                list['background-color'] = this.bgcolor
             }
             return list
         }

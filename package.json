@@ -1,7 +1,20 @@
 {
   "name": "radon-ui",
-  "version": "1.0.0",
+  "version": "0.1.5",
   "description": "A Vue.js components lib",
+  "keywords": [
+    "radon-ui",
+    "radon ui",
+    "vue",
+    "vue ui",
+    "weex",
+    "vue-components",
+    "web-components",
+    "component",
+    "components",
+    "framework",
+    "frontend"
+  ],
   "author": "Awe <hilongjw@gmail.com>",
   "main": "dist/components/index.js",
   "scripts": {
@@ -11,13 +24,19 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
     "start": "node app"
   },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luojilab/radon-ui"
+  },
   "dependencies": {
-    "babel-runtime": "^6.0.0",
-    "marked": "^0.3.5",
-    "multer": "^1.1.0",
-    "vue": "^1.0.21"
+    "vue-animated-list": "^1.0.2",
+    "moment": "^2.13.0"
   },
   "devDependencies": {
+    "vue": "^1.0.26",
+    "babel-runtime": "^6.0.0",
+    "marked": "^0.3.5",
     "autoprefixer": "^6.3.6",
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
@@ -43,7 +62,6 @@
     "html-webpack-plugin": "^2.8.1",
     "http-proxy-middleware": "^0.12.0",
     "json-loader": "^0.5.4",
-    "moment": "^2.13.0",
     "node-bourbon": "^4.2.8",
     "node-sass": "^3.7.0",
     "optimize-css-assets-webpack-plugin": "^1.3.0",

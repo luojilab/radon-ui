@@ -145,7 +145,7 @@ export default {
 import { Mark } from '../index'
 import {
     rdDatepicker
-} from '../../../src/components/index'
+} from 'radon-ui'
 
 export default {
     data () {
@@ -162,6 +162,7 @@ export default {
                 value: '',
                 rawDate: {},
                 options: {
+                    format: 'YYYY/MM/DD HH:mm:ss',
                     placeHolder: '请选择时间（time)',
                     timePicker: true
                 }

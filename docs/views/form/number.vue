@@ -49,7 +49,7 @@ number: {
 import { Mark } from '../index'
 import {
     rdNumber
-} from '../../../src/components/index'
+} from 'radon-ui'
 
 export default {
     data () {

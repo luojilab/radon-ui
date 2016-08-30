@@ -15,7 +15,7 @@
 <script>
 import radonButton from '../basic/button.vue'
 import radonText from './textfield.vue'
-import rdTooltip from '../presentation/toolTip.vue'
+import rdTooltip from '../common/toolTip.vue'
 
 export default {
     props: {

@@ -41,11 +41,9 @@
 .marked h3::before {
     content: "#";
     color: #00BCD4;
-    position: absolute;
-    left: -1rem;
-    top: -.3rem;
     font-size: 1.2em;
     font-weight: bold;
+    margin-right: .5rem;
 }
 .marked blockquote {
     position: relative;

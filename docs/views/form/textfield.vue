@@ -15,7 +15,7 @@
     </p>
     <h4>状态</h4>
     <p>
-        <rd-text :textfield="form.info"></rd-text>
+        <rd-text :textfield="form.info" @blur="blurAction"></rd-text>
     </p>
     <p>
         <rd-text :textfield="form.warning"></rd-text>
@@ -356,6 +356,9 @@ export default {
         Mark
     },
     methods: {
+        blurAction () {
+            console.log('blur')
+        },
         userInputing (text) {
             this.form.username.state = 'loading'
             setTimeout(() => {

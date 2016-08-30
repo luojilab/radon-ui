@@ -22,7 +22,7 @@ function(e,A,n){var t,r;n(5),t=n(3),r=n(6),e.exports=t||{},e.exports.__esModule&
 function(e,A,n){"use strict";Object.defineProperty(A,"__esModule",{value:!0});var t=n(2);A["default"]={components:{Mark:t.Mark}}},584:/*!****************************************************************************************************************!*\
   !*** ./~/vue-html-loader!./~/vue-loader/lib/selector.js?type=template&index=0!./docs/views/index/resource.vue ***!
   \****************************************************************************************************************/
-function(e,A){e.exports="<div class=ex-content> <div class=ex-card> <mark> <textarea class=ex-mark-text>\n# 资源\n\n\n        </textarea> </mark> </div> </div>"},618:/*!***************************************!*\
+function(e,A){e.exports="<div class=ex-content> <div class=ex-card> <mark> <textarea class=ex-mark-text>\n# 资源\n\n### Vuejs\n\nRadonUI 基于 Vuejs 开发，[Vue.js 中文文档](http://vuejs.org.cn/)\n\n### 图标 Icon\n\nRadonUI 使用 ionic 的 icon 集合 [<i class=ion-ionic></i>  ionicons](http://ionicons.com/)\n\n\n\n        </textarea> </mark> </div> </div>"},618:/*!***************************************!*\
   !*** ./docs/views/index/resource.vue ***!
   \***************************************/
 function(e,A,n){var t,r;t=n(343),r=n(584),e.exports=t||{},e.exports.__esModule&&(e.exports=e.exports["default"]),r&&(("function"==typeof e.exports?e.exports.options||(e.exports.options={}):e.exports).template=r)}});

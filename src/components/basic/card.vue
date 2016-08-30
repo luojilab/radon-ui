@@ -4,19 +4,20 @@
     font-size: .8rem;
     padding: .5rem 1rem;
     margin-bottom: .5rem;
+    border-radius: 2px;
 }
 .rd-card-title {
     font-size: 1rem;
-    background: #fbfbfb;
+    background: rgba(0,0,0,0.02);
     padding: .5rem;
     margin: 0 -1rem;
     margin: -.5rem -1rem .5rem -1rem;
-    border-bottom: 2px solid #d4d4d4;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 </style>
 
 <template>
-    <div class="rd-card" :class="{'has-title': title}">
+    <div class="rd-card" :class="{'has-title': title}" :style="cardStyleList">
         <div v-if="title" class="rd-card-title">{{title}}</div>
         <slot></slot>
     </div>
@@ -25,7 +26,23 @@
 <script>
 export default {
     props: {
-        title: String
+        title: String,
+        bgColor: {
+            type: String,
+            default: '#fff'
+        },
+        fontColor: {
+            type: String,
+            default: '#555'
+        }
+    },
+    computed: {
+        cardStyleList () {
+            let list = {}
+            list['background-color'] = this.bgColor
+            list['color'] = this.fontColor
+            return list
+        }
     }
 }
 </script>

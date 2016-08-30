@@ -17,6 +17,12 @@ npm install radon-ui
 ### 基本组件的使用
 
 
+在根组件中引入 RadonUI 的样式文件
+
+```html
+<style src="radon-ui/dist/static/css/dist.css"></style>
+```
+
 引入 `rdDatepicker` 日历组件并局部注册并定义日历组件的数据对象及配置
 
 ```javascript
@@ -64,6 +70,7 @@ import { RadonInstall } from 'radon-ui'
 Vue.use(RadonInstall, {
     Modal: true,
     Notification: true,
+    LoadingBar: true,
     Preview: true
 })
 ```
@@ -71,12 +78,14 @@ Vue.use(RadonInstall, {
 推荐在 Vue 的根实例中放置全局组件的位置
 
 ```html
-<!-- set root Vue data & template -->
+<!-- template -->
 <template>
     <div class="container">
         <router-view></router-view>
+        <!-- radon global components -->
         <rd-modal></rd-modal>
         <rd-notification></rd-notification>
+        <rd-loadingbar></rd-loadingbar>
         <rd-preview></rd-preview>
     </div>
 </template>

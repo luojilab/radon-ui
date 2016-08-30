@@ -73,6 +73,7 @@ import { RadonInstall } from 'radon-ui'
 Vue.use(RadonInstall, {
     Modal: true,
     Notification: true,
+    LoadingBar: true,
     Preview: true
 })
 ```
@@ -80,12 +81,14 @@ Vue.use(RadonInstall, {
 推荐在 Vue 的根实例中放置全局组件的位置
 
 ```html
-<!-- set root Vue data & template -->
+<!-- template -->
 <template>
     <div class="container">
         <router-view></router-view>
+        <!-- radon global components -->
         <rd-modal></rd-modal>
         <rd-notification></rd-notification>
+        <rd-loadingbar></rd-loadingbar>
         <rd-preview></rd-preview>
     </div>
 </template>

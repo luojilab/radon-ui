@@ -1,3 +1,4 @@
+'use strict'
 require('shelljs/global')
 
 const babel     = require("babel-core")

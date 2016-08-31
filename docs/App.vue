@@ -127,7 +127,7 @@ html,body{
     position: fixed;
     font-size: 2rem;
     z-index: 3;
-    color: #666;
+    color: #fff;
     width: 4rem;
     text-align: center;
     height: 4rem;

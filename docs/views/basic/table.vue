@@ -30,7 +30,9 @@ TableData: {
     // 基础设置 
     options: {
         // 是否展示选择 :Boolean
-        select: true
+        select: true,
+        // 每页展示条数 Default: 20, :Number
+        pageSize: 2
     },
     // 列描述数据对象
     columns: [{
@@ -112,7 +114,8 @@ export default {
         return {
             TableData: {
                 options: {
-                    select: true
+                    select: true,
+                    pageSize: 2
                 },
                 columns: [{
                     index: 1,
@@ -213,7 +216,8 @@ export default {
             TableData: {
                 options: {
                     select: true,
-                    state: true
+                    state: true,
+                    pageSize: 2
                 },
                 columns: [{
                     index: 0,

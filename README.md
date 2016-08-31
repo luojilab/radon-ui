@@ -70,12 +70,7 @@ export default {
 import Vue from 'vue'
 import { RadonInstall } from 'radon-ui'
 
-Vue.use(RadonInstall, {
-    Modal: true,
-    Notification: true,
-    LoadingBar: true,
-    Preview: true
-})
+Vue.use(RadonInstall)
 ```
 
 推荐在 Vue 的根实例中放置全局组件的位置

@@ -4,6 +4,7 @@
     max-width: 100%;
     text-align: left;
     border-radius: 6px;
+    margin-bottom: 1rem;
 }
 .rd-table-thead {
 }
@@ -82,10 +83,12 @@
             </tr>
         </tbody>
     </table>
+    <rd-pagination @change="paginationChanged" :total="pagination.total" :options="pagination"></rd-pagination>
 </template>
 <script>
 import radonCheckbox from '../form/checkbox.vue'
 import rdButton from '../basic/button.vue'
+import rdPagination from '../navigation/pagination.vue'
 const generateList = (columns, tableData) => {
     let cols = columns.sort((a, b) => {
         return a.index - b.index
@@ -122,19 +125,37 @@ export default {
         return {
             selectAll: {
                 checked: false
+            },
+            pagination: {
+                total: 0,
+                pageIndex: 1,
+                pageSize: this.table.options.pageSize || 20,
+                remote: {
+                    pageIndexName: 'pageIndex',
+                    pageSizeName: 'pageSize',
+                    offset: 0
+                }
             }
         }
     },
     computed: {
         List () {
-            return generateList(this.table.columns, this.table.tableData)
+            const list = generateList(this.table.columns, this.table.tableData)
+            const start = ((this.pagination.pageIndex - 1) * (this.table.options.pageSize || 20)) + 1
+            const end = list.length > (this.pagination.pageIndex * this.table.options.pageSize) ? this.pagination.pageIndex * this.table.options.pageSize : list.length
+            this.pagination.total = list.length
+            return list.slice(start - 1, end)
         }
     },
     components: {
         radonCheckbox,
-        rdButton
+        rdButton,
+        rdPagination
     },
     methods: {
+        paginationChanged (pagination) {
+            this.pagination.pageIndex = pagination.pageIndex
+        },
         stateTagClass (state) {
             let classList = {}
             classList[state.type] = true

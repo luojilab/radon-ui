@@ -1,6 +1,6 @@
 # Radon UI
 
-> 一个用于企业级后台产品开发的简洁易用的Vue组件库
+> 一个帮助你快速开发产品的Vue组件库，简洁好用，效率高，让你摆脱各种定制化的烦恼。
 
 ## 特性
 
@@ -70,12 +70,7 @@ export default {
 import Vue from 'vue'
 import { RadonInstall } from 'radon-ui'
 
-Vue.use(RadonInstall, {
-    Modal: true,
-    Notification: true,
-    LoadingBar: true,
-    Preview: true
-})
+Vue.use(RadonInstall)
 ```
 
 推荐在 Vue 的根实例中放置全局组件的位置

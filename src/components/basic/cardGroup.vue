@@ -12,6 +12,14 @@
         margin-right: 0;
     }
 }  
+@media screen and (max-width: 768px) {
+    .rd-card-group {
+        flex-wrap: wrap;
+        &>.rd-card {
+            margin: 0 0 .5rem 0;
+        }
+    } 
+}
 </style>
 
 <template>

@@ -1,5 +1,14 @@
+<style>
+.ex-table-container {
+    overflow-x: auto; 
+}
+.ex-table .rd-table {
+    min-width: 30rem;
+}    
+</style>
+
 <template>
-<div class="ex-content">
+<div class="ex-content ex-table">
     <div class="ex-card">
     <mark>
         <textarea class="ex-mark-text">
@@ -7,7 +16,7 @@
 展示行列数据。
         </textarea>
     </mark>
-    <p>
+    <p class="ex-table-container">
         <rd-table :table="TableData"></rd-table>
     </p>
     <mark>

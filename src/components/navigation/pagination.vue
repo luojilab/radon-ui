@@ -110,10 +110,10 @@
             <li class="item" :class="{'active': 1 == pageStart}" @click="first">
                 <span>1</span>
             </li>
-             <li class="jump-prev" @click="jump(-5)"  v-show="pageLimit.max > 10 && pageStart > 4">
+            <li class="jump-prev" @click="jump(-5)"  v-show="pageLimit.max > 10 && pageStart > 4">
                 <span></span>
             </li>
-            <li class="item" :class="{'active': el == pageStart}" @click="pagePath(el)" v-for="el in pageList">
+            <li class="item" :class="{'active': el == pageStart}" @click="pagePath(el)" v-for="el in pageList" v-if="el">
                 <span>{{el}}</span>
             </li>
             <li class="jump-next" @click="jump(5)" v-show="pageLimit.max > 10 && pageStart <= pageLimit.max - 4">
@@ -237,6 +237,11 @@ export default {
             let arr = []
             for (let i = 2; i <= this.pageLimit.max - 1; i++) {
                 arr.push(i)
+            }
+            if (this.pageLimit.max === 2) {
+                arr.length = 1
+                this.pageList = arr
+                return
             }
             if (this.pageLimit.max < 10) {
                 this.pageList = arr.slice(0, this.pageLimit.max)

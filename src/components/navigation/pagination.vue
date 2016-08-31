@@ -170,7 +170,7 @@ export default {
         if (this.url) {
             this.$optionsDefault.remote.url = this.url
         }
-        this.initPageList()
+        this.initPageList(this.total)
         this.getData(1)
     },
     watch: {
@@ -217,11 +217,7 @@ export default {
             this.getData()
         },
         initPageList (total) {
-            if (total % this.$optionsDefault.pageSize === 0) {
-                this.pageLimit.max = Math.floor(total / this.$optionsDefault.pageSize) || 5
-            } else {
-                this.pageLimit.max = Math.floor(total / this.$optionsDefault.pageSize + 1) || 5
-            }
+            this.pageLimit.max = Math.ceil(total / this.$optionsDefault.pageSize)
             this.pageListRefresh()
         },
         getData () {

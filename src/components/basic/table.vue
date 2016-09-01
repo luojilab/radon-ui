@@ -56,7 +56,7 @@
         <thead class="rd-table-thead">
             <tr class="rd-table-th">
                 <td v-if="table.options.select" class="rd-table-check-col">
-                    <radon-checkbox @click="selectAllAction" :checkbox="selectAll"></radon-checkbox>
+                    <rd-checkbox :checkbox="selectAll"></rd-checkbox>
                 </td>
                 <td class="rd-table-td" v-for="col in table.columns" @click="touchCol($event, col)">{{col.value}}</td>
                 <td v-if="table.options.state">
@@ -70,7 +70,7 @@
         <tbody>
             <tr class="rd-table-th" v-for="row in List" track-by="$index">
                 <td v-if="row.checkbox" class="rd-table-check-col">
-                    <radon-checkbox :checkbox="row.checkbox"></radon-checkbox>
+                    <rd-checkbox :checkbox="row.checkbox"></rd-checkbox>
                 </td>
                 <td class="rd-table-td" v-for="val in row._value" track-by="$index">{{val}}</td>
                 <td class="rd-table-td" v-if="row.state">
@@ -84,8 +84,9 @@
     </table>
 </template>
 <script>
-import radonCheckbox from '../form/checkbox.vue'
+import rdCheckbox from '../form/checkbox.vue'
 import rdButton from '../basic/button.vue'
+
 const generateList = (columns, tableData) => {
     let cols = columns.sort((a, b) => {
         return a.index - b.index
@@ -125,13 +126,18 @@ export default {
             }
         }
     },
+    watch: {
+        'selectAll.checked' (val) {
+            this.selectAllAction(val)
+        }
+    },
     computed: {
         List () {
             return generateList(this.table.columns, this.table.tableData)
         }
     },
     components: {
-        radonCheckbox,
+        rdCheckbox,
         rdButton
     },
     methods: {
@@ -140,9 +146,9 @@ export default {
             classList[state.type] = true
             return classList
         },
-        selectAllAction (e) {
+        selectAllAction (val) {
             this.table.tableData.forEach(row => {
-                row.checkbox.checked = !this.selectAll.checked
+                row.checkbox.checked = val
             })
         },
         touchCol (e, col) {

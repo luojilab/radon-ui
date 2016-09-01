@@ -14,7 +14,7 @@ module.exports = merge(baseWebpackConfig, {
   devtool: '#eval-source-map',
   vue: {
     loaders: utils.cssLoaders({
-      sourceMap: true
+      sourceMap: false
     }),
     postcss: [require('precss')(), require("postcss-url")()]
   },

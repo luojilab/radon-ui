@@ -18,6 +18,9 @@ this.$Modal.create(title:String, content:String, onConfirm:Function, onCancle:Fu
     <p>
         <rd-button @click="open">开启对话框</rd-button>
     </p>
+    <p>
+        <rd-button @click="openHTML">开启对话框</rd-button>
+    </p>
     <mark>
         <textarea class="ex-mark-text">
 ## 代码
@@ -69,14 +72,18 @@ export default {
 
 ## API
 
-`this.$Modal.create(title, content, confirm, cancel)`
+`this.$Modal.confirm(title, content, confirm, cancel)`
+
+`this.$Modal.confirmWithHTML(title, content, confirm, cancel)`
+
 
 | 参数            | 类型         | 说明           |
 | :------------- |:-------------|:--------------|
 | title          | String       | 窗口标题       |
-| content        | String       | 正文描述文字    |
+| content        | String       | 正文描述文字，在 confirmWithHTML 中可以为HTML|
 | confirm        | Function     | 确认回调函数     |
 | cancel         | Function     | 取消或者关闭回调函数 |
+
 
         </textarea>
     </mark>
@@ -99,9 +106,25 @@ export default {
     },
     methods: {
         open () {
-            this.$Modal.create(
+            this.$Modal.confirm(
                 '这里是标题',
                 '这里应该说点什么',
+                () => {
+                    this.$Notification.success('你点击了确认', '你点击了确认你点击了确认你点击了确认你点击了确认你点击了确认', 5000)
+                },
+                () => {
+                    this.$Notification.success('你点击了取消', '', 5000)
+                }
+            )
+        },
+        openHTML () {
+            this.$Modal.confirmWithHTML(
+                '这里是标题',
+                `
+                    <h1>这里是个H1</h1>
+                    <p>这里是一个段落</p>
+                    <h2>这里是个H1</h2>
+                `,
                 () => {
                     this.$Notification.success('你点击了确认', '你点击了确认你点击了确认你点击了确认你点击了确认你点击了确认', 5000)
                 },

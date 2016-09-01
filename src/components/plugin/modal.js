@@ -7,6 +7,7 @@ export default (Vue, $root) => {
         show: false,
         title: '',
         content: '',
+        rawContent: '',
         cancel: () => {},
         confirm: () => {}
     })
@@ -19,6 +20,7 @@ export default (Vue, $root) => {
                 show: true,
                 title: title,
                 content: text,
+                rawContent: '',
                 cancel: cancel,
                 confirm: confirm
             }
@@ -28,8 +30,30 @@ export default (Vue, $root) => {
                 show: false,
                 title: '',
                 content: '',
+                rawContent: '',
                 cancel: () => {},
                 confirm: () => {}
+            }
+        },
+        confirm (title, text, confirm, cancel) {
+            $root.RADON_MODAL = {
+                show: true,
+                title: title,
+                content: text,
+                rawContent: '',
+                cancel: cancel,
+                confirm: confirm
+            }
+        },
+        confirmWithHTML (title, rawHTML, confirm, cancel) {
+            console.log(rawHTML)
+            $root.RADON_MODAL = {
+                show: true,
+                title: title,
+                content: '',
+                rawContent: rawHTML,
+                cancel: cancel,
+                confirm: confirm
             }
         }
     }

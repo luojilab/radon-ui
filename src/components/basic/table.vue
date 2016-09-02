@@ -16,6 +16,7 @@
     }
 }
 .rd-table-td {
+    position: relative;
     font-size: .8rem;
     text-align: left;
     padding: 1rem .5rem;
@@ -44,6 +45,13 @@
         background-color: #f50;
     }
 }
+.rd-table-sort-icon {
+    position: absolute;
+    right: .5rem;
+    &.active {
+        transform: rotate(180deg);
+    }
+}
 @media screen and (max-width: 768px) {
     .rd-table-td {
         padding: 0 .5rem;
@@ -58,7 +66,18 @@
                 <td v-if="table.options.select" class="rd-table-check-col">
                     <rd-checkbox :checkbox="selectAll"></rd-checkbox>
                 </td>
-                <td class="rd-table-td" v-for="col in table.columns" @click="touchCol($event, col)">{{col.value}}</td>
+                <td 
+                    class="rd-table-td" 
+                    v-for="col in table.columns" 
+                    @click="touchCol($event, col)"
+                >
+                    {{col.value}}
+                    <span 
+                        v-if="col.sort" 
+                        class="rd-table-sort-icon ion-ios-arrow-down"
+                        :class="{ 'active': col.sort.state }"
+                    ></span>
+                </td>
                 <td v-if="table.options.state">
                     状态
                 </td>

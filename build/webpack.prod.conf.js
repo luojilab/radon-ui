@@ -7,6 +7,8 @@ var baseWebpackConfig = require('./webpack.base.conf')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+var distFontRewriterPlugin = require('./dist-font-rewriter')
+
 var env = process.env.NODE_ENV === 'testing' ? require('../config/test.env') : config.build.env
 
 var webpackConfig = merge(baseWebpackConfig, {
@@ -47,6 +49,7 @@ var webpackConfig = merge(baseWebpackConfig, {
           cssProcessorOptions: { discardComments: {removeAll: true } },
           canPrint: true
         }),
+        new distFontRewriterPlugin(),
         // generate dist index.html with correct asset hash for caching.
         // you can customize output by editing /index.html
         // see https://github.com/ampedandwired/html-webpack-plugin

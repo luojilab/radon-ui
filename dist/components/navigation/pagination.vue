@@ -12,10 +12,10 @@
             <li class="item" :class="{'active': 1 == pageStart}" @click="first">
                 <span>1</span>
             </li>
-             <li class="jump-prev" @click="jump(-5)"  v-show="pageLimit.max > 10 && pageStart > 4">
+            <li class="jump-prev" @click="jump(-5)"  v-show="pageLimit.max > 10 && pageStart > 4">
                 <span></span>
             </li>
-            <li class="item" :class="{'active': el == pageStart}" @click="pagePath(el)" v-for="el in pageList">
+            <li class="item" :class="{'active': el == pageStart}" @click="pagePath(el)" v-for="el in pageList" v-if="el">
                 <span>{{el}}</span>
             </li>
             <li class="jump-next" @click="jump(5)" v-show="pageLimit.max > 10 && pageStart <= pageLimit.max - 4">
@@ -72,7 +72,7 @@ export default {
         if (this.url) {
             this.$optionsDefault.remote.url = this.url
         }
-        this.initPageList()
+        this.initPageList(this.total)
         this.getData(1)
     },
     watch: {
@@ -119,11 +119,7 @@ export default {
             this.getData()
         },
         initPageList (total) {
-            if (total % this.$optionsDefault.pageSize === 0) {
-                this.pageLimit.max = Math.floor(total / this.$optionsDefault.pageSize) || 5
-            } else {
-                this.pageLimit.max = Math.floor(total / this.$optionsDefault.pageSize + 1) || 5
-            }
+            this.pageLimit.max = Math.ceil(total / this.$optionsDefault.pageSize)
             this.pageListRefresh()
         },
         getData () {
@@ -139,6 +135,11 @@ export default {
             let arr = []
             for (let i = 2; i <= this.pageLimit.max - 1; i++) {
                 arr.push(i)
+            }
+            if (this.pageLimit.max === 2) {
+                arr.length = 1
+                this.pageList = arr
+                return
             }
             if (this.pageLimit.max < 10) {
                 this.pageList = arr.slice(0, this.pageLimit.max)

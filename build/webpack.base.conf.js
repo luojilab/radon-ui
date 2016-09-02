@@ -79,7 +79,7 @@ module.exports = {
         include: projectRoot,
         query: {
           limit: 10000,
-          name: 'static/css/static/fonts/[name].[ext]'
+          name: utils.assetsPath('fonts/[name].[ext]')
         }
       }
     ]

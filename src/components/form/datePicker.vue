@@ -136,6 +136,42 @@
 .rd-datepicker-value {
     display: flex;
 }
+@keyframes pickerFadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -1rem, 0);
+    transform: translate3d(0, -1rem, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes pickerFadeOutUp {
+  from {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -1rem, 0);
+    transform: translate3d(0, -1rem, 0);
+  }
+}
+.picker-fade-in-down-transition {
+  animation-duration: .2s;
+  animation-fill-mode: both;
+}
+.picker-fade-in-down-enter {
+    animation-name: pickerFadeInDown;
+}
+.picker-fade-in-down-leave {
+    animation-name: pickerFadeOutUp;
+}
 </style>
 <template>
     <div 
@@ -155,7 +191,7 @@
                 v-show="state.pickerShow"
             ></i>
         </div>
-        <div class="rd-datepicker-content" v-show="state.pickerShow">
+        <div class="rd-datepicker-content" v-show="state.pickerShow"  transition="picker-fade-in-down">
             <div class="rd-datepicker-contrl">
                 <div class="rd-datepicker-info-year">
                     <span class="rd-datepicker-arrow ion-ios-arrow-left" @click.stop="moveYear(false)"></span>

@@ -38,6 +38,42 @@
 .rd-dropbtn-list .rd-btn:last-child {
     border: none;
 }
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-50%, -1rem, 0);
+    transform: translate3d(-50%, -1rem, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(-50%, -1rem, 0);
+    transform: translate3d(-50%, -1rem, 0);
+  }
+}
+.fade-in-down-transition {
+  animation-duration: .3s;
+  animation-fill-mode: both;
+}
+.fade-in-down-enter {
+    animation-name: fadeInDown;
+}
+.fade-in-down-leave {
+    animation-name: fadeOutUp;
+}
 </style>
 <template>
     <button 
@@ -47,7 +83,7 @@
     >
         <span class="rd-dropbtn-text">{{text}}</span>
         <i class="ion-ios-arrow-down rd-dropbtn-icon"></i>
-        <div class="rd-dropbtn-list" v-show="state.show">
+        <div class="rd-dropbtn-list" v-show="state.show" transition="fade-in-down">
             <span class="ion-arrow-up-b rd-box-arrow-icon"></span>
             <slot></slot>
         </div>

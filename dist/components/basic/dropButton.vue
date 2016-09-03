@@ -7,7 +7,7 @@
     >
         <span class="rd-dropbtn-text">{{text}}</span>
         <i class="ion-ios-arrow-down rd-dropbtn-icon"></i>
-        <div class="rd-dropbtn-list" v-show="state.show">
+        <div class="rd-dropbtn-list" v-show="state.show" transition="fade-in-down">
             <span class="ion-arrow-up-b rd-box-arrow-icon"></span>
             <slot></slot>
         </div>

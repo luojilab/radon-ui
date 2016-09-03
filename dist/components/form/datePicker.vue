@@ -17,7 +17,7 @@
                 v-show="state.pickerShow"
             ></i>
         </div>
-        <div class="rd-datepicker-content" v-show="state.pickerShow">
+        <div class="rd-datepicker-content" v-show="state.pickerShow"  transition="picker-fade-in-down">
             <div class="rd-datepicker-contrl">
                 <div class="rd-datepicker-info-year">
                     <span class="rd-datepicker-arrow ion-ios-arrow-left" @click.stop="moveYear(false)"></span>

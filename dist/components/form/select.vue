@@ -3,8 +3,7 @@
     <div 
         class="rd-select-container"
         @click="showOption" 
-        :class="{ 
-            'active': show,
+        :class="{
             'rd-select-top': position === 'top'
         }"
     >
@@ -23,7 +22,7 @@
             </div>
         </div>
         <span class="rd-select-arrow ion-chevron-down"></span>
-        <div class="rd-select-options-container">
+        <div class="rd-select-options-container" v-show="show" transition="picker-fade-in-down">
             <div 
                 class="rd-select-option" 
                 @click="setValue(option)" 
@@ -144,7 +143,8 @@ export default {
             this.select.value = this.select.multiple ? selected : selected[0] || {}
         },
         showOption (e) {
-            if (e.clientY + document.body.scrollTop + 320 > document.body.offsetHeight) {
+            let rect = this.$el.getBoundingClientRect()
+            if (rect.top > rect.bottom) {
                 this.position = 'top'
             } else {
                 this.position = 'bottom'

@@ -1,15 +1,15 @@
-var path = require('path')
-var config = require('../config')
-var utils = require('./utils')
-var webpack = require('webpack')
-var merge = require('webpack-merge')
-var baseWebpackConfig = require('./webpack.base.conf')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-var distFontRewriterPlugin = require('./dist-font-rewriter')
-
-var env = process.env.NODE_ENV === 'testing' ? require('../config/test.env') : config.build.env
+const path = require('path')
+const config = require('../config')
+const utils = require('./utils')
+const webpack = require('webpack')
+const merge = require('webpack-merge')
+const baseWebpackConfig = require('./webpack.base.conf')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const distFontRewriterPlugin = require('./dist-font-rewriter')
+const BabiliPlugin = require("babili-webpack-plugin")
+const env = process.env.NODE_ENV === 'testing' ? require('../config/test.env') : config.build.env
 
 var webpackConfig = merge(baseWebpackConfig, {
     module: {
@@ -49,7 +49,12 @@ var webpackConfig = merge(baseWebpackConfig, {
           cssProcessorOptions: { discardComments: {removeAll: true } },
           canPrint: true
         }),
-        new distFontRewriterPlugin(),
+        new distFontRewriterPlugin({
+            fileReg: new RegExp('static/css/dist.css'),
+            processor: function (source) {
+                return source.replace(/static\/fonts/g, '..\/fonts')
+            }
+        }),
         // generate dist index.html with correct asset hash for caching.
         // you can customize output by editing /index.html
         // see https://github.com/ampedandwired/html-webpack-plugin
@@ -87,13 +92,7 @@ var webpackConfig = merge(baseWebpackConfig, {
             name: 'manifest',
             chunks: ['vendor']
         }),
-        new webpack.optimize.UglifyJsPlugin({
-                compress: {
-                    warnings: false
-                },
-                exclude: /vendor*/i
-            }
-        )
+        new BabiliPlugin()
     ]
 })
 

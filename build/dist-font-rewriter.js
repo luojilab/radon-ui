@@ -1,23 +1,37 @@
 'use strict'
 
 const webpackSources = require('webpack-sources')
-const distName = 'static/css/dist.css'
 
-function CovFont() {}
-
-CovFont.prototype.createCssAsset = function(css, originalAsset) {
-  return new webpackSources.RawSource(css);
+let Options = {
+    fileReg: /\.css$/g,
+    processor: null
 }
 
-CovFont.prototype.apply = function (compiler) {
+function CovRewriter (options) {
+    Object.assign(Options, options)
+}
+
+CovRewriter.prototype.createCssAsset = function (css, originalAsset) {
+    return new webpackSources.RawSource(css);
+}
+
+CovRewriter.prototype.assetFind = function (assets) {
+    let asset = ''
+    Object.keys(assets).forEach(key => {
+        if (Options.fileReg.test(key)) {
+            asset = assets[key]
+            if (Options.processor) {
+                assets[key] = this.createCssAsset(Options.processor(asset.source()), asset)
+            }
+        }
+    })
+}
+
+CovRewriter.prototype.apply = function (compiler) {
     compiler.plugin('emit', (compilation, callback) => {
-        let assets = compilation.assets
-        let asset = assets[distName]
-        let distFile = asset.source()
-        let newFile = distFile.replace(/static\/fonts/g, '..\/fonts')
-        assets[distName] = this.createCssAsset(newFile, asset)
+        this.assetFind(compilation.assets)
         callback()
     })
 }
 
-module.exports = CovFont
+module.exports = CovRewriter

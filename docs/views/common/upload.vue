@@ -10,13 +10,13 @@
             </textarea>
         </mark>
         <p>
-            <rd-upload @add="addFileAction" accept=".jpg,.png" @remove="removeFileAction"></rd-upload>
+            <rd-upload @add="addFileAction" accept="image/*" @remove="removeFileAction"></rd-upload>
         </p>
         <mark>
             <textarea class="ex-mark-text">
 
 ```
-<rd-upload @add="addFileAction" accept=".jpg,.png" @remove="removeFileAction"></rd-upload>
+<rd-upload @add="addFileAction" accept="image/*" @remove="removeFileAction"></rd-upload>
 ```
 
 ```

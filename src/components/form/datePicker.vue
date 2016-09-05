@@ -571,7 +571,7 @@ export default {
                     this.output(day)
                 }
             })
-            this.togglePicker()
+            this.state.pickerShow = false
         }
     }
 }

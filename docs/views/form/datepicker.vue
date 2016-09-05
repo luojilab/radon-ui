@@ -171,6 +171,7 @@ export default {
                 value: '',
                 rawDate: {},
                 options: {
+                    quickClose: false,
                     placeHolder: '请选择时间（weekDay)',
                     limit: {
                         weekDay: {

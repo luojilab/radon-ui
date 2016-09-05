@@ -71,7 +71,6 @@
     "postcss-url": "^5.1.2",
     "precss": "^1.4.0",
     "resolve-url-loader": "^1.4.3",
-    "sass-loader": "^3.2.0",
     "shelljs": "^0.6.0",
     "url-loader": "^0.5.7",
     "vue": "^1.0.26",

@@ -10,13 +10,13 @@
             </textarea>
         </mark>
         <p>
-            <rd-upload @add="addFileAction" @remove="removeFileAction"></rd-upload>
+            <rd-upload @add="addFileAction" accept=".jpg,.png" @remove="removeFileAction"></rd-upload>
         </p>
         <mark>
             <textarea class="ex-mark-text">
 
 ```
-<rd-upload @add="addFileAction" @remove="removeFileAction"></rd-upload>
+<rd-upload @add="addFileAction" accept=".jpg,.png" @remove="removeFileAction"></rd-upload>
 ```
 
 ```
@@ -28,6 +28,12 @@ removeFileAction (item) {
 }
 ```
 ### API
+
+`Prop`：
+
+| 参数            | 类型   | 说明           |
+| :------------- |:-------|:--------------|
+| accept         | String | file 类型（.jpg,.png,.doc） |
 
 `Event`：
 

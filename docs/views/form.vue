@@ -73,7 +73,7 @@
             <div>
                 <rd-select :select="selectProvince"></rd-select>
                 <rd-select :select="selectCity"></rd-select>
-                
+
             </div>
             <form-item title="address:">
                 <rd-cascader :cascader="cascader"></rd-cascader>
@@ -105,9 +105,9 @@
                 <span>啊啊<rd-tooltip>这里是tooltip</rd-tooltip></span>
             </p>
             <p>
-                <breadcrumb :breadcrumb="breadcrumb.list" separator="/"></breadcrumb>
+                <rd-breadcrumb :breadcrumb="breadcrumb.list" separator="/"></rd-breadcrumb>
             </p>
-            
+
         </form>
         <p>
             <rd-number :number="number"></rd-number>
@@ -116,7 +116,7 @@
             <rd-audio :audio="audio"></rd-audio>
         </p>
         <p>
-            <rd-textarea 
+            <rd-textarea
                 :textfield="textArea"
             ></rd-textarea>
         </p>
@@ -154,7 +154,7 @@ import {
     rdTable,
     rdTimepicker,
     rdSpin,
-    breadcrumb,
+    rdBreadcrumb,
     rdAudio,
     rdNumber
 } from '../../src/components/index'
@@ -670,7 +670,7 @@ export default {
         rdTable,
         rdTimepicker,
         rdSpin,
-        breadcrumb,
+        rdBreadcrumb,
         rdAudio,
         rdNumber
     },

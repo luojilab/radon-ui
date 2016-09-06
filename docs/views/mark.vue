@@ -120,6 +120,15 @@
     </div>
 </template>
 <script>
+import marked from 'marked'
+import highlight from 'highlight.js'
+
+marked.setOptions({
+    highlight: function (code) {
+        return highlight.highlightAuto(code).value
+    }
+})
+
 const HTMLDeCode = (str) => {
     const div = document.createElement('div')
     div.innerHTML = str
@@ -133,7 +142,7 @@ export default {
         }
     },
     ready () {
-        this.mark = window.marked((HTMLDeCode(this.$el.getElementsByClassName('ex-mark-text')[0].innerHTML)))
+        this.mark = marked((HTMLDeCode(this.$el.getElementsByClassName('ex-mark-text')[0].innerHTML)))
     }
 }
 </script>

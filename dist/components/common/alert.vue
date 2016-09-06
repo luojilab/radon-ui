@@ -1,17 +1,19 @@
 
 <template>
-    <div 
-        class="rd-alert"
-        :class="classType(alert)"
-        v-for="alert in alerts"
-    >
-        <span 
-            class="rd-alert-icon"
-            :class="iconClass(alert)"
-        ></span>
-        <div class="rd-alert-body">
-            <span class="rd-alert-title">{{alert.title}}</span>
-            <p v-if="alert.content" class="rd-alert-content">{{alert.content}}</p>
+    <div class="rd-alert-container">
+        <div 
+            class="rd-alert"
+            :class="classType(alert)"
+            v-for="alert in alerts"
+        >
+            <span 
+                class="rd-alert-icon"
+                :class="iconClass(alert)"
+            ></span>
+            <div class="rd-alert-body">
+                <span class="rd-alert-title">{{alert.title}}</span>
+                <p v-if="alert.content" class="rd-alert-content">{{alert.content}}</p>
+            </div>
         </div>
     </div>
 </template>

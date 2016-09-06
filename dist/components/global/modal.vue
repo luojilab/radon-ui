@@ -13,11 +13,10 @@
                         {{modal.title}}
                     </span>
                 </div>
-                <div class="rd-modal-body">
+                <div class="rd-modal-body" v-if="!modal.rawContent">
                     {{modal.content}}
-                    <div v-if="modal.rawContent">
-                        {{{modal.rawContent}}}
-                    </div>
+                </div>
+                <div class="rd-modal-body" v-else v-html="modal.rawContent">
                 </div>
                 <div class="rd-modal-footer">
                     <rd-button @click="cancel">取消</rd-button>

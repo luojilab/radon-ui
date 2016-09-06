@@ -3,7 +3,7 @@
     <div class="rd-upload-container">
         <div class="rd-upload-wrapper">
             <div class="rd-upload-action">
-                <input type="file" :accept="options.accept" @change="changeFile" class="rd-upload-file">
+                <input type="file" :accept="accept" @change="changeFile" class="rd-upload-file">
                 <rd-button @click="touchUp">点击上传</rd-button>
             </div>
             <div class="rd-upload-preview">
@@ -33,11 +33,11 @@ import rdButton from '../basic/button.vue'
 const imageType = /^image\//
 
 export default {
+    props: {
+        accept: String
+    },
     data () {
         return {
-            options: {
-                accept: '.jpg,.png,.doc'
-            },
             $file: null,
             fileList: []
         }

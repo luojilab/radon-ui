@@ -27,7 +27,7 @@
             v-for="img in imgs"
             v-preview="img" 
             class="doc-preview-imgbox" 
-            :style="{ 'background-image':  'url(' + img + ')'}"
+            :style="{ 'background-image':  'url(' + img + '?imageView2/1/w/100/h/100)'}"
         >
         </div>
     </div>
@@ -81,8 +81,6 @@ export default {
     }
 }
 ```
-
-
         </textarea>
     </mark>
     </div>

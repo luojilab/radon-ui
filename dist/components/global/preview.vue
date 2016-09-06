@@ -31,6 +31,15 @@
 <script>
 import { catIn } from '../utils'
 
+const _ = {
+    on (type, handler) {
+        window.addEventListener(type, handler, false)
+    },
+    off (type, handler) {
+        window.removeEventListener(type, handler)
+    }
+}
+
 export default {
     computed: {
         preview () {
@@ -44,13 +53,13 @@ export default {
         }
     },
     mounted () {
-        window.addEventListener('click', this.leave, false)
+        _.on('click', this.leave)
     },
     ready () {
-        window.addEventListener('click', this.leave, false)
+        _.on('click', this.leave)
     },
     beforeDestroy () {
-        window.removeEventListener('click', this.leave)
+        _.off('click', this.leave)
     },
     methods: {
         leave (e) {

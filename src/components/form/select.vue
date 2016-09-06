@@ -85,6 +85,9 @@
     position: relative;
     font-size: .8rem;
     line-height: 2rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .rd-select-search-wrapper {

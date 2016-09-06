@@ -64,12 +64,48 @@
         min-height: 4rem;
     }
 }
+@keyframes modalFadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, -50%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes modalFadeOutUp {
+  from {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, -50%, 0);
+  }
+}
+.modal-fade-in-down-transition {
+  animation-duration: .2s;
+  animation-fill-mode: both;
+}
+.modal-fade-in-down-enter {
+    animation-name: modalFadeInDown;
+}
+.modal-fade-in-down-leave {
+    animation-name: modalFadeOutUp;
+}
 </style>
 <template>
     <div class="rd-modal-container" v-show="modal.show">
         <div class="rd-modal-mask"></div>
         <div class="rd-modal-wrapper"  @click="touchClose">
-            <div class="rd-modal">
+            <div class="rd-modal" v-show="modal.show" transition="modal-fade-in-down">
                 <div class="rd-modal-header">
                     <i 
                         class="rd-modal-header-close ion-close-round"
@@ -100,6 +136,17 @@ import {
 } from '../utils'
 
 export default {
+    data () {
+        return {
+            $modal: null
+        }
+    },
+    mounted () {
+        this.$modal = this.$el.getElementsByClassName('rd-modal')[0]
+    },
+    ready () {
+        this.$modal = this.$el.getElementsByClassName('rd-modal')[0]
+    },
     computed: {
         modal () {
             return this.$root.RADON_MODAL
@@ -110,7 +157,8 @@ export default {
     },
     methods: {
         touchClose (e) {
-            if (!catIn(e.target, this.$el)) {
+            if (!this.$modal) return
+            if (!catIn(e.target, this.$modal)) {
                 this.cancel()
             }
         },

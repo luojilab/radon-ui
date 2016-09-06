@@ -43,7 +43,7 @@
 <template>
     <div
         class="rd-progress-circle-inner"
-        :class="innerClass(progress.options)"
+        :class="innerClass"
     >
         <svg class="rc-progress-circle" viewBox="0 0 100 100">
             <path class="rc-progress-circle-trail" d="M 50,50 m 0,-47
@@ -91,16 +91,14 @@ export default {
                 return this.progress.options.format(this.progress.percent)
             }
             return this.progress.percent + '%'
-        }
-    },
-    methods: {
-        innerClass (options) {
-            let classList = {}
-            if (options.state) {
-                classList[options.state] = true
+        },
+        innerClass () {
+            let classList = []
+            if (this.progress.options.state) {
+                classList.push(this.progress.options.state)
             }
-            if (options.size) {
-                classList[options.size] = true
+            if (this.progress.options.size) {
+                classList.push(this.progress.options.size)
             }
             return classList
         }

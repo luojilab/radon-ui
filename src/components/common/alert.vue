@@ -5,7 +5,6 @@
 }
 .rd-alert {
     position: relative;
-    border-radius: 6px;
     color: #666;
     line-height: 1rem;
     margin-bottom: .2rem;
@@ -40,6 +39,7 @@
     }
     &.success {
         border: 1px solid #e7f6e1;
+        border-left: 2px solid #87d068;
         background-color: #f3faf0;
         .rd-alert-icon {
             color: #87d068;
@@ -47,6 +47,7 @@
     }
     &.info {
         border: 1px solid #d5f1fd;
+        border-left: 2px solid #2db7f5;
         background-color: #eaf8fe;
         .rd-alert-icon {
             color: #2db7f5;
@@ -54,6 +55,7 @@
     }
     &.warning {
         border: 1px solid #fec;
+        border-left: 2px solid #fa0;
         background-color: #fff7e6;
         .rd-alert-icon {
             color: #fa0;
@@ -61,6 +63,7 @@
     }
     &.failed {
         border: 1px solid #fdc;
+        border-left: 2px solid #f50;
         background-color: #ffeee6;
         .rd-alert-icon {
             color: #f50;

@@ -17,6 +17,11 @@
     <mark>
         <textarea class="ex-mark-text">
 ## 代码
+
+```
+<rd-alert :alerts="alerts"></rd-alert>
+```
+
 ```javascript
 export default {
     data () {

@@ -13,20 +13,46 @@ exports.default = function (Vue, $root) {
         content: '',
         rawContent: '',
         cancel: function cancel() {},
-        confirm: function confirm() {}
+        confirm: function confirm() {},
+        large: false,
+        cancelButton: {
+            show: true,
+            type: '',
+            text: '取消'
+        },
+        confirmButton: {
+            show: true,
+            type: 'primary',
+            text: '确定'
+        }
     });
 
     Vue.component('rd-modal', _index.rdModal);
 
     Vue.prototype.$Modal = {
-        create: function create(title, text, confirm, cancel) {
+        create: function create(title, text, confirm, cancel, rawHTML, _ref) {
+            var cancelButton = _ref.cancelButton;
+            var confirmButton = _ref.confirmButton;
+            var large = _ref.large;
+
             $root.RADON_MODAL = {
                 show: true,
                 title: title,
                 content: text,
-                rawContent: '',
+                rawContent: rawHTML,
                 cancel: cancel,
-                confirm: confirm
+                confirm: confirm,
+                large: large || false,
+                cancelButton: cancelButton || {
+                    show: true,
+                    type: '',
+                    text: '取消'
+                },
+                confirmButton: confirmButton || {
+                    show: true,
+                    type: 'primary',
+                    text: '确定'
+                }
             };
         },
         clear: function clear() {
@@ -40,25 +66,14 @@ exports.default = function (Vue, $root) {
             };
         },
         confirm: function confirm(title, text, _confirm, cancel) {
-            $root.RADON_MODAL = {
-                show: true,
-                title: title,
-                content: text,
-                rawContent: '',
-                cancel: cancel,
-                confirm: _confirm
-            };
+            var options = arguments.length <= 4 || arguments[4] === undefined ? {} : arguments[4];
+
+            this.create(title, text, _confirm, cancel, '', options);
         },
         confirmWithHTML: function confirmWithHTML(title, rawHTML, confirm, cancel) {
-            console.log(rawHTML);
-            $root.RADON_MODAL = {
-                show: true,
-                title: title,
-                content: '',
-                rawContent: rawHTML,
-                cancel: cancel,
-                confirm: confirm
-            };
+            var options = arguments.length <= 4 || arguments[4] === undefined ? {} : arguments[4];
+
+            this.create(title, '', confirm, cancel, rawHTML, options);
         }
     };
 };

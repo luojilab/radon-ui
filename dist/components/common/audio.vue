@@ -90,6 +90,11 @@
             window.document.body.addEventListener('mousemove', this.movement, false)
             window.document.body.addEventListener('mouseup', this.leaveMove, false)
         },
+        mounted () {
+            this.init()
+            window.document.body.addEventListener('mousemove', this.movement, false)
+            window.document.body.addEventListener('mouseup', this.leaveMove, false)
+        },
         beforeDestroy () {
             window.document.body.removeEventListener('mousemove', this.movement)
             window.document.body.removeEventListener('mouseup', this.leaveMove)

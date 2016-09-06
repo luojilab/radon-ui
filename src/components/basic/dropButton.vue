@@ -138,6 +138,9 @@ export default {
     ready () {
         window.document.body.addEventListener('click', this.leaveClose)
     },
+    mounted () {
+        window.document.body.addEventListener('click', this.leaveClose)
+    },
     beforeDestroy () {
         window.removeEventListener('click', this.leaveClose)
     },

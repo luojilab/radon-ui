@@ -213,6 +213,10 @@ export default {
         this.init()
         window.addEventListener('click', this.hide, false)
     },
+    mounted () {
+        this.init()
+        window.addEventListener('click', this.hide, false)
+    },
     beforeDestroy () {
         window.removeEventListener('click', this.hide)
     },

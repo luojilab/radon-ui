@@ -27,6 +27,10 @@ export default {
         this.$el.parentNode.addEventListener('mouseenter', this.getParentSize, false)
         this.$el.parentNode.addEventListener('mouseleave', this.hideAction, false)
     },
+    mounted () {
+        this.$el.parentNode.addEventListener('mouseenter', this.getParentSize, false)
+        this.$el.parentNode.addEventListener('mouseleave', this.hideAction, false)
+    },
     methods: {
         getParentSize () {
             const partentRect = this.$el.parentNode.getBoundingClientRect()

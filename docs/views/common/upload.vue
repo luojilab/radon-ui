@@ -16,15 +16,28 @@
             <textarea class="ex-mark-text">
 
 ```
-<rd-upload @add="addFileAction" accept="image/*" @remove="removeFileAction"></rd-upload>
+<rd-upload  
+    accept="image/*" 
+    @add="addFileAction" 
+    @remove="removeFileAction"
+></rd-upload>
 ```
 
 ```
-addFileAction (file, list) {
-    console.log('add', file)
-},
-removeFileAction (item) {
-    console.log('remove', item)
+methods: {
+    addFileAction (newFile, list) {
+        console.log('add', file)
+        let formData = new FormData()
+        formData.append('file', newFile.file, newFile.file.name)
+        this.$http.post('/upload/attachment/imgup', formData)
+        .then(res => {
+            console.log('success')
+        })
+        .catch(console.log)
+    },
+    removeFileAction (item) {
+        console.log('remove', item)
+    }
 }
 ```
 ### API

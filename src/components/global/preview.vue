@@ -165,6 +165,9 @@ export default {
             marginTop: 50
         }
     },
+    mounted () {
+        window.addEventListener('click', this.leave, false)
+    },
     ready () {
         window.addEventListener('click', this.leave, false)
     },

@@ -96,6 +96,10 @@
     </div>
 </template>
 <script>
+import {
+    catIn
+} from '../utils'
+
 export default {
     props: {
         cascader: Object
@@ -113,12 +117,16 @@ export default {
         this.list = [this.cascader.options]
         window.addEventListener('click', this.hide, false)
     },
+    mounted () {
+        this.list = [this.cascader.options]
+        window.addEventListener('click', this.hide, false)
+    },
     beforeDestroy () {
         window.removeEventListener('click', this.hide)
     },
     methods: {
         hide ($event) {
-            if ($event.path.indexOf(this.$el) === -1) {
+            if (!catIn($event.target, this.$el)) {
                 this.show = false
             }
         },

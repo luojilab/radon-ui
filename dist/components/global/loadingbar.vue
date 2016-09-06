@@ -14,24 +14,6 @@ export default {
         loadingBar () {
             return this.$root.RADON_LOADING_BAR
         }
-    },
-    ababab: {
-        percent: {
-            type: Number,
-            required: true
-        },
-        options: {
-            type: Object,
-            default () {
-                return {
-                    canSuccess: true,
-                    color: 'rgb(143, 255, 199)',
-                    failedColor: 'red',
-                    show: false,
-                    height: '2px'
-                }
-            }
-        }
     }
 }
 </script>

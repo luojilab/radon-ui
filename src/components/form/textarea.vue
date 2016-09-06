@@ -1,5 +1,7 @@
 <style>
-    
+    .rd-textfield-input {
+        transition: height .2s;
+    }
 </style>
 
 <template>
@@ -42,6 +44,9 @@ export default {
         }
     },
     ready () {
+        this.text.$el = this.$el.getElementsByTagName('textarea')[0]
+    },
+    mounted () {
         this.text.$el = this.$el.getElementsByTagName('textarea')[0]
     },
     methods: {

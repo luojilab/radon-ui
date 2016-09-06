@@ -227,6 +227,11 @@ export default {
         window.addEventListener('click', this.hide, false)
         this.setDisplayValue(this.select.options)
     },
+    mounted () {
+        this.select.multiple = this.select.multiple || false
+        window.addEventListener('click', this.hide, false)
+        this.setDisplayValue(this.select.options)
+    },
     beforeDestroy () {
         window.removeEventListener('click', this.hide)
     },

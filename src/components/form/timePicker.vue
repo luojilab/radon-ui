@@ -143,6 +143,9 @@ export default {
             }
         }
     },
+    mounted () {
+        window.addEventListener('click', this.hide, false)
+    },
     ready () {
         window.addEventListener('click', this.hide, false)
     },

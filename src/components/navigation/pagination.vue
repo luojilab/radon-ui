@@ -173,6 +173,15 @@ export default {
         this.initPageList(this.total)
         this.getData(1)
     },
+    mounted () {
+        this.$optionsDefault = {}
+        Object.assign(this.$optionsDefault, optionsDefault, this.options)
+        if (this.url) {
+            this.$optionsDefault.remote.url = this.url
+        }
+        this.initPageList(this.total)
+        this.getData(1)
+    },
     watch: {
         total (val) {
             this.initPageList(val)

@@ -119,6 +119,9 @@ export default {
     ready () {
         this.$file = this.$el.getElementsByClassName('rd-upload-file')[0]
     },
+    mounted () {
+        this.$file = this.$el.getElementsByClassName('rd-upload-file')[0]
+    },
     components: {
         rdButton
     },

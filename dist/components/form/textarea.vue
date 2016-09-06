@@ -42,6 +42,9 @@ export default {
     ready () {
         this.text.$el = this.$el.getElementsByTagName('textarea')[0]
     },
+    mounted () {
+        this.text.$el = this.$el.getElementsByTagName('textarea')[0]
+    },
     methods: {
         inputAction () {
             this.resize()

@@ -26,6 +26,15 @@ const calcPercent = function (x, width) {
     return Math.floor(x / width * 100)
 }
 
+const _ = {
+    on (type, handler) {
+        document.body.addEventListener(type, handler, false)
+    },
+    off (type, handler) {
+        document.body.removeEventListener(type, handler)
+    }
+}
+
 export default {
     props: {
         slider: {
@@ -53,16 +62,23 @@ export default {
     },
     ready () {
         this.init()
-        document.body.addEventListener('mousemove', this.moveAction, false)
-        document.body.addEventListener('mouseup', this.endAction, false)
-        document.body.addEventListener('touchmove', this.moveAction, false)
-        document.body.addEventListener('touchend', this.endAction, false)
+        _.on('mousemove', this.moveAction)
+        _.on('mouseup', this.endAction)
+        _.on('touchmove', this.moveAction)
+        _.on('touchend', this.endAction)
+    },
+    mounted () {
+        this.init()
+        _.on('mousemove', this.moveAction)
+        _.on('mouseup', this.endAction)
+        _.on('touchmove', this.moveAction)
+        _.on('touchend', this.endAction)
     },
     beforeDestroy () {
-        document.body.removeEventListener('mousemove', this.moveAction)
-        document.body.removeEventListener('mouseup', this.endAction)
-        document.body.removeEventListener('touchmove', this.moveAction)
-        document.body.removeEventListener('touchend', this.endAction)
+        _.off('mousemove', this.moveAction)
+        _.off('mouseup', this.endAction)
+        _.off('touchmove', this.moveAction)
+        _.off('touchend', this.endAction)
     },
     methods: {
         init () {

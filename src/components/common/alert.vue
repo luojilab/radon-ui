@@ -2,17 +2,30 @@
 @import '../../css/index';
 .rd-alert {
     position: relative;
+    display: flex;
+    align-items: center;
     border-radius: 6px;
     color: #666;
     line-height: 1rem;
     margin-bottom: .2rem;
-    padding: .5rem 1rem .5rem 3rem;
+    padding: .5rem;
     .rd-alert-icon {
-        font-size: 2rem;
-        top: 50%;
-        left: .5rem;
-        margin-top: -1rem;
+        font-size: 1.5rem;
     }
+
+    .rd-alert-body {
+        flex: 1;
+        padding:  .5rem;
+    }
+
+    .ion-close-round {
+        position: absolute;
+        right: 4px;
+        top: 4px;
+        color: #ccc;
+        cursor: pointer;
+    }
+
     .rd-alert-title {
         font-size: 1rem;
     }
@@ -20,21 +33,7 @@
         margin: .5rem 0 0 0;
         font-size: .8rem;
     }
-    &.small {
-        padding: 0;
-        .rd-alert-title {
-            font-size: .8rem;
-            line-height: 2rem;
-            padding-left: 2rem;
-        }
-        .rd-alert-icon {
-            line-height: 2rem;
-            left: .5rem;
-            font-size: 1rem;
-            top: initial;
-            margin-top: 0;
-        }
-    }
+
     &.success {
         border: 1px solid #e7f6e1;
         background-color: #f3faf0;
@@ -64,24 +63,16 @@
         }
     }
 }
-.rd-alert-icon {
-    position: absolute;
-}
+
 </style>
 <template>
-    <div 
-        class="rd-alert"
-        :class="classType(alert)"
-        v-for="alert in alerts"
-    >
-        <span 
-            class="rd-alert-icon"
-            :class="iconClass(alert)"
-        ></span>
+    <div v-for="alert in alerts" class="rd-alert" :class="classType(alert)" v-if="!alert.closed">
+        <span v-if="alert.content" class="rd-alert-icon" :class="iconClass(alert)"></span>
         <div class="rd-alert-body">
-            <span class="rd-alert-title">{{alert.title}}</span>
+            <span v-if="alert.title" class="rd-alert-title">{{alert.title}}</span>
             <p v-if="alert.content" class="rd-alert-content">{{alert.content}}</p>
         </div>
+        <i class="ion-close-round" @click="handleClose($event, alert)"></i>
     </div>
 </template>
 <script>
@@ -95,15 +86,16 @@ export default {
         classType (alert) {
             let classList = {}
             classList[alert.state] = true
-            if (!alert.content) {
-                classList['small'] = true
-            }
             return classList
         },
         iconClass (alert) {
             let classList = {}
             classList[ICON_MAP[alert.state]] = true
             return classList
+        },
+        handleClose (e, alert) {
+            this.alerts.$remove(alert)
+            this.$emit('close')
         }
     }
 }

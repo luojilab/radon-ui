@@ -87,7 +87,8 @@ export default {
                 show: true,
                 state: 'warning',
                 title: '警告提示的文案',
-                content: ''
+                content: '成功提示的辅助性文字介绍成功提示的辅助性文字介绍成功提示的辅助性文字介绍成功提示的辅助性文字介绍'
+
             }, {
                 show: true,
                 state: 'failed',

@@ -18,23 +18,25 @@
         <textarea class="ex-mark-text">
 ## API
 
-### slider 
+### slider
 
-> props: Obejct 
+> props: Obejct
 
 ```
 slider: {
-    value: 66,// 必选 default 0
-    min: 10,  // 可选 default 0
-    max: 100, // 可选 default 100
-    step: 5   // 可选 default 1
+    value: 66, // 必选 default 0，会根据step调整
+    min: 10,   // 可选 default 0
+    max: 100,  // 可选 default 100
+    start: 0, // 可选 default 0
+    end: 100,  // 可选 default 100
+    step: 5    // 可选 default 1
 }
 ```
 ```
 <rd-slider :slider="slider"></rd-slider>
 ```
 
-### change 
+### change
 
 > Event: Function
 

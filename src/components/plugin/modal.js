@@ -9,20 +9,42 @@ export default (Vue, $root) => {
         content: '',
         rawContent: '',
         cancel: () => {},
-        confirm: () => {}
+        confirm: () => {},
+        large: false,
+        cancelButton: {
+            show: true,
+            type: '',
+            text: '取消'
+        },
+        confirmButton: {
+            show: true,
+            type: 'primary',
+            text: '确定'
+        }
     })
 
     Vue.component('rd-modal', rdModal)
 
     Vue.prototype.$Modal = {
-        create (title, text, confirm, cancel) {
+        create (title, text, confirm, cancel, rawHTML, { cancelButton, confirmButton, large }) {
             $root.RADON_MODAL = {
                 show: true,
                 title: title,
                 content: text,
-                rawContent: '',
+                rawContent: rawHTML,
                 cancel: cancel,
-                confirm: confirm
+                confirm: confirm,
+                large: large || false,
+                cancelButton: cancelButton || {
+                    show: true,
+                    type: '',
+                    text: '取消'
+                },
+                confirmButton: confirmButton || {
+                    show: true,
+                    type: 'primary',
+                    text: '确定'
+                }
             }
         },
         clear () {
@@ -35,26 +57,11 @@ export default (Vue, $root) => {
                 confirm: () => {}
             }
         },
-        confirm (title, text, confirm, cancel) {
-            $root.RADON_MODAL = {
-                show: true,
-                title: title,
-                content: text,
-                rawContent: '',
-                cancel: cancel,
-                confirm: confirm
-            }
+        confirm (title, text, confirm, cancel, options = {}) {
+            this.create(title, text, confirm, cancel, '', options)
         },
-        confirmWithHTML (title, rawHTML, confirm, cancel) {
-            console.log(rawHTML)
-            $root.RADON_MODAL = {
-                show: true,
-                title: title,
-                content: '',
-                rawContent: rawHTML,
-                cancel: cancel,
-                confirm: confirm
-            }
+        confirmWithHTML (title, rawHTML, confirm, cancel, options = {}) {
+            this.create(title, '', confirm, cancel, rawHTML, options)
         }
     }
 }

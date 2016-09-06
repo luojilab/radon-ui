@@ -31,6 +31,9 @@
     width: 30rem;
     background-color: #fff;
     border-radius: .25rem;
+    &.large {
+        width: 45rem;
+    }
 }
 .rd-modal-header {
     font-size: 1.2rem;
@@ -105,7 +108,12 @@
     <div class="rd-modal-container" v-show="modal.show">
         <div class="rd-modal-mask"></div>
         <div class="rd-modal-wrapper"  @click="touchClose">
-            <div class="rd-modal" v-show="modal.show" transition="modal-fade-in-down">
+            <div 
+                class="rd-modal" 
+                v-show="modal.show" 
+                transition="modal-fade-in-down"
+                :class="{'large': modal.large }"
+            >
                 <div class="rd-modal-header">
                     <i 
                         class="rd-modal-header-close ion-close-round"
@@ -121,8 +129,16 @@
                 <div class="rd-modal-body" v-else v-html="modal.rawContent">
                 </div>
                 <div class="rd-modal-footer">
-                    <rd-button @click="cancel">取消</rd-button>
-                    <rd-button type="primary" @click="confirm">确定</rd-button>
+                    <rd-button 
+                        v-show="modal.cancelButton.show" 
+                        :type="modal.cancelButton.type" 
+                        @click="cancel"
+                    >{{modal.cancelButton.text}}</rd-button>
+                    <rd-button 
+                        v-show="modal.confirmButton.show"  
+                        :type="modal.confirmButton.type" 
+                        @click="confirm"
+                    >{{modal.confirmButton.text}}</rd-button>
                 </div>
             </div>
         </div>

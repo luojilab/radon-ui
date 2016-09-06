@@ -3,7 +3,7 @@
     <div class="rd-modal-container" v-show="modal.show">
         <div class="rd-modal-mask"></div>
         <div class="rd-modal-wrapper"  @click="touchClose">
-            <div class="rd-modal">
+            <div class="rd-modal" v-show="modal.show" transition="modal-fade-in-down">
                 <div class="rd-modal-header">
                     <i 
                         class="rd-modal-header-close ion-close-round"
@@ -34,6 +34,17 @@ import {
 } from '../utils'
 
 export default {
+    data () {
+        return {
+            $modal: null
+        }
+    },
+    mounted () {
+        this.$modal = this.$el.getElementsByClassName('rd-modal')[0]
+    },
+    ready () {
+        this.$modal = this.$el.getElementsByClassName('rd-modal')[0]
+    },
     computed: {
         modal () {
             return this.$root.RADON_MODAL
@@ -44,7 +55,8 @@ export default {
     },
     methods: {
         touchClose (e) {
-            if (!catIn(e.target, this.$el)) {
+            if (!this.$modal) return
+            if (!catIn(e.target, this.$modal)) {
                 this.cancel()
             }
         },

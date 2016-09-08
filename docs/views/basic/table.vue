@@ -304,6 +304,15 @@ export default {
                         type: 'success',
                         value: '批准'
                     },
+                    __actions: [{
+                        type: 'success',
+                        disabled: true,
+                        text: '私有',
+                        func: (e, row) => {
+                            console.log(row)
+                            this.removeTableItem(row)
+                        }
+                    }],
                     checkbox: {
                         disabled: false,
                         checked: false,
@@ -315,7 +324,7 @@ export default {
                     age: '26',
                     wechat: 'Iron-column-zhao',
                     __actions: [{
-                        type: 'success',
+                        type: 'warning',
                         text: '私有',
                         func: (e, row) => {
                             console.log(row)
@@ -340,6 +349,15 @@ export default {
                         type: 'failed',
                         value: '拒绝'
                     },
+                    __actions: [{
+                        type: 'success',
+                        loading: true,
+                        text: '私有',
+                        func: (e, row) => {
+                            console.log(row)
+                            this.removeTableItem(row)
+                        }
+                    }],
                     checkbox: {
                         disabled: false,
                         checked: false,

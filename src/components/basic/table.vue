@@ -98,14 +98,20 @@
                 <td class="rd-table-td" v-if="table.actions || row.__actions">
                     <rd-button 
                         v-for="action in table.actions" 
-                        size="small" 
+                        :size="action.size || 'small'" 
                         :type="action.type"
+                        :icon="action.icon"
+                        :loading="action.loading"
+                        :disabled="action.disabled"
                         @click="action.func($event, row)"
                     >{{action.text}}</rd-button>
                      <rd-button 
                         v-for="action in row.__actions" 
-                        size="small" 
+                        :size="action.size || 'small'" 
+                        :disabled="action.disabled"
                         :type="action.type"
+                        :icon="action.icon"
+                        :loading="action.loading"
                         @click="action.func($event, row)"
                     >{{action.text}}</rd-button>
                 </td>

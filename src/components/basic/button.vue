@@ -147,15 +147,16 @@
     display: inline-block;
     animation: loading 1s infinite linear;
 }
-.rd-btn-disabled {
+.rd-btn.rd-btn-disabled {
     color: #c3c3c3;
     background: #ececec;
+    border-color: #cecece;
     cursor: not-allowed;
-}
-.rd-btn-disabled:hover {
-    color: #a7a7a7;
-    background: #ececec;
-    border-color: #d9d9d9;
+    &:hover {
+        color: #a7a7a7;
+        background: #ececec;
+        border-color: #d9d9d9;
+    }
 }
 .rd-btn-icon-only {
     font-size: 1rem;

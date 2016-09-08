@@ -35,8 +35,19 @@
                 <td class="rd-table-td" v-if="row.state">
                     <span :class="stateTagClass(row.state)" class="rd-table-state">{{row.state.value}}</span>
                 </td>
-                <td class="rd-table-td" v-if="table.actions">
-                    <rd-button v-for="action in table.actions" size="small" @click="action.func($event, row)">{{action.text}}</rd-button>
+                <td class="rd-table-td" v-if="table.actions || row.__actions">
+                    <rd-button 
+                        v-for="action in table.actions" 
+                        size="small" 
+                        :type="action.type"
+                        @click="action.func($event, row)"
+                    >{{action.text}}</rd-button>
+                     <rd-button 
+                        v-for="action in row.__actions" 
+                        size="small" 
+                        :type="action.type"
+                        @click="action.func($event, row)"
+                    >{{action.text}}</rd-button>
                 </td>
             </tr>
         </tbody>

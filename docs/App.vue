@@ -376,7 +376,7 @@ export default {
                         link: 'common/timeline'
                     }, {
                         title: 'Tooltip',
-                        subTitle: '对话框',
+                        subTitle: '提示框',
                         link: 'common/tooltip'
                     }, {
                         title: 'Spin',

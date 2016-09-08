@@ -48,13 +48,13 @@ TableData: {
     }],
     // 行操作对象:Array
     actions: [{
-        type: 'button',
+        type: 'de',
         text: '编辑',
         func: (e, row) => {
             this.editTable(row)
         }
     }, {
-        type: 'button',
+        type: 'de',
         text: '删除',
         func: (e, row) => {
             console.log(row)
@@ -112,29 +112,46 @@ export default {
         return {
             TableData: {
                 options: {
-                    select: true
+                    select: true,
+                    state: true
                 },
                 columns: [{
+                    index: 0,
+                    key: 'id',
+                    value: 'ID',
+                    sort: {
+                        state: false,
+                        func: (e, col) => {
+                            this.sortBy(col)
+                        }
+                    }
+                }, {
                     index: 1,
                     key: 'name',
                     value: '姓名'
                 }, {
                     index: 2,
                     key: 'age',
-                    value: '年龄'
+                    value: '年龄',
+                    sort: {
+                        state: false,
+                        func: (e, col) => {
+                            this.sortBy(col)
+                        }
+                    }
                 }, {
                     index: 3,
                     key: 'wechat',
                     value: '微信'
                 }],
                 actions: [{
-                    type: 'button',
+                    type: 'primary',
                     text: '编辑',
                     func: (e, row) => {
                         this.editTable(row)
                     }
                 }, {
-                    type: 'button',
+                    type: 'danger',
                     text: '删除',
                     func: (e, row) => {
                         console.log(row)
@@ -146,6 +163,10 @@ export default {
                     name: '王尼玛',
                     age: '33',
                     wechat: 'wangnima',
+                    state: {
+                        type: 'success',
+                        value: '批准'
+                    },
                     checkbox: {
                         disabled: false,
                         checked: false,
@@ -156,6 +177,18 @@ export default {
                     name: '赵铁柱',
                     age: '26',
                     wechat: 'Iron-column-zhao',
+                    __actions: [{
+                        type: 'success',
+                        text: 'customer',
+                        func: (e, row) => {
+                            console.log(row)
+                            this.removeTableItem(row)
+                        }
+                    }],
+                    state: {
+                        type: 'info',
+                        value: '待审'
+                    },
                     checkbox: {
                         disabled: false,
                         checked: false,
@@ -166,6 +199,10 @@ export default {
                     name: '张全蛋',
                     age: '27',
                     wechat: 'Michael Jack',
+                    state: {
+                        type: 'failed',
+                        value: '拒绝'
+                    },
                     checkbox: {
                         disabled: false,
                         checked: false,
@@ -245,13 +282,13 @@ export default {
                     value: '微信'
                 }],
                 actions: [{
-                    type: 'button',
+                    type: 'primary',
                     text: '编辑',
                     func: (e, row) => {
                         this.editTable(row)
                     }
                 }, {
-                    type: 'button',
+                    type: 'danger',
                     text: '删除',
                     func: (e, row) => {
                         console.log(row)
@@ -277,6 +314,14 @@ export default {
                     name: '赵铁柱',
                     age: '26',
                     wechat: 'Iron-column-zhao',
+                    __actions: [{
+                        type: 'success',
+                        text: '私有',
+                        func: (e, row) => {
+                            console.log(row)
+                            this.removeTableItem(row)
+                        }
+                    }],
                     state: {
                         type: 'info',
                         value: '待审'

@@ -35,6 +35,7 @@ export default {
         getParentSize () {
             const partentRect = this.$el.parentNode.getBoundingClientRect()
             this.position.x = partentRect.left + partentRect.width * 0.5 - this.$el.clientWidth * 0.5
+            console.log(partentRect)
             if (partentRect.top < 50) {
                 this.position.y = partentRect.top + partentRect.height + 10
             } else {

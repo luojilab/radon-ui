@@ -9,7 +9,7 @@
         </textarea>
     </mark>
     <p>
-        <rd-datepicker :date="datePicker"></rd-datepicker>
+        <rd-datepicker :date="datePicker" @update="updateAction"></rd-datepicker>
     </p>
     <p>
         <rd-datepicker :date="datetimePicker"></rd-datepicker>
@@ -200,6 +200,11 @@ export default {
     components: {
         rdDatepicker,
         Mark
+    },
+    methods: {
+        updateAction (date) {
+            console.log(date)
+        }
     }
 }
 </script>

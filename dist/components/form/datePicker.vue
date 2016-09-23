@@ -394,6 +394,7 @@ export default {
                 this.date.rawDate = moment(Date.parse(tmp + ' ' + this.timeTmp.time.value))
                 this.date.value = this.date.rawDate.format(this.options.format)
             }
+            this.$emit('update', this.date)
         },
         confirm () {
             this.dayList.forEach(day => {

@@ -158,6 +158,7 @@ export default {
                 rawDate: {},
                 options: {
                     autoPosition: false,
+                    position: 'bottom', // 'top',
                     quickClose: true,
                     format: 'YYYY/MM/DD'
                 }

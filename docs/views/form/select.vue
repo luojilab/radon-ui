@@ -38,6 +38,8 @@ selectProvince: {
     options: [{
         // 是否为多选 :Boolean, 默认为false
         multiple: false,
+        // 是否启用选项搜索 :Boolean, 默认为false
+        search: true,
         // 选中状态 :Boolean
         selected: false,
         // 可用状态 :Boolean
@@ -109,6 +111,7 @@ export default {
             form: {
                 selectProvince: {
                     key: 'selectProvince',
+                    search: true,
                     value: {},
                     options: []
                 },

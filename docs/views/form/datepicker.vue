@@ -138,6 +138,9 @@ export default {
 ```
         </textarea>
     </mark>
+    <p>
+        <rd-datepicker :date="datePicker" @update="updateAction"></rd-datepicker>
+    </p>
     </div>
 </div>
 </template>
@@ -154,6 +157,7 @@ export default {
                 value: '',
                 rawDate: {},
                 options: {
+                    autoPosition: false,
                     quickClose: true,
                     format: 'YYYY/MM/DD'
                 }

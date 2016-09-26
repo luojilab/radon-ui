@@ -191,7 +191,7 @@
                 v-show="state.pickerShow"
             ></i>
         </div>
-        <div class="rd-datepicker-content" v-show="state.pickerShow"  transition="picker-fade-in-down">
+        <div class="rd-datepicker-content" v-show="state.pickerShow" v-el:picker transition="picker-fade-in-down">
             <div class="rd-datepicker-contrl">
                 <div class="rd-datepicker-info-year">
                     <span class="rd-datepicker-arrow ion-ios-arrow-left" @click.stop="moveYear(false)"></span>
@@ -253,12 +253,13 @@
 </template>
 <script>
 import moment from 'moment'
+import rdButton from '../basic/button.vue'
+import rdTimepicker from './timePicker.vue'
+
 import {
     pad,
     catIn
 } from '../utils'
-import rdButton from '../basic/button.vue'
-import rdTimepicker from './timePicker.vue'
 
 const getNearMonth = (time) => {
     return {
@@ -361,6 +362,8 @@ export default {
                 month: '06'
             },
             options: {
+                autoPosition: true,
+                position: 'bottom',
                 quickClose: true,
                 placeHolder: '请选择时间',
                 timePicker: false,
@@ -411,6 +414,7 @@ export default {
                 }
             }
             this.state.timePickerShow = this.options.timePicker
+            this.state.position = this.options.position
             this.weekList = this.options.weekList
             this.monthList = this.options.monthList
         },
@@ -516,10 +520,12 @@ export default {
             this.monthDisplay()
         },
         togglePicker (e) {
-            if (this.$el.getBoundingClientRect().top < 320) {
-                this.state.position = 'bottom'
-            } else {
-                this.state.position = 'top'
+            if (this.options.autoPosition) {
+                if (this.$el.getBoundingClientRect().top < 320) {
+                    this.state.position = 'bottom'
+                } else {
+                    this.state.position = 'top'
+                }
             }
             this.parse(this.date.value, this.options.format)
             this.state.pickerShow = !this.state.pickerShow

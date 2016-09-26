@@ -8,8 +8,11 @@
         }"
     >
         <div class="rd-select-selected-value">
-            <span v-show="valueShow">{{displayValue}}</span>
-            <div class="rd-select-search-wrapper" v-show="show">
+            <span>{{displayValue}}</span>
+        </div>
+        <span class="rd-select-arrow ion-chevron-down"></span>
+        <div class="rd-select-options-container" v-show="show" transition="picker-fade-in-down">
+            <div class="rd-select-search-wrapper" v-show="select.search">
                 <input 
                     @focus="focusInput" 
                     @click="touchInput" 
@@ -17,12 +20,10 @@
                     @change="changeInput"
                     type="text" 
                     v-model="search" 
+                    placeholder="搜索" 
                     class="rd-select-search-input"
                 >
             </div>
-        </div>
-        <span class="rd-select-arrow ion-chevron-down"></span>
-        <div class="rd-select-options-container" v-show="show" transition="picker-fade-in-down">
             <div 
                 class="rd-select-option" 
                 @click="setValue(option)" 

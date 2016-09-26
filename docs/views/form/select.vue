@@ -31,15 +31,16 @@
 selectProvince: {
     // 获取select选择的对象, 多选时为Array, 单选时为Object
     value   :Object || :Array,
+    
+    // 是否启用选项搜索 :Boolean, 默认为false
+    search: true,
+    // 是否为多选 :Boolean, 默认为false
+    multiple: false,
 
     // 提供待选对象集合
     options :Array
 
     options: [{
-        // 是否为多选 :Boolean, 默认为false
-        multiple: false,
-        // 是否启用选项搜索 :Boolean, 默认为false
-        search: true,
         // 选中状态 :Boolean
         selected: false,
         // 可用状态 :Boolean

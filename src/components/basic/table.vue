@@ -20,6 +20,10 @@
     font-size: .8rem;
     text-align: left;
     padding: 1rem .5rem;
+    text-align: center;
+}
+.rd-table-td.sort-icon {
+    padding-right: 1.5rem;
 }
 .rd-table-td .rd-btn {
     margin-right: .5rem;
@@ -68,6 +72,7 @@
                 </td>
                 <td 
                     class="rd-table-td" 
+                    :class="{ 'sort-icon': col.sort }"
                     v-for="col in table.columns" 
                     @click="touchCol($event, col)"
                 >
@@ -78,11 +83,11 @@
                         :class="{ 'active': col.sort.state }"
                     ></span>
                 </td>
-                <td v-if="table.options.state">
-                    状态
+                <td class="rd-table-td" v-if="table.options.state">
+                    {{ table.options.state.text ? table.options.state.text: '状态'}}
                 </td>
-                <td v-if="table.actions">
-                    <span>操作</span>
+                <td class="rd-table-td" v-if="table.actions">
+                    {{ table.options.action && table.options.action.text ? table.options.action.text: '操作'}}
                 </td>
             </tr>
         </thead>
@@ -91,7 +96,12 @@
                 <td v-if="row.checkbox" class="rd-table-check-col">
                     <rd-checkbox :checkbox="row.checkbox"></rd-checkbox>
                 </td>
-                <td class="rd-table-td" v-for="val in row._value" track-by="$index">{{val}}</td>
+                <td class="rd-table-td" v-for="val in row._value" track-by="$index">
+                    <div v-if="typeof val === 'object'">
+                        <img v-if="val.type === 'image' " :src="val.src" :class="val.class">
+                    </div>
+                    <div v-else>{{val}}</div>
+                </td>
                 <td class="rd-table-td" v-if="row.state">
                     <span :class="stateTagClass(row.state)" class="rd-table-state">{{row.state.value}}</span>
                 </td>

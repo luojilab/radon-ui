@@ -4,7 +4,11 @@
 }
 .ex-table .rd-table {
     min-width: 30rem;
-}    
+} 
+.tabel-avatar {
+    height: 2rem;
+    border-radius: 2rem;
+}   
 </style>
 
 <template>
@@ -127,6 +131,10 @@ export default {
                     }
                 }, {
                     index: 1,
+                    key: 'avatar',
+                    value: '头像'
+                }, {
+                    index: 1,
                     key: 'name',
                     value: '姓名'
                 }, {
@@ -160,6 +168,11 @@ export default {
                 }],
                 tableData: [{
                     id: 1,
+                    avatar: {
+                        type: 'image',
+                        class: ['tabel-avatar'],
+                        src: 'http://covteam.u.qiniudn.com/test20.jpg?imageView2/1/w/100/h/100'
+                    },
                     name: '王尼玛',
                     age: '33',
                     wechat: 'wangnima',
@@ -167,6 +180,15 @@ export default {
                         type: 'success',
                         value: '批准'
                     },
+                    __actions: [{
+                        type: 'success',
+                        disabled: true,
+                        text: '私有',
+                        func: (e, row) => {
+                            console.log(row)
+                            this.removeTableItem(row)
+                        }
+                    }],
                     checkbox: {
                         disabled: false,
                         checked: false,
@@ -174,12 +196,17 @@ export default {
                     }
                 }, {
                     id: 2,
+                    avatar: {
+                        type: 'image',
+                        class: ['tabel-avatar'],
+                        src: 'http://covteam.u.qiniudn.com/test20.jpg?imageView2/1/w/100/h/100'
+                    },
                     name: '赵铁柱',
                     age: '26',
                     wechat: 'Iron-column-zhao',
                     __actions: [{
-                        type: 'success',
-                        text: 'customer',
+                        type: 'warning',
+                        text: '私有',
                         func: (e, row) => {
                             console.log(row)
                             this.removeTableItem(row)
@@ -196,6 +223,11 @@ export default {
                     }
                 }, {
                     id: 3,
+                    avatar: {
+                        type: 'image',
+                        class: ['tabel-avatar'],
+                        src: 'http://covteam.u.qiniudn.com/test20.jpg?imageView2/1/w/100/h/100'
+                    },
                     name: '张全蛋',
                     age: '27',
                     wechat: 'Michael Jack',
@@ -203,6 +235,15 @@ export default {
                         type: 'failed',
                         value: '拒绝'
                     },
+                    __actions: [{
+                        type: 'success',
+                        loading: true,
+                        text: '私有',
+                        func: (e, row) => {
+                            console.log(row)
+                            this.removeTableItem(row)
+                        }
+                    }],
                     checkbox: {
                         disabled: false,
                         checked: false,
@@ -264,6 +305,10 @@ export default {
                     }
                 }, {
                     index: 1,
+                    key: 'avatar',
+                    value: '头像'
+                }, {
+                    index: 1,
                     key: 'name',
                     value: '姓名'
                 }, {
@@ -297,6 +342,11 @@ export default {
                 }],
                 tableData: [{
                     id: 1,
+                    avatar: {
+                        type: 'image',
+                        class: ['tabel-avatar'],
+                        src: 'http://covteam.u.qiniudn.com/test20.jpg?imageView2/1/w/100/h/100'
+                    },
                     name: '王尼玛',
                     age: '33',
                     wechat: 'wangnima',
@@ -320,6 +370,11 @@ export default {
                     }
                 }, {
                     id: 2,
+                    avatar: {
+                        type: 'image',
+                        class: ['tabel-avatar'],
+                        src: 'http://covteam.u.qiniudn.com/test20.jpg?imageView2/1/w/100/h/100'
+                    },
                     name: '赵铁柱',
                     age: '26',
                     wechat: 'Iron-column-zhao',
@@ -342,6 +397,11 @@ export default {
                     }
                 }, {
                     id: 3,
+                    avatar: {
+                        type: 'image',
+                        class: ['tabel-avatar'],
+                        src: 'http://covteam.u.qiniudn.com/test20.jpg?imageView2/1/w/100/h/100'
+                    },
                     name: '张全蛋',
                     age: '27',
                     wechat: 'Michael Jack',
@@ -372,7 +432,7 @@ export default {
         Mark
     },
     ready () {
-        this.loop()
+        // this.loop()
     },
     methods: {
         loop () {

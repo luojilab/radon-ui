@@ -6,12 +6,9 @@
             <i class="ion-close-round rd-preview-close-icon" ></i>
         </div>
         <img 
-            v-el:preview-img
             class="rd-preview-img" 
             v-if="preview.current.src" 
-            :style="{
-                'margin-top': marginTop + 'px'
-            }"
+            :style="getPosition"
             :src="preview.current.src" 
             :alt="preview.current.title"
         >
@@ -41,21 +38,49 @@ const _ = {
 }
 
 export default {
+    name: 'Preview',
     computed: {
         preview () {
-            return this.$root.RADON_PREVIEW
+            return window.globalVm.RADON_PREVIEW
+        },
+        getPosition () {
+            let current = window.globalVm.RADON_PREVIEW.current
+            if (current.src) {
+                let naturalWH = current.naturalWidth / current.naturalHeight
+                let windowWH = window.innerWidth / window.innerHeight
+
+                if (naturalWH > windowWH) {
+                    return {
+                        width: '100%',
+                        height: 'initial',
+                        position: 'absolute',
+                        left: '0',
+                        top: '0',
+                        bottom: '0',
+                        margin: 'auto'
+                    }
+                } else {
+                    return {
+                        height: '100%'
+                    }
+                }
+            }
+            return {}
         }
     },
     data () {
         return {
+            $previewImg: null,
             $box: null,
             marginTop: 50
         }
     },
     mounted () {
+        this.$previewImg = this.$el.getElementsByClassName('rd-preview-img')[0]
         _.on('click', this.leave)
     },
     ready () {
+        this.$previewImg = this.$el.getElementsByClassName('rd-preview-img')[0]
         _.on('click', this.leave)
     },
     beforeDestroy () {
@@ -70,25 +95,17 @@ export default {
         close () {
             this.preview.show = false
         },
-        imgPosition () {
-            if (!this.$els.previewImg || !this.$el) return
-            this.$nextTick(() => {
-                this.marginTop = 0.5 * (this.$el.offsetHeight - this.$els.previewImg.offsetHeight)
-            })
-        },
         preAction () {
             let index = this.preview.list.indexOf(this.preview.current)
             if (index === 0) return
             index--
             this.preview.current = this.preview.list[index]
-            this.imgPosition()
         },
         nextAction () {
             let index = this.preview.list.indexOf(this.preview.current)
             if (index === this.preview.list.length - 1) return
             index++
             this.preview.current = this.preview.list[index]
-            this.imgPosition()
         }
     }
 }

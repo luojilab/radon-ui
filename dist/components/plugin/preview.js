@@ -13,14 +13,19 @@ var _preview2 = _interopRequireDefault(_preview);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (Vue, $root) {
-    Vue.set($root, 'RADON_PREVIEW', {
-        show: false,
-        current: {
-            title: '',
-            src: ''
-        },
-        list: []
+    window.globalVm = new Vue({
+        data: {
+            RADON_PREVIEW: {
+                show: false,
+                current: {
+                    title: '',
+                    src: ''
+                },
+                list: []
+            }
+        }
     });
+
     Vue.component('rd-preview', _index.rdPreview);
-    (0, _preview2.default)(Vue, $root);
+    (0, _preview2.default)(Vue, window.globalVm);
 };

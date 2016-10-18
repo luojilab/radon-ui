@@ -101,7 +101,9 @@ export default {
                 'http://covteam.u.qiniudn.com/test18.jpg',
                 'http://covteam.u.qiniudn.com/test19.jpg',
                 'http://covteam.u.qiniudn.com/test20.jpg',
-                'http://covteam.u.qiniudn.com/test21.jpg'
+                'http://covteam.u.qiniudn.com/test21.jpg',
+                'http://covteam.u.qiniudn.com/test22.jpg',
+                'http://covteam.u.qiniudn.com/test23.jpg'
             ]
         }
     },

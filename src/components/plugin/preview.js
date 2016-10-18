@@ -5,14 +5,19 @@ import {
 import preview from '../directive/preview'
 
 export default (Vue, $root) => {
-    Vue.set($root, 'RADON_PREVIEW', {
-        show: false,
-        current: {
-            title: '',
-            src: ''
-        },
-        list: []
+    window.globalVm = new Vue({
+        data: {
+            RADON_PREVIEW: {
+                show: false,
+                current: {
+                    title: '',
+                    src: ''
+                },
+                list: []
+            }
+        }
     })
+
     Vue.component('rd-preview', rdPreview)
-    preview(Vue, $root)
+    preview(Vue, window.globalVm)
 }

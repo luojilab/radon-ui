@@ -51,7 +51,7 @@ app.route('/mock/page').get(function(req, res, next){
   for(var i=1; i<=length ; i++){
     arry.push(10 *number + i);
   }
-  res.send({data: arry, total: 9});
+  res.send({data: arry, total: 90});
 })
 
 var upload = multer({ dest: 'uploads/' })

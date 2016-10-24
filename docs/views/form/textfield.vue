@@ -74,10 +74,10 @@ user: {
     tip: '' 
 }
 ```
-### input : Function
+### inputing : Function
 输入框 oninput hook
 ```html
-<rd-text :textfield="obj" :input="Inputing" ></rd-text>
+<rd-text :textfield="obj" @inputing="Inputing" ></rd-text>
 
 methods: {
     Inputing () {
@@ -85,10 +85,10 @@ methods: {
     }
 }
 ```
-### change : Function
+### changing : Function
 输入框 onchange hook
 ```
-<rd-text :textfield="obj" :change="userInputed"></rd-text>
+<rd-text :textfield="obj" @changing="userInputed"></rd-text>
 
 methods: {
     userInputed () {
@@ -100,7 +100,7 @@ methods: {
 ### type : String
 input type
 ```
-<rd-text :textfield="form.pass" :input="passInputing" type="password"></rd-text>
+<rd-text :textfield="form.pass" @inputing="passInputing" type="password"></rd-text>
 ```
 ## 验证
 

@@ -116,7 +116,7 @@ import { ICON_MAP } from '../utils'
 export default {
     computed: {
         notifications () {
-            return this.$root.RADON_NOTIFICATION
+            return window.RADON_EVENT_BUS.RADON_NOTIFICATION
         }
     },
     methods: {

@@ -35,23 +35,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
             LoadingBar: true
         } : arguments[1];
 
+        var RADON_EVENT_BUS = new Vue({});
+        window.RADON_EVENT_BUS = RADON_EVENT_BUS;
         Vue.use(require('vue-animated-list'));
 
-        var $root = null;
-
-        Vue.mixin({
-            created: function created() {
-                if (!$root) {
-                    if (this === this.$root) {
-                        RadonInit(this);
-                    }
-                }
-            }
-        });
-
         var RadonInit = function RadonInit(vm) {
-            $root = vm;
-
             if (options.Modal) {
                 (0, _modal2.default)(Vue, vm);
             }
@@ -68,6 +56,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
                 (0, _preview2.default)(Vue, vm);
             }
         };
+
+        RadonInit(RADON_EVENT_BUS);
     }
     return install;
 });

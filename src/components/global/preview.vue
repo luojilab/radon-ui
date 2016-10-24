@@ -164,7 +164,7 @@ export default {
     name: 'Preview',
     computed: {
         preview () {
-            return window.globalVm.RADON_PREVIEW
+            return window.RADON_EVENT_BUS.RADON_PREVIEW
         },
         getPosition () {
             let current = window.globalVm.RADON_PREVIEW.current

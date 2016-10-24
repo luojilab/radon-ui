@@ -165,7 +165,7 @@ export default {
     },
     computed: {
         modal () {
-            return this.$root.RADON_MODAL
+            return window.RADON_EVENT_BUS.RADON_MODAL
         }
     },
     components: {

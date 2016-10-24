@@ -17,23 +17,11 @@ import previewInstall from './plugin/preview'
         Preview: true,
         LoadingBar: true
     }) {
+        const RADON_EVENT_BUS = new Vue({})
+        window.RADON_EVENT_BUS = RADON_EVENT_BUS
         Vue.use(require('vue-animated-list'))
 
-        let $root = null
-
-        Vue.mixin({
-            created () {
-                if (!$root) {
-                    if (this === this.$root) {
-                        RadonInit(this)
-                    }
-                }
-            }
-        })
-
         const RadonInit = (vm) => {
-            $root = vm
-
             if (options.Modal) {
                 modalIntall(Vue, vm)
             }
@@ -50,6 +38,8 @@ import previewInstall from './plugin/preview'
                 previewInstall(Vue, vm)
             }
         }
+
+        RadonInit(RADON_EVENT_BUS)
     }
     return install
 }))

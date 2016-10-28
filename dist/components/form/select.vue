@@ -4,7 +4,8 @@
         class="rd-select-container"
         @click="showOption" 
         :class="{
-            'rd-select-top': position === 'top'
+            'rd-select-top': position === 'top',
+            'disabled': select.disabled
         }"
     >
         <div class="rd-select-selected-value">
@@ -149,6 +150,7 @@ export default {
             this.select.value = this.select.multiple ? selected : selected[0] || {}
         },
         showOption (e) {
+            if (this.select.disabled) return
             let rect = this.$el.getBoundingClientRect()
             if (rect.top > rect.bottom) {
                 this.position = 'top'

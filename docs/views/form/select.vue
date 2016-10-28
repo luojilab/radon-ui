@@ -13,6 +13,9 @@
         <rd-select :select="form.selectProvince" @change="changeAction"></rd-select>
     </p>
     <p class="demo-content">
+        <rd-select :select="form.selectDisable" @change="changeAction"></rd-select>
+    </p>
+    <p class="demo-content">
         <rd-select :select="form.selectCity" @change="changeAction"></rd-select>
     </p>
     <p>
@@ -34,8 +37,12 @@ selectProvince: {
     
     // 是否启用选项搜索 :Boolean, 默认为false
     search: true,
+
     // 是否为多选 :Boolean, 默认为false
     multiple: false,
+
+    // 是否禁用
+    disabled: false, 
 
     // 提供待选对象集合
     options :Array
@@ -110,6 +117,32 @@ export default {
     data () {
         return {
             form: {
+                selectDisable: {
+                    key: 'selectDisable',
+                    disabled: true,
+                    value: {},
+                    options: [{
+                        selected: false,
+                        disabled: false,
+                        value: '成都',
+                        id: 1
+                    }, {
+                        selected: true,
+                        disabled: false,
+                        value: '北京',
+                        id: 2
+                    }, {
+                        selected: false,
+                        disabled: false,
+                        value: '深圳',
+                        id: 3
+                    }, {
+                        selected: false,
+                        disabled: true,
+                        value: '上海',
+                        id: 4
+                    }]
+                },
                 selectProvince: {
                     key: 'selectProvince',
                     search: true,

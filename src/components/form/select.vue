@@ -18,6 +18,15 @@
     border: 1px solid $primary-color;
 }
 
+.rd-select-container.disabled {
+    background: #f4f5f9;
+    color: #666;
+}
+
+.rd-select-container.disabled:hover {
+    border: 1px solid $border-color-base;
+}
+
 .rd-select-arrow {
     position: absolute;
     top: 0;
@@ -148,7 +157,8 @@
         class="rd-select-container"
         @click="showOption" 
         :class="{
-            'rd-select-top': position === 'top'
+            'rd-select-top': position === 'top',
+            'disabled': select.disabled
         }"
     >
         <div class="rd-select-selected-value">
@@ -293,6 +303,7 @@ export default {
             this.select.value = this.select.multiple ? selected : selected[0] || {}
         },
         showOption (e) {
+            if (this.select.disabled) return
             let rect = this.$el.getBoundingClientRect()
             if (rect.top > rect.bottom) {
                 this.position = 'top'

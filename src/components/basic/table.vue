@@ -97,7 +97,7 @@
                     <rd-checkbox :checkbox="row.checkbox"></rd-checkbox>
                 </td>
                 <td class="rd-table-td" v-for="val in row._value" track-by="$index">
-                    <div v-if="typeof val === 'object'">
+                    <div v-if="val && typeof val === 'object'">
                         <img v-if="val.type === 'image' " :src="val.src" :class="val.class">
                     </div>
                     <div v-else>{{val}}</div>

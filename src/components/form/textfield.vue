@@ -18,6 +18,11 @@
 .rd-textfield-wrapper {
     position: relative;
     width: 100%;
+    &.disabled .rd-textfield-input {
+        color: #888888;
+        background-color: #f9f9f9;
+        border-color: #e7e7e7;
+    }
     &.loading {
         .rd-textfield-icon {
             animation: loading 1s infinite linear;
@@ -108,7 +113,7 @@
 <template>
     <div 
         class="rd-textfield-wrapper"
-        :class="[textState, {inline: textfield.inline}]"
+        :class="[textState, { inline: textfield.inline }, { disabled: textfield.disabled }]"
     >
         <input 
             :type="type" 
@@ -118,6 +123,7 @@
             @change="changAction"
             @input="inputAction"
             @blur="blurAction"
+            :disabled="textfield.disabled" 
         >
         <span class="rd-textfield-tip" v-if="textfield.tip">{{textfield.tip}}</span>
         <i class="rd-textfield-icon" :class="textIcon"></i>

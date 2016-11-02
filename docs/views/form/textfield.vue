@@ -300,7 +300,8 @@ export default {
                     title: '用户名:',
                     key: 'user',
                     state: 'default',
-                    tip: ''
+                    tip: '',
+                    disabled: true
                 },
                 password: {
                     value: '',

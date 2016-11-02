@@ -4,7 +4,8 @@
         class="rd-datepicker-container"
         :class="{
             'top': state.position === 'top',
-            'open': state.pickerShow
+            'open': state.pickerShow,
+            'disabled': date.disabled
         }"
     >
         <div class="rd-datepicker-value" @click.stop="togglePicker">
@@ -346,6 +347,7 @@ export default {
             this.monthDisplay()
         },
         togglePicker (e) {
+            if (this.date.disabled) return
             if (this.options.autoPosition) {
                 if (this.$el.getBoundingClientRect().top < 320) {
                     this.state.position = 'bottom'

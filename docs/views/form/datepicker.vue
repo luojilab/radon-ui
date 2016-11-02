@@ -166,6 +166,7 @@ export default {
             datetimePicker: {
                 value: '',
                 rawDate: {},
+                disabled: true,
                 options: {
                     format: 'YYYY/MM/DD HH:mm:ss',
                     placeHolder: '请选择时间（time)',

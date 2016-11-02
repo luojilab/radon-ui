@@ -16,6 +16,11 @@
         top: initial;
         bottom: 2rem;
     }
+    &.disabled {
+        color: #888;
+        background-color: #f9f9f9;
+        border-color: #e7e7e7;
+    }
 }
 .rd-datepicker-days {
     display: flex;
@@ -178,7 +183,8 @@
         class="rd-datepicker-container"
         :class="{
             'top': state.position === 'top',
-            'open': state.pickerShow
+            'open': state.pickerShow,
+            'disabled': date.disabled
         }"
     >
         <div class="rd-datepicker-value" @click.stop="togglePicker">
@@ -520,6 +526,7 @@ export default {
             this.monthDisplay()
         },
         togglePicker (e) {
+            if (this.date.disabled) return
             if (this.options.autoPosition) {
                 if (this.$el.getBoundingClientRect().top < 320) {
                     this.state.position = 'bottom'

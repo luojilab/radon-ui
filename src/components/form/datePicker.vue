@@ -300,7 +300,7 @@ const generateShowList = (time) => {
     for (let i = preList.length - 1; i > preList.length - firstDayAtWeek; i--) {
         currentDayList.unshift(preList[i])
     }
-    const listCount = 42 - currentDayList.length
+    const listCount = 35 - currentDayList.length
     for (let i = 0; i < listCount; i++) {
         currentDayList.push(nextList[i])
     }

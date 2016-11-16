@@ -113,7 +113,7 @@
             <li class="jump-prev" @click="jump(-5)"  v-show="pageLimit.max > 10 && pageStart > 4">
                 <span></span>
             </li>
-            <li class="item" :class="{'active': el == pageStart}" @click="pagePath(el)" v-for="el in pageList" v-if="el">
+            <li class="item" :class="{'active': el == pageStart}" @click="pagePath(el)" v-for="el in pageList" v-show="el">
                 <span>{{el}}</span>
             </li>
             <li class="jump-next" @click="jump(5)" v-show="pageLimit.max > 10 && pageStart <= pageLimit.max - 4">

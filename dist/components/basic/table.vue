@@ -35,6 +35,7 @@
                 <td class="rd-table-td" v-for="val in row._value" track-by="$index">
                     <div v-if="val && typeof val === 'object'">
                         <img v-if="val.type === 'image' " :src="val.src" :class="val.class">
+                        <div v-if="val.type === 'raw' " :class="val.class" v-html="val.value"></div>
                     </div>
                     <div v-else>{{val}}</div>
                 </td>

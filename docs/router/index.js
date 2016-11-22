@@ -157,6 +157,12 @@ router.map({
             require(['../views/common/progress.vue'], resolve)
         }
     },
+    'common/tree': {
+        name: 'tree',
+        component: (resolve) => {
+            require(['../views/common/tree.vue'], resolve)
+        }
+    },
 
     // Global
     'global/loadingbar': {

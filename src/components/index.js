@@ -33,6 +33,7 @@ import rdProgress from './common/progress.vue'
 import rdProgressCircle from './common/progressCircle.vue'
 import rdAudio from './common/audio.vue'
 import rdUpload from './common/upload.vue'
+import rdTree from './common/tree.vue'
 
 // global
 import rdModal from './global/modal.vue'
@@ -83,6 +84,7 @@ export {
     rdAudio,
     rdProgress,
     rdProgressCircle,
+    rdTree,
 
     // global
     rdNotification,

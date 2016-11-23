@@ -91,6 +91,28 @@ export default {
                         checked: false
                     },
                     title: '叶子',
+                    key: 'leaf',
+                    children: [{
+                        expand: false,
+                        checkbox: {
+                            checked: false
+                        },
+                        title: '叶子1',
+                        key: 'leaf1'
+                    }]
+                }, {
+                    expand: false,
+                    checkbox: {
+                        checked: false
+                    },
+                    title: '叶子',
+                    key: 'leaf'
+                }, {
+                    expand: false,
+                    checkbox: {
+                        checked: false
+                    },
+                    title: '叶子',
                     key: 'leaf'
                 }]
             }]

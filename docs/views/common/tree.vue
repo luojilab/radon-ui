@@ -80,16 +80,12 @@ export default {
         return {
             treeData: [{
                 expand: false,
-                checkbox: {
-                    checked: false
-                },
+                checked: false,
                 title: '根',
                 key: 'root',
                 children: [{
                     expand: false,
-                    checkbox: {
-                        checked: false
-                    },
+                    checked: false,
                     title: '叶子',
                     key: 'leaf',
                     children: [{
@@ -102,16 +98,12 @@ export default {
                     }]
                 }, {
                     expand: false,
-                    checkbox: {
-                        checked: false
-                    },
+                    checked: false,
                     title: '叶子',
                     key: 'leaf'
                 }, {
                     expand: false,
-                    checkbox: {
-                        checked: false
-                    },
+                    checked: false,
                     title: '叶子',
                     key: 'leaf'
                 }]

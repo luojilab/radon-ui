@@ -37,8 +37,6 @@
         </li>
 </template>
 <script>
-import rdCheckbox from '../form/checkbox'
-
 export default {
     name: 'tree-node',
     props: {
@@ -49,16 +47,14 @@ export default {
             treeNode.expand = !treeNode.expand
         },
         changeAction (treeNodeObj) {
-            while (treeNodeObj.children) {
+            treeNodeObj.checked = !treeNodeObj.checked
+            if (treeNodeObj.children) {
                 treeNodeObj.children.forEach((el) => {
                     treeNodeObj.checked ? el.expand = true : el.expand = false
-                    console.log(el.expand)
+                    this.changeAction(el)
                 })
             }
         }
-    },
-    components: {
-        rdCheckbox
     }
 }
 </script>

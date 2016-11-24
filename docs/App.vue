@@ -394,6 +394,10 @@ export default {
                         title: 'Progress',
                         subTitle: '进度条',
                         link: 'common/progress'
+                    }, {
+                        title: 'Tree',
+                        subTitle: '树选择',
+                        link: 'common/tree'
                     }]
                 }, {
                     title: 'Global',

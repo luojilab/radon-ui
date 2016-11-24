@@ -28,12 +28,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
     'use strict';
 
     function install(Vue) {
-        var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+        var options = arguments.length <= 1 || arguments[1] === undefined ? {
             Modal: true,
             Notification: true,
             Preview: true,
             LoadingBar: true
-        };
+        } : arguments[1];
 
         var RADON_EVENT_BUS = new Vue({});
         window.RADON_EVENT_BUS = RADON_EVENT_BUS;

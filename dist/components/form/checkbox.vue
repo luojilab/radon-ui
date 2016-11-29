@@ -30,13 +30,15 @@ export default {
         }
     },
     methods: {
-        changeAction () {
+        changeAction (e) {
+            e.stopPropagation()
             if (!this.checkbox.disabled) {
                 this.checkbox.checked = !this.checkbox.checked
             }
             if (this.checkbox.change) {
                 this.checkbox.change()
             }
+            this.$emit('change', this.checkbox, this)
         }
     }
 }

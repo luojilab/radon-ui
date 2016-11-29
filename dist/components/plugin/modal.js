@@ -31,9 +31,9 @@ exports.default = function (Vue, $root) {
 
     Vue.prototype.$Modal = {
         create: function create(title, text, confirm, cancel, rawHTML, _ref) {
-            var cancelButton = _ref.cancelButton,
-                confirmButton = _ref.confirmButton,
-                large = _ref.large;
+            var cancelButton = _ref.cancelButton;
+            var confirmButton = _ref.confirmButton;
+            var large = _ref.large;
 
             $root.RADON_MODAL = {
                 show: true,
@@ -66,12 +66,12 @@ exports.default = function (Vue, $root) {
             };
         },
         confirm: function confirm(title, text, _confirm, cancel) {
-            var options = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
+            var options = arguments.length <= 4 || arguments[4] === undefined ? {} : arguments[4];
 
             this.create(title, text, _confirm, cancel, '', options);
         },
         confirmWithHTML: function confirmWithHTML(title, rawHTML, confirm, cancel) {
-            var options = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
+            var options = arguments.length <= 4 || arguments[4] === undefined ? {} : arguments[4];
 
             this.create(title, '', confirm, cancel, rawHTML, options);
         }

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.RadonInstall = exports.rdPagination = exports.rdBreadcrumb = exports.rdLoadingbar = exports.rdPreview = exports.rdModal = exports.rdNotification = exports.rdProgressCircle = exports.rdProgress = exports.rdAudio = exports.rdUpload = exports.rdTimeline = exports.rdSpin = exports.rdAlert = exports.rdTooltip = exports.rdNumber = exports.rdTimepicker = exports.rdDatepicker = exports.rdSlider = exports.rdSwitch = exports.rdCascader = exports.rdRadioGroup = exports.rdRadio = exports.rdTextSelect = exports.rdEditText = exports.rdTextarea = exports.rdText = exports.rdCheckbox = exports.formItem = exports.rdSelect = exports.rdCardGroup = exports.rdCard = exports.rdTable = exports.rdTag = exports.rdDropButton = exports.rdButtonGroup = exports.rdButton = undefined;
+exports.RadonInstall = exports.rdPagination = exports.rdBreadcrumb = exports.rdLoadingbar = exports.rdPreview = exports.rdModal = exports.rdNotification = exports.rdTree = exports.rdProgressCircle = exports.rdProgress = exports.rdAudio = exports.rdUpload = exports.rdTimeline = exports.rdSpin = exports.rdAlert = exports.rdTooltip = exports.rdNumber = exports.rdTimepicker = exports.rdDatepicker = exports.rdSlider = exports.rdSwitch = exports.rdCascader = exports.rdRadioGroup = exports.rdRadio = exports.rdTextSelect = exports.rdEditText = exports.rdTextarea = exports.rdText = exports.rdCheckbox = exports.formItem = exports.rdSelect = exports.rdCardGroup = exports.rdCard = exports.rdTable = exports.rdTag = exports.rdDropButton = exports.rdButtonGroup = exports.rdButton = undefined;
 
 var _button = require('./basic/button.vue');
 
@@ -125,6 +125,10 @@ var _upload = require('./common/upload.vue');
 
 var _upload2 = _interopRequireDefault(_upload);
 
+var _tree = require('./common/tree.vue');
+
+var _tree2 = _interopRequireDefault(_tree);
+
 var _modal = require('./global/modal.vue');
 
 var _modal2 = _interopRequireDefault(_modal);
@@ -185,6 +189,7 @@ exports.rdUpload = _upload2.default;
 exports.rdAudio = _audio2.default;
 exports.rdProgress = _progress2.default;
 exports.rdProgressCircle = _progressCircle2.default;
+exports.rdTree = _tree2.default;
 exports.rdNotification = _notification2.default;
 exports.rdModal = _modal2.default;
 exports.rdPreview = _preview2.default;

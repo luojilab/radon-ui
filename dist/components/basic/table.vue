@@ -36,6 +36,7 @@
                     <div v-if="val && typeof val === 'object'">
                         <img v-if="val.type === 'image' " :src="val.src" :class="val.class">
                         <div v-if="val.type === 'raw' " :class="val.class" v-html="val.value"></div>
+                        <div v-if="val.type === 'withRoute' " :class="val.class" v-link="val.route">{{val.value}}</div>
                     </div>
                     <div v-else>{{val}}</div>
                 </td>

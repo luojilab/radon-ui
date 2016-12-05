@@ -147,7 +147,8 @@ let optionsDefault = {
 export default {
     props: {
         options: Object,
-        total: Number
+        total: Number,
+        currentPage: Number
     },
     data () {
         return {
@@ -172,6 +173,7 @@ export default {
         }
         this.initPageList(this.total)
         this.getData(1)
+        this.$on('currentPageChange', this.currentPageChange)
     },
     mounted () {
         this.$optionsDefault = {}
@@ -191,6 +193,10 @@ export default {
         pagePath (pageNumber) {
             this.pageStart = pageNumber
             this.getData()
+        },
+        currentPageChange (val) {
+            this.pageStart = val
+            this.pageListRefresh()
         },
         first () {
             if (this.pageStart !== 1) {

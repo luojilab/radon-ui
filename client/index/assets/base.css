@@ -1,0 +1,36 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    background: #f9f9f9;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, STHeiti, 'WenQuanYi Micro Hei', SimSun, sans-serif;
+}
+@-webkit-keyframes loading {
+    from {
+        transform-origin: 50% 50%;
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        transform-origin: 50% 50%;
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loading {
+    from {
+        transform-origin: 50% 50%;
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        transform-origin: 50% 50%;
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.infinite-rotate {
+    animation: loading 1s infinite linear;
+}

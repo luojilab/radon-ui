@@ -37,12 +37,12 @@ export default {
         expandChild (treeNode) {
             treeNode.expand = !treeNode.expand
         },
-        changeAction (treeNodeObj) {
-            treeNodeObj.checked = !treeNodeObj.checked
+        changeAction (treeNodeObj, checkState) {
+            treeNodeObj.checked = checkState || !treeNodeObj.checked
             if (treeNodeObj.children) {
                 treeNodeObj.children.forEach((el) => {
                     treeNodeObj.checked ? el.expand = true : el.expand = false
-                    this.changeAction(el)
+                    this.changeAction(el, treeNodeObj.checked)
                 })
             }
         }

@@ -151,6 +151,7 @@ export default {
             }
         },
         delFile (item) {
+            this.$file.value = ''
             this.fileList.$remove(item)
             this.$emit('remove', item)
         }

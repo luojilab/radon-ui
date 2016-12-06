@@ -33,7 +33,7 @@ var Cov = {
 
 var VueAudio = function () {
     function VueAudio(src) {
-        var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+        var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
         (0, _classCallCheck3.default)(this, VueAudio);
 
         var preload = true;
@@ -76,7 +76,7 @@ var VueAudio = function () {
         value: function init(src) {
             var _this = this;
 
-            var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+            var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
             if (!src) console.error('src must be required');
             this.state.startLoad = true;

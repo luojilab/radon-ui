@@ -13,7 +13,7 @@
             @input="inputAction"
             @blur="blurAction"
             :disabled="textfield.disabled"
-            :maxlength="textfield.maxlength"
+            :maxlength="textfield.maxLength"
         >
         <span class="rd-textfield-tip" v-if="textfield.tip">{{textfield.tip}}</span>
         <i class="rd-textfield-icon" :class="textIcon"></i>

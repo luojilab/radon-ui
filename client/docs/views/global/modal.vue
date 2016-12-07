@@ -129,6 +129,7 @@ export default {
                 '这里是标题',
                 '这里应该说点什么',
                 () => {
+                    console.log(this.cov())
                     this.$Notification.success('你点击了确认', '你点击了确认你点击了确认你点击了确认你点击了确认你点击了确认', 5000)
                 },
                 () => {

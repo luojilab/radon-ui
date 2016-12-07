@@ -2,14 +2,14 @@ import {
     rdNotification
 } from '../index'
 
-export default (Vue, $root) => {
-    Vue.set($root, 'RADON_NOTIFICATION', [])
+export default (Vue, data, global) => {
+    data.data['RADON_NOTIFICATION'] = []
     Vue.component('rd-notification', rdNotification)
 
     Vue.prototype.$Notification = {
         remove (item, duration) {
             setTimeout(() => {
-                $root.RADON_NOTIFICATION.$remove(item)
+                global.RADON_EVENT_BUS.RADON_NOTIFICATION.$remove(item)
             }, duration)
         },
         create (type, title, content, duration) {
@@ -18,7 +18,7 @@ export default (Vue, $root) => {
                 title: title,
                 content: content
             }
-            $root.RADON_NOTIFICATION.push(item)
+            global.RADON_EVENT_BUS.RADON_NOTIFICATION.push(item)
             if (duration) {
                 this.remove(item, duration)
             }

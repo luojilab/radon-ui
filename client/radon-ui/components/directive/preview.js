@@ -19,40 +19,40 @@ function getImage (src, previewItem) {
     })
 }
 
-const preview = (Vue, $eventBus) => {
+const preview = (Vue) => {
     Vue.directive('preview', {
-        bind: function () {
+        bind: function (el, bind, vnode) {
             let previewItem = {
                 title: '',
-                el: this.el,
+                el: el,
                 index: 0,
                 src: 'data:img/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEXs7Oxc9QatAAAACklEQVQI12NgAAAAAgAB4iG8MwAAAABJRU5ErkJggg=='
             }
-            $eventBus.RADON_PREVIEW.list.push(previewItem)
-            updateIndex($eventBus.RADON_PREVIEW.list)
-            this.el.addEventListener('click', (e) => {
+            window.RADON_EVENT_BUS.RADON_PREVIEW.list.push(previewItem)
+            updateIndex(window.RADON_EVENT_BUS.RADON_PREVIEW.list)
+            el.addEventListener('click', (e) => {
                 e.stopPropagation()
-                $eventBus.RADON_PREVIEW.show = true
-                $eventBus.RADON_PREVIEW.current = previewItem
+                window.RADON_EVENT_BUS.RADON_PREVIEW.show = true
+                window.RADON_EVENT_BUS.RADON_PREVIEW.current = previewItem
             })
         },
-        update: function (newValue, oldValue) {
-            let previewItem = $eventBus.RADON_PREVIEW.list.find(item => {
-                return item.el === this.el
+        update: function (el, bind, vnode) {
+            let previewItem = window.RADON_EVENT_BUS.RADON_PREVIEW.list.find(item => {
+                return item.el === el
             })
             if (!previewItem) return
-            previewItem.src = newValue
-            getImage(newValue, previewItem)
+            previewItem.src = bind.value
+            getImage(bind.value, previewItem)
         },
-        unbind: function () {
-            if (this.el) {
-                $eventBus.RADON_PREVIEW.list.forEach((item, index) => {
-                    if (this.el === item.el) {
-                        $eventBus.RADON_PREVIEW.list.splice(index, 1)
+        unbind: function (el) {
+            if (el) {
+                window.RADON_EVENT_BUS.RADON_PREVIEW.list.forEach((item, index) => {
+                    if (el === item.el) {
+                        window.RADON_EVENT_BUS.RADON_PREVIEW.list.splice(index, 1)
                     }
                 })
             }
-            updateIndex($eventBus.RADON_PREVIEW.list)
+            updateIndex(window.RADON_EVENT_BUS.RADON_PREVIEW.list)
         }
     })
     return Vue

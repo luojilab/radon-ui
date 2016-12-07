@@ -3,8 +3,6 @@ import {
 } from '../index'
 
 export default (Vue, data) => {
-    const vm = window.RADON_EVENT_BUS
-
     data['data']['RADON_MODAL'] = {
         show: false,
         title: '',
@@ -29,7 +27,7 @@ export default (Vue, data) => {
 
     Vue.prototype.$Modal = {
         create (title, text, confirm, cancel, rawHTML, { cancelButton, confirmButton, large }) {
-            vm.RADON_MODAL = {
+            window.RADON_EVENT_BUS.RADON_MODAL = {
                 show: true,
                 title: title,
                 content: text,
@@ -50,7 +48,7 @@ export default (Vue, data) => {
             }
         },
         clear () {
-            vm.RADON_MODAL = {
+            window.RADON_EVENT_BUS.RADON_MODAL = {
                 show: false,
                 title: '',
                 content: '',

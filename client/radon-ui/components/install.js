@@ -25,23 +25,28 @@ import previewInstall from './plugin/preview'
                 data: {}
             }
             if (options.Modal) {
-                modalIntall(Vue, data)
+                modalIntall(Vue, data, window)
             }
 
-            // if (options.Notification) {
-            //     notificationInstall(Vue, data)
-            // }
+            if (options.Notification) {
+                notificationInstall(Vue, data, window)
+            }
 
-            // if (options.LoadingBar) {
-            //     loadingBarInstall(Vue, data)
-            // }
+            if (options.LoadingBar) {
+                loadingBarInstall(Vue, data, window)
+            }
 
-            // if (options.Preview) {
-            //     previewInstall(Vue, data)
-            // }
+            if (options.Preview) {
+                previewInstall(Vue, data, window)
+            }
 
             const RADON_EVENT_BUS = new Vue(data)
+            Vue.prototype.$RADON_EVENT_BUS = RADON_EVENT_BUS
             window.RADON_EVENT_BUS = RADON_EVENT_BUS
+        }
+
+        Vue.prototype.cov = function () {
+            console.log(this)
         }
 
         RadonInit()

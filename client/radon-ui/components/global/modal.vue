@@ -149,7 +149,7 @@ import rdButton from '../basic/button.vue'
 
 import {
     catIn
-} from '../utils'
+} from '../../utils'
 
 export default {
     data () {

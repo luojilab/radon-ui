@@ -149,7 +149,7 @@
 </template>
 
 <script>
-import { catIn } from '../utils'
+import { catIn } from '../../utils'
 
 const _ = {
     on (type, handler) {

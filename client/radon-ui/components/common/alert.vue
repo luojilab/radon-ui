@@ -92,7 +92,7 @@
     </div>
 </template>
 <script>
-import { ICON_MAP } from '../utils'
+import { ICON_MAP } from '../../utils'
 
 export default {
     props: {

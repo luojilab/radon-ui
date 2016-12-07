@@ -88,7 +88,7 @@
     </div>
 </template>
 <script>
-import { _ } from '../utils'
+import { _ } from '../../utils'
 
 export default {
     props: {

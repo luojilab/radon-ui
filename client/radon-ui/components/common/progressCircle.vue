@@ -62,7 +62,7 @@
     </div>
 </template>
 <script>
-import { _ } from '../utils'
+import { _ } from '../../utils'
 const STATE_COLOR = {
     'success': '#87d068',
     'failed': '#f50'

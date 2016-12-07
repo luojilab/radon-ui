@@ -142,7 +142,7 @@
     </div>
 </template>
 <script>
-import { ICON_MAP } from '../utils'
+import { ICON_MAP } from '../../utils'
 
 const TYPE_MAP = {
     Email: {

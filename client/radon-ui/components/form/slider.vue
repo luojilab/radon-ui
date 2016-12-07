@@ -78,7 +78,7 @@
     </div>
 </template>
 <script>
-import { throttle } from '../utils'
+import { throttle } from '../../utils'
 const getMousePosition = function (e) {
     if (e.type === 'touchmove') {
         return e.touches[0].pageX

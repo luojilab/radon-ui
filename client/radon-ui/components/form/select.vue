@@ -192,7 +192,7 @@
     </div>
 </template>
 <script>
-import { catIn } from '../utils'
+import { catIn } from '../../utils'
 
 export default {
     props: {

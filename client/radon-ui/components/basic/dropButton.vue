@@ -91,7 +91,7 @@
 <script>
 import {
     catIn
-} from '../utils'
+} from '../../utils'
 
 export default {
     props: {

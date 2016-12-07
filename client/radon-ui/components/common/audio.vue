@@ -143,7 +143,7 @@
 </template>
 
 <script>
-    import VueAudio from '../lib/audio.js'
+    import VueAudio from '../../lib/audio.js'
 
     export default {
         props: {

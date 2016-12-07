@@ -99,7 +99,7 @@
     </div>
 </template>
 <script>
-import { pad } from '../utils'
+import { pad } from '../../utils'
 const generateCount = (count) => {
     let list = []
     while (count) {

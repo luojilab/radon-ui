@@ -47,7 +47,7 @@ import rdBreadcrumb from './components/navigation/breadcrumb.vue'
 import rdPagination from './components/navigation/pagination.vue'
 
 // Install
-import RadonInstall from './components/install'
+import RadonInstall from './install'
 
 export {
     // basic

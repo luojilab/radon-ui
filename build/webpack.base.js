@@ -14,7 +14,7 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.vue'],
         alias: {
-            'radon-ui': path.resolve(__dirname, '../client/index/radon-ui/')
+            'radon-ui': path.resolve(__dirname, '../client/radon-ui/')
         }
     },
     module: {

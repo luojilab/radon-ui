@@ -4,7 +4,7 @@ const getEntries = require('./getEntries')
 module.exports = Object.assign({}, base, {
   target: 'node',
   devtool: false,
-  entry: getEntries(null, ['login'], true),
+  entry: getEntries(null, ['docs'], true),
   output: Object.assign({}, base.output, {
     filename: 'server/[name].js',
     libraryTarget: 'commonjs2'

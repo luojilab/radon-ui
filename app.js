@@ -10,8 +10,8 @@ const router = require('./server/routers/router')
 
 app.set('views', path.join(__dirname, 'server/views'))
 app.set('view engine', 'pug')
-
 app.use(router)
+app.use(express.static(path.join(__dirname, 'public')))
 
 if (isDev) {
     // local variables for all views
@@ -38,15 +38,10 @@ if (isDev) {
 
     const server = http.createServer(app)
 
-    app.use(express.static(path.join(__dirname, 'public')))
-
     server.listen(PORT, function(){
         console.log('App (dev) is now running on PORT '+ PORT +'!')
     })
 } else {
-    // static assets served by express.static() for production
-    app.use(express.static(path.join(__dirname, 'public')))
-    
     app.listen(PORT, function () {
         console.log('App (production) is now running on PORT '+ PORT +'!')
     })

@@ -25,7 +25,7 @@
 export default {
     computed: {
         loadingBar () {
-            return window.RADON_EVENT_BUS.RADON_LOADING_BAR
+            return this.$RADON_EVENT_BUS.RADON_LOADING_BAR
         }
     }
 }

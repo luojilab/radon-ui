@@ -2,32 +2,12 @@ import {
     rdModal
 } from '../index'
 
-export default (Vue, data) => {
-    data['data']['RADON_MODAL'] = {
-        show: false,
-        title: '',
-        content: '',
-        rawContent: '',
-        cancel: () => {},
-        confirm: () => {},
-        large: false,
-        cancelButton: {
-            show: true,
-            type: '',
-            text: '取消'
-        },
-        confirmButton: {
-            show: true,
-            type: 'primary',
-            text: '确定'
-        }
-    }
-
+export default (Vue, vm) => {
     Vue.component('rd-modal', rdModal)
 
     Vue.prototype.$Modal = {
         create (title, text, confirm, cancel, rawHTML, { cancelButton, confirmButton, large }) {
-            window.RADON_EVENT_BUS.RADON_MODAL = {
+            vm.RADON_MODAL = {
                 show: true,
                 title: title,
                 content: text,
@@ -48,7 +28,7 @@ export default (Vue, data) => {
             }
         },
         clear () {
-            window.RADON_EVENT_BUS.RADON_MODAL = {
+            vm.RADON_MODAL = {
                 show: false,
                 title: '',
                 content: '',

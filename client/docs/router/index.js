@@ -237,13 +237,13 @@ const router = new VueRouter({
 })
 
 
-// router.beforeEach(function (transition) {
-//     router.app.$Loading.start()
-//     transition.next()
-// })
+router.beforeEach((to, from, next) => {
+    router.app.$Loading.start()
+    next()
+})
 
-// router.afterEach((transition) => {
-//     router.app.$Loading.finish()
-// })
+router.afterEach(() => {
+    router.app.$Loading.finish()
+})
 
 export default router

@@ -4,16 +4,7 @@ import {
 
 import preview from '../directive/preview'
 
-export default (Vue, data) => {
-    data.data['RADON_PREVIEW'] = {
-        show: false,
-        current: {
-            title: '',
-            src: ''
-        },
-        list: []
-    }
-
+export default (Vue, vm) => {
     Vue.component('rd-preview', rdPreview)
-    preview(Vue)
+    preview(Vue, vm)
 }

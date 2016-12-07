@@ -17,39 +17,75 @@ import previewInstall from './plugin/preview'
         Preview: true,
         LoadingBar: true
     }) {
-        // const RADON_EVENT_BUS = new Vue({})
-        // window.RADON_EVENT_BUS = RADON_EVENT_BUS
+        const RADON_EVENT_BUS = new Vue({
+            data: {
+                RADON_NOTIFICATION: [],
+                RADON_PREVIEW: {
+                    show: false,
+                    current: {
+                        title: '',
+                        src: ''
+                    },
+                    list: []
+                },
+                RADON_LOADING_BAR: {
+                    percent: 0,
+                    options: {
+                        canSuccess: true,
+                        color: 'rgb(143, 255, 199)',
+                        failedColor: 'red',
+                        show: false,
+                        height: '2px'
+                    }
+                },
+                RADON_MODAL: {
+                    show: false,
+                    title: '',
+                    content: '',
+                    rawContent: '',
+                    cancel: () => {},
+                    confirm: () => {},
+                    large: false,
+                    cancelButton: {
+                        show: true,
+                        type: '',
+                        text: '取消'
+                    },
+                    confirmButton: {
+                        show: true,
+                        type: 'primary',
+                        text: '确定'
+                    }
+                }
+            }
+        })
 
         const RadonInit = (vm) => {
-            let data = {
-                data: {}
-            }
+            Vue.prototype.$RADON_EVENT_BUS = vm
+            window.RADON_EVENT_BUS = vm
+
             if (options.Modal) {
-                modalIntall(Vue, data, window)
+                modalIntall(Vue, vm)
             }
 
             if (options.Notification) {
-                notificationInstall(Vue, data, window)
+                notificationInstall(Vue, vm)
             }
 
             if (options.LoadingBar) {
-                loadingBarInstall(Vue, data, window)
+                loadingBarInstall(Vue, vm)
             }
 
             if (options.Preview) {
-                previewInstall(Vue, data, window)
+                previewInstall(Vue, vm)
             }
-
-            const RADON_EVENT_BUS = new Vue(data)
-            Vue.prototype.$RADON_EVENT_BUS = RADON_EVENT_BUS
-            window.RADON_EVENT_BUS = RADON_EVENT_BUS
         }
 
         Vue.prototype.cov = function () {
             console.log(this)
         }
 
-        RadonInit()
+        RadonInit(RADON_EVENT_BUS)
     }
     return install
 }))

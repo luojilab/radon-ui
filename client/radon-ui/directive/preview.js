@@ -19,7 +19,7 @@ function getImage (src, previewItem) {
     })
 }
 
-const preview = (Vue) => {
+const preview = (Vue, vm) => {
     Vue.directive('preview', {
         bind: function (el, bind, vnode) {
             let previewItem = {
@@ -28,16 +28,16 @@ const preview = (Vue) => {
                 index: 0,
                 src: 'data:img/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEXs7Oxc9QatAAAACklEQVQI12NgAAAAAgAB4iG8MwAAAABJRU5ErkJggg=='
             }
-            window.RADON_EVENT_BUS.RADON_PREVIEW.list.push(previewItem)
-            updateIndex(window.RADON_EVENT_BUS.RADON_PREVIEW.list)
+            vm.RADON_PREVIEW.list.push(previewItem)
+            updateIndex(vm.RADON_PREVIEW.list)
             el.addEventListener('click', (e) => {
                 e.stopPropagation()
-                window.RADON_EVENT_BUS.RADON_PREVIEW.show = true
-                window.RADON_EVENT_BUS.RADON_PREVIEW.current = previewItem
+                vm.RADON_PREVIEW.show = true
+                vm.RADON_PREVIEW.current = previewItem
             })
         },
         update: function (el, bind, vnode) {
-            let previewItem = window.RADON_EVENT_BUS.RADON_PREVIEW.list.find(item => {
+            let previewItem = vm.RADON_PREVIEW.list.find(item => {
                 return item.el === el
             })
             if (!previewItem) return
@@ -46,13 +46,13 @@ const preview = (Vue) => {
         },
         unbind: function (el) {
             if (el) {
-                window.RADON_EVENT_BUS.RADON_PREVIEW.list.forEach((item, index) => {
+                vm.RADON_PREVIEW.list.forEach((item, index) => {
                     if (el === item.el) {
-                        window.RADON_EVENT_BUS.RADON_PREVIEW.list.splice(index, 1)
+                        vm.RADON_PREVIEW.list.splice(index, 1)
                     }
                 })
             }
-            updateIndex(window.RADON_EVENT_BUS.RADON_PREVIEW.list)
+            updateIndex(vm.RADON_PREVIEW.list)
         }
     })
     return Vue

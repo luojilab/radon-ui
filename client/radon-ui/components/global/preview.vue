@@ -164,10 +164,10 @@ export default {
     name: 'Preview',
     computed: {
         preview () {
-            return window.RADON_EVENT_BUS.RADON_PREVIEW
+            return this.$RADON_EVENT_BUS.RADON_PREVIEW
         },
         getPosition () {
-            let current = window.RADON_EVENT_BUS.RADON_PREVIEW.current
+            let current = this.$RADON_EVENT_BUS.RADON_PREVIEW.current
             if (current.src) {
                 let naturalWH = current.naturalWidth / current.naturalHeight
                 let windowWH = window.innerWidth / window.innerHeight

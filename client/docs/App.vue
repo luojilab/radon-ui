@@ -382,9 +382,9 @@ html,body{
                     <router-view></router-view>
                 </div>
                 <rd-modal></rd-modal>
-                <!-- <rd-notification></rd-notification>
+                <rd-notification></rd-notification>
                 <rd-preview></rd-preview>
-                <rd-loadingbar></rd-loadingbar> -->
+                <rd-loadingbar></rd-loadingbar>
             </div>
         </div>
         <footer class="ex-footer">

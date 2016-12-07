@@ -63,7 +63,7 @@ export default {
         },
         toggleSub () {
             if (!this.menuItem.subMenu) {
-                this.$route.router.go({ path: this.menuItem.link })
+                this.$router.push({ path: this.menuItem.link })
             } else {
                 this.showSub = !this.showSub
             }

@@ -102,7 +102,7 @@ export default {
             this.swiper.rect = this.$el.getBoundingClientRect()
             this.initSwipe()
             if (this.swipe.autoplay) {
-                this.autoPlay(this.swipe.autoplay)
+                this.startAutoPlay(this.swipe.autoplay)
             }
         },
         initSwipe () {
@@ -132,7 +132,7 @@ export default {
                 movediff = 0
             })
         },
-        autoPlay (delay) {
+        startAutoPlay (delay) {
             this.stopAutoPlay()
             this.timer = setInterval(this.play, delay)
         },
@@ -163,8 +163,8 @@ export default {
             this.checkOut()
         },
         turnTo (index) {
-            this.swiper.index = index
-            this.next()
+            this.position.x = (this.swiper.rect.width * index)
+            this.checkOut()
         },
         checkOut () {
             if (this.position.x > (this.swiper.rect.width * this.swiper.count)) {

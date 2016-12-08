@@ -61,6 +61,12 @@ const router = new VueRouter({
             component: (resolve) => {
                 require(['../views/basic/card.vue'], resolve)
             }
+        }, {
+            name: 'swipe',
+            path: '/basic/swipe',
+            component: (resolve) => {
+                require(['../views/basic/swipe.vue'], resolve)
+            }
         },
 
         // Form

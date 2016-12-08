@@ -454,6 +454,12 @@ export default {
                         route: {
                             name: 'card'
                         }
+                    }, {
+                        title: 'Swipe',
+                        subTitle: '轮播',
+                        route: {
+                            name: 'swipe'
+                        }
                     }]
                 }, {
                     title: 'Form',

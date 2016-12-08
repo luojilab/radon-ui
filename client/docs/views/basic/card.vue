@@ -8,13 +8,11 @@
 <div class="ex-content">
     <div class="ex-card">
     <rd-mark>
-        <textarea class="ex-mark-text">
 # Card 卡片
 
 简单的布局卡片
 
 ### 示例
-        </textarea>
     </rd-mark>
     <div class="ex-card-content">
         <rd-card title="普通卡片标题">
@@ -60,29 +58,13 @@
         </rd-card-group>
     </div>
     <rd-mark>
-        <textarea class="ex-mark-text">
 ### 代码
 ```html
-<rd-card title="tag">
-    <p>
-        当您使用 Google 服务时，我们可能会收集和处理有关您实际所在位置的信息。我们会使用各种技术进行定位，这些技术包括 IP 地址、GPS 以及能够提供相关信息的其他传感器（比如说可能会为 Google 提供附近设备、Wi-Fi 接入点和基站的信息）。
-    </p>
-</rd-card>
+{{code.one}}
 ```
 
 ```html
- <rd-card-group>
-    <rd-card title="tag">
-        <p>
-            当您使用 Google 服务时，我们可能会收集和处理有关您实际所在位置的信息。我们会使用各种技术进行定位，这些技术包括 IP 地址、GPS 以及能够提供相关信息的其他传感器（比如说可能会为 Google 提供附近设备、Wi-Fi 接入点和基站的信息）。
-        </p>
-    </rd-card>
-    <rd-card title="tag">
-        <p>
-            当您使用 Google 服务时，我们可能会收集和处理有关您实际所在位置的信息。我们会使用各种技术进行定位，这些技术包括 IP 地址、GPS 以及能够提供相关信息的其他传感器（比如说可能会为 Google 提供附近设备、Wi-Fi 接入点和基站的信息）。
-        </p>
-    </rd-card>
-</rd-card-group>
+ {{code.two}}
 ```
 
 ### API
@@ -95,7 +77,6 @@
 | bg-color       | String       | 卡片颜色       |
 | font-color     | String       | 卡片字体颜色    |
 
-        </textarea>
     </rd-mark>
     </div>
 </div>
@@ -109,6 +90,29 @@ import {
 } from 'radon-ui'
 
 export default {
+    data () {
+        return {
+            code: {
+                one: `<rd-card title="tag">
+    <p>
+        当您使用 Google 服务时，我们可能会收集和处理有关您实际所在位置的信息。我们会使用各种技术进行定位，这些技术包括 IP 地址、GPS 以及能够提供相关信息的其他传感器（比如说可能会为 Google 提供附近设备、Wi-Fi 接入点和基站的信息）。
+    </p>
+</rd-card>`,
+two: ` <rd-card-group>
+    <rd-card title="tag">
+        <p>
+            当您使用 Google 服务时，我们可能会收集和处理有关您实际所在位置的信息。我们会使用各种技术进行定位，这些技术包括 IP 地址、GPS 以及能够提供相关信息的其他传感器（比如说可能会为 Google 提供附近设备、Wi-Fi 接入点和基站的信息）。
+        </p>
+    </rd-card>
+    <rd-card title="tag">
+        <p>
+            当您使用 Google 服务时，我们可能会收集和处理有关您实际所在位置的信息。我们会使用各种技术进行定位，这些技术包括 IP 地址、GPS 以及能够提供相关信息的其他传感器（比如说可能会为 Google 提供附近设备、Wi-Fi 接入点和基站的信息）。
+        </p>
+    </rd-card>
+</rd-card-group>`
+    }
+        }
+    },
     components: {
         rdCardGroup,
         rdCard,

@@ -7,6 +7,7 @@ import rdTag from './components/basic/tag.vue'
 import rdTable from './components/basic/table.vue'
 import rdCard from './components/basic/card.vue'
 import rdCardGroup from './components/basic/cardGroup.vue'
+import rdSwipe from './components/basic/swipe.vue'
 
 // form
 import formItem from './components/form/formItem.vue'
@@ -58,6 +59,7 @@ export {
     rdTable,
     rdCard,
     rdCardGroup,
+    rdSwipe,
 
     // form
     rdSelect,

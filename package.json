@@ -20,6 +20,11 @@
       "email": "<hilongjw@gmail.com>"
     }
   ],
+  "files": [
+    "dist/radon-ui.js",
+    "dist/radon-ui.css",
+    "dist/static/fonts/"
+  ],
   "main": "dist/radon-ui.js",
   "scripts": {
     "dev": "node build/dev-server.js",

@@ -34,6 +34,7 @@ const radonBuildConf = merge(baseWebpackConfig, {
                 warnings: false
             }
         }),
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         // extract css into its own file
         new ExtractTextPlugin('radon-ui.css')

@@ -31,6 +31,7 @@
 @media screen and (max-width: 768px) {
   .swiper-box {
       height: 300px;
+      box-sizing: border-box;
   }
   .swiper-box  .rd-swipe {
     height: 200px;
@@ -63,9 +64,10 @@
         </rd-swipe>
     </div>
     <p>
-        <rd-button @click="slideTo(0)">slide to 1</rd-button>
-        <rd-button @click="slideTo(1)">slide to 2</rd-button>
-        <rd-button @click="slideTo(2)">slide to 3</rd-button>
+        <rd-button @click="slideTo(0)">move to 1</rd-button>
+        <rd-button @click="slideTo(1)">move to 2</rd-button>
+        <rd-button @click="slideTo(2)">move to 3</rd-button>
+        <rd-button @click="slideTo(3)">move to 4</rd-button>
     </p>
     <rd-mark>
 ### 代码

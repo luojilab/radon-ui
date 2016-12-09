@@ -13,12 +13,11 @@ var webpackConfig = merge(baseWebpackConfig, {
     module: {
         loaders: utils.styleLoaders({ sourceMap: config.build.productionSourceMap, extract: true })
     },
-    devtool: config.build.productionSourceMap ? '#source-map' : false,
+    devtool: false,
     output: {
-        public: '',
         path: config.build.assetsRoot,
-        filename: utils.assetsPath('js/[name].[chunkhash].js'),
-        chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+        filename: utils.assetsPath('js/[name].[hash].js'),
+        chunkFilename: utils.assetsPath('js/[id].[hash].js')
     },
     vue: {
         loaders: utils.cssLoaders({
@@ -36,6 +35,7 @@ var webpackConfig = merge(baseWebpackConfig, {
                 warnings: false
             }
         }),
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         // extract css into its own file
         new ExtractTextPlugin(utils.assetsPath('css/[name].css')),
@@ -75,12 +75,6 @@ var webpackConfig = merge(baseWebpackConfig, {
                     ) === 0
                 )
             }
-        }),
-        // extract webpack runtime and module manifest to its own file in order to
-        // prevent vendor hash from being updated whenever app bundle is updated
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'manifest',
-            chunks: ['vendor']
         })
     ]
 })

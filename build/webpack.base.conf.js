@@ -58,14 +58,14 @@ module.exports = {
             test: /\.json$/,
             loader: 'json'
         }, {
-            test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+            test: /\.(png|jpe?g|gif)(\?.*)?$/,
             loader: 'url',
             query: {
                 limit: 10000,
                 name: utils.assetsPath('img/[name].[ext]')
             }
         }, {
-            test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+            test: /\.(svg|woff2?|eot|ttf|otf)(\?.*)?$/,
             loader: 'url',
             query: {
                 limit: 10000,

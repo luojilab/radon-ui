@@ -363,6 +363,10 @@ export default {
                         title: 'Cascader',
                         subTitle: '级联选择器',
                         link: 'form/cascader'
+                    }, {
+                        title: 'AutoSearch',
+                        subTitle: '查找输入内容',
+                        link: 'form/autosearch'
                     }]
                 }, {
                     title: 'Common',

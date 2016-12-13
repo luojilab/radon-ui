@@ -113,6 +113,12 @@ router.map({
             require(['../views/form/select.vue'], resolve)
         }
     },
+    'form/autosearch': {
+        name: 'autosearch',
+        component: (resolve) => {
+            require(['../views/form/autoSearch.vue'], resolve)
+        }
+    },
 
     // Common
     'common/timeline': {

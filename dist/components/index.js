@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.RadonInstall = exports.rdPagination = exports.rdBreadcrumb = exports.rdLoadingbar = exports.rdPreview = exports.rdModal = exports.rdNotification = exports.rdTree = exports.rdProgressCircle = exports.rdProgress = exports.rdAudio = exports.rdUpload = exports.rdTimeline = exports.rdSpin = exports.rdAlert = exports.rdTooltip = exports.rdNumber = exports.rdTimepicker = exports.rdDatepicker = exports.rdSlider = exports.rdSwitch = exports.rdCascader = exports.rdRadioGroup = exports.rdRadio = exports.rdTextSelect = exports.rdEditText = exports.rdTextarea = exports.rdText = exports.rdCheckbox = exports.formItem = exports.rdSelect = exports.rdCardGroup = exports.rdCard = exports.rdTable = exports.rdTag = exports.rdDropButton = exports.rdButtonGroup = exports.rdButton = undefined;
+exports.RadonInstall = exports.rdPagination = exports.rdBreadcrumb = exports.rdLoadingbar = exports.rdPreview = exports.rdModal = exports.rdNotification = exports.rdTree = exports.rdProgressCircle = exports.rdProgress = exports.rdAudio = exports.rdUpload = exports.rdTimeline = exports.rdSpin = exports.rdAlert = exports.rdTooltip = exports.rdAutoSearch = exports.rdNumber = exports.rdTimepicker = exports.rdDatepicker = exports.rdSlider = exports.rdSwitch = exports.rdCascader = exports.rdRadioGroup = exports.rdRadio = exports.rdTextSelect = exports.rdEditText = exports.rdTextarea = exports.rdText = exports.rdCheckbox = exports.formItem = exports.rdSelect = exports.rdCardGroup = exports.rdCard = exports.rdTable = exports.rdTag = exports.rdDropButton = exports.rdButtonGroup = exports.rdButton = undefined;
 
 var _button = require('./basic/button.vue');
 
@@ -93,6 +93,10 @@ var _numberInput = require('./form/numberInput.vue');
 
 var _numberInput2 = _interopRequireDefault(_numberInput);
 
+var _autoSearch = require('./form/autoSearch.vue');
+
+var _autoSearch2 = _interopRequireDefault(_autoSearch);
+
 var _toolTip = require('./common/toolTip.vue');
 
 var _toolTip2 = _interopRequireDefault(_toolTip);
@@ -181,6 +185,7 @@ exports.rdSlider = _slider2.default;
 exports.rdDatepicker = _datePicker2.default;
 exports.rdTimepicker = _timePicker2.default;
 exports.rdNumber = _numberInput2.default;
+exports.rdAutoSearch = _autoSearch2.default;
 exports.rdTooltip = _toolTip2.default;
 exports.rdAlert = _alert2.default;
 exports.rdSpin = _spin2.default;

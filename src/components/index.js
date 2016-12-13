@@ -23,6 +23,7 @@ import rdDatepicker from './form/datePicker.vue'
 import rdSelect from './form/select.vue'
 import rdTimepicker from './form/timePicker.vue'
 import rdNumber from './form/numberInput.vue'
+import rdAutoSearch from './form/autoSearch.vue'
 
 // common
 import rdTooltip from './common/toolTip.vue'
@@ -74,6 +75,7 @@ export {
     rdDatepicker,
     rdTimepicker,
     rdNumber,
+    rdAutoSearch,
 
     // common
     rdTooltip,

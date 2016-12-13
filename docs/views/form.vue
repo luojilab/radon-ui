@@ -156,7 +156,8 @@ import {
     rdSpin,
     rdBreadcrumb,
     rdAudio,
-    rdNumber
+    rdNumber,
+    rdAutoSearch
 } from '../../src/components/index'
 
 const options = [{
@@ -672,7 +673,8 @@ export default {
         rdSpin,
         rdBreadcrumb,
         rdAudio,
-        rdNumber
+        rdNumber,
+        rdAutoSearch
     },
     methods: {
         editTable (row) {

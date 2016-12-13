@@ -67,6 +67,9 @@ export default {
                 this.resultList.show = true
             } else {
                 this.resultList.show = false
+                this.search.list.map(items => {
+                    items.selected = false
+                })
             }
         },
         setValue (item) {

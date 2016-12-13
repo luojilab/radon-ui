@@ -24,10 +24,10 @@
         border-radius:2px;
     }
 </style>
-
+s
 <template>
     <div class="rd-auto-search-container">
-        <rd-text :textfield='text' @input="inputAction"></rd-text>
+        <rd-text :textfield='text' @keyup="inputAction"></rd-text>
         <ul class="rd-search-result" v-if="resultList.show">
             <li v-for="item in search.list" @click="setValue(item)">{{item.value}}</li>
         </ul>

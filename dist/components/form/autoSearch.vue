@@ -1,5 +1,5 @@
 
-s
+
 <template>
     <div class="rd-auto-search-container">
         <rd-text :textfield='text' @keyup="inputAction"></rd-text>

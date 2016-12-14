@@ -57,6 +57,11 @@ export default {
             }
         }
     },
+    created () {
+        this.$on('select:option', option => {
+            this.setValue(option)
+        })
+    },
     components: {
         rdText
     },

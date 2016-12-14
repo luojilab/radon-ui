@@ -29,7 +29,10 @@ s
     <div class="rd-auto-search-container">
         <rd-text :textfield='text' @keyup="inputAction"></rd-text>
         <ul class="rd-search-result" v-if="resultList.show">
-            <li v-for="item in search.list" @click="setValue(item)">{{item.value}}</li>
+            <template v-if="search.list.length > 0">
+                <li v-for="item in search.list" @click="setValue(item)">{{item.value}}</li>
+            </template>
+            <li v-else>没有相关数据</li>
         </ul>
     </div>
 </template>

@@ -2,7 +2,7 @@
 
 <template>
     <div class="rd-auto-search-container">
-        <rd-text :textfield='text' @keyup="inputAction" @blur="blurAction"></rd-text>
+        <rd-text :textfield='text' @keyup="inputAction" @blur="blurAction" @keyup.enter="blurAction"></rd-text>
         <ul class="rd-search-result" v-if="resultList.show">
             <template v-if="search.list.length > 0">
                 <li v-for="item in search.list" @click="setValue(item)">{{item.value}}</li>
@@ -66,6 +66,16 @@ export default {
         blurAction () {
             setTimeout(() => {
                 this.resultList.show = false
+                this.search.list.map(item => {
+                    if (item.selected !== true) {
+                        this.search.list = [{
+                            id: 1,
+                            value: this.text.value,
+                            selected: true
+                        }]
+                    }
+                })
+
                 if (this.search.list.length === 0) {
                     this.search.list = [{
                         id: 1,

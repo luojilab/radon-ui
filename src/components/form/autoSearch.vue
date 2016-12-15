@@ -107,7 +107,7 @@ export default {
                         selected: true
                     }]
                 }
-            }, 100)
+            }, 200)
         }
     }
 }

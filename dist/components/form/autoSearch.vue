@@ -75,7 +75,6 @@ export default {
                         }]
                     }
                 })
-
                 if (this.search.list.length === 0) {
                     this.search.list = [{
                         id: 1,
@@ -83,7 +82,7 @@ export default {
                         selected: true
                     }]
                 }
-            }, 100)
+            }, 200)
         }
     }
 }

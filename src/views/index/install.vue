@@ -129,7 +129,7 @@ two: `<!-- template -->
         <rd-preview></rd-preview>
     </div>
 </template>`,
-three: `<style src="radon-ui/dist/static/css/dist.css"></style>`
+three: `<style src="radon-ui/dist/radon-ui.css"></style>`
             }
         }
     },

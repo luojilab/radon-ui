@@ -171,9 +171,11 @@ export default {
         if (this.url) {
             this.$optionsDefault.remote.url = this.url
         }
-        this.initPageList(this.total)
-        this.getData(1)
-        this.$on('currentPageChange', this.currentPageChange)
+        if (this.total !== 0) {
+            this.initPageList(this.total)
+            this.getData(1)
+            this.$on('currentPageChange', this.currentPageChange)
+        }
     },
     mounted () {
         this.$optionsDefault = {}
@@ -181,8 +183,10 @@ export default {
         if (this.url) {
             this.$optionsDefault.remote.url = this.url
         }
-        this.initPageList(this.total)
-        this.getData(1)
+        if (this.total !== 0) {
+            this.initPageList(this.total)
+            this.getData(1)
+        }
     },
     watch: {
         total (val) {

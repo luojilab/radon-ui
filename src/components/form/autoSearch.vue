@@ -27,8 +27,8 @@
 
 <template>
     <div class="rd-auto-search-container">
-        <rd-text :textfield='text' @keyup="inputAction" @blur="blurAction" @keyup.enter="blurAction"></rd-text>
-        <ul class="rd-search-result" v-if="resultList.show">
+        <rd-text :textfield='text' @keyup="inputAction" @blur="blurAction" @keyup.enter="blurAction" @mouseout="blurAction"></rd-text>
+        <ul class="rd-search-result" v-if="resultList.show" @mouseover="optionState" @mouseout="blurAction">
             <template v-if="search.list.length > 0">
                 <li v-for="item in search.list" @click="setValue(item)">{{item.value}}</li>
             </template>
@@ -56,7 +56,8 @@ export default {
                 tip: ''
             },
             resultList: {
-                show: false
+                show: false,
+                over: true
             }
         }
     },
@@ -89,25 +90,31 @@ export default {
             this.resultList.show = false
         },
         blurAction () {
+            this.resultList.over = false
             setTimeout(() => {
-                this.resultList.show = false
-                this.search.list.map(item => {
-                    if (item.selected !== true) {
+                if (!this.resultList.over) {
+                    this.resultList.show = false
+                    this.search.list.map(item => {
+                        if (item.selected !== true) {
+                            this.search.list = [{
+                                id: 1,
+                                value: this.text.value,
+                                selected: true
+                            }]
+                        }
+                    })
+                    if (this.search.list.length === 0) {
                         this.search.list = [{
                             id: 1,
                             value: this.text.value,
                             selected: true
                         }]
                     }
-                })
-                if (this.search.list.length === 0) {
-                    this.search.list = [{
-                        id: 1,
-                        value: this.text.value,
-                        selected: true
-                    }]
                 }
             }, 200)
+        },
+        optionState () {
+            this.resultList.over = true
         }
     }
 }

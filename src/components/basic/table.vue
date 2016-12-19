@@ -189,6 +189,9 @@ export default {
         rdButton
     },
     methods: {
+        resetSelected () {
+            this.selectAll.checked = false
+        },
         stateTagClass (state) {
             let classList = {}
             classList[state.type] = true

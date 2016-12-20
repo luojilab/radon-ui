@@ -111,7 +111,7 @@ export default {
                         }]
                     }
                 }
-            }, 200)
+            }, 500)
         },
         optionState () {
             this.resultList.over = true

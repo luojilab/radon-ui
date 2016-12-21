@@ -6,22 +6,25 @@ var baseWebpackConfig = require('./webpack.base.conf')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
-// add hot-reload related code to entry chunks
-Object.keys(baseWebpackConfig.entry).forEach(function (name) {
-    baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
-})
-
 const radonBuildConf = merge(baseWebpackConfig, {
     module: {
         loaders: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
     },
     output: {
-        public: '',
+        public: '/',
         path: config.build.assetsRoot,
-        filename: 'radon-ui.js',
+        filename: '[name].js',
         library: 'radon-ui',
         libraryTarget: 'umd',
         umdNamedDefine: true
+    },
+    externals: {
+        vue: {
+            root: 'Vue',
+            commonjs: 'vue',
+            commonjs2: 'vue',
+            amd: 'vue'
+        }
     },
     vue: {
         loaders: utils.cssLoaders({
@@ -40,7 +43,6 @@ const radonBuildConf = merge(baseWebpackConfig, {
             cssProcessorOptions: { discardComments: { removeAll: true } },
             canPrint: true
         }),
-        new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         // extract css into its own file
         new ExtractTextPlugin('radon-ui.css')
@@ -48,7 +50,7 @@ const radonBuildConf = merge(baseWebpackConfig, {
 })
 
 radonBuildConf.entry = {
-    radon: './radon-ui/index.js'
+    'radon-ui': './radon-ui/index.js'
 }
 
 module.exports = radonBuildConf

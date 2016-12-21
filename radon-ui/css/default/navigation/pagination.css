@@ -1,0 +1,96 @@
+@import '../index';
+.rd-page{
+    font-size: 12px;
+    &:after{
+        display: table;
+        content: '';
+        height: 0;
+        clear: both;
+        overflow: hidden;
+    }
+    .item {
+        cursor: pointer;
+        border-radius: 6px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        min-width: 28px;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        list-style: none;
+        float: left;
+        border: 1px solid $border-color-base ;
+        background-color: #fff;
+        margin-right: 8px;
+        font-family: Arial;
+        span{
+            margin: 0 6px;
+            color: $text-color;
+        }
+        &:hover{
+            border-color: $primary-color ;
+            span{
+                color: $info-color;
+            }
+        }
+        &.active{
+            background-color: $primary-color ;
+            border-color: $info-color ;
+            span{
+                color: #fff;
+            }
+        }
+        &.disabled{
+            cursor: not-allowed;
+            border-color: $border-color-base;
+            span{
+                color: $btn-disable-color ;
+            }
+        }
+    }
+    .jump-prev, .jump-next{
+        font-family: Arial;
+        cursor: pointer;
+        color: $text-color;
+        border-radius: 6px;
+        list-style: none;
+        min-width: 28px;
+        height: 28px;
+        line-height: 28px;
+        float: left;
+        text-align: center;
+        -webkit-transition: all .3s ease;
+        transition: all .3s ease;
+        display: inline-block;
+        margin-right: 8px;
+        &:after{
+            content: "\2022\2022\2022";
+            display: block;
+            letter-spacing: 2px;
+            color: $btn-disable-color;
+            text-align: center;
+        }
+    }
+    .jump-prev:hover{
+        &:after{
+            content: "\f3d2\f3d2";
+            color: $primary-color;
+            display: inline-block;
+            zoom: 1;
+            letter-spacing: 1px;
+            font-family: "Ionicons";
+        }
+    }
+    .jump-next:hover{
+        &:after{
+            content: "\f3d3\f3d3";
+            color: $primary-color;
+            display: inline-block;
+            zoom: 1;
+            letter-spacing: 1px;
+            font-family: "Ionicons";
+        }
+    }
+}

@@ -1,27 +1,4 @@
-<style>
-.rd-editable-container {
-    display: inline-block;
-    &.editing:hover {
-        background: none;
-    }
-    &:hover {
-        background: #fff1d7;
-    }
-}
-.rd-editable-edit {
-    color: #57c5f7;
-    font-size: .8rem;
-}
-.rd-editable-inner {
-    display: flex;
-}
-.rd-editable-inner .rd-btn {
-    margin-left: .5rem;
-}
-.rd-editable-container .rd-btn {
-    flex-shrink: 0;
-}
-</style>
+<style src="radon-ui-css/form/editable.css"></style>
 <template>
     <div class="rd-editable-container" :class="{ 'editing': state.edit }">
         <div class="rd-editable-value" @click="startEdit" v-show="!state.edit">

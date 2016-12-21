@@ -1,21 +1,4 @@
-<style>
-.rd-card {
-    background: #fff;
-    font-size: .8rem;
-    padding: .5rem 1rem;
-    margin-bottom: .5rem;
-    border-radius: 2px;
-}
-.rd-card-title {
-    font-size: 1rem;
-    background: rgba(0,0,0,0.02);
-    padding: .5rem;
-    margin: 0 -1rem;
-    margin: -.5rem -1rem .5rem -1rem;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-}
-</style>
-
+<style src="radon-ui-css/basic/card.css"></style>
 <template>
     <div class="rd-card" :class="{'has-title': title}" :style="cardStyleList">
         <div v-if="title" class="rd-card-title">{{title}}</div>

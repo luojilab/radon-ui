@@ -1,20 +1,4 @@
-<style>
-.rd-breadcrumb-container {
-    display: inline-block;
-    &>.rd-breadcrumb-item:last-child {
-        .rd-breadcrumb-separator {
-            display: none;
-        }
-    }
-}
-.rd-breadcrumb-item {
-    font-size: .8rem;
-    cursor: pointer;
-}
-.rd-breadcrumb-separator {
-    margin: 0 .5rem;
-}
-</style>
+<style src="radon-ui-css/navigation/breadcrumb.css"></style>
 <template>
     <div class="rd-breadcrumb-container">
         <span 

@@ -1,8 +1,4 @@
-<style>
-.rd-tree li ul{
-    padding: 0 0 0 18px;
-}
-</style>
+<style src="radon-ui-css/common/tree.css"></style>
 <template>
     <section class="rd-tree">
         <ul class="rd-tree-node">

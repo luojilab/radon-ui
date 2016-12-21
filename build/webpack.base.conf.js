@@ -24,6 +24,8 @@ module.exports = {
         fallback: [path.join(__dirname, '../node_modules')],
         alias: {
             'radon-ui': path.resolve(__dirname, '../radon-ui'),
+            'radon-ui-assets': path.resolve(__dirname, '../radon-ui/assets/'),
+            'radon-ui-css': path.resolve(__dirname, '../radon-ui/css/default'),
             // 'radon-ui': path.resolve(__dirname, '../dist/radon-ui.js'), // build test
             'vue$': 'vue/dist/vue.common.js',
             'src': path.resolve(__dirname, '../src'),

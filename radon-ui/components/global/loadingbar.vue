@@ -1,17 +1,4 @@
-<style>
-.rd-loading-bar {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    height: 2px;
-    width: 0%;
-    transition: width 0.2s, opacity 0.6s;
-    opacity: 1;
-    background-color: #73ccec;
-    z-index: 999999;
-}
-</style>
+<style src="radon-ui-css/global/loadingbar.css"></style>
 <template>
     <div class="rd-loading-bar" :style="{
       'width': loadingBar.percent+'%',

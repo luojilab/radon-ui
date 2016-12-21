@@ -1,19 +1,4 @@
-<style>
-.rd-tooltip-container {
-    position: fixed;
-    background: #656565;
-    color: #fff;
-    font-size: .8rem;
-    padding: .25rem .5rem;
-    border-radius: 4px;
-}
-.expand-transition {
-  transition: opacity .3s ease;
-}
-.expand-enter, .expand-leave {
-  opacity: 0;
-}
-</style>
+<style src="radon-ui-css/common/toolTip.css"></style>
 <template>
     <div 
         class="rd-tooltip-container"

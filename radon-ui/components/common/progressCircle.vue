@@ -1,44 +1,4 @@
-<style>
-.rd-progress-circle-inner {
-    position: relative;
-    width: 8rem;
-    height: 8rem;
-    font-size: 2rem;
-    display: inline-block;
-}
-.rd-progress-circle-inner.small {
-    width: 4rem;
-    height: 4rem;
-    font-size: 1rem;
-}
-.rd-progress-circle-inner.small .rd-progress-circle-state {
-    font-size: 1rem;
-}
-.rd-progress-circle-info {
-    display: block;
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    line-height: 1;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    left: 0;
-    margin: 0;
-}
-.rd-progress-circle-inner.success .rd-progress-circle-text,
-.rd-progress-circle-inner.failed .rd-progress-circle-text {
-    display: none;
-}
-.rd-progress-circle-state.ion-checkmark-round{
-    color: #87d068;
-    font-size: 3rem;
-}
-.rd-progress-circle-state.ion-close-round{
-    color: #f50;
-    font-size: 3rem;
-}
-</style>
+<style src="radon-ui-css/common/progressCircle.css"></style>
 <template>
     <div
         class="rd-progress-circle-inner"

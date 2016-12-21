@@ -1,9 +1,4 @@
-<style>
-    .rd-textfield-input {
-        transition: height .2s;
-    }
-</style>
-
+<style src="radon-ui-css/form/textarea.css"></style>
 <template>
     <div class="rd-textfield-wrapper">
         <textarea 

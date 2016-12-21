@@ -1,45 +1,4 @@
-<style>
-.rd-tag-wrapper {
-    display: inline-block;
-    font-size: .8rem;
-    padding: .1rem .5rem;
-    background: #57c5f7;
-    margin: 0 .5rem 0 0;
-    color: #fff;
-    line-height: 1.5rem;
-}
-.rd-tag-value {
-    display: inline-block;
-}
-.rd-tag-close:hover {
-    color: #607D8B;
-}
-.rd-tag-wrapper.ghost {
-    color: #666;
-    background-color: #f7f7f7;
-    border-color: #d9d9d9;
-}
-.rd-tag-wrapper.warning {
-    background-color: #fa0;
-    border-color: #fa0;
-}
-.rd-tag-wrapper.danger {
-    background-color: #f50;
-    border-color: #f50;
-}
-.rd-tag-wrapper.success {
-    background-color: #87d068;
-    border-color: #87d068;
-}
-.rd-tag-wrapper.info {
-    border-color:#2db7f5;
-    background-color: #2db7f5;
-}
-.rd-tag-icon {
-    vertical-align: middle;
-}
-</style>
-
+<style src="radon-ui-css/basic/tag.css"></style>
 <template>
     <div class="rd-tag-wrapper" :style="tagStyle" :class="classList">
         <div class="rd-tag-value">{{value}}</div>

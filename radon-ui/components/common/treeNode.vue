@@ -1,12 +1,4 @@
-<style>
-.rd-tree-ion{
-    width: .8rem;
-    cursor: pointer;
-}
-.rd-ion-hidden{
-    display: none;
-}
-</style>
+<style src="radon-ui-css/common/treeNode.css"></style>
 <template>
     <div>
         <li v-for="treeNode in treeData">

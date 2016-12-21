@@ -1,4 +1,2 @@
-<style>
-@import './css/index';
-@import './css/ionicicon';
-</style>
+<style src="radon-ui-css/_index.css"></style>
+<style src="radon-ui-css/_ionicicon.css"></style>

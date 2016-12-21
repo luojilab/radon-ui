@@ -1,35 +1,4 @@
-<style>
-.rd-number-container {
-    display: inline-block;
-}
-.rd-number-wrapper {
-    display: flex;
-    width: 100%;
-    height: 2rem;
-}
-.rd-number-action {
-    flex-shrink: 0;
-}
-.rd-number-input {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: #666;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #d9d9d9;
-    border-radius: 4px;
-    padding: .1rem .5rem;
-    width: 100%;
-    outline: none;
-    box-sizing: border-box;
-}
-.rd-number-icon {
-    font-size: 1rem;
-    line-height: 2rem;
-    margin: 0 .5rem;
-}
-</style>
-
+<style src="radon-ui-css/form/numberInput.css"></style>
 <template>
     <div class="rd-number-container">
         <div class="rd-number-wrapper">

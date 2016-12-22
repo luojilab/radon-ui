@@ -92,7 +92,7 @@
     "vue": "^2.1.0",
     "vue-loader": "^10.0.0",
     "vue-resource": "^1.0.3",
-    "vue-router": "^2.1.1",
+    "vue-router": "^2.0.0",
     "vue-style-loader": "^1.0.0",
     "vue-template-compiler": "^2.1.0",
     "webpack": "^1.13.2",

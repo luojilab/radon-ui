@@ -48,6 +48,9 @@ import rdLoadingbar from './components/global/loadingbar.vue'
 import rdBreadcrumb from './components/navigation/breadcrumb.vue'
 import rdPagination from './components/navigation/pagination.vue'
 
+// Store
+import rdOrderList from './components/store/orderList.vue'
+
 // Install
 import RadonInstall from './install'
 
@@ -99,6 +102,9 @@ export {
     // Navigation
     rdBreadcrumb,
     rdPagination,
+
+    // Stroe
+    rdOrderList,
 
     // install
     RadonInstall

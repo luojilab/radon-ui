@@ -1,14 +1,14 @@
 <style>
 .ex-table-container {
-    overflow-x: auto; 
+    overflow-x: auto;
 }
 .ex-table .rd-table {
     min-width: 30rem;
-} 
+}
 .tabel-avatar {
     height: 2rem;
     border-radius: 2rem;
-}   
+}
 </style>
 
 <template>
@@ -31,7 +31,7 @@
 ```
 ```
 TableData: {
-    // 基础设置 
+    // 基础设置
     options: {
         // 是否展示选择 :Boolean
         select: true
@@ -75,8 +75,7 @@ TableData: {
 
         // 开启选择时应该有checkbox属性
         checkbox: {
-            disabled: false,
-            checked: false,
+            // disabled: false,
             text: ''
         }
     }, {
@@ -191,7 +190,7 @@ export default {
                     }],
                     checkbox: {
                         disabled: false,
-                        checked: false,
+                        // checked: false,
                         text: ''
                     }
                 }, {
@@ -275,7 +274,7 @@ export default {
 
         </textarea>
     </mark>
-        
+
     </div>
 </div>
 </template>
@@ -365,7 +364,6 @@ export default {
                     }],
                     checkbox: {
                         disabled: false,
-                        checked: false,
                         text: ''
                     }
                 }, {

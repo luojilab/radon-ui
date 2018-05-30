@@ -51,9 +51,9 @@
 }
 </style>
 <template>
-    <label class="rd-checkbox-wrapper">
+    <label class="rd-checkbox-wrapper" v-if="checkbox.checked !== undefined">
         <div class="rd-checkbox">
-            <span 
+            <span
                 class="rd-checkbox-inner"
                 :class="{
                     'selected': checkbox.checked,
@@ -61,8 +61,8 @@
                 }"
             >
                 <i class="rd-checkbox-inner-icon ion-checkmark-round"></i>
-                <input 
-                    type="checkbox" 
+                <input
+                    type="checkbox"
                     :value="checkbox.checked"
                     class="rd-checkbox-input"
                     @change="changeAction"
@@ -89,8 +89,11 @@ export default {
             if (this.checkbox.change) {
                 this.checkbox.change()
             }
-            this.$emit('change', this.checkbox, this)
+            this.$emit('change', this.checkbox, this, e)
         }
+    },
+    created () {
+        if (this.checkbox.checked === undefined) this.$set('checkbox.checked', false)
     }
 }
 </script>

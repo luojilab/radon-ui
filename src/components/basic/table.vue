@@ -70,15 +70,15 @@
                 <td v-if="table.options.select" class="rd-table-check-col">
                     <rd-checkbox :checkbox="selectAll"></rd-checkbox>
                 </td>
-                <td 
-                    class="rd-table-td" 
+                <td
+                    class="rd-table-td"
                     :class="{ 'sort-icon': col.sort }"
-                    v-for="col in table.columns" 
+                    v-for="col in table.columns"
                     @click="touchCol($event, col)"
                 >
                     {{col.value}}
-                    <span 
-                        v-if="col.sort" 
+                    <span
+                        v-if="col.sort"
                         class="rd-table-sort-icon ion-ios-arrow-down"
                         :class="{ 'active': col.sort.state }"
                     ></span>
@@ -94,7 +94,7 @@
         <tbody>
             <tr class="rd-table-th" v-for="row in List" track-by="$index">
                 <td v-if="row.checkbox" class="rd-table-check-col">
-                    <rd-checkbox :checkbox="row.checkbox"></rd-checkbox>
+                    <rd-checkbox :checkbox="row.checkbox" @change="handleChange"></rd-checkbox>
                 </td>
                 <td class="rd-table-td" v-for="val in row._value" track-by="$index">
                     <div v-if="val && typeof val === 'object'">
@@ -108,18 +108,18 @@
                     <span :class="stateTagClass(row.state)" class="rd-table-state">{{row.state.value}}</span>
                 </td>
                 <td class="rd-table-td" v-if="table.actions || row.__actions">
-                    <rd-button 
-                        v-for="action in table.actions" 
-                        :size="action.size || 'small'" 
+                    <rd-button
+                        v-for="action in table.actions"
+                        :size="action.size || 'small'"
                         :type="action.type"
                         :icon="action.icon"
                         :loading="action.loading"
                         :disabled="action.disabled"
                         @click="action.func($event, row)"
                     >{{action.text}}</rd-button>
-                     <rd-button 
-                        v-for="action in row.__actions" 
-                        :size="action.size || 'small'" 
+                     <rd-button
+                        v-for="action in row.__actions"
+                        :size="action.size || 'small'"
                         :disabled="action.disabled"
                         :type="action.type"
                         :icon="action.icon"
@@ -198,14 +198,19 @@ export default {
             return classList
         },
         selectAllAction (val) {
-            this.table.tableData.forEach(row => {
-                row.checkbox.checked = val
-            })
+            if (val) { // 全选时才设置
+                this.table.tableData.forEach(row => {
+                    row.checkbox.checked = val
+                })
+            }
         },
         touchCol (e, col) {
             if (col.sort && col.sort.func) {
                 col.sort.func(e, col)
             }
+        },
+        handleChange (checkbox, vm, e) {
+            if (!checkbox.checked && this.selectAll.checked) this.selectAll.checked = false
         }
     }
 }
